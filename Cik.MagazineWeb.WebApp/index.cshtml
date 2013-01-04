@@ -1,0 +1,397 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        @Styles.Render("~/Content/css")		
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Start add your site or application content here -->
+        <!-- Header -->
+		<div id="header">
+			<div class="shell">
+				<!-- Logo + Top Nav -->
+				<div id="top">
+					@*<h1><a href="#">SpringTime</a></h1>*@
+					<div id="top-navigation">
+						Welcome <a href="#"><strong>Administrator</strong></a>
+						<span>|</span>
+						<a href="#">Help</a>
+						<span>|</span>
+						<a href="#">Profile Settings</a>
+						<span>|</span>
+						<a href="#">Log out</a>
+					</div>
+				</div>
+				<!-- End Logo + Top Nav -->
+				
+				<!-- Main Nav -->
+				<div id="navigation">
+					<ul data-bind="with: menuHashes">
+						<li class="route-top"><a data-bind="attr: {href: dashboard}" class="active"><span>Dashboard</span></a></li>
+						<li class="route-top"><a href="#"><span>New Articles</span></a></li>
+						<li class="route-top"><a href="#"><span>User Management</span></a></li>
+						<li class="route-top"><a href="#"><span>Photo Gallery</span></a></li>
+						<li class="route-top"><a href="#"><span>Products</span></a></li>
+						<li class="route-top"><a href="#"><span>Services Control</span></a></li>
+					</ul>
+				</div>
+				<!-- End Main Nav -->
+			</div>
+		</div>
+		<!-- End Header -->
+
+		<!-- Container -->
+		<div id="container">
+			<div class="shell">
+				
+				<!-- Small Nav -->
+				<div class="small-nav">
+					<a href="#">Dashboard</a>
+					<span>&gt;</span>
+					Current Articles
+				</div>
+				<!-- End Small Nav -->
+				
+				@*<!-- Message OK -->		
+				<div class="msg msg-ok">
+					<p><strong>Your file was uploaded succesifully!</strong></p>
+					<a href="#" class="close">close</a>
+				</div>
+				<!-- End Message OK -->		
+				
+				<!-- Message Error -->
+				<div class="msg msg-error">
+					<p><strong>You must select a file to upload first!</strong></p>
+					<a href="#" class="close">close</a>
+				</div>
+				<!-- End Message Error -->
+				<br />*@
+				<!-- Main -->
+                <div id="dashboard-view" class="view"> <!-- main -->
+                    
+                    @*<div data-bind='simpleGrid: categoriesPagedGrid.gridViewModel'> </div>*@
+
+                    <div id="content" >
+						<!-- Box -->
+						<div class="box">
+							<!-- Box Head -->
+							<div class="box-head">
+								<h2 class="left">Current Categories</h2>
+								<div class="right">
+									<label>search categories</label>
+									<input type="text" class="field small-field" />
+									<input type="submit" class="button" value="search" />
+								</div>
+							</div>
+							<!-- End Box Head -->	
+
+							<!-- Table -->
+							<div class="clearfix"></div>
+                            <div class="table">
+                                <!-- http://jsfiddle.net/rniemeyer/QSRBR/ -->
+                                <!-- http://jsfiddle.net/rniemeyer/dWBAe/9/ -->
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <tr>
+                                            <th width="13"><input type="checkbox" class="checkbox" /></th>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Added by</th>
+                                            <th width="110" class="ac">Content Control</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: categories">
+                                        <tr class="odd">
+                                            <td><input type="checkbox" class="checkbox" /></td>
+                                            <td data-bind="text: id"></td>
+                                            <td><h3 data-bind="text: name" /></td>
+                                            <td><h3 data-bind="text: createdBy" /></td>
+                                            <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+								
+								
+                                <!-- Pagging -->
+                                <div class="pagging">
+                                    <div class="left">Showing 1-12 of 44</div>
+                                    <div class="right">
+                                        <a href="#">Previous</a>
+                                        <a href="#">1</a>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">4</a>
+                                        <a href="#">245</a>
+                                        <span>...</span>
+                                        <a href="#">Next</a>
+                                        <a href="#">View all</a>
+                                    </div>
+                                </div>
+                                <!-- End Pagging -->
+								
+                            </div>
+							<!-- Table -->
+							
+						</div>
+						<!-- End Box -->
+					</div>
+                    <!-- End Content -->
+
+                    @*<!-- Content -->
+				    <div id="content">
+						
+						<!-- Box -->
+						<div class="box">
+							<!-- Box Head -->
+							<div class="box-head">
+								<h2 class="left">Current Articles</h2>
+								<div class="right">
+									<label>search articles</label>
+									<input type="text" class="field small-field" />
+									<input type="submit" class="button" value="search" />
+								</div>
+							</div>
+							<!-- End Box Head -->	
+
+							<!-- Table -->
+							<div class="clearfix"></div>
+							<div class="table">
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<th width="13"><input type="checkbox" class="checkbox" /></th>
+										<th>Title</th>
+										<th>Date</th>
+										<th>Added by</th>
+										<th width="110" class="ac">Content Control</th>
+									</tr>
+									<tr>
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+									<tr class="odd">
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+									<tr class="odd">
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+									<tr class="odd">
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+									<tr>
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+									<tr class="odd">
+										<td><input type="checkbox" class="checkbox" /></td>
+										<td><h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3></td>
+										<td>12.05.09</td>
+										<td><a href="#">Administrator</a></td>
+										<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+									</tr>
+								</table>
+								
+								
+								<!-- Pagging -->
+								<div class="pagging">
+									<div class="left">Showing 1-12 of 44</div>
+									<div class="right">
+										<a href="#">Previous</a>
+										<a href="#">1</a>
+										<a href="#">2</a>
+										<a href="#">3</a>
+										<a href="#">4</a>
+										<a href="#">245</a>
+										<span>...</span>
+										<a href="#">Next</a>
+										<a href="#">View all</a>
+									</div>
+								</div>
+								<!-- End Pagging -->
+								
+							</div>
+							<!-- Table -->
+							
+						</div>
+						<!-- End Box -->
+						
+						<!-- Box -->
+						<div class="box">							
+							<!-- Box Head -->
+							<div class="box-head">
+								<h2>Add New Article</h2>
+							</div>
+							<!-- End Box Head -->
+							
+							<form action="" method="post">
+								
+								<!-- Form -->
+								<div class="form">
+										<p>
+											<span class="req">max 100 symbols</span>
+											<label>Article Title <span>(Required Field)</span></label>
+											<input type="text" class="field size1" />
+										</p>	
+										<p class="inline-field">
+											<label>Date</label>
+											<select class="field size2">
+												<option value="">23</option>
+											</select>
+											<select class="field size3">
+												<option value="">July</option>
+											</select>
+											<select class="field size3">
+												<option value="">2009</option>
+											</select>
+										</p>
+										
+										<p>
+											<span class="req">max 100 symbols</span>
+											<label>Content <span>(Required Field)</span></label>
+											<textarea class="field size1" rows="10" cols="30"></textarea>
+										</p>	
+									
+								</div>
+								<!-- End Form -->
+								
+								<!-- Form Buttons -->
+								<div class="buttons">
+									<input type="button" class="button" value="preview" />
+									<input type="submit" class="button" value="submit" />
+								</div>
+								<!-- End Form Buttons -->
+							</form>
+						</div>
+						<!-- End Box -->
+
+					</div>
+					<!-- End Content -->*@
+					
+					@*<!-- Sidebar -->
+					<div id="sidebar">
+						
+						<!-- Box -->
+						<div class="box">
+							<div class="clearfix"></div>
+							<!-- Box Head -->
+							<div class="box-head">
+								<h2>Management</h2>
+							</div>
+							<!-- End Box Head-->
+							
+							<div class="box-content">
+								<a href="#" class="add-button"><span>Add new Article</span></a>
+								<div class="cl">&nbsp;</div>
+								
+								<p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>
+								<p><a href="#">Delete Selected</a></p>
+								
+								<!-- Sort -->
+								<div class="sort">
+									<label>Sort by</label>
+									<select class="field">
+										<option value="">Title</option>
+									</select>
+									<select class="field">
+										<option value="">Date</option>
+									</select>
+									<select class="field">
+										<option value="">Author</option>
+									</select>
+								</div>
+								<!-- End Sort -->
+								
+							</div>
+						</div>
+						<!-- End Box -->
+					</div>
+					<!-- End Sidebar -->*@
+					
+					<div class="cl">&nbsp;</div>			
+				</div>
+				<!-- Main -->
+			</div>
+		</div>
+		<!-- End Container -->
+
+		<!-- Footer -->
+		<div id="footer">
+			<div class="shell">
+				<span class="left">&copy; 2013 - Context is King</span>
+				<span class="right">
+					Design by <a href="http://chocotemplates.com" target="_blank" title="The Sweetest CSS Templates WorldWide">Chocotemplates.com</a>
+				</span>
+			</div>
+		</div>
+		<!-- End Footer -->
+        <!-- End add your site or application content here -->
+
+        @*<script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>*@
+        @Scripts.Render(
+            "~/bundles/jquery",
+            "~/bundles/jquerytmpl",
+            "~/bundles/jsextlibs",
+            "~/Scripts/libs/require.js", 
+            "~/bundles/jsapplibs",
+            "~/bundles/jsmocks", // remove mocks for release
+            "~/Scripts/main.js"
+        )
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
