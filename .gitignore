@@ -10,3 +10,7 @@ _ReSharper*
 .*crunch*.local.xml
 
 
+# NuGet Packages Directory
+packages
+
+
