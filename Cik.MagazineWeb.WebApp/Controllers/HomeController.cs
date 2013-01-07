@@ -2,11 +2,28 @@
 {
     using System.Web.Mvc;
 
-    public class HomeController : Controller
+    using CIK.News.Web.Infras;
+
+    using Cik.MagazineWeb.Framework;
+    using Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage.Builders;
+
+    public class HomeController : BaseController
     {
+        private readonly IHomePageViewModelBuilder _homePageVMBuilder;
+
+        public HomeController(IHomePageViewModelBuilder homePageVmBuilder)
+        {
+            Guard.ArgumentNotNull(homePageVmBuilder, "HomePageVmBuilder");
+
+            _homePageVMBuilder = homePageVmBuilder;
+        }
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            var homePageViewModel = _homePageVMBuilder.Build();
+
+            return this.View(homePageViewModel);
         }
     }
 }

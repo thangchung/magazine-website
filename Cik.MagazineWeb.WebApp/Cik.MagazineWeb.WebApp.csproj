@@ -136,7 +136,7 @@
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\Admin\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,17 +155,27 @@
     <Content Include="Content\images\add-button.gif" />
     <Content Include="Content\images\button.gif" />
     <Content Include="Content\images\close.gif" />
+    <Content Include="Content\images\dashboard.gif" />
     <Content Include="Content\images\del.gif" />
     <Content Include="Content\images\edit.gif" />
     <Content Include="Content\images\footer.gif" />
     <Content Include="Content\images\header.gif" />
+    <Content Include="Content\images\icon-feed.gif" />
+    <Content Include="Content\images\icon-minus.gif" />
+    <Content Include="Content\images\icon-plus.gif" />
+    <Content Include="Content\images\icon-time.gif" />
+    <Content Include="Content\images\main-three-columns.gif" />
+    <Content Include="Content\images\main-two-columns.gif" />
     <Content Include="Content\images\msg-error.gif" />
     <Content Include="Content\images\msg-ok.gif" />
+    <Content Include="Content\images\navigation-arrow.gif" />
+    <Content Include="Content\images\navigation-separator.gif" />
     <Content Include="Content\images\pagging.gif" />
     <Content Include="Content\images\tab.gif" />
     <Content Include="Content\images\th.gif" />
     <Content Include="Content\main.css" />
     <Content Include="Content\normalize.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="crossdomain.xml" />
@@ -253,6 +263,21 @@
     <Content Include="Scripts\myapps\route-config.js" />
     <Content Include="Scripts\myapps\viewmodels\vm.dashboard.js" />
     <Content Include="Scripts\myapps\viewmodels\vm.js" />
+    <Content Include="Uploads\Chrysanthemum.jpg" />
+    <Content Include="Uploads\Desert.jpg" />
+    <Content Include="Uploads\Hydrangeas.jpg" />
+    <Content Include="Uploads\Koala.jpg" />
+    <Content Include="Uploads\Lighthouse.jpg" />
+    <Content Include="Uploads\news-image-big.jpg" />
+    <Content Include="Uploads\news-image-med-1.jpg" />
+    <Content Include="Uploads\news-image-med-2.jpg" />
+    <Content Include="Uploads\news-image-med-3.jpg" />
+    <Content Include="Uploads\news-image-small-1.jpg" />
+    <Content Include="Uploads\news-image-small-2.jpg" />
+    <Content Include="Uploads\Penguins.jpg" />
+    <Content Include="Uploads\sample-gravatar.jpg" />
+    <Content Include="Uploads\sample-thumbnail.jpg" />
+    <Content Include="Uploads\Tulips.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -283,11 +308,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Home\_MainPage.cshtml" />
+    <Content Include="Views\Home\_MainPageLeftColumn.cshtml" />
+    <Content Include="Views\Home\_MainPageRightColumn.cshtml" />
+    <Content Include="Views\Home\_DashBoard.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\Tmpl\" />
     <Folder Include="Admin\Views\" />
-    <Folder Include="Controllers\Api\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

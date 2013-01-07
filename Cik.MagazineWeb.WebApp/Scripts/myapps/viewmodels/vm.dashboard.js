@@ -28,7 +28,7 @@
                     { headerText: "name", rowText: "name" },
                     { headerText: "createdBy", rowText: "createdBy" }
                 ],
-                pageSize: 1
+                pageSize: 5
             }),
             addItem = function() {
                 this.items.push({ name: "New item", sales: 0, price: 100 });

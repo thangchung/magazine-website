@@ -1,44 +1,38 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
     <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content=""/>
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        @Styles.Render("~/content/homepagecss")
+        @Scripts.Render("~/bundles/modernizr")
+        <title>Magazine Website - @RenderSection("TitleContent", required: false)</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
+        @RenderSection("HeaderContent", required: false)
     </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @*@Html.Partial("_LoginPartial")*@
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Magazine Site</p>
-                </div>
-            </div>
-        </footer>
+    <body id="top">
+        <div id="network">
+            <div class="center-wrapper">
+                <div class="left">@DateTime.Now.ToShortDateString() <span class="text-separator">|</span> <span class="quiet">794 users online</span></div>
+                <div class="right" id="toolbar">
+                    @*@if(User != null)
+                    {
+                        @Html.ActionLink("Go to administration board", "Index", new { area="Admin", controller="DashBoard"})
+                    } *@
 
+                    @*Text size <a href="#" title="Larger text"><img src="/Content/themes/base/images/icon-plus.gif" width="20" height="20" alt="" /></a> <a href="#" title="Smaller text"><img src="/Content/themes/base/images/icon-minus.gif" width="20" height="20" alt="" /></a>*@
+                </div>
+                <div class="clearer">&nbsp;</div>
+            </div>
+        </div>
+        <div id="site">
+            <div class="center-wrapper">
+                @RenderBody()
+            </div>
+        </div>
+        
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
     </body>

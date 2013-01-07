@@ -9,6 +9,7 @@
     using Cik.MagazineWeb.Repository.User;
     using Cik.MagazineWeb.WebApp.Infras.ViewModels.Admin.Builders.Impl;
     using Cik.MagazineWeb.WebApp.Infras.ViewModels.Admin.Persistences.Impl;
+    using Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage.Builders.Impl;
 
     using Module = Autofac.Module;
 
@@ -24,6 +25,10 @@
             builder.RegisterType<ItemRepository>().AsImplementedInterfaces().SingleInstance();
             builder.RegisterType<UserRepository>().AsImplementedInterfaces().SingleInstance();
 
+            /* home page components */
+            builder.RegisterType<HomePageViewModelBuilder>().AsImplementedInterfaces().SingleInstance();
+
+            /* admin components */
             builder.RegisterType<DashBoardViewModelBuilder>().AsImplementedInterfaces().SingleInstance();
             builder.RegisterType<ItemCreatingViewModelBuilder>().AsImplementedInterfaces().SingleInstance();
             builder.RegisterType<ItemEditingViewModelBuilder>().AsImplementedInterfaces().SingleInstance();

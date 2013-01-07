@@ -1,0 +1,38 @@
+﻿@model Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage.HeaderViewModel
+<div id="header">
+    <div class="clearer">&nbsp;</div>
+    <div id="site-title">
+        <h1>
+            @Html.ActionLink(@Model.SiteTitle, "Index", "Home", null, null)
+        </h1>
+    </div>
+    <div id="navigation">
+        <div id="main-nav">
+            <ul class="tabbed">
+                @for (var i = 0; i < Model.Categories.Count; i++)
+                {
+                    var currentTab = string.Empty;
+
+                    var cat = Model.Categories.ElementAt(i);
+
+                    if (Model.CurrentCategoryId > 0 && Model.CurrentCategoryId == cat.Id)
+                    {
+                        currentTab = "current-tab";
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            currentTab = "current-tab";
+                        }
+                    }
+                    
+                    <li class="@currentTab">
+                        @Html.ActionLink(cat.Name, "Category", "Home", new {id=cat.Id}, null)
+                    </li>
+                }
+            </ul>
+            <div class="clearer">&nbsp;</div>
+        </div>
+    </div>
+</div>

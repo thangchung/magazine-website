@@ -72,6 +72,9 @@
                 "~/Content/normalize.css",
                 "~/Content/main.css",
                 "~/Content/style.css"));
+
+            /* home page */
+            bundles.Add(new StyleBundle("~/content/homepagecss").Include("~/Content/site.css"));
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage.MainPageRightColumnViewModel
+
+<div class="right sidebar" id="sidebar">
+    <div class="section">
+        <div class="section-title">
+            <div class="left">Latest News</div>
+            <div class="right"><img src="/Content/themes/base/images/icon-time.gif" width="14" height="14" alt="" /></div>
+            <div class="clearer">&nbsp;</div>
+        </div>
+        <div class="section-content">
+            <ul class="nice-list">
+                @foreach(var item in Model.LatestNews)
+                      {
+                          <li>
+                              <div class="left">
+                                  @Html.ActionLink(item.ItemContent.Title, "Details", "Home", new {id=item.Id}, null)
+                              </div>
+                              <div class="right">@item.CreatedDate.Value.ToShortTimeString()</div>
+                              <div class="clearer">&nbsp;</div>
+                          </li>    
+                      }
+                <li><a href="#" class="more">Browse all &#187;</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-title">Most Viewed</div>
+        <div class="section-content">
+            <ul class="nice-list">
+                @for(var index = 0; index < Model.MostViews.Count; index++)
+                {
+                    var currentItem = Model.MostViews.ElementAt(index);
+                    
+                    <li>
+                        <span class="quiet">@Html.Raw(index + 1).</span> 
+                        @Html.ActionLink(currentItem.ItemContent.Title, "Details", "Home", new {id=currentItem.Id}, null) 
+                        (@currentItem.ItemContent.NumOfView times)
+                    </li>
+                }
+                <li><a href="#" class="more">Browse all &#187;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

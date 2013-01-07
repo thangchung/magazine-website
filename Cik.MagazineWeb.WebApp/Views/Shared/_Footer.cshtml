@@ -1,0 +1,15 @@
+﻿@model Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage.FooterViewModel
+<div id="footer">
+
+    <div class="left">&copy; 2010-2011 Simple Magazine <span class="text-separator">&rarr;</span> 
+        <a href="#">Home</a> 
+        
+        @foreach(var cat in Model.Categories)
+        {
+            <span class="text-separator">|</span>
+            <a href="#">@cat.Name</a>
+        }
+    </div>
+    <div class="right">Provided By <a href="http://www.template4all.com/" title="Free Website Templates">Free Website Templates</a> | <a href="http://www.freethemes4all.com" title="Free Website Templates">Freethemes4all.com</a> Design by <a href="http://arcsin.se/">Arcsin</a></div>
+    <div class="clearer">&nbsp;</div>
+</div>

@@ -1,1 +1,21 @@
-﻿<h2>Home page</h2>
+﻿@model Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage.HomePageViewModel
+
+@section TitleContent{
+    Index page   
+}
+
+@section HeaderContent{
+    
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.Partial("_Header", Model.Header)
+
+@Html.Partial("_MainPage", Model.MainPage)
+
+@Html.Partial("_DashBoard", Model.DashBoard)
+
+@Html.Partial("_Footer", Model.Footer)

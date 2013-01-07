@@ -1,0 +1,12 @@
+﻿@using Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage
+@model MainPageViewModel
+
+<div class="main" id="main-two-columns">
+    
+    @Html.Partial("_MainPageLeftColumn", (MainPageLeftColumnViewModel)Model.LeftColumn)
+    
+    @Html.Partial("_MainPageRightColumn", Model.RightColumn)
+    
+    <div class="clearer">&nbsp;</div>
+
+</div>

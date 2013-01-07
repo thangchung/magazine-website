@@ -52,6 +52,7 @@
     <Compile Include="ActionFilters\ValidationActionFilter.cs" />
     <Compile Include="ApiBaseController.cs" />
     <Compile Include="BaseController.cs" />
+    <Compile Include="Extensions\HtmlExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountModels.cs" />
     <Compile Include="ViewModels\Admin\Builders\IDashBoardViewModelBuilder.cs" />
@@ -70,11 +71,20 @@
     <Compile Include="ViewModels\Admin\Persistences\Impl\ItemCreatingPersistence.cs" />
     <Compile Include="ViewModels\Admin\Persistences\Impl\ItemDeletingPersistence.cs" />
     <Compile Include="ViewModels\Admin\Persistences\Impl\ItemEditingPersistence.cs" />
+    <Compile Include="ViewModels\HomePage\Builders\IHomePageViewModelBuilder.cs" />
+    <Compile Include="ViewModels\HomePage\Builders\Impl\HomePageViewModelBuilder.cs" />
+    <Compile Include="ViewModels\HomePage\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\HomePage\FooterViewModel.cs" />
+    <Compile Include="ViewModels\HomePage\HeaderViewModel.cs" />
+    <Compile Include="ViewModels\HomePage\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\HomePage\MainPageViewModel.cs" />
     <Compile Include="ViewModels\PagingViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBuilderBase.cs" />
     <Compile Include="ViewModels\ViewModelPersistenceBase.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\HomePage\Persistences\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cik.MagazineWeb.Framework\Cik.MagazineWeb.Framework.csproj">
       <Project>{FE7D6DAB-0193-4DEE-8B4E-8C9E35D47E62}</Project>
