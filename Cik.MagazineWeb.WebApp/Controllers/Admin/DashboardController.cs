@@ -10,6 +10,7 @@
 
     using Cik.MagazineWeb.Framework;
     using Cik.MagazineWeb.Model.Magazine;
+    using Cik.MagazineWeb.WebApp.Infras.LogEvents;
 
     using CodeCamper.Web.Controllers;
 
@@ -50,6 +51,8 @@
             //});
 
             var categories = _categoryRepository.GetCategories();
+
+            new LogEvent("log error if have one").Raise();
 
             if (categories != null && categories.Count() >= 0)
             {

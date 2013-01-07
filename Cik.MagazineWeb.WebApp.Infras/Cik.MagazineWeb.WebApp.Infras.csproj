@@ -55,6 +55,7 @@
     <Compile Include="Extensions\HtmlExtension.cs" />
     <Compile Include="Formatters\JsonpMediaTypeFormatter.cs" />
     <Compile Include="Handlers\CorsHandler.cs" />
+    <Compile Include="LogEvents\LogEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountModels.cs" />
     <Compile Include="ViewModels\Admin\Builders\IDashBoardViewModelBuilder.cs" />
