@@ -5,7 +5,7 @@
 
             amplify.request.define('dashboard-categories', 'ajax', {
                 url: '/api/dashboard/getcategories',
-                dataType: 'json',
+                dataType: 'jsonp',
                 type: 'GET'
                 //cache: true
             });
