@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
@@ -11,6 +10,7 @@
 
     using CodeCamper.Web.Controllers;
 
+    // [Authorize]
     public class DashboardController : ApiControllerBase
     {
         public IEnumerable<Category> GetCategories()

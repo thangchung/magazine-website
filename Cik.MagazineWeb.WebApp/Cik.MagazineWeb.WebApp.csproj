@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,7 +172,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include=".htaccess" />
-    <Content Include="index.cshtml" />
+    <Content Include="Admin\index.cshtml" />
     <Content Include="humans.txt" />
     <Content Include="robots.txt" />
     <None Include="Scripts\libs\jquery-1.8.3.intellisense.js" />
@@ -252,7 +253,6 @@
     <Content Include="Scripts\myapps\route-config.js" />
     <Content Include="Scripts\myapps\viewmodels\vm.dashboard.js" />
     <Content Include="Scripts\myapps\viewmodels\vm.js" />
-    <Content Include="Tmpl\_categories.view.tmpl.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -278,10 +278,17 @@
     <Content Include="Content\images\orderedList9.png" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\myapps\datacontexts\datacontext.utilities.js" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admin\Tmpl\" />
+    <Folder Include="Admin\Views\" />
+    <Folder Include="Controllers\Api\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

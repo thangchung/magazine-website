@@ -8,7 +8,7 @@
             currentUserId = 1, // John Papa 
             currentUser = ko.observable(),
             hashes = {
-                dashboard: '#/dashboard'
+                dashboard: '/admin' // use default here /#/dashboard
             },
             logger = toastr, // use toastr for the logger
             messages = {

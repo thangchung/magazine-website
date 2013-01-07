@@ -1,37 +1,9 @@
 ﻿define('vm.dashboard',
     ['ko', 'underscore', 'datacontext'],
     function (ko, _, datacontext) {
-        
-        var categoriesPagedGridModel = function (cats) {
-            // this.cats = ko.observableArray(cats);
-
-            this.sortByName = function () {
-                this.cats.sort(function (a, b) {
-                    return a.name < b.name ? -1 : 1;
-                });
-            };
-
-            this.jumpToFirstPage = function () {
-                this.gridViewModel.currentPageIndex(0);
-            };
-
-            this.gridViewModel = new ko.simpleGrid.viewModel({
-                data: this.cats,
-                columns: [
-                    { headerText: "Id", rowText: "id" },
-                    { headerText: "Name", rowText: "name" },
-                    { headerText: "Created By", rowText: "createdBy" }
-                ],
-                pageSize: 1
-            });
-
-            return {
-                gridViewModel: gridViewModel
-            };
-        };
-        
-        var categories = ko.observableArray(),
-            activate = function (routeData, callback) {
+        var
+            categories = ko.observableArray(),
+            activate = function(routeData, callback) {
                 refresh(callback);
             },
             canLeave = function() {
@@ -41,25 +13,43 @@
                 execute: function(complete) {
                 }
             }),
-            getCategories = function () {
+            getCategories = function() {
                 return datacontext.dashboard.getData({
                     results: categories
                 });
             },
-            refresh = function (callback) {
+            refresh = function(callback) {
                 this.categories = getCategories();
-
-                // console.log(new categoriesPagedGridModel(this.categories));
-                this.categoriesPagedGrid = new categoriesPagedGridModel(this.categories);​
-                // this.categoriesPagedGrid = 'abc';
+            },
+            categoriesGridViewModel = new ko.simpleGrid.viewModel({
+                data: categories,
+                columns: [
+                    { headerText: "id", rowText: "id" },
+                    { headerText: "name", rowText: "name" },
+                    { headerText: "createdBy", rowText: "createdBy" }
+                ],
+                pageSize: 1
+            }),
+            addItem = function() {
+                this.items.push({ name: "New item", sales: 0, price: 100 });
+            },
+            sortByName = function() {
+                this.items.sort(function(a, b) {
+                    return a.name < b.name ? -1 : 1;
+                });
+            },
+            jumpToFirstPage = function() {
+                this.gridViewModel.currentPageIndex(0);
             };
-            // categoriesPagedGrid = null;
 
         return {
             activate: activate,
             canLeave: canLeave,
             categories: categories,
-            forceRefreshCmd: forceRefreshCmd
-            //categoriesPagedGrid: categoriesPagedGrid
+            forceRefreshCmd: forceRefreshCmd,
+            categoriesGridViewModel: categoriesGridViewModel,
+            addItem: addItem,
+            sortByName: sortByName,
+            jumpToFirstPage: jumpToFirstPage
         };
     });
