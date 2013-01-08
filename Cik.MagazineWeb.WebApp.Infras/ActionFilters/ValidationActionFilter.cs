@@ -3,7 +3,6 @@ namespace Cik.MagazineWeb.WebApp.Infras.ActionFilters
     using System.Linq;
     using System.Net;
     using System.Net.Http;
-    using System.Web;
     using System.Web.Http.Controllers;
     using System.Web.Http.Filters;
 
