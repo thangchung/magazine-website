@@ -2,8 +2,11 @@ namespace Cik.MagazineWeb.WebApp.App_Start
 {
     using System.Web.Helpers;
     using System.Web.Http;
+    using System.Web.Http.Controllers;
 
     using Cik.MagazineWeb.WebApp.Infras.ActionFilters;
+    using Cik.MagazineWeb.WebApp.Infras.Filters;
+    using Cik.MagazineWeb.WebApp.Infras.WebApi.Invokers;
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
@@ -34,6 +37,8 @@ namespace Cik.MagazineWeb.WebApp.App_Start
 
             // register cors handler http://patelshailesh.com/index.php/cross-domain-asp-net-web-api-call-using-ajax
             // GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
+
+            config.Filters.Add(new ExceptionHandlingAttribute());
         }
     }
 }

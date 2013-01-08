@@ -71,6 +71,7 @@
     <Compile Include="ApiBaseController.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="Extensions\HtmlExtension.cs" />
+    <Compile Include="WebApi\Filters\ExceptionHandlingAttribute.cs" />
     <Compile Include="Formatters\JsonpMediaTypeFormatter.cs" />
     <Compile Include="Handlers\CorsHandler.cs" />
     <Compile Include="LogEvents\LogEvent.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="ViewModels\PagingViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBuilderBase.cs" />
     <Compile Include="ViewModels\ViewModelPersistenceBase.cs" />
+    <Compile Include="WebApi\Invokers\CikApiControllerActionInvoker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\HomePage\Persistences\" />
