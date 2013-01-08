@@ -28,6 +28,10 @@ namespace Cik.MagazineWeb.WebApp.App_Start
             // Add model validation, globally
             config.Filters.Add(new ValidationActionFilter());
 
+            // config for always show details error message 
+            // http://lostechies.com/jimmybogard/2012/04/18/custom-errors-and-error-detail-policy-in-asp-net-web-api/
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+
             // register cors handler http://patelshailesh.com/index.php/cross-domain-asp-net-web-api-call-using-ajax
             // GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
         }
