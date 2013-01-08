@@ -386,7 +386,7 @@
       <Name>Cik.MagazineWeb.Data.Infras</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cik.MagazineWeb.Data\Cik.MagazineWeb.Data.csproj">
-      <Project>{FCDBC737-404D-459F-BB06-AC8868328011}</Project>
+      <Project>{fcdbc737-404d-459f-bb06-ac8868328011}</Project>
       <Name>Cik.MagazineWeb.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cik.MagazineWeb.Framework\Cik.MagazineWeb.Framework.csproj">

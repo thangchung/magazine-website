@@ -32,11 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cik.MagazineWeb.Mapping.User">
-      <HintPath>..\Cik.MagazineWeb.WebApp\Bin\Cik.MagazineWeb.Mapping.User.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\Cik.MagazineWeb.Data\bin\Debug\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -120,6 +118,10 @@
       <Project>{FE7D6DAB-0193-4DEE-8B4E-8C9E35D47E62}</Project>
       <Name>Cik.MagazineWeb.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Mapping.User\Cik.MagazineWeb.Mapping.User.csproj">
+      <Project>{04b8e379-14ad-4165-bebe-235a0207faba}</Project>
+      <Name>Cik.MagazineWeb.Mapping.User</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cik.MagazineWeb.Mapping\Cik.MagazineWeb.Mapping.csproj">
       <Project>{20989800-51F1-4C8C-8401-D37C1A320103}</Project>
       <Name>Cik.MagazineWeb.Mapping</Name>
@@ -138,6 +140,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
