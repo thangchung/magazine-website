@@ -40,11 +40,11 @@
                         // or we force a refresh
                         if (forceRefresh || !items || !utils.hasProperties(items)) {
                             getFunction({
-                                success: function(dtoList) {
+                                success: function (dtoList, xhr) {
                                     items = dcutils.mapToContext(dtoList, items, results, mapper, filter, sortFunction);
                                     def.resolve(results);
                                 },
-                                error: function(response) {
+                                error: function(response, xhr) {
                                     logger.error(config.toasts.errorGettingData);
                                     def.reject();
                                 }
@@ -69,7 +69,7 @@
                         }
 
                         updateFunction({
-                            success: function(response) {
+                            success: function (response, xhr) {
                                 logger.success(config.toasts.savedData);
                                 entity.dirtyFlag().reset();
                                 if (callbacks && callbacks.success) {
@@ -77,7 +77,7 @@
                                 }
                                 def.resolve(response);
                             },
-                            error: function(response) {
+                            error: function(response, xhr) {
                                 logger.error(config.toasts.errorSavingData);
                                 if (callbacks && callbacks.error) {
                                     callbacks.error();

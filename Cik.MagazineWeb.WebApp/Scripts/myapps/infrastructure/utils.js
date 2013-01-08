@@ -1,14 +1,13 @@
 ﻿define('utils',
-['underscore', 'moment'],
-    function (_, moment) {
-        var
-            endOfDay = function (day) {
-                return moment(new Date(day))
-                    .add('days', 1)
-                    .add('seconds', -1)
-                    .toDate();
-            },
-            getFirstTimeslot = function (timeslots) {
+['jquery', 'underscore', 'moment'],
+    function ($, _, moment) {
+        var endOfDay = function(day) {
+            return moment(new Date(day))
+                .add('days', 1)
+                .add('seconds', -1)
+                .toDate();
+        },
+            getFirstTimeslot = function(timeslots) {
                 return moment(timeslots()[0].start()).format('MM-DD-YYYY');
             },
             hasProperties = function(obj) {
@@ -19,12 +18,12 @@
                 }
                 return false;
             },
-            invokeFunctionIfExists = function (callback) {
+            invokeFunctionIfExists = function(callback) {
                 if (_.isFunction(callback)) {
                     callback();
                 }
             },
-            mapMemoToArray = function (items) {
+            mapMemoToArray = function(items) {
                 var underlyingArray = [];
                 for (var prop in items) {
                     if (items.hasOwnProperty(prop)) {
@@ -37,8 +36,7 @@
                 // Removes regEx characters from search filter boxes in our app
                 return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
             },
-
-            restoreFilter = function (filterData) {
+            restoreFilter = function(filterData) {
                 var stored = filterData.stored,
                     filter = filterData.filter,
                     dc = filterData.datacontext;
@@ -49,7 +47,7 @@
                 ];
 
                 // For each filter, set the filter to the stored value, or get it from the DC
-                _.each(filterList, function (map) {
+                _.each(filterList, function(map) {
                     var rawProperty = map.raw, // POJO
                         filterProperty = map.filter, // observable
                         fetchMethod = map.fetch;
@@ -64,6 +62,27 @@
                         }
                     }
                 });
+            },
+            resolvingUrl = function (url) {
+                var rootPath = $('#rootUrl').val();
+
+                return rootPath + url;
+            },
+            redirectToLoginPage = function (rootPath) {
+                // http://stackoverflow.com/questions/503093/how-can-i-make-a-redirect-page-in-jquery-javascript
+                window.location.replace(rootPath + '/Account/Login');
+            },
+            amplifyDecoder = function (data, status, xhr, success, error) {
+                if (xhr.status === 401 && xhr.statusText === 'Unauthorized') {
+                    this.redirectToLoginPage(this.getRootUrl());
+                }
+                if (status === "success") {
+                    success(data, xhr);
+                } else if (status === "fail" || status === "error") {
+                    error(status, xhr);
+                } else {
+                    error(status, xhr);
+                }
             };
 
         return {
@@ -73,7 +92,10 @@
             invokeFunctionIfExists: invokeFunctionIfExists,
             mapMemoToArray: mapMemoToArray,
             regExEscape: regExEscape,
-            restoreFilter: restoreFilter
+            restoreFilter: restoreFilter,
+            resolvingUrl: resolvingUrl,
+            redirectToLoginPage: redirectToLoginPage,
+            amplifyDecoder: amplifyDecoder
         };
     });
 

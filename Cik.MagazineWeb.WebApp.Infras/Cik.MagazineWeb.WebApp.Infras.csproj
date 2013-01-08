@@ -11,6 +11,8 @@
     <AssemblyName>Cik.MagazineWeb.WebApp.Infras</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cik.MagazineWeb.Mapping.User">
+      <HintPath>..\Cik.MagazineWeb.WebApp\Bin\Cik.MagazineWeb.Mapping.User.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Cik.MagazineWeb.Data\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -37,9 +45,11 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
@@ -47,8 +57,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="ActionFilters\ValidationActionFilter.cs" />
     <Compile Include="ApiBaseController.cs" />
     <Compile Include="BaseController.cs" />
@@ -57,6 +76,9 @@
     <Compile Include="Handlers\CorsHandler.cs" />
     <Compile Include="LogEvents\LogEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\AdminMembershipProvider.cs" />
+    <Compile Include="Security\AdminRoleProvider.cs" />
+    <Compile Include="Security\UserInfo.cs" />
     <Compile Include="ViewModels\AccountModels.cs" />
     <Compile Include="ViewModels\Admin\Builders\IDashBoardViewModelBuilder.cs" />
     <Compile Include="ViewModels\Admin\Builders\IItemCreatingViewModelBuilder.cs" />
@@ -74,7 +96,11 @@
     <Compile Include="ViewModels\Admin\Persistences\Impl\ItemCreatingPersistence.cs" />
     <Compile Include="ViewModels\Admin\Persistences\Impl\ItemDeletingPersistence.cs" />
     <Compile Include="ViewModels\Admin\Persistences\Impl\ItemEditingPersistence.cs" />
+    <Compile Include="ViewModels\HomePage\Builders\ICategoryViewModelBuilder.cs" />
+    <Compile Include="ViewModels\HomePage\Builders\IDetailsViewModelBuilder.cs" />
     <Compile Include="ViewModels\HomePage\Builders\IHomePageViewModelBuilder.cs" />
+    <Compile Include="ViewModels\HomePage\Builders\Impl\CategoryViewModelBuilder.cs" />
+    <Compile Include="ViewModels\HomePage\Builders\Impl\DetailsViewModelBuilder.cs" />
     <Compile Include="ViewModels\HomePage\Builders\Impl\HomePageViewModelBuilder.cs" />
     <Compile Include="ViewModels\HomePage\DashboardViewModel.cs" />
     <Compile Include="ViewModels\HomePage\FooterViewModel.cs" />
@@ -93,6 +119,10 @@
       <Project>{FE7D6DAB-0193-4DEE-8B4E-8C9E35D47E62}</Project>
       <Name>Cik.MagazineWeb.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Mapping\Cik.MagazineWeb.Mapping.csproj">
+      <Project>{20989800-51F1-4C8C-8401-D37C1A320103}</Project>
+      <Name>Cik.MagazineWeb.Mapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cik.MagazineWeb.Model.Magazine\Cik.MagazineWeb.Model.Magazine.csproj">
       <Project>{DF9F9E44-524C-4EEF-9D60-98BD235DB8CF}</Project>
       <Name>Cik.MagazineWeb.Model.Magazine</Name>
@@ -106,7 +136,11 @@
       <Name>Cik.MagazineWeb.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

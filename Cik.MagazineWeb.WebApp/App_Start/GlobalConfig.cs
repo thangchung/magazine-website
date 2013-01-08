@@ -1,11 +1,11 @@
 namespace Cik.MagazineWeb.WebApp.App_Start
 {
+    using System.Web.Helpers;
     using System.Web.Http;
 
     using Cik.MagazineWeb.WebApp.Infras.ActionFilters;
-    using Cik.MagazineWeb.WebApp.Infras.Formatters;
-    using Cik.MagazineWeb.WebApp.Infras.Handlers;
 
+    using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
 
     public static class GlobalConfig
@@ -16,7 +16,7 @@ namespace Cik.MagazineWeb.WebApp.App_Start
             // Instead of returning Xml, it will return Json.
             // More information from Dave Ward: http://jpapa.me/P4vdx6
             config.Formatters.Remove(config.Formatters.XmlFormatter);
-            config.Formatters.Insert(0, new JsonpMediaTypeFormatter());
+            // config.Formatters.Insert(0, new JsonpMediaTypeFormatter());
 
             // Configure json camelCasing per the following post: http://jpapa.me/NqC2HH
             // Here we configure it to write JSON property names with camel casing
@@ -29,7 +29,7 @@ namespace Cik.MagazineWeb.WebApp.App_Start
             config.Filters.Add(new ValidationActionFilter());
 
             // register cors handler http://patelshailesh.com/index.php/cross-domain-asp-net-web-api-call-using-ajax
-            GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
+            // GlobalConfiguration.Configuration.MessageHandlers.Add(new CorsHandler());
         }
     }
 }

@@ -48,12 +48,44 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Autofac.Mvc4.2.6.3.862-beta\lib\NET40\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet">
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Math">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net45-full\Mono.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Org.Mentalis.Security.Cryptography">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net45-full\Org.Mentalis.Security.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -71,9 +103,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -126,6 +155,14 @@
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AppConfig.cs" />
@@ -136,6 +173,7 @@
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Admin\AccountController.cs" />
     <Compile Include="Controllers\Admin\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -173,6 +211,7 @@
     <Content Include="Content\images\pagging.gif" />
     <Content Include="Content\images\tab.gif" />
     <Content Include="Content\images\th.gif" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\Site.css" />
@@ -263,21 +302,22 @@
     <Content Include="Scripts\myapps\route-config.js" />
     <Content Include="Scripts\myapps\viewmodels\vm.dashboard.js" />
     <Content Include="Scripts\myapps\viewmodels\vm.js" />
-    <Content Include="Uploads\Chrysanthemum.jpg" />
-    <Content Include="Uploads\Desert.jpg" />
-    <Content Include="Uploads\Hydrangeas.jpg" />
-    <Content Include="Uploads\Koala.jpg" />
-    <Content Include="Uploads\Lighthouse.jpg" />
-    <Content Include="Uploads\news-image-big.jpg" />
-    <Content Include="Uploads\news-image-med-1.jpg" />
-    <Content Include="Uploads\news-image-med-2.jpg" />
-    <Content Include="Uploads\news-image-med-3.jpg" />
-    <Content Include="Uploads\news-image-small-1.jpg" />
-    <Content Include="Uploads\news-image-small-2.jpg" />
-    <Content Include="Uploads\Penguins.jpg" />
-    <Content Include="Uploads\sample-gravatar.jpg" />
-    <Content Include="Uploads\sample-thumbnail.jpg" />
-    <Content Include="Uploads\Tulips.jpg" />
+    <Content Include="App_Data\Uploads\Chrysanthemum.jpg" />
+    <Content Include="App_Data\Uploads\Desert.jpg" />
+    <Content Include="App_Data\Uploads\Hydrangeas.jpg" />
+    <Content Include="App_Data\Uploads\Koala.jpg" />
+    <Content Include="App_Data\Uploads\Lighthouse.jpg" />
+    <Content Include="App_Data\Uploads\news-image-big.jpg" />
+    <Content Include="App_Data\Uploads\news-image-med-1.jpg" />
+    <Content Include="App_Data\Uploads\news-image-med-2.jpg" />
+    <Content Include="App_Data\Uploads\news-image-med-3.jpg" />
+    <Content Include="App_Data\Uploads\news-image-small-1.jpg" />
+    <Content Include="App_Data\Uploads\news-image-small-2.jpg" />
+    <Content Include="App_Data\Uploads\Penguins.jpg" />
+    <Content Include="App_Data\Uploads\sample-gravatar.jpg" />
+    <Content Include="App_Data\Uploads\sample-thumbnail.jpg" />
+    <Content Include="App_Data\Uploads\Tulips.jpg" />
+    <Content Include="Scripts\toastr.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -314,6 +354,23 @@
     <Content Include="Views\Home\_MainPageRightColumn.cshtml" />
     <Content Include="Views\Home\_DashBoard.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\_CategoryPage.cshtml" />
+    <Content Include="Views\Home\_CategoryPageLeftColumn.cshtml" />
+    <Content Include="Views\Home\_DetailPage.cshtml" />
+    <Content Include="Views\Home\_DetailsPageLeftColumn.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\Tmpl\" />

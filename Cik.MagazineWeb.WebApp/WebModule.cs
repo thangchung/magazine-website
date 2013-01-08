@@ -27,6 +27,8 @@
 
             /* home page components */
             builder.RegisterType<HomePageViewModelBuilder>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<DetailsViewModelBuilder>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<CategoryViewModelBuilder>().AsImplementedInterfaces().SingleInstance();
 
             /* admin components */
             builder.RegisterType<DashBoardViewModelBuilder>().AsImplementedInterfaces().SingleInstance();

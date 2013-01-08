@@ -1,6 +1,5 @@
 ﻿namespace Cik.MagazineWeb.WebApp.Controllers.Admin
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -10,11 +9,9 @@
 
     using Cik.MagazineWeb.Framework;
     using Cik.MagazineWeb.Model.Magazine;
-    using Cik.MagazineWeb.WebApp.Infras.LogEvents;
 
     using CodeCamper.Web.Controllers;
 
-    // [Authorize]
     public class DashboardController : ApiControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
@@ -33,26 +30,7 @@
 
         public IEnumerable<Category> GetCategories()
         {
-            //var categories = new List<Category>();
-            //categories.Add(new Category
-            //    {
-            //        Id = 1,
-            //        Name = "abc",
-            //        CreatedDate = DateTime.Now,
-            //        CreatedBy = "T.Chung"
-            //    });
-
-            //categories.Add(new Category
-            //{
-            //    Id = 2,
-            //    Name = "def",
-            //    CreatedDate = DateTime.Now,
-            //    CreatedBy = "T.Chung"
-            //});
-
             var categories = _categoryRepository.GetCategories();
-
-            new LogEvent("log error if have one").Raise();
 
             if (categories != null && categories.Count() >= 0)
             {

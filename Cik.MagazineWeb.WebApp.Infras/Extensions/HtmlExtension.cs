@@ -3,6 +3,7 @@
     using System;
     using System.Linq.Expressions;
     using System.Text;
+    using System.Web;
     using System.Web.Mvc;
 
     public static class HtmlExtension
@@ -11,13 +12,21 @@
          {
              var builder = new StringBuilder();
 
+             var rootPath = string.Empty;
+
+             if (HttpContext.Current != null)
+             {
+                 rootPath += HttpContext.Current.Request.ApplicationPath;
+             }
+
              builder.AppendFormat(
-                 "<img src=\"/Uploads/{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" //>", 
+                 "<img src=\"{5}/App_Data/Uploads/{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" //>", 
                     image, 
                     image, 
                     cssClass, 
                     width,
-                    height);
+                    height,
+                    rootPath);
 
              return new MvcHtmlString(builder.ToString());
          }
@@ -31,13 +40,21 @@
 
              var builder = new StringBuilder();
 
+             var rootPath = string.Empty;
+
+             if (HttpContext.Current != null)
+             {
+                 rootPath += HttpContext.Current.Request.ApplicationPath;
+             }
+
              builder.AppendFormat(
-                 "<img src=\"/Uploads/{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" //>",
+                 "<img src=\"{5}/App_Data/Uploads/{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" //>",
                     value,
                     value,
                     cssClass,
                     width,
-                    height);
+                    height,
+                    rootPath);
 
              return new MvcHtmlString(builder.ToString());
          }

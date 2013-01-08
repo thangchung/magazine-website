@@ -17,52 +17,53 @@
         @Styles.Render("~/Content/css")		
         @Scripts.Render("~/bundles/modernizr")
     </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+<body>
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
 
-        <!-- Start add your site or application content here -->
-        <!-- Header -->
-		<div id="header">
-			<div class="shell">
-				<!-- Logo + Top Nav -->
-				<div id="top">
-					@*<h1><a href="#">SpringTime</a></h1>*@
-					<div id="top-navigation">
-						Welcome <a href="#"><strong>Administrator</strong></a>
-						<span>|</span>
-						<a href="#">Log out</a>
-					</div>
-				</div>
-				<!-- End Logo + Top Nav -->
+    <!-- Start add your site or application content here -->
+    <input id="rootUrl" type="hidden" />
+    <!-- Header -->
+    <div id="header">
+        <div class="shell">
+            <!-- Logo + Top Nav -->
+            <div id="top">
+                @*<h1><a href="#">SpringTime</a></h1>*@
+                <div id="top-navigation">
+                    Welcome <a href="#"><strong>Administrator</strong></a>
+                    <span>|</span>
+                    <a href="#">Log out</a>
+                </div>
+            </div>
+            <!-- End Logo + Top Nav -->
 				
-				<!-- Main Nav -->
-				<div id="navigation">
-					<ul data-bind="with: menuHashes">
-						<li class="route-top"><a data-bind="attr: {href: dashboard}" class="active"><span>Dashboard</span></a></li>
-						<li class="route-top"><a href="#"><span>New Articles</span></a></li>
-						<li class="route-top"><a href="#"><span>User Management</span></a></li>
-					</ul>
-				</div>
-				<!-- End Main Nav -->
-			</div>
-		</div>
-		<!-- End Header -->
+            <!-- Main Nav -->
+            <div id="navigation">
+                <ul data-bind="with: menuHashes">
+                    <li class="route-top"><a data-bind="attr: {href: dashboard}" class="active"><span>Dashboard</span></a></li>
+                    <li class="route-top"><a href="#"><span>New Articles</span></a></li>
+                    <li class="route-top"><a href="#"><span>User Management</span></a></li>
+                </ul>
+            </div>
+            <!-- End Main Nav -->
+        </div>
+    </div>
+    <!-- End Header -->
 
-		<!-- Container -->
-		<div id="container">
-			<div class="shell">
+    <!-- Container -->
+    <div id="container">
+        <div class="shell">
 				
-				<!-- Small Nav -->
-				<div class="small-nav">
-					<a href="#">Admin</a>
-					<span>&gt;</span>
-					Dashboard
-				</div>
-				<!-- End Small Nav -->
+            <!-- Small Nav -->
+            <div class="small-nav">
+                <a href="#">Admin</a>
+                <span>&gt;</span>
+                Dashboard
+            </div>
+            <!-- End Small Nav -->
 				
-				@*<!-- Message OK -->		
+            @*<!-- Message OK -->		
 				<div class="msg msg-ok">
 					<p><strong>Your file was uploaded succesifully!</strong></p>
 					<a href="#" class="close">close</a>
@@ -76,32 +77,32 @@
 				</div>
 				<!-- End Message Error -->
 				<br />*@
-				<!-- Main -->
-                <div id="dashboard-view" class="view"> <!-- main -->
+            <!-- Main -->
+            <div id="dashboard-view" class="view"> <!-- main -->
                     
-                    <div id="content" >
-						<!-- Box -->
-						<div class="box">
-							<!-- Box Head -->
-							<div class="box-head">
-								<h2 class="left">Current Categories</h2>
-								<div class="right">
-									<label>search categories</label>
-									<input type="text" class="field small-field" />
-									<input type="submit" class="button" value="search" />
-								</div>
-							</div>
-							<!-- End Box Head -->	
+                <div id="content" >
+                    <!-- Box -->
+                    <div class="box">
+                        <!-- Box Head -->
+                        <div class="box-head">
+                            <h2 class="left">Current Categories</h2>
+                            <div class="right">
+                                <label>search categories</label>
+                                <input type="text" class="field small-field" />
+                                <input type="submit" class="button" value="search" />
+                            </div>
+                        </div>
+                        <!-- End Box Head -->	
 
-							<!-- Table -->
-                            <div class="clearfix"></div>
-                            <div class="table" data-bind="simpleGrid: categoriesGridViewModel, simpleGridTemplate: 'myGridTemplate', simpleGridPagerTemplate: 'myPagerTemplate'"></div>
-						</div>
-						<!-- End Box -->
-					</div>
-                    <!-- End Content -->
+                        <!-- Table -->
+                        <div class="clearfix"></div>
+                        <div class="table" data-bind="simpleGrid: categoriesGridViewModel, simpleGridTemplate: 'myGridTemplate', simpleGridPagerTemplate: 'myPagerTemplate'"></div>
+                    </div>
+                    <!-- End Box -->
+                </div>
+                <!-- End Content -->
 
-                    @*<!-- Content -->
+                @*<!-- Content -->
 				    <div id="content">
 						<!-- Box -->
 						<div class="box">							
@@ -155,126 +156,133 @@
 					</div>
 					<!-- End Content -->*@
 					
-					<!-- Sidebar -->
-					<div id="sidebar">
+                <!-- Sidebar -->
+                <div id="sidebar">
 						
-						<!-- Box -->
-						<div class="box">
-							<div class="clearfix"></div>
-							<!-- Box Head -->
-							<div class="box-head">
-								<h2>Management</h2>
-							</div>
-							<!-- End Box Head-->
+                    <!-- Box -->
+                    <div class="box">
+                        <div class="clearfix"></div>
+                        <!-- Box Head -->
+                        <div class="box-head">
+                            <h2>Management</h2>
+                        </div>
+                        <!-- End Box Head-->
 							
-							<div class="box-content">
-								<a href="#" class="add-button"><span>Add new Category</span></a>
-								<div class="cl">&nbsp;</div>
+                        <div class="box-content">
+                            <a href="#" class="add-button"><span>Add new Category</span></a>
+                            <div class="cl">&nbsp;</div>
 								
-								<p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>
-								<p><a href="#">Delete Selected</a></p>
+                            <p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>
+                            <p><a href="#">Delete Selected</a></p>
 								
-								<!-- Sort -->
-								<div class="sort">
-									<label>Sort by</label>
-									<select class="field">
-										<option value="">Title</option>
-									</select>
-									<select class="field">
-										<option value="">Date</option>
-									</select>
-									<select class="field">
-										<option value="">Author</option>
-									</select>
-								</div>
-								<!-- End Sort -->
+                            <!-- Sort -->
+                            <div class="sort">
+                                <label>Sort by</label>
+                                <select class="field">
+                                    <option value="">Title</option>
+                                </select>
+                                <select class="field">
+                                    <option value="">Date</option>
+                                </select>
+                                <select class="field">
+                                    <option value="">Author</option>
+                                </select>
+                            </div>
+                            <!-- End Sort -->
 								
-							</div>
-						</div>
-						<!-- End Box -->
-					</div>
-					<!-- End Sidebar -->
+                        </div>
+                    </div>
+                    <!-- End Box -->
+                </div>
+                <!-- End Sidebar -->
 					
-					<div class="cl">&nbsp;</div>			
-				</div>
-				<!-- Main -->
-			</div>
-		</div>
-		<!-- End Container -->
+                <div class="cl">&nbsp;</div>			
+            </div>
+            <!-- Main -->
+        </div>
+    </div>
+    <!-- End Container -->
 
-		<!-- Footer -->
-		<div id="footer">
-			<div class="shell">
-				<span class="left">&copy; @DateTime.Now.Year - Context is King</span>
-				<span class="right">
-					Design by <a href="http://chocotemplates.com" target="_blank" title="The Sweetest CSS Templates WorldWide">Chocotemplates.com</a>
-				</span>
-			</div>
-		</div>
-		<!-- End Footer -->
-        <!-- End add your site or application content here -->
+    <!-- Footer -->
+    <div id="footer">
+        <div class="shell">
+            <span class="left">&copy; @DateTime.Now.Year - Context is King</span>
+            <span class="right">
+                Design by <a href="http://chocotemplates.com" target="_blank" title="The Sweetest CSS Templates WorldWide">Chocotemplates.com</a>
+            </span>
+        </div>
+    </div>
+    <!-- End Footer -->
+    <!-- End add your site or application content here -->
 
-        @*<script src="js/plugins.js"></script>
+    @*<script src="js/plugins.js"></script>
         <script src="js/main.js"></script>*@
-        @Scripts.Render(
-            "~/bundles/jquery",
-            "~/bundles/jquerytmpl",
-            "~/bundles/jsextlibs",
-            "~/Scripts/libs/require.js", 
-            "~/bundles/jsapplibs",
-            "~/bundles/jsmocks", // remove mocks for release
-            "~/Scripts/main.js"
+    @Scripts.Render(
+        "~/bundles/jquery",
+        "~/bundles/jquerytmpl",
+        "~/bundles/jsextlibs",
+        "~/Scripts/libs/require.js", 
+        "~/bundles/jsapplibs",
+        "~/bundles/jsmocks", // remove mocks for release
+        "~/Scripts/main.js"
         )
         
-        <!-- http://jsfiddle.net/rniemeyer/QSRBR/ -->
-        <!-- http://jsfiddle.net/rniemeyer/dWBAe/9/ -->
-        <script id="myGridTemplate" type="text/x-jquery-tmpl">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr>
-                        <th width="13"><input type="checkbox" class="checkbox" /></th>
-                        {{each(i, columnDefinition) columns}}
-                        <th>${ columnDefinition.headerText }</th>
-                        {{/each}}
-                        <th width="110" class="ac">Content Control</th>
-                    </tr>                    
-                </thead>
-                <tbody>
-                    {{each(i, row) itemsOnCurrentPage()}}
-                    <tr class="${ i % 2 == 0 ? 'even' : 'odd' }">
-                        <td><input type="checkbox" class="checkbox" /></td>
-                        {{each(j, columnDefinition) columns}}
-                        <td>${ typeof columnDefinition.rowText == 'function' ? columnDefinition.rowText(row) : row[columnDefinition.rowText] }</td>
-                        {{/each}}
-                        <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
-                    </tr>
-                    {{/each}}                    
-                </tbody>
-            </table>            
-        </script>
+    <!-- http://jsfiddle.net/rniemeyer/QSRBR/ -->
+    <!-- http://jsfiddle.net/rniemeyer/dWBAe/9/ -->
+    <script id="myGridTemplate" type="text/x-jquery-tmpl">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th width="13"><input type="checkbox" class="checkbox" /></th>
+                    {{each(i, columnDefinition) columns}}
+                    <th>${ columnDefinition.headerText }</th>
+                    {{/each}}
+                    <th width="110" class="ac">Content Control</th>
+                </tr>                    
+            </thead>
+            <tbody>
+                {{each(i, row) itemsOnCurrentPage()}}
+                <tr class="${ i % 2 == 0 ? 'even' : 'odd' }">
+                    <td><input type="checkbox" class="checkbox" /></td>
+                    {{each(j, columnDefinition) columns}}
+                    <td>${ typeof columnDefinition.rowText == 'function' ? columnDefinition.rowText(row) : row[columnDefinition.rowText] }</td>
+                    {{/each}}
+                    <td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+                </tr>
+                {{/each}}                    
+            </tbody>
+        </table>            
+    </script>
         
-        <script id="myPagerTemplate" type="text/x-jquery-tmpl">
-            <!-- Pagging -->
-            <div class="pagging" data-bind="visible: maxPageIndex() > 1">
-                <div class="left" data-bind="text: 'Showing ' + (currentPageIndex() + 1) + ' of ' + maxPageIndex()"></div>
-                <div class="right">
-                    <a href="#" data-bind="click: function () { currentPageIndex(currentPageIndex() == 0 ? 0 : currentPageIndex() - 1) }">Previous</a>
-                    {{each(i, page) pageButtons}}
-                    <a href="#" data-bind="click: function () { currentPageIndex(page.index) }, text: page.number, css: { active: page.index == currentPageIndex() }"></a>                    
-                    {{/each}}                    
-                    <a href="#" data-bind="click: function () { currentPageIndex(currentPageIndex() == maxPageIndex() - 1 ? currentPageIndex() : currentPageIndex() + 1) }">Next</a>
-                    @*<a href="#">View all</a>*@
-                </div>
+    <script id="myPagerTemplate" type="text/x-jquery-tmpl">
+        <!-- Pagging -->
+        <div class="pagging" data-bind="visible: maxPageIndex() > 1">
+            <div class="left" data-bind="text: 'Showing ' + (currentPageIndex() + 1) + ' of ' + maxPageIndex()"></div>
+            <div class="right">
+                <a href="#" data-bind="click: function () { currentPageIndex(currentPageIndex() == 0 ? 0 : currentPageIndex() - 1) }">Previous</a>
+                {{each(i, page) pageButtons}}
+                <a href="#" data-bind="click: function () { currentPageIndex(page.index) }, text: page.number, css: { active: page.index == currentPageIndex() }"></a>                    
+                {{/each}}                    
+                <a href="#" data-bind="click: function () { currentPageIndex(currentPageIndex() == maxPageIndex() - 1 ? currentPageIndex() : currentPageIndex() + 1) }">Next</a>
+                @*<a href="#">View all</a>*@
             </div>
-            <!-- End Pagging -->            
-        </script>
+        </div>
+        <!-- End Pagging -->            
+    </script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $('#rootUrl').val('@HttpContext.Current.Request.ApplicationPath');
+            console.log($('#rootUrl').val());
+        });
+    </script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-                s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-    </body>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    @*<script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>*@
+</body>
 </html>

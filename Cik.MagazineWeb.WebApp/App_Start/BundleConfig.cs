@@ -75,6 +75,9 @@
 
             /* home page */
             bundles.Add(new StyleBundle("~/content/homepagecss").Include("~/Content/site.css"));
+
+            /* login page */
+            bundles.Add(new StyleBundle("~/content/logincss").Include("~/Content/login.css"));
         }
     }
 }

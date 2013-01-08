@@ -3,6 +3,7 @@ namespace Cik.MagazineWeb.WebApp.Infras.ActionFilters
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Web;
     using System.Web.Http.Controllers;
     using System.Web.Http.Filters;
 
@@ -11,7 +12,13 @@ namespace Cik.MagazineWeb.WebApp.Infras.ActionFilters
     public class ValidationActionFilter : ActionFilterAttribute 
     { 
         public override void OnActionExecuting(HttpActionContext context) 
-        { 
+        {
+            /* TODO: need for authorize application
+            if (HttpContext.Current == null)
+            {
+                context.Response = context.Request.CreateResponse(HttpStatusCode.Unauthorized, "1000"); 
+            } */
+
             var modelState = context.ModelState; 
             if (!modelState.IsValid) 
             { 
@@ -25,7 +32,7 @@ namespace Cik.MagazineWeb.WebApp.Infras.ActionFilters
                     } 
                 } 
  
-                context.Response = context.Request.CreateResponse<JObject>(HttpStatusCode.BadRequest, errors); 
+                context.Response = context.Request.CreateResponse(HttpStatusCode.BadRequest, errors); 
             } 
         } 
     }
