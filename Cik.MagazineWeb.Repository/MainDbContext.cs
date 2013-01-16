@@ -16,7 +16,7 @@
         public MainDbContext(string connStringName) :
             base(connStringName)
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
             this.Configuration.ProxyCreationEnabled = false;
         }
 
