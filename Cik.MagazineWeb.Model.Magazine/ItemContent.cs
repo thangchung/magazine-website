@@ -23,6 +23,6 @@
 
         public virtual long NumOfView { get; set; }
 
-        public virtual IList<Item> Items { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

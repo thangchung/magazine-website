@@ -11,6 +11,6 @@
 
         public virtual string Name { get; set; }
 
-        public virtual IList<Item> Items { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }
