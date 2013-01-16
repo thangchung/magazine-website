@@ -28,7 +28,7 @@
             _categoryRepository = categoryRepository;
         }
 
-        public IEnumerable<Category> GetCategories()
+        public dynamic GetCategories()
         {
             var categories = _categoryRepository.GetCategories();
 
