@@ -20,6 +20,7 @@ namespace Cik.MagazineWeb.WebApp.App_Start
             // More information from Dave Ward: http://jpapa.me/P4vdx6
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             // config.Formatters.Insert(0, new JsonpMediaTypeFormatter());
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
             // Configure json camelCasing per the following post: http://jpapa.me/NqC2HH
             // Here we configure it to write JSON property names with camel casing

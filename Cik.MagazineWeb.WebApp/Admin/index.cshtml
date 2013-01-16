@@ -272,7 +272,15 @@
     
     <script type="text/javascript">
         $(function () {
-            @{ var fullPathUrl = string.Format("{0}{1}", @HttpContext.Current.Request.UserHostName, @HttpContext.Current.Request.ApplicationPath); }
+            @{
+                var fullPathUrl = string.Empty;
+                
+                if(HttpContext.Current.Request.ApplicationPath != "/")
+                {
+                    fullPathUrl = string.Format("{0}", HttpContext.Current.Request.ApplicationPath); 
+                }
+            }
+            
             $('#rootUrl').val('@fullPathUrl');
             console.log($('#rootUrl').val());
         });
