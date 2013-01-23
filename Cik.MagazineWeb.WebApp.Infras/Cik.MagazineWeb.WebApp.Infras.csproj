@@ -140,6 +140,14 @@
       <Project>{F2FA21FF-9C83-485B-AE6E-90A431704734}</Project>
       <Name>Cik.MagazineWeb.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Service.Magazine.Contract\Cik.MagazineWeb.Service.Magazine.Contract.csproj">
+      <Project>{C7E8ED4B-9346-42A7-9F98-74320A257ACD}</Project>
+      <Name>Cik.MagazineWeb.Service.Magazine.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Service\Cik.MagazineWeb.Service.csproj">
+      <Project>{868B3219-1AE7-4BEE-A1CD-A5CBD3944AF6}</Project>
+      <Name>Cik.MagazineWeb.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

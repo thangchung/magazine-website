@@ -5,30 +5,27 @@
 
     using Cik.MagazineWeb.Framework;
     using Cik.MagazineWeb.Framework.Extensions;
-    using Cik.MagazineWeb.Model.Magazine;
+    using Cik.MagazineWeb.Service.Magazine.Contract;
 
     public class DetailsViewModelBuilder : ViewModelBuilderBase, IDetailsViewModelBuilder
     {
-        private readonly ICategoryRepository _categoryRepository;
-        private readonly IItemRepository _itemRepository;
+        private readonly IMagazineService _magazineService;
 
         private readonly int _numOfPage;
 
-        public DetailsViewModelBuilder(ICategoryRepository categoryRepository, IItemRepository itemRepository)
+        public DetailsViewModelBuilder(IMagazineService magazineService)
         {
-            Guard.ArgumentNotNull(categoryRepository, "CategoryRepository");
-            Guard.ArgumentNotNull(itemRepository, "ItemRepository");
-
-            _categoryRepository = categoryRepository;
-            _itemRepository = itemRepository;
+            Guard.ArgumentNotNull(magazineService, "MagazineService");
+         
+            _magazineService = magazineService;
             _numOfPage = ConfigurationManager.GetAppConfigBy("NumOfPage").ToInteger();
         }
 
         public HomePageViewModel Build(int itemId)
         {
-            _itemRepository.IncreaseNumOfView(itemId);
+            _magazineService.IncreaseNumOfView(itemId);
 
-            var cats = _categoryRepository.GetCategories();
+            var cats = _magazineService.GetCategories();
 
             var mainViewModel = new HomePageViewModel();
             var headerViewModel = new HeaderViewModel();
@@ -59,7 +56,7 @@
         {
             var viewModel = new DetailsLeftColumnViewModel();
 
-            var item = _itemRepository.GetById(itemId);
+            var item = _magazineService.GetById(itemId);
 
             if (item == null)
                 throw new NoNullAllowedException(string.Format("Item id={0}", itemId).ToNotNullErrorMessage());
@@ -73,8 +70,8 @@
         {
             var mainPageRightCol = new MainPageRightColumnViewModel();
 
-            mainPageRightCol.LatestNews = _itemRepository.GetNewestItem(_numOfPage).ToList();
-            mainPageRightCol.MostViews = _itemRepository.GetMostViews(_numOfPage).ToList();
+            mainPageRightCol.LatestNews = _magazineService.GetNewestItem(_numOfPage).ToList();
+            mainPageRightCol.MostViews = _magazineService.GetMostViews(_numOfPage).ToList();
 
             return mainPageRightCol;
         }

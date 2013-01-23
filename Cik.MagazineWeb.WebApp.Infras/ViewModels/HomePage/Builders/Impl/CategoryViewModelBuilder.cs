@@ -5,29 +5,25 @@
 
     using Cik.MagazineWeb.Framework;
     using Cik.MagazineWeb.Framework.Extensions;
-    using Cik.MagazineWeb.Model.Magazine;
+    using Cik.MagazineWeb.Service.Magazine.Contract;
 
     public class CategoryViewModelBuilder : ViewModelBuilderBase, ICategoryViewModelBuilder
     {
         private readonly int _numOfPage;
+        
+        private readonly IMagazineService _magazineService;
 
-        private readonly ICategoryRepository _categoryRepository;
-        private readonly IItemRepository _itemRepository;
-
-        public CategoryViewModelBuilder(ICategoryRepository categoryRepository, IItemRepository itemRepository)
+        public CategoryViewModelBuilder(IMagazineService magazineService)
         {
-            Guard.ArgumentNotNull(categoryRepository, "CategoryRepository");
-            Guard.ArgumentNotNull(itemRepository, "ItemRepository");
-
-            _categoryRepository = categoryRepository;
-            _itemRepository = itemRepository;
-
+            Guard.ArgumentNotNull(magazineService, "MagazineService");
+         
+            _magazineService = magazineService;
             _numOfPage = ConfigurationManager.GetAppConfigBy("NumOfPage").ToInteger();
         }
 
         public HomePageViewModel Build(int categoryId)
         {
-            var cats = _categoryRepository.GetCategories();
+            var cats = _magazineService.GetCategories();
 
             var mainViewModel = new HomePageViewModel();
             var headerViewModel = new HeaderViewModel();
@@ -61,7 +57,7 @@
         {
             var viewModel = new CategoryLeftColumnViewModel();
 
-            var items = _itemRepository.GetByCategory(categoryId);
+            var items = _magazineService.GetByCategory(categoryId);
 
             if (items == null)
                 throw new NoNullAllowedException("Items".ToNotNullErrorMessage());
@@ -78,8 +74,8 @@
         {
             var mainPageRightCol = new MainPageRightColumnViewModel();
 
-            mainPageRightCol.LatestNews = _itemRepository.GetNewestItem(_numOfPage).ToList();
-            mainPageRightCol.MostViews = _itemRepository.GetMostViews(_numOfPage).ToList();
+            mainPageRightCol.LatestNews = _magazineService.GetNewestItem(_numOfPage).ToList();
+            mainPageRightCol.MostViews = _magazineService.GetMostViews(_numOfPage).ToList();
 
             return mainPageRightCol;
         }

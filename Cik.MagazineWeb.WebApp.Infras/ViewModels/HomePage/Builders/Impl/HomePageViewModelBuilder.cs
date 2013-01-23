@@ -5,29 +5,24 @@
 
     using Cik.MagazineWeb.Framework;
     using Cik.MagazineWeb.Framework.Extensions;
-    using Cik.MagazineWeb.Model.Magazine;
+    using Cik.MagazineWeb.Service.Magazine.Contract;
 
     public class HomePageViewModelBuilder : ViewModelBuilderBase, IHomePageViewModelBuilder
     {
-        private readonly ICategoryRepository _categoryRepository;
-        private readonly IItemRepository _itemRepository;
+        private readonly IMagazineService _magazineService;
         private readonly int _numOfPage;
 
-        public HomePageViewModelBuilder(
-            ICategoryRepository categoryRepository,
-            IItemRepository itemRepository)
+        public HomePageViewModelBuilder(IMagazineService magazineService)
         {
-            Guard.ArgumentNotNull(categoryRepository, "CategoryRepository");
-            Guard.ArgumentNotNull(itemRepository, "ItemRepository");
-
-            _categoryRepository = categoryRepository;
-            _itemRepository = itemRepository;
+            Guard.ArgumentNotNull(magazineService, "MagazineService");
+         
+            _magazineService = magazineService;
             _numOfPage = ConfigurationManager.GetAppConfigBy("NumOfPage").ToInteger();
         }
 
         public HomePageViewModel Build()
         {
-            var cats = this._categoryRepository.GetCategories();
+            var cats = _magazineService.GetCategories();
 
             var mainViewModel = new HomePageViewModel();
             var headerViewModel = new HeaderViewModel();
@@ -56,8 +51,8 @@
         {
             var mainPageRightCol = new MainPageRightColumnViewModel();
 
-            mainPageRightCol.LatestNews = this._itemRepository.GetNewestItem(this._numOfPage).ToList();
-            mainPageRightCol.MostViews = this._itemRepository.GetMostViews(this._numOfPage).ToList();
+            mainPageRightCol.LatestNews = _magazineService.GetNewestItem(this._numOfPage).ToList();
+            mainPageRightCol.MostViews = _magazineService.GetMostViews(this._numOfPage).ToList();
 
             return mainPageRightCol;
         }
@@ -66,7 +61,7 @@
         {
             var mainPageLeftCol = new MainPageLeftColumnViewModel();
 
-            var items = this._itemRepository.GetNewestItem(this._numOfPage);
+            var items = _magazineService.GetNewestItem(this._numOfPage);
 
             if (items != null && items.Any())
             {

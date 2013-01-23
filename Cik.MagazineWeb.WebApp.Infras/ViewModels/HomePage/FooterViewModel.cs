@@ -1,16 +1,16 @@
 ﻿namespace Cik.MagazineWeb.WebApp.Infras.ViewModels.HomePage
 {
     using System.Collections.Generic;
-
-    using Cik.MagazineWeb.Model.Magazine;
+    
+    using Cik.MagazineWeb.Service.Magazine.Contract.Dtos;
 
     public class FooterViewModel
     {
         public FooterViewModel()
         {
-            this.Categories = new List<Category>();
+            this.Categories = new List<CategoryDto>();
         }
 
-        public List<Category> Categories { get; set; }
+        public List<CategoryDto> Categories { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using Cik.MagazineWeb.Model.Magazine;
+    using Cik.MagazineWeb.Service.Magazine.Contract.Dtos;
 
     public class MainPageViewModel
     {
@@ -20,39 +20,39 @@
     {
         public MainPageLeftColumnViewModel()
         {
-            this.RemainItems = new List<Item>();
+            this.RemainItems = new List<ItemDto>();
         }
 
-        public Item FirstItem { get; set; }
+        public ItemDto FirstItem { get; set; }
 
-        public List<Item> RemainItems { get; set; }
+        public List<ItemDto> RemainItems { get; set; }
     }
 
     public class DetailsLeftColumnViewModel : LeftColumnViewModelBase
     {
-        public Item CurrentItem { get; set; }
+        public ItemDto CurrentItem { get; set; }
     }
 
     public class CategoryLeftColumnViewModel : LeftColumnViewModelBase
     {
         public CategoryLeftColumnViewModel()
         {
-            this.Items = new List<Item>();    
+            this.Items = new List<ItemDto>();    
         }
 
-        public List<Item> Items { get; set; }
+        public List<ItemDto> Items { get; set; }
     }
 
     public class MainPageRightColumnViewModel
     {
         public MainPageRightColumnViewModel()
         {
-            this.LatestNews = new List<Item>();
-            this.MostViews = new List<Item>();
+            this.LatestNews = new List<ItemDto>();
+            this.MostViews = new List<ItemDto>();
         }
 
-        public List<Item> LatestNews { get; set; }
+        public List<ItemDto> LatestNews { get; set; }
 
-        public List<Item> MostViews { get; set; }
+        public List<ItemDto> MostViews { get; set; }
     }
 }

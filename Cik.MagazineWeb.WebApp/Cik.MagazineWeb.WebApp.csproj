@@ -417,6 +417,18 @@
       <Project>{B80B70CA-6C37-4F52-8ADA-C0F0A95A474C}</Project>
       <Name>Cik.MagazineWeb.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Service.Magazine.Contract\Cik.MagazineWeb.Service.Magazine.Contract.csproj">
+      <Project>{C7E8ED4B-9346-42A7-9F98-74320A257ACD}</Project>
+      <Name>Cik.MagazineWeb.Service.Magazine.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Service.Magazine\Cik.MagazineWeb.Service.Magazine.csproj">
+      <Project>{411D3EBC-6AA6-46DD-B0BB-FAF21C2F5B6B}</Project>
+      <Name>Cik.MagazineWeb.Service.Magazine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Service\Cik.MagazineWeb.Service.csproj">
+      <Project>{868b3219-1ae7-4bee-a1cd-a5cbd3944af6}</Project>
+      <Name>Cik.MagazineWeb.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cik.MagazineWeb.WebApp.Infras\Cik.MagazineWeb.WebApp.Infras.csproj">
       <Project>{0C6BEAB1-7C5A-4F9D-9A76-1FD3D2B33312}</Project>
       <Name>Cik.MagazineWeb.WebApp.Infras</Name>

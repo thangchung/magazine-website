@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{868B3219-1AE7-4BEE-A1CD-A5CBD3944AF6}</ProjectGuid>
+    <ProjectGuid>{C7E8ED4B-9346-42A7-9F98-74320A257ACD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cik.MagazineWeb.Service</RootNamespace>
-    <AssemblyName>Cik.MagazineWeb.Service</AssemblyName>
+    <RootNamespace>Cik.MagazineWeb.Service.Magazine.Contract</RootNamespace>
+    <AssemblyName>Cik.MagazineWeb.Service.Magazine.Contract</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,8 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DtoBase.cs" />
+    <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Dtos\ItemContentDto.cs" />
+    <Compile Include="Dtos\ItemDto.cs" />
+    <Compile Include="IMagazineService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cik.MagazineWeb.Service\Cik.MagazineWeb.Service.csproj">
+      <Project>{868B3219-1AE7-4BEE-A1CD-A5CBD3944AF6}</Project>
+      <Name>Cik.MagazineWeb.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

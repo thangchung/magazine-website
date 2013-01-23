@@ -8,29 +8,31 @@
     using System.Web.Mvc;
 
     using Cik.MagazineWeb.Framework;
-    using Cik.MagazineWeb.Model.Magazine;
+    using Cik.MagazineWeb.Service.Magazine.Contract;
+    using Cik.MagazineWeb.Service.Magazine.Contract.Dtos;
 
     using CodeCamper.Web.Controllers;
 
     public class DashboardController : ApiControllerBase
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IMagazineService _magazineService;
 
         public DashboardController()
-            : this(DependencyResolver.Current.GetService<ICategoryRepository>())
+            : this(DependencyResolver.Current.GetService<IMagazineService>())
         {
         }
 
-        public DashboardController(ICategoryRepository categoryRepository)
+        public DashboardController(IMagazineService magazineService)
         {
-            Guard.ArgumentNotNull(categoryRepository, "CategoryRepository");
+            Guard.ArgumentNotNull(magazineService, "MagazineService");
 
-            _categoryRepository = categoryRepository;
+            _magazineService = magazineService;
         }
 
-        public dynamic GetCategories()
+        // http://www.strathweb.com/2012/03/serializing-entity-framework-objects-to-json-in-asp-net-web-api/
+        public IEnumerable<CategoryDto> GetCategories()
         {
-            var categories = _categoryRepository.GetCategories();
+            var categories = _magazineService.GetCategories();
 
             if (categories != null && categories.Count() >= 0)
             {
