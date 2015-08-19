@@ -20,15 +20,15 @@ Clone the repo using Git:
 
 `dnx . web`
 
-You are ready to go... => http://localhost:5000
+You are ready to go => [http://localhost:5000](http://localhost:5000)
 
 # Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Material Design Lite is maintained under the [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
+For transparency into our release cycle and in striving to maintain backward compatibility, MazWebApp is maintained under the [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 # Want to contribute?
 
-If you found a bug, have any questions or want to contribute. Follow our guidelines, and help improve the Material Design Lite. For more information visit our wiki.
+If you found a bug, have any questions or want to contribute. Follow our guidelines, and help improve the MazWebApp. For more information visit our wiki.
 
 # License
 
