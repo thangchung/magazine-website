@@ -1,4 +1,5 @@
-wwwroot/lib
-node_modules
+src/wwwroot/lib
+src/node_modules
+src/bin
 artifacts
 .vs
