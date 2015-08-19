@@ -1,11 +1,15 @@
-magazine-website
-================
+# MazWebApp is a lite version of Magazine Website
 
-This project include 2 parts: front-end and back-end
-+ Front end: a website to allow people can access to and see all information about magazine website.
-+ Back end: a web application that actually is a single page application
+The last version is too old up to now. So I am doing some updates to new version of .NET (ASP.NET MVC 6) and a lot of new things.
 
-We included 2 demos for them at
+# Run it
 
-+ Front-end - http://magazinewebsite.apphb.com
-+ Back-end - http://magazinewebsite.apphb.com/admin
+`jspm install`
+
+`dnu restore`
+
+`dnu build`
+
+`dnx . web`
+
+You are ready to go...
