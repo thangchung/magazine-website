@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "MazWebApp"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-MazWebApp-c8ae90c1-6f40-4c90-950f-98845a1f2740;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

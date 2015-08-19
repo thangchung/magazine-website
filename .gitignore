@@ -1,16 +1,5 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-[Bb]in/
-[Oo]bj/
-
-# ReSharper is a .NET coding add-in
-_ReSharper*
-
-# NCrunch
-*.ncrunch*
-.*crunch*.local.xml
-
-
-# NuGet Packages Directory
-packages
-
-
+src/wwwroot/lib
+src/node_modules
+src/bin
+artifacts
+.vs
