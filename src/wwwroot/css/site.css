@@ -16,10 +16,29 @@
 .mdl-card-panel > .mdl-card__title {
     background: #3F51B5;
     color: #fff;
-    padding-bottom: 40px;
-    padding-top: 40px;
+    /* padding-bottom: 40px;
+    padding-top: 40px; */
 }
 
 .mdl-card-panel > .mdl-card__supporting-text {
     width: auto !important;
+}
+
+.mdl-mini-footer {
+    padding: 5px 16px !important;
+}
+
+.mdl-mini-footer > .mdl-mini-footer--left-section > p {
+    margin-top: 10px;
+}
+
+/* Page header */
+.page-container > .page-row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.page-container > .page-row > .page-title {
+    margin: 0 !important;
+    padding: 0 !important;
 }
