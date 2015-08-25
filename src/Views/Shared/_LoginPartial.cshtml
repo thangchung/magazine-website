@@ -2,7 +2,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
-        <a asp-controller="Manage" asp-action="Index" title="Manage" class="mdl-navigation__link">Hello @User.GetUserName()!</a>
+        <a asp-controller="Manage" asp-action="Index" title="Manage" class="mdl-navigation__link">@User.GetUserName()!</a>
         <a href="javascript:document.getElementById('logoutForm').submit()" class="mdl-navigation__link">Log off</a>
     </form>
 }

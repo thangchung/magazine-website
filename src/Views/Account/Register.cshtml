@@ -6,7 +6,10 @@
 }
 
 <div class="mdl-cell mdl-cell--12-col">
-    <form asp-controller="Account" asp-action="Register" method="post" role="form">
+    <form asp-controller="Account"
+          asp-action="Register"
+          method="post" 
+          role="form">
         <div class="mdl-grid page-container">
             <div class="mdl-cell mdl-cell--12-col page-row">
                 <h3 class="page-title">Create a new account</h3>
@@ -40,7 +43,9 @@
             </div>
             <div class="mdl-cell mdl-cell--12-col page-row">
                 <button type="submit"
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                        class="mdl-button mdl-js-button 
+                            mdl-button--raised mdl-button--colored
+                            mdl-js-ripple-effect">
                     Register
                 </button>
             </div>

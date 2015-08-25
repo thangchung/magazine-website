@@ -9,86 +9,94 @@
 }
 
 <div class="mdl-cell mdl-cell--12-col">
-    <div class="mdl-card mdl-card-panel mdl-shadow--2dp">
-        <div class="mdl-card__title">
-            <h3 class="mdl-card__title-text">@ViewData["Title"]</h3>
-        </div>
-        <div class="mdl-card__supporting-text">
-            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--7-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <h4>Use a local account to log in</h4>
-                                <hr/>
-                            </div>
-                            <div asp-validation-summary="ValidationSummary.All"></div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                <label asp-for="Email" class="mdl-textfield__label"></label>
-                                <input asp-for="Email" class="mdl-textfield__input"/>
-                                <span asp-validation-for="Email" class="mdl-textfield__error"></span>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                <label asp-for="Password" class="mdl-textfield__label"></label>
-                                <input asp-for="Password" class="mdl-textfield__input"/>
-                                <span asp-validation-for="Password" class="mdl-textfield__error"></span>
-                            </div>
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <div class="mdl-checkbox mdl-js-checkbox">
-                                    <input asp-for="RememberMe" class="mdl-checkbox__input"/>
-                                    <label asp-for="RememberMe" class="mdl-checkbox__label"></label>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <button type="submit"
-                                        class="mdl-button mdl-js-button
-                                    mdl-button--raised mdl-button--colored">
-                                    Log in
-                                </button>
-                            </div>
-                            <p class="mdl-cell mdl-cell--12-col">
-                                <a asp-action="Register">Register as a new user?</a>
-                                <a asp-action="ForgotPassword">Forgot your password?</a>
-                            </p>
+    <form asp-controller="Account"
+          asp-action="Login"
+          asp-route-returnurl="@ViewData["ReturnUrl"]"
+          method="post" role="form">
+        <div class="mdl-grid page-container">
+            <div class="mdl-cell mdl-cell--7-col page-row">
+                <div class="mdl-grid page-container">
+                    <div class="mdl-cell mdl-cell--12-col page-row">
+                        <h3 class="page-title">Use a local account to log in</h3>
+                        <hr/>
+                    </div>
+                    <div asp-validation-summary="ValidationSummary.All"></div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <label asp-for="Email" class="mdl-textfield__label"></label>
+                        <input asp-for="Email" class="mdl-textfield__input"/>
+                        <span asp-validation-for="Email" class="mdl-textfield__error"></span>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <label asp-for="Password" class="mdl-textfield__label"></label>
+                        <input asp-for="Password" class="mdl-textfield__input"/>
+                        <span asp-validation-for="Password" class="mdl-textfield__error"></span>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-checkbox mdl-js-checkbox">
+                            <input asp-for="RememberMe" class="mdl-checkbox__input"/>
+                            <label asp-for="RememberMe" class="mdl-checkbox__label"></label>
                         </div>
                     </div>
-                    <div class="mdl-cell mdl-cell--5-col">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <h4>Use another service to log in.</h4>
-                                <hr/>
-                            </div>
-                            @{
-                                var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
-                                if (loginProviders.Count == 0)
-                                {
-                                    <div>
-                                        <p>
-                                            There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                            for details on setting up this ASP.NET application to support logging in via external services.
-                                        </p>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
-                                        <div>
-                                            <p>
-                                                @foreach (var provider in loginProviders)
-                                                {
-                                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.Caption account">@provider.AuthenticationScheme</button>
-                                                }
-                                            </p>
-                                        </div>
-                                    </form>
-                                }
-                            }
-                        </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <button type="submit"
+                                class="mdl-button mdl-js-button
+                                    mdl-button--raised mdl-button--colored
+                                    mdl-js-ripple-effect">
+                            Log in
+                        </button>
                     </div>
+                    <p class="mdl-cell mdl-cell--12-col">
+                        <a asp-action="Register">Register as a new user?</a>
+                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                    </p>
                 </div>
-            </form>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col page-row">
+                <div class="mdl-grid page-container">
+                    <div class="mdl-cell mdl-cell--12-col page-row">
+                        <h3 class="page-title">Use another service to log in.</h3>
+                        <hr/>
+                    </div>
+                    @{
+                        var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
+                        if (loginProviders.Count == 0)
+                        {
+                            <div>
+                                <p>
+                                    There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                    for details on setting up this ASP.NET application to support logging in via external services.
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            <form asp-controller="Account"
+                                  asp-action="ExternalLogin"
+                                  asp-route-returnurl="@ViewData["ReturnUrl"]"
+                                  method="post" role="form">
+                                <div>
+                                    <p>
+                                        @foreach (var provider in loginProviders)
+                                        {
+                                            <button type="submit"
+                                                    class="mdl-button mdl-js-button 
+                                                        mdl-button--raised mdl-button--colored
+                                                        mdl-js-ripple-effect"
+                                                    name="provider"
+                                                    value="@provider.AuthenticationScheme"
+                                                    title="Log in using your @provider.Caption account">
+                                                @provider.AuthenticationScheme
+                                            </button>
+                                        }
+                                    </p>
+                                </div>
+                            </form>
+                        }
+                    }
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 @section Scripts {

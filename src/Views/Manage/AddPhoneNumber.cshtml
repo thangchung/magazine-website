@@ -5,24 +5,38 @@
     ViewData["Title"] = "Add Phone Number";
 }
 
-<h2>@ViewData["Title"].</h2>
-<form asp-controller="Manage" asp-action="AddPhoneNumber" method="post" class="form-horizontal" role="form">
-    <h4>Add a phone number.</h4>
-    <hr />
-    <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="PhoneNumber" class="form-control" />
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+<div class="mdl-cell mdl-cell--12-col">
+    <form asp-controller="Manage"
+          asp-action="AddPhoneNumber" 
+          method="post" role="form">
+        <div class="mdl-grid page-container">
+            <div class="mdl-cell mdl-cell--12-col page-row">
+                <h3 class="page-title">Add a phone number</h3>
+                <hr>
+                <div asp-validation-summary="ValidationSummary.All"></div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Send verification code</button>
+        <div class="mdl-cell mdl-cell--6-col page-row">
+            <div class="mdl-grid page-container">
+                <div class="mdl-cell mdl-cell--12-col page-row">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <label asp-for="PhoneNumber" class="mdl-textfield__label"></label>
+                        <input asp-for="PhoneNumber" class="mdl-textfield__input"/>
+                        <span asp-validation-for="PhoneNumber" class="mdl-textfield__error"></span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</form>
+        <div class="mdl-cell mdl-cell--12-col page-row">
+            <button type="submit" 
+                    class="mdl-button mdl-js-button 
+                        mdl-button--raised mdl-button--colored
+                        mdl-js-ripple-effect">
+                Send verification code
+            </button>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }

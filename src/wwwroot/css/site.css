@@ -1,4 +1,5 @@
-﻿.page-content {
+﻿/* Page setup */
+.page-content {
     margin: 5px;
     padding: 5px;
 }
@@ -6,6 +7,11 @@
 .centered-content {
     margin: 0 auto;
     max-width: 960px;
+}
+
+/* Error message */
+.validation-summary-errors {
+    color: #D32F2F;
 }
 
 /* Customized card layout */
