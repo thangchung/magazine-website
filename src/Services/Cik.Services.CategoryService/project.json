@@ -13,8 +13,8 @@
     "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
-    "Cik.Data.Model.Abstraction": "1.0.0-*",
-    "Cik.Data.Abstractions": "1.0.0-*"
+    "Cik.Data.Entity.Abstraction": "1.0.0-*",
+    "Cik.Data.Abstraction": "1.0.0-*"
   },
 
   "tools": {
