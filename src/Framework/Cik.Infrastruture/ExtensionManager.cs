@@ -7,17 +7,17 @@ namespace Cik.Infrastruture
 {
     public class ExtensionManager
     {
-        private static IEnumerable<Assembly> assemblies;
-        private static IEnumerable<IExtension> extensions;
+        private static IEnumerable<Assembly> _assemblies;
+        private static IEnumerable<IExtension> _extensions;
 
         public static IEnumerable<Assembly> Assemblies
         {
             get
             {
-                if (ExtensionManager.assemblies == null)
+                if (_assemblies == null)
                     throw new InvalidOperationException("Assemblies not set");
 
-                return ExtensionManager.assemblies;
+                return _assemblies;
             }
         }
 
@@ -25,77 +25,82 @@ namespace Cik.Infrastruture
         {
             get
             {
-                if (ExtensionManager.extensions == null)
-                    ExtensionManager.extensions = ExtensionManager.GetInstances<IExtension>();
+                if (_extensions == null)
+                    _extensions = GetInstances<IExtension>();
 
-                return ExtensionManager.extensions;
+                return _extensions;
             }
         }
 
         public static void SetAssemblies(IEnumerable<Assembly> assemblies)
         {
-            ExtensionManager.assemblies = assemblies;
+            _assemblies = assemblies;
         }
 
         public static Type GetImplementation<T>()
         {
-            return ExtensionManager.GetImplementation<T>(null);
+            return GetImplementation<T>(null);
         }
 
         public static Type GetImplementation<T>(Func<Assembly, bool> predicate)
         {
-            IEnumerable<Type> implementations = ExtensionManager.GetImplementations<T>(predicate);
+            var implementations = GetImplementations<T>(predicate);
 
-            if (implementations.Count() == 0)
-                throw new ArgumentException("Implementation of " + typeof(T) + " not found");
+            if (!implementations.Any())
+                throw new ArgumentException("Implementation of " + typeof (T) + " not found");
 
             return implementations.FirstOrDefault();
         }
 
         public static IEnumerable<Type> GetImplementations<T>()
         {
-            return ExtensionManager.GetImplementations<T>(null);
+            return GetImplementations<T>(null);
         }
 
         public static IEnumerable<Type> GetImplementations<T>(Func<Assembly, bool> predicate)
         {
-            List<Type> implementations = new List<Type>();
+            var implementations = new List<Type>();
 
-            foreach (Assembly assembly in ExtensionManager.GetAssemblies(predicate))
-                foreach (Type type in assembly.GetTypes())
-                    if (typeof(T).GetTypeInfo().IsAssignableFrom(type) && type.GetTypeInfo().IsClass)
+            foreach (var assembly in GetAssemblies(predicate))
+            {
+                foreach (var type in assembly.GetTypes())
+                {
+                    if (typeof (T).GetTypeInfo().IsAssignableFrom(type)
+                        && type.GetTypeInfo().IsClass)
                         implementations.Add(type);
+                }
+            }
 
             return implementations;
         }
 
         public static T GetInstance<T>()
         {
-            return ExtensionManager.GetInstance<T>(null);
+            return GetInstance<T>(null);
         }
 
         public static T GetInstance<T>(Func<Assembly, bool> predicate)
         {
-            IEnumerable<T> instances = ExtensionManager.GetInstances<T>(predicate);
+            var instances = GetInstances<T>(predicate);
 
-            if (instances.Count() == 0)
-                throw new ArgumentException("Instance of " + typeof(T) + " can't be created");
+            if (!instances.Any())
+                throw new ArgumentException("Instance of " + typeof (T) + " can't be created");
 
             return instances.FirstOrDefault();
         }
 
         public static IEnumerable<T> GetInstances<T>()
         {
-            return ExtensionManager.GetInstances<T>(null);
+            return GetInstances<T>(null);
         }
 
         public static IEnumerable<T> GetInstances<T>(Func<Assembly, bool> predicate)
         {
-            List<T> instances = new List<T>();
+            var instances = new List<T>();
 
-            foreach (Type implementation in ExtensionManager.GetImplementations<T>())
+            foreach (var implementation in GetImplementations<T>())
             {
-                T instance = (T)Activator.CreateInstance(implementation);
+                var instance = (T) Activator.CreateInstance(implementation);
 
                 instances.Add(instance);
             }
@@ -105,10 +110,7 @@ namespace Cik.Infrastruture
 
         private static IEnumerable<Assembly> GetAssemblies(Func<Assembly, bool> predicate)
         {
-            if (predicate == null)
-                return ExtensionManager.Assemblies;
-
-            return ExtensionManager.Assemblies.Where(predicate);
+            return predicate == null ? Assemblies : Assemblies.Where(predicate);
         }
     }
 }

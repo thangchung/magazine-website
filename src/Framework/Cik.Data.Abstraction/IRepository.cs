@@ -1,10 +1,12 @@
-﻿using Cik.Data.Entity.Abstraction;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Data.Abstraction
 {
-    public interface IRepository<T> where T : IEntity
+    public interface IRepository<TEntity, out TId>
     {
-        IObservable<T> GetAll();
+        DbContext UnitOfWork { get; }
+        IObservable<TEntity> GetAll();
+        IObservable<TId> Create(TEntity cat);
     }
 }
