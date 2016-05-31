@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Cik.Services.CategoryService.Model;
 using Cik.Services.CategoryService.Model.ViewModel;
 using Cik.Services.CategoryService.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Reactive.Linq;
 
 namespace Cik.Services.CategoryService.Controllers
 {

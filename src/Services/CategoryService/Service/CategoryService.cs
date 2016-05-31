@@ -28,7 +28,7 @@ namespace Cik.Services.CategoryService.Service
         public IObservable<Guid> Create(Category cat)
         {
             var idObservable = BaseEntityRepository.Create(cat);
-            BaseEntityRepository.UnitOfWork.SaveChanges();
+            UnitOfWork.SaveChanges();
             return idObservable;
         }
     }

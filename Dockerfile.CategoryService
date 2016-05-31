@@ -1,0 +1,24 @@
+FROM microsoft/dotnet
+
+MAINTAINER Thang Chung "thangchung@ymail.com"
+
+# Set environment variables
+ENV ASPNETCORE_URLS="http://*:5000"
+ENV ASPNETCORE_ENVIRONMENT="Development"
+
+# Copy files to app directory
+COPY . /app
+
+# Set working directory
+WORKDIR /app/src/Services/CategoryService
+
+# Restore NuGet packages
+RUN ["dotnet", "restore", "--source", "https://www.myget.org/F/rxnet/api/v3/index.json", "--fallbacksource", "https://api.nuget.org/v3/index.json"]
+
+# Open up port
+EXPOSE 5000
+
+# Run the app
+ENTRYPOINT ["dotnet", "run"]
+
+# Run build docker build -f Dockerfile.CategoryService -t catservice .
