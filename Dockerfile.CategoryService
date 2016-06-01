@@ -2,6 +2,14 @@ FROM microsoft/dotnet
 
 MAINTAINER Thang Chung "thangchung@ymail.com"
 
+# Install libraries
+# RUN apt-get update \
+#    && apt-get install -y --no-install-recommends \
+#        ca-certificates \
+#        sqlite3 \
+#        libsqlite3-dev \
+#    && rm -rf /var/lib/apt/lists/*
+
 # Set environment variables
 ENV ASPNETCORE_URLS="http://*:5000"
 ENV ASPNETCORE_ENVIRONMENT="Development"

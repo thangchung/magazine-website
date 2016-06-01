@@ -1,6 +1,6 @@
-# MazWebApp (stand for Magazine Website + Application)
+# Magazine Website (stand for Magazine Website + Application)
 
-MazWebApp is a lite version of Magazine Website. The last version is too old up to now. So I am doing some updates to new version of .NET (ASP.NET MVC 6) and a lot of new things.
+Coming soon...
 
 # Getting Started
 
@@ -8,19 +8,28 @@ MazWebApp is a lite version of Magazine Website. The last version is too old up 
 
 Clone the repo using Git:
 
-`git clone https://github.com/thangchung/magazine-website/tree/mazwebapp.git`
+`git clone https://github.com/thangchung/magazine-website.git`
 
 ## Build
 
-`jspm install`
+`dotnet restore`
 
-`dnu restore`
+`dotnet build`
 
-`dnu build`
+`dotnet run`
 
-`dnx . web`
+## Docker
 
-You are ready to go => [http://localhost:5000](http://localhost:5000)
+`docker build -f Dockerfile.CategoryService -t tc/category_service .`
+`docker run -d -p 5000:5000 -t tc/category_service`
+
+At the moment, we have to exec to the container to install sqlite version due to some bugs in microsoft/dotnet image
+
+`docker exec -it <container id> /bin/bash`
+`apt-get update`
+`apt-get install sqlite3 libsqlite3-dev`
+
+ then re-start container again  
 
 # Versioning
 
@@ -32,4 +41,4 @@ If you found a bug, have any questions or want to contribute. Follow our guideli
 
 # License
 
-© ThangChung, 2015. Licensed under an MIT license.
+© ThangChung, 2016. Licensed under an MIT license.

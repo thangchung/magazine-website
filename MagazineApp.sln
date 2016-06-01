@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{019BF571-4D94-4DF3-810B-FE0AF6ACD01C}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Infrastruture", "src\Framework\Cik.Infrastruture\Cik.Infrastruture.xproj", "{54088458-7B8E-4236-BB4C-66F8501373FC}"
