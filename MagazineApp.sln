@@ -19,7 +19,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data", "src\Framework\C
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data.Abstraction", "src\Framework\Cik.Data.Abstraction\Cik.Data.Abstraction.xproj", "{05DE5D06-4F02-48B6-B42E-34E9E8223537}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data.Entity.Abstraction", "src\Framework\Cik.Data.Entity.Abstraction\Cik.Data.Entity.Abstraction.xproj", "{D754B8A3-ACB2-4F04-8E75-AEFF210B842C}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data.Model.Abstraction", "src\Framework\Cik.Data.Entity.Abstraction\Cik.Data.Model.Abstraction.xproj", "{D754B8A3-ACB2-4F04-8E75-AEFF210B842C}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Application", "src\Framework\Cik.Application\Cik.Application.xproj", "{1ADA17D1-58EB-47A2-AEAE-9243217D3B2F}"
 EndProject

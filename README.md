@@ -21,12 +21,15 @@ Clone the repo using Git:
 ## Docker
 
 `docker build -f Dockerfile.CategoryService -t tc/category_service .`
+
 `docker run -d -p 5000:5000 -t tc/category_service`
 
 At the moment, we have to exec to the container to install sqlite version due to some bugs in microsoft/dotnet image
 
 `docker exec -it <container id> /bin/bash`
+
 `apt-get update`
+
 `apt-get install sqlite3 libsqlite3-dev`
 
  then re-start container again  
