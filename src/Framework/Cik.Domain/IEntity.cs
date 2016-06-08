@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cik.Data.Model.Abstraction
+namespace Cik.Domain
 {
     public interface IEntity
     {

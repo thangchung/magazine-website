@@ -17,8 +17,7 @@
   "copyright": "2016 by Thang Chung",
 
   "dependencies": {
-    "Cik.Data.Abstraction": "1.0.0-*",
-    "Cik.Data.Model.Abstraction": "1.0.0-*"
+    "Cik.Domain": "1.0.0-*"
   },
 
   "frameworks": {

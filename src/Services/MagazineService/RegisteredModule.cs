@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using Cik.Data.Abstraction;
+using Cik.Domain;
 using Cik.Services.MagazineService.Model;
 using Cik.Services.MagazineService.Repository;
 using Cik.Services.MagazineService.Service;

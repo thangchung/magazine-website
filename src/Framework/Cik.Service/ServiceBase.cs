@@ -1,5 +1,4 @@
-﻿using Cik.Data.Abstraction;
-using Cik.Data.Model.Abstraction;
+﻿using Cik.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Service

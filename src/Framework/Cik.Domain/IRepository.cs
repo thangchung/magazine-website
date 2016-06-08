@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cik.Data.Abstraction
+namespace Cik.Domain
 {
     public interface IRepository<TEntity, out TId>
     {

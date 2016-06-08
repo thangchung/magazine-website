@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Reactive.Linq;
+using Cik.Domain;
 using Cik.Services.MagazineService.Model;
 using Microsoft.EntityFrameworkCore;
-using Cik.Data.Abstraction;
 
 namespace Cik.Services.MagazineService.Repository
 {

@@ -3802,7 +3802,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Cik.Data.Abstraction/1.0.0": {
+      "Cik.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
         "dependencies": {
@@ -3811,31 +3811,17 @@
           "System.Reactive": "3.0.0-beta-00365"
         },
         "compile": {
-          "netcoreapp1.0/Cik.Data.Abstraction.dll": {}
+          "netcoreapp1.0/Cik.Domain.dll": {}
         },
         "runtime": {
-          "netcoreapp1.0/Cik.Data.Abstraction.dll": {}
-        }
-      },
-      "Cik.Data.Model.Abstraction/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v1.0",
-        "dependencies": {
-          "NETStandard.Library": "1.5.0-rc2-24027"
-        },
-        "compile": {
-          "netcoreapp1.0/Cik.Data.Model.Abstraction.dll": {}
-        },
-        "runtime": {
-          "netcoreapp1.0/Cik.Data.Model.Abstraction.dll": {}
+          "netcoreapp1.0/Cik.Domain.dll": {}
         }
       },
       "Cik.Service/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
         "dependencies": {
-          "Cik.Data.Abstraction": "1.0.0",
-          "Cik.Data.Model.Abstraction": "1.0.0",
+          "Cik.Domain": "1.0.0",
           "NETStandard.Library": "1.5.0-rc2-24027"
         },
         "compile": {
@@ -9951,15 +9937,10 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Cik.Data.Abstraction/1.0.0": {
+    "Cik.Domain/1.0.0": {
       "type": "project",
-      "path": "../../Framework/Cik.Data.Abstraction/project.json",
-      "msbuildProject": "../../Framework/Cik.Data.Abstraction/Cik.Data.Abstraction.xproj"
-    },
-    "Cik.Data.Model.Abstraction/1.0.0": {
-      "type": "project",
-      "path": "../../Framework/Cik.Data.Model.Abstraction/project.json",
-      "msbuildProject": "../../Framework/Cik.Data.Model.Abstraction/Cik.Data.Model.Abstraction.xproj"
+      "path": "../../Framework/Cik.Domain/project.json",
+      "msbuildProject": "../../Framework/Cik.Domain/Cik.Domain.xproj"
     },
     "Cik.Service/1.0.0": {
       "type": "project",
@@ -9971,8 +9952,6 @@
     "": [
       "Autofac >= 4.0.0-rc2-240",
       "Autofac.Extensions.DependencyInjection >= 4.0.0-rc2-240",
-      "Cik.Data.Abstraction >= 1.0.0-*",
-      "Cik.Data.Model.Abstraction >= 1.0.0-*",
       "Cik.Service >= 1.0.0-*",
       "Microsoft.AspNetCore.Mvc >= 1.0.0-rc2-final",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.0.0-rc2-final",

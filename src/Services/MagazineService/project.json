@@ -9,8 +9,6 @@
   "dependencies": {
     "Autofac": "4.0.0-rc2-240",
     "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
-    "Cik.Data.Abstraction": "1.0.0-*",
-    "Cik.Data.Model.Abstraction": "1.0.0-*",
     "Cik.Service": "1.0.0-*",
     "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",

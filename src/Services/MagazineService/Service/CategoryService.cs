@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reactive.Linq;
-using Cik.Data.Abstraction;
+using Cik.Domain;
 using Cik.Service;
 using Cik.Services.MagazineService.Model;
 using Cik.Services.MagazineService.Model.ViewModel;

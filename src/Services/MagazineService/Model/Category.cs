@@ -1,4 +1,4 @@
-﻿using Cik.Data.Model.Abstraction;
+﻿using Cik.Domain;
 
 namespace Cik.Services.MagazineService.Model
 {
