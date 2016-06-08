@@ -19,7 +19,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data", "src\Framework\C
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data.Abstraction", "src\Framework\Cik.Data.Abstraction\Cik.Data.Abstraction.xproj", "{05DE5D06-4F02-48B6-B42E-34E9E8223537}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data.Model.Abstraction", "src\Framework\Cik.Data.Entity.Abstraction\Cik.Data.Model.Abstraction.xproj", "{D754B8A3-ACB2-4F04-8E75-AEFF210B842C}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data.Model.Abstraction", "src\Framework\Cik.Data.Model.Abstraction\Cik.Data.Model.Abstraction.xproj", "{D754B8A3-ACB2-4F04-8E75-AEFF210B842C}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Application", "src\Framework\Cik.Application\Cik.Application.xproj", "{1ADA17D1-58EB-47A2-AEAE-9243217D3B2F}"
 EndProject
@@ -27,16 +27,14 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Data.EntityFramework.Sq
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{752D10B6-025A-486E-8F84-88CF700FCCFE}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Services.CategoryService", "src\Services\CategoryService\Cik.Services.CategoryService.xproj", "{27C56966-12CB-46FA-8615-D64B518B2207}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Services.ContentService", "src\Services\ContentService\Cik.Services.ContentService.xproj", "{96EA659F-8DA7-428D-AA55-9173256185F7}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Service", "src\Framework\Cik.Service\Cik.Service.xproj", "{39A0A852-B0DA-4311-8831-E9F76793E921}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dockerfiles", "Dockerfiles", "{C6FEB4AC-11ED-4AD6-A31B-8FEB8778CBD3}"
 	ProjectSection(SolutionItems) = preProject
 		Dockerfile.CategoryService = Dockerfile.CategoryService
 	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Services.MagazineService", "src\Services\MagazineService\Cik.Services.MagazineService.xproj", "{75874FC0-FA36-4938-A310-DB4347ECFCEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,18 +66,14 @@ Global
 		{D715A39D-622B-4D54-AFD3-31591E5539FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D715A39D-622B-4D54-AFD3-31591E5539FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D715A39D-622B-4D54-AFD3-31591E5539FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27C56966-12CB-46FA-8615-D64B518B2207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27C56966-12CB-46FA-8615-D64B518B2207}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27C56966-12CB-46FA-8615-D64B518B2207}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27C56966-12CB-46FA-8615-D64B518B2207}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96EA659F-8DA7-428D-AA55-9173256185F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96EA659F-8DA7-428D-AA55-9173256185F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96EA659F-8DA7-428D-AA55-9173256185F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96EA659F-8DA7-428D-AA55-9173256185F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39A0A852-B0DA-4311-8831-E9F76793E921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39A0A852-B0DA-4311-8831-E9F76793E921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39A0A852-B0DA-4311-8831-E9F76793E921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39A0A852-B0DA-4311-8831-E9F76793E921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75874FC0-FA36-4938-A310-DB4347ECFCEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75874FC0-FA36-4938-A310-DB4347ECFCEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75874FC0-FA36-4938-A310-DB4347ECFCEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75874FC0-FA36-4938-A310-DB4347ECFCEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,9 +87,8 @@ Global
 		{1ADA17D1-58EB-47A2-AEAE-9243217D3B2F} = {E6FF4547-5F60-49F6-8388-1FE413BBFCBF}
 		{D715A39D-622B-4D54-AFD3-31591E5539FB} = {E6FF4547-5F60-49F6-8388-1FE413BBFCBF}
 		{752D10B6-025A-486E-8F84-88CF700FCCFE} = {EE85D63E-A936-4C40-95F2-46D72E661D0E}
-		{27C56966-12CB-46FA-8615-D64B518B2207} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
-		{96EA659F-8DA7-428D-AA55-9173256185F7} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
 		{39A0A852-B0DA-4311-8831-E9F76793E921} = {E6FF4547-5F60-49F6-8388-1FE413BBFCBF}
 		{C6FEB4AC-11ED-4AD6-A31B-8FEB8778CBD3} = {EE85D63E-A936-4C40-95F2-46D72E661D0E}
+		{75874FC0-FA36-4938-A310-DB4347ECFCEE} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
 	EndGlobalSection
 EndGlobal

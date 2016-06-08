@@ -1,0 +1,87 @@
+{
+  "authors": [ "Thang Chung" ],
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true,
+    "debugType": "portable" 
+  }, 
+  "copyright": "2016 by Thang Chung",
+  "dependencies": {
+    "Autofac": "4.0.0-rc2-240",
+    "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
+    "Cik.Data.Abstraction": "1.0.0-*",
+    "Cik.Data.Model.Abstraction": "1.0.0-*",
+    "Cik.Service": "1.0.0-*",
+    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Tools": {
+      "version": "1.0.0-preview1-*",
+      "type": "build"
+    },
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0-*"
+    },
+    "System.Reactive": "3.0.0-beta-00365"
+  },
+  "description": "The Magazine Website.",
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net451+win8"
+      ]
+    }
+  },
+  "packOptions": {
+    "summary": "The Magazine Website.",
+    "tags": [ "magazine", "microservices", "reactive" ],
+    "owners": [ "thangchung" ],
+    "projectUrl": "https://github.com/thangchung/magazine-website",
+    "licenseUrl": "",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/thangchung/magazine-website"
+    }
+  },
+  "publishOptions": {
+    "include": [
+      "wwwroot",
+      "Views",
+      "appsettings.json",
+      "web.config"
+    ]
+  },
+  "runtimeOptions": {
+    "gcServer": true
+  },
+  "scripts": {
+    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+  },
+  "title": "The Magazine Website",
+  "tools": {
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
+      "version": "1.0.0-preview1-final",
+      "imports": "portable-net45+win8+dnxcore50"
+    },
+    "Microsoft.EntityFrameworkCore.Tools": {
+      "version": "1.0.0-preview1-*",
+      "imports": [
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
+  },
+  "version": "1.0.0-*"
+}
