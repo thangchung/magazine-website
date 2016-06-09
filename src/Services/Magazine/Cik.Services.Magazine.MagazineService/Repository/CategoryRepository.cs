@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Reactive.Linq;
 using Cik.Domain;
-using Cik.Services.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cik.Services.MagazineService.Repository
+namespace Cik.Services.Magazine.MagazineService.Repository
 {
     public class CategoryRepository : IRepository<Category, Guid>
     {
@@ -17,6 +17,7 @@ namespace Cik.Services.MagazineService.Repository
 
         public DbContext UnitOfWork => _dbContext;
 
+
         public IObservable<Category> GetAll()
         {
             return _dbContext.Categories.ToObservable();
@@ -24,8 +25,8 @@ namespace Cik.Services.MagazineService.Repository
 
         public IObservable<Guid> Create(Category cat)
         {
-            cat.CreatedDate = DateTime.UtcNow;
-            cat.CreatedBy = "thangchung";
+            // cat.CreatedDate = DateTime.UtcNow;
+            // cat.CreatedBy = "thangchung";
             _dbContext.Categories.Add(cat);
             return Observable.Return(cat.Id);
         }

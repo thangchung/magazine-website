@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Cik.Services.MagazineService.Model;
-using Cik.Services.MagazineService.Model.ViewModel;
-using Microsoft.AspNetCore.Mvc;
 using System.Reactive.Linq;
-using Cik.Services.MagazineService.Service;
+using System.Threading.Tasks;
+using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.Model.ViewModel;
+using Cik.Services.Magazine.MagazineService.Service;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Cik.Services.MagazineService.Controllers
+namespace Cik.Services.Magazine.MagazineService.Controllers
 {
     [Route("api/categories")]
     public class CategoryController : Controller
@@ -36,7 +36,7 @@ namespace Cik.Services.MagazineService.Controllers
         [HttpPost]
         public async Task<Guid> Post(Category cat)
         {
-            cat.Id = Guid.NewGuid(); //TODO: temporary to put here
+            cat.Id = Guid.NewGuid();
             return await _categoryService.Create(cat);
         }
 

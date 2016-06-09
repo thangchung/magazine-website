@@ -1,7 +1,7 @@
-﻿using Cik.Services.MagazineService.Model;
+﻿using Cik.Services.Magazine.MagazineService.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cik.Services.MagazineService.Repository
+namespace Cik.Services.Magazine.MagazineService.Repository
 {
     public class MagazineDbContext : DbContext
     {
@@ -11,6 +11,10 @@ namespace Cik.Services.MagazineService.Repository
         {
             // TODO: temporary to use it, will change to PostgeSQL soon
             optionsBuilder.UseSqlite("Filename=./magazine.db");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
         }
     }
 }

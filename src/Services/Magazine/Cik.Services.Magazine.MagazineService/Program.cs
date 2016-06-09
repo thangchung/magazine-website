@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Cik.Services.MagazineService
+namespace Cik.Services.Magazine.MagazineService
 {
     public class Program
     {

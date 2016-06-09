@@ -1,11 +1,11 @@
 ﻿using System;
 using Autofac;
 using Cik.Domain;
-using Cik.Services.MagazineService.Model;
-using Cik.Services.MagazineService.Repository;
-using Cik.Services.MagazineService.Service;
+using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.Repository;
+using Cik.Services.Magazine.MagazineService.Service;
 
-namespace Cik.Services.MagazineService
+namespace Cik.Services.Magazine.MagazineService
 {
     public class RegisteredModule : Module
     {
@@ -14,7 +14,7 @@ namespace Cik.Services.MagazineService
             base.Load(builder);
             builder.RegisterType<MagazineDbContext>().AsSelf();
             builder.RegisterType<CategoryRepository>().As<IRepository<Category, Guid>>();
-            builder.RegisterType<Service.CategoryService>().As<ICategoryService>();
+            builder.RegisterType<CategoryService>().As<ICategoryService>();
         }
     }
 }

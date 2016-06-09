@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Domain
 {
-    public interface IRepository<TEntity, out TId>
+    public interface IRepository<AggregateRootBase, out TId>
     {
         DbContext UnitOfWork { get; }
-        IObservable<TEntity> GetAll();
-        IObservable<TId> Create(TEntity cat);
+        IObservable<AggregateRootBase> GetAll();
+        IObservable<TId> Create(AggregateRootBase cat);
     }
 }

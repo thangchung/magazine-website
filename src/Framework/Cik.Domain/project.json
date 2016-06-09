@@ -1,4 +1,4 @@
-﻿{
+{
   "packOptions": {
     "summary": "The Magazine Website.",
     "tags": [ "magazine", "microservices", "reactive" ],

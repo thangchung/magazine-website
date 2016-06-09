@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cik.Services.MagazineService.Model.ViewModel
+namespace Cik.Services.Magazine.MagazineService.Model.ViewModel
 {
     public class CategoryViewModel
     {

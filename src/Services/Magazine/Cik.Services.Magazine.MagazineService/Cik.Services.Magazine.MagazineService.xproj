@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>75874fc0-fa36-4938-a310-db4347ecfcee</ProjectGuid>
-    <RootNamespace>Cik.Services.MagazineService</RootNamespace>
+    <ProjectGuid>8bcfdd8e-b9b5-42f3-9f22-8ae63330ae99</ProjectGuid>
+    <RootNamespace>Cik.Services.Magazine.MagazineService</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

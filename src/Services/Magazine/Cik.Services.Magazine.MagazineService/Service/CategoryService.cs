@@ -2,10 +2,10 @@
 using System.Reactive.Linq;
 using Cik.Domain;
 using Cik.Service;
-using Cik.Services.MagazineService.Model;
-using Cik.Services.MagazineService.Model.ViewModel;
+using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.Model.ViewModel;
 
-namespace Cik.Services.MagazineService.Service
+namespace Cik.Services.Magazine.MagazineService.Service
 {
     public class CategoryService : ServiceBase<Category, Guid>, ICategoryService
     {
@@ -19,9 +19,9 @@ namespace Cik.Services.MagazineService.Service
             var categories = BaseEntityRepository.GetAll();
             return categories.Select(x => new CategoryViewModel
             {
-                Name = x.Name,
-                CreatedBy = x.CreatedBy,
-                CreatedDate = x.CreatedDate
+                Name = x.Name
+                // CreatedBy = x.CreatedBy,
+                // CreatedDate = x.CreatedDate
             });
         }
 

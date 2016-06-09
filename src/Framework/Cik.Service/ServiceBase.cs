@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Service
 {
+    // TODO: will think about this later
     public abstract class ServiceBase<TEntity, TId> : IService 
-        where TEntity : IEntity
+        where TEntity : AggregateRootBase
     {
         protected IRepository<TEntity, TId> BaseEntityRepository;
         protected DbContext UnitOfWork { get; }
