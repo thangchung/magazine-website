@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Cik.Domain;
+using Cik.Services.Magazine.MagazineService.Command;
 using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Services.Magazine.MagazineService.Model.ViewModel;
-using Cik.Services.Magazine.MagazineService.Service;
+using Cik.Services.Magazine.MagazineService.QueryModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cik.Services.Magazine.MagazineService.Controllers
@@ -12,32 +13,37 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
     [Route("api/categories")]
     public class CategoryController : Controller
     {
-        private readonly ICategoryService _categoryService;
+        private readonly CategoryQueryModelFinder _categoryQueryModelFinder;
+        private readonly ICommandHandler _commandHandler;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(
+            ICommandHandler commandHandler,
+            CategoryQueryModelFinder categoryQueryModelFinder)
         {
-            _categoryService = categoryService;
+            _commandHandler = commandHandler;
+            _categoryQueryModelFinder = categoryQueryModelFinder;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IList<CategoryViewModel>> Get()
+        public async Task<IList<CategoryDto>> Get()
         {
-            var categoryObserable = _categoryService.GetAll();
-            return await categoryObserable.ToList();
+            return await _categoryQueryModelFinder.Query().ToList();
         }
 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<CategoryDto> Get(Guid id)
         {
-            return "value";
+            return await _categoryQueryModelFinder.Find(id);
         }
 
         [HttpPost]
-        public async Task<Guid> Post(Category cat)
+        public Guid Post([FromBody] CreateCategoryCommand command)
         {
-            cat.Id = Guid.NewGuid();
-            return await _categoryService.Create(cat);
+            var newGuid = Guid.NewGuid();
+            command.Id = newGuid;
+            _commandHandler.Send(command);
+            return newGuid;
         }
 
         [HttpPut("{id}")]

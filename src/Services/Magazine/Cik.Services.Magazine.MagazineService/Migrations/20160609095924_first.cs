@@ -10,8 +10,7 @@ namespace Cik.Services.Magazine.MagazineService.Migrations
             migrationBuilder.CreateTable("Categories", table => new
             {
                 Id = table.Column<Guid>(nullable: false),
-                Name = table.Column<string>(nullable: true),
-                Version = table.Column<byte[]>(nullable: true)
+                Name = table.Column<string>(nullable: true)
             },
                 constraints: table => { table.PrimaryKey("PK_Categories", x => x.Id); });
         }

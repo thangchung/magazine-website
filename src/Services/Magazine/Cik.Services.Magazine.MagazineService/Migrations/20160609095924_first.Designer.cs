@@ -8,7 +8,7 @@ using Cik.Services.Magazine.MagazineService.Repository;
 namespace Cik.Services.Magazine.MagazineService.Migrations
 {
     [DbContext(typeof(MagazineDbContext))]
-    [Migration("20160609053247_first")]
+    [Migration("20160609095924_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,8 +22,6 @@ namespace Cik.Services.Magazine.MagazineService.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
-
-                    b.Property<byte[]>("Version");
 
                     b.HasKey("Id");
 

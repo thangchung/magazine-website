@@ -20,8 +20,6 @@ namespace Cik.Services.Magazine.MagazineService.Migrations
 
                 b.Property<string>("Name");
 
-                b.Property<byte[]>("Version");
-
                 b.HasKey("Id");
 
                 b.ToTable("Categories");

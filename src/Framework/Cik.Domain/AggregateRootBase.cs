@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Cik.Infrastruture;
 
 namespace Cik.Domain
 {
@@ -29,7 +28,7 @@ namespace Cik.Domain
         [Key]
         public Guid Id { get; set; }
 
-        public byte[] Version { get; set; }
+        // public byte[] Version { get; set; }
 
         [NotMapped]
         protected IDomainEventPublisher EventPublisher { get; private set; }

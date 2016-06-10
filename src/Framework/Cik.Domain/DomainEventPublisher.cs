@@ -1,12 +1,12 @@
-﻿using Cik.Domain;
+﻿using System;
 
-namespace Cik.Infrastruture
+namespace Cik.Domain
 {
     public class DomainEventPublisher : IDomainEventPublisher
     {
-        public void Publish(Event @event)
+        public void Publish<T>(T @event) where T : Event
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

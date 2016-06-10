@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Reactive.Linq;
 using Cik.Domain;
-using Cik.Service;
 using Cik.Services.Magazine.MagazineService.Model;
 using Cik.Services.Magazine.MagazineService.Model.ViewModel;
 
 namespace Cik.Services.Magazine.MagazineService.Service
 {
-    public class CategoryService : ServiceBase<Category, Guid>, ICategoryService
+    public class CategoryService : ICategoryService
     {
+        private readonly IRepository<Category, Guid> _categoryRepository;
+
         public CategoryService(IRepository<Category, Guid> repo)
-            : base(repo)
         {
+            _categoryRepository = repo;
         }
 
         public IObservable<CategoryViewModel> GetAll()
         {
-            var categories = BaseEntityRepository.GetAll();
+            var categories = _categoryRepository.GetAll();
             return categories.Select(x => new CategoryViewModel
             {
                 Name = x.Name
@@ -27,8 +28,8 @@ namespace Cik.Services.Magazine.MagazineService.Service
 
         public IObservable<Guid> Create(Category cat)
         {
-            var idObservable = BaseEntityRepository.Create(cat);
-            UnitOfWork.SaveChanges();
+            var idObservable = _categoryRepository.Create(cat);
+            _categoryRepository.UnitOfWork.SaveChanges();
             return idObservable;
         }
     }

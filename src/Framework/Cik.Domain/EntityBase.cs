@@ -4,8 +4,6 @@ namespace Cik.Domain
 {
     public class EntityBase : IEntity
     {
-        public Guid Id { get; set; }
-
         public string CreatedBy { get; set; }
 
         public string ModifiedBy { get; set; }
@@ -13,5 +11,6 @@ namespace Cik.Domain
         public DateTime CreatedDate { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
+        public Guid Id { get; set; }
     }
 }
