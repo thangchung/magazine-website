@@ -12,6 +12,8 @@ namespace Cik.Services.Magazine.MagazineService.Repository
 
         public CategoryRepository(MagazineDbContext dbContext)
         {
+            Guard.NotNull(dbContext);
+
             _dbContext = dbContext;
         }
 

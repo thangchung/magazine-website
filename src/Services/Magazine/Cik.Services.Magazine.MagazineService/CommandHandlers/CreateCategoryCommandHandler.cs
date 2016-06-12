@@ -16,6 +16,8 @@ namespace Cik.Services.Magazine.MagazineService.CommandHandlers
 
         public CreateCategoryCommandHandler(IRepository<Category, Guid> repo)
         {
+            Guard.NotNull(repo);
+
             _categoryRepository = repo;
         }
 

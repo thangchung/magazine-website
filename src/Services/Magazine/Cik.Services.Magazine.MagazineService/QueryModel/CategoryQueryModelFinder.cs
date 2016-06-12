@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reactive.Linq;
+using Cik.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
 using Cik.Services.Magazine.MagazineService.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,8 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
 
         public CategoryQueryModelFinder(MagazineDbContext dbContext)
         {
+            Guard.NotNull(dbContext);
+
             _dbContext = dbContext;
         }
 

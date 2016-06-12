@@ -13,28 +13,31 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
     [Route("api/categories")]
     public class CategoryController : Controller
     {
-        private readonly CategoryQueryModelFinder _categoryQueryModelFinder;
+        private readonly CategoryQueryModelFinder _categoryQuery;
         private readonly ICommandHandler _commandHandler;
 
         public CategoryController(
             ICommandHandler commandHandler,
-            CategoryQueryModelFinder categoryQueryModelFinder)
+            CategoryQueryModelFinder categoryQuery)
         {
+            Guard.NotNull(commandHandler);
+            Guard.NotNull(categoryQuery);
+
             _commandHandler = commandHandler;
-            _categoryQueryModelFinder = categoryQueryModelFinder;
+            _categoryQuery = categoryQuery;
         }
 
         [HttpGet]
         [Route("")]
         public async Task<IList<CategoryDto>> Get()
         {
-            return await _categoryQueryModelFinder.Query().ToList();
+            return await _categoryQuery.Query().ToList();
         }
 
         [HttpGet("{id}")]
         public async Task<CategoryDto> Get(Guid id)
         {
-            return await _categoryQueryModelFinder.Find(id);
+            return await _categoryQuery.Find(id);
         }
 
         [HttpPost]
