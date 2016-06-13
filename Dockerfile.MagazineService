@@ -18,7 +18,7 @@ ENV ASPNETCORE_ENVIRONMENT="Development"
 COPY . /app
 
 # Set working directory
-WORKDIR /app/src/Services/CategoryService
+WORKDIR /app/src/Services/Magazine/Cik.Services.Magazine.MagazineService
 
 # Restore NuGet packages
 RUN ["dotnet", "restore", "--source", "https://www.myget.org/F/rxnet/api/v3/index.json", "--fallbacksource", "https://api.nuget.org/v3/index.json"]
@@ -28,5 +28,3 @@ EXPOSE 5000
 
 # Run the app
 ENTRYPOINT ["dotnet", "run"]
-
-# Run build docker build -f Dockerfile.CategoryService -t catservice .
