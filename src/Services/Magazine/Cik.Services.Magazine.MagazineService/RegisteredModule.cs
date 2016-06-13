@@ -16,10 +16,14 @@ namespace Cik.Services.Magazine.MagazineService
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterType<MagazineDbContext>().AsSelf();
+            builder.RegisterType<MagazineDbContext>()
+                .AsSelf()
+                .SingleInstance();
 
             // register command model
-            builder.RegisterType<CategoryRepository>().As<IRepository<Category, Guid>>();
+            builder.RegisterType<CategoryRepository>()
+                .As<IRepository<Category, Guid>>()
+                .InstancePerLifetimeScope();
             builder.RegisterType<CategoryService>().As<ICategoryService>();
             builder.RegisterCommandHandlerWith(typeof (CreateCategoryCommand));
             builder.Register(ctx =>
@@ -30,7 +34,9 @@ namespace Cik.Services.Magazine.MagazineService
             }).As<ICommandHandler>().SingleInstance();
 
             // register query model
-            builder.RegisterType<CategoryQueryModelFinder>().AsSelf();
+            builder.RegisterType<CategoryQueryModelFinder>()
+                .AsSelf()
+                .InstancePerLifetimeScope();
         }
     }
 }

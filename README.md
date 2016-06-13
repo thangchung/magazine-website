@@ -34,6 +34,12 @@ At the moment, we have to exec to the container to install sqlite version due to
 
  then re-start container again  
 
+## Database
+
+`docker pull postgres:9.6`
+
+`docker run --name magazine_db -p 5432:5432 -e POSTGRES_DB=magazine_db -e POSTGRES_USER=magazine_dba -e POSTGRES_PASSWORD=Passw0rd -d postgres:9.6`
+
 # Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, MazWebApp is maintained under the [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.

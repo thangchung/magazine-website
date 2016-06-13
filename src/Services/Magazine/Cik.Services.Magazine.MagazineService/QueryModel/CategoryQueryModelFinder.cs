@@ -22,7 +22,8 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
         {
             var dbItem = _dbContext
                 .Categories
-                .FromSql(@"SELECT * FROM Categories WHERE Id='p0'", categoryId);
+                .FromSql(@"SELECT Id, Name FROM Categories WHERE Id='p0'", categoryId);
+
             return dbItem
                 .ToObservable()
                 .Select(x => new CategoryDto
@@ -31,12 +32,13 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
                     Name = x.Name
                 })
                 .FirstAsync();
+            // return Observable.Return(new CategoryDto());
         }
 
         public IObservable<CategoryDto> Query()
         {
-            return _dbContext
-                .Categories
+            var categories = _dbContext.Categories;
+            return categories
                 .ToObservable()
                 .Select(x => new CategoryDto
                 {
