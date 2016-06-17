@@ -1,0 +1,37 @@
+{
+  "packOptions": {
+    "summary": "The library to work with Consul, will be used by Magazine microservices.",
+    "tags": [ "magazine", "microservices", "reactive", "service-discovery", "consul" ],
+    "owners": [ "thangchung" ],
+    "projectUrl": "https://github.com/thangchung/magazine-website",
+    "licenseUrl": "",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/thangchung/magazine-website"
+    }
+  },
+  "authors": [ "Thang Chung" ],
+  "description": "The library to work with Consul, will be used by Magazine microservices.",
+  "version": "1.0.0-*",
+  "title": "The library to work with Consul",
+  "copyright": "2016 by Thang Chung",
+
+  "dependencies": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc3-21125",
+    "JetBrains.Annotations": "10.1.4",
+    "NETStandard.Library": "1.5.0-rc2-24027",
+    "Microsoft.Extensions.Configuration": "1.0.0-rc2-final",
+    "System.Runtime.Serialization.Json": "4.0.2",
+    "Newtonsoft.Json": "8.0.3",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "dnxcore50",
+        "portable-net451+win8"
+      ]
+    }
+  }
+}

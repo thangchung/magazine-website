@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Magazine", "Magazine", "{BE
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Services.Magazine.MagazineService", "src\Services\Magazine\Cik.Services.Magazine.MagazineService\Cik.Services.Magazine.MagazineService.xproj", "{8BCFDD8E-B9B5-42F3-9F22-8AE63330AE99}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceDiscovery", "ServiceDiscovery", "{8D1F7580-2AFD-40B9-9C30-2DCFAA07FD2E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.ServiceDiscovery", "src\Services\ServiceDiscovery\Cik.ServiceDiscovery\Cik.ServiceDiscovery.xproj", "{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{8BCFDD8E-B9B5-42F3-9F22-8AE63330AE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BCFDD8E-B9B5-42F3-9F22-8AE63330AE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BCFDD8E-B9B5-42F3-9F22-8AE63330AE99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +66,7 @@ Global
 		{C6FEB4AC-11ED-4AD6-A31B-8FEB8778CBD3} = {EE85D63E-A936-4C40-95F2-46D72E661D0E}
 		{BEEB336E-56B1-4025-BC4E-104531299EC3} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
 		{8BCFDD8E-B9B5-42F3-9F22-8AE63330AE99} = {BEEB336E-56B1-4025-BC4E-104531299EC3}
+		{8D1F7580-2AFD-40B9-9C30-2DCFAA07FD2E} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
+		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2} = {8D1F7580-2AFD-40B9-9C30-2DCFAA07FD2E}
 	EndGlobalSection
 EndGlobal

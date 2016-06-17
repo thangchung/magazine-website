@@ -22,7 +22,7 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
         {
             var dbItem = _dbContext
                 .Categories
-                .FromSql(@"SELECT Id, Name FROM Categories WHERE Id='p0'", categoryId);
+                .FromSql("SELECT Id, Name FROM Categories WHERE Id=(@p0)", categoryId);
 
             return dbItem
                 .ToObservable()
