@@ -3,15 +3,6 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
-      "Autofac/3.5.2": {
-        "type": "package",
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.dll": {}
-        }
-      },
       "Ix-Async/1.2.5": {
         "type": "package",
         "compile": {
@@ -1432,18 +1423,6 @@
     }
   },
   "libraries": {
-    "Autofac/3.5.2": {
-      "sha512": "pGR5LjY8T/16x6SkJNd7u6EjQnE4C7JS0BZJ7Yl7pt313gIUZ/2ZnPSOIM5eaIA7ArxaudlyyLvAT4ayX5UJ/A==",
-      "type": "package",
-      "files": [
-        "Autofac.3.5.2.nupkg.sha512",
-        "Autofac.nuspec",
-        "lib/net40/Autofac.dll",
-        "lib/net40/Autofac.xml",
-        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.dll",
-        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.xml"
-      ]
-    },
     "Ix-Async/1.2.5": {
       "sha512": "8EXO8q7cpDUH9G2q+UOPOO/6uZ9aN7mx/4xjFIfkp+qLWVJiYuglkRhjY8Ggs2CucXzHR8GHnovJKB5yQoYaJg==",
       "type": "package",
@@ -5019,7 +4998,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Autofac >= 3.5.2",
       "Microsoft.EntityFrameworkCore >= 1.0.0-rc2-final",
       "System.Reactive >= 3.0.0-beta-00365",
       "System.Threading.ThreadPool >= 4.0.10-rc2-24027"

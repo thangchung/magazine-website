@@ -15,6 +15,55 @@
           "lib/dotnet/JetBrains.Annotations.Dotnet.dll": {}
         }
       },
+      "Microphone.Core/0.5.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "Newtonsoft.Json": "8.0.2",
+          "Serilog": "2.0.0-beta-523",
+          "Serilog.Sinks.ColoredConsole": "2.0.0-beta-465",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Net.Http": "4.0.1-beta-23516",
+          "System.Net.NameResolution": "4.0.0-beta-23516",
+          "System.Net.Sockets": "4.1.0-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        },
+        "compile": {
+          "lib/dotnet5.4/Microphone.Core.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/Microphone.Core.dll": {}
+        }
+      },
+      "Microsoft.CSharp/4.0.1-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Diagnostics.Debug": "4.0.10",
+          "System.Dynamic.Runtime": "4.0.0",
+          "System.Globalization": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.0",
+          "System.ObjectModel": "4.0.10",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Reflection.Primitives": "4.0.0",
+          "System.Reflection.TypeExtensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Threading": "4.0.10"
+        },
+        "compile": {
+          "ref/dotnet5.1/Microsoft.CSharp.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/Microsoft.CSharp.dll": {}
+        }
+      },
       "Microsoft.Extensions.Configuration/1.0.0-rc2-final": {
         "type": "package",
         "dependencies": {
@@ -269,6 +318,47 @@
       "runtime.native.System.Security.Cryptography/4.0.0-rc2-24027": {
         "type": "package"
       },
+      "Serilog/2.0.0-beta-523": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Collections.Concurrent": "4.0.11-beta-23516",
+          "System.Console": "4.0.0-beta-23516",
+          "System.Diagnostics.Process": "4.1.0-beta-23516",
+          "System.Diagnostics.TraceSource": "4.0.0-beta-23516",
+          "System.Globalization": "4.0.11-beta-23516",
+          "System.IO": "4.0.11-beta-23516",
+          "System.IO.FileSystem": "4.0.1-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Reflection.Extensions": "4.0.1-beta-23516",
+          "System.Runtime.Extensions": "4.0.11-beta-23516",
+          "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516",
+          "System.Text.RegularExpressions": "4.0.11-beta-23516",
+          "System.Threading": "4.0.11-beta-23516",
+          "System.Threading.Thread": "4.0.0-beta-23516"
+        },
+        "compile": {
+          "lib/dotnet5.4/Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/Serilog.dll": {}
+        }
+      },
+      "Serilog.Sinks.ColoredConsole/2.0.0-beta-465": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "2.0.0-beta-465",
+          "System.Console": "4.0.0-beta-23516"
+        },
+        "compile": {
+          "lib/dotnet5.1/Serilog.Sinks.ColoredConsole.dll": {},
+          "lib/dotnet5.1/Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.1/Serilog.Sinks.ColoredConsole.dll": {},
+          "lib/dotnet5.1/Serilog.dll": {}
+        }
+      },
       "System.AppContext/4.1.0-rc2-24027": {
         "type": "package",
         "dependencies": {
@@ -382,6 +472,18 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
+      "System.Diagnostics.Process/4.1.0-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Handles": "4.0.0",
+          "System.Text.Encoding": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet5.5/System.Diagnostics.Process.dll": {}
+        }
+      },
       "System.Diagnostics.Tools/4.0.1-rc2-24027": {
         "type": "package",
         "dependencies": {
@@ -392,6 +494,15 @@
         },
         "runtime": {
           "lib/portable-net45+win8+wp8+wpa81/_._": {}
+        }
+      },
+      "System.Diagnostics.TraceSource/4.0.0-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet5.1/System.Diagnostics.TraceSource.dll": {}
         }
       },
       "System.Diagnostics.Tracing/4.1.0": {
@@ -677,6 +788,17 @@
           }
         }
       },
+      "System.Net.NameResolution/4.0.0-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.Net.Primitives": "4.0.10",
+          "System.Runtime": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet5.4/System.Net.NameResolution.dll": {}
+        }
+      },
       "System.Net.Primitives/4.0.11-rc2-24027": {
         "type": "package",
         "dependencies": {
@@ -850,7 +972,7 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/_._": {}
+          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
@@ -1297,7 +1419,7 @@
           "System.Runtime": "4.1.0-rc2-24027"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Threading.Thread.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.Thread.dll": {}
@@ -1428,6 +1550,66 @@
         "lib/portable-net4+sl4+wp7+netcore45/JetBrains.Annotations.PCL1.xml",
         "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/JetBrains.Annotations.PCL328.dll",
         "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/JetBrains.Annotations.PCL328.xml"
+      ]
+    },
+    "Microphone.Core/0.5.8": {
+      "sha512": "dUcaptIHPOz16Pky7RJgwXJoldzchmg+D2pgLH3a2ay8jo3k3wOGq9siD/+1wBpRobXeaQ2iwHzWPQ1qkVtDEA==",
+      "type": "package",
+      "path": "Microphone.Core/0.5.8",
+      "files": [
+        "Microphone.Core.0.5.8.nupkg.sha512",
+        "Microphone.Core.nuspec",
+        "lib/dotnet5.4/Microphone.Core.dll",
+        "lib/net451/Microphone.Core.dll"
+      ]
+    },
+    "Microsoft.CSharp/4.0.1-beta-23516": {
+      "sha512": "fb+HO3nIjHao9lqsVVM0ne3GM/+1EfRQUoM58cxEOt+5biy/8DQ1nxIahZ9VaJKw7Wgb6XhRhsdwg8DkePEOJA==",
+      "type": "package",
+      "path": "Microsoft.CSharp/4.0.1-beta-23516",
+      "files": [
+        "Microsoft.CSharp.4.0.1-beta-23516.nupkg.sha512",
+        "Microsoft.CSharp.nuspec",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/dotnet5.4/Microsoft.CSharp.dll",
+        "lib/net45/_._",
+        "lib/netcore50/Microsoft.CSharp.dll",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/dotnet5.1/Microsoft.CSharp.dll",
+        "ref/dotnet5.1/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/de/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/es/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/fr/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/it/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/ja/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/ko/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/ru/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/zh-hans/Microsoft.CSharp.xml",
+        "ref/dotnet5.1/zh-hant/Microsoft.CSharp.xml",
+        "ref/net45/_._",
+        "ref/netcore50/Microsoft.CSharp.dll",
+        "ref/netcore50/Microsoft.CSharp.xml",
+        "ref/netcore50/de/Microsoft.CSharp.xml",
+        "ref/netcore50/es/Microsoft.CSharp.xml",
+        "ref/netcore50/fr/Microsoft.CSharp.xml",
+        "ref/netcore50/it/Microsoft.CSharp.xml",
+        "ref/netcore50/ja/Microsoft.CSharp.xml",
+        "ref/netcore50/ko/Microsoft.CSharp.xml",
+        "ref/netcore50/ru/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._"
       ]
     },
     "Microsoft.Extensions.Configuration/1.0.0-rc2-final": {
@@ -1722,6 +1904,38 @@
         "dotnet_library_license.txt",
         "runtime.native.System.Security.Cryptography.4.0.0-rc2-24027.nupkg.sha512",
         "runtime.native.System.Security.Cryptography.nuspec"
+      ]
+    },
+    "Serilog/2.0.0-beta-523": {
+      "sha512": "Rms2FBbnkT8/Vyb5tYwWkzGKAyXDLgHNKXmWBfcQ11MzEzg/BwDUDHyFp9HRpr7N0R4GP0KyOkMU/boC/5i4fQ==",
+      "type": "package",
+      "path": "Serilog/2.0.0-beta-523",
+      "files": [
+        "Serilog.2.0.0-beta-523.nupkg.sha512",
+        "Serilog.nuspec",
+        "lib/dotnet5.1/Serilog.dll",
+        "lib/dotnet5.1/Serilog.xml",
+        "lib/dotnet5.4/Serilog.dll",
+        "lib/dotnet5.4/Serilog.xml",
+        "lib/net45/Serilog.dll",
+        "lib/net45/Serilog.xml"
+      ]
+    },
+    "Serilog.Sinks.ColoredConsole/2.0.0-beta-465": {
+      "sha512": "BM7sYdva21ZciTKEFcHXtWgM5jlRsEoduFkXImLINsuapAaN10GMUfQTXlGl2Tjg8R5mZTXFMCvwHSsHWNj6Cw==",
+      "type": "package",
+      "path": "Serilog.Sinks.ColoredConsole/2.0.0-beta-465",
+      "files": [
+        "Serilog.Sinks.ColoredConsole.2.0.0-beta-465.nupkg.sha512",
+        "Serilog.Sinks.ColoredConsole.nuspec",
+        "lib/dotnet5.1/Serilog.Sinks.ColoredConsole.dll",
+        "lib/dotnet5.1/Serilog.Sinks.ColoredConsole.xml",
+        "lib/dotnet5.1/Serilog.dll",
+        "lib/dotnet5.1/Serilog.xml",
+        "lib/net45/Serilog.Sinks.ColoredConsole.dll",
+        "lib/net45/Serilog.Sinks.ColoredConsole.xml",
+        "lib/net45/Serilog.dll",
+        "lib/net45/Serilog.xml"
       ]
     },
     "System.AppContext/4.1.0-rc2-24027": {
@@ -2095,6 +2309,50 @@
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml"
       ]
     },
+    "System.Diagnostics.Process/4.1.0-beta-23516": {
+      "sha512": "uXV0y5jByAnFDoQRHVpsMvqzjYeIhSSiKP0U++erIae/9DFULDlhxpzJsKVC2BU44QGyGoShUbgxBuFyMr3gPA==",
+      "type": "package",
+      "path": "System.Diagnostics.Process/4.1.0-beta-23516",
+      "files": [
+        "System.Diagnostics.Process.4.1.0-beta-23516.nupkg.sha512",
+        "System.Diagnostics.Process.nuspec",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Diagnostics.Process.dll",
+        "lib/net461/System.Diagnostics.Process.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/dotnet5.4/System.Diagnostics.Process.dll",
+        "ref/dotnet5.4/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/de/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/es/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/fr/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/it/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/ja/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/ko/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/ru/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/zh-hans/System.Diagnostics.Process.xml",
+        "ref/dotnet5.4/zh-hant/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/System.Diagnostics.Process.dll",
+        "ref/dotnet5.5/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/de/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/es/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/fr/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/it/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/ja/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/ko/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/ru/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/zh-hans/System.Diagnostics.Process.xml",
+        "ref/dotnet5.5/zh-hant/System.Diagnostics.Process.xml",
+        "ref/net46/System.Diagnostics.Process.dll",
+        "ref/net461/System.Diagnostics.Process.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "runtime.json"
+      ]
+    },
     "System.Diagnostics.Tools/4.0.1-rc2-24027": {
       "sha512": "Afv5y9mVcMGmcN1YB4RIQdK5glUyL5cOIigi2DMuetSKJykMXxVH8KldkjYFwFKHcx8T1gN6/47knzZU3DtrrA==",
       "type": "package",
@@ -2148,6 +2406,37 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "System.Diagnostics.TraceSource/4.0.0-beta-23516": {
+      "sha512": "OIWB5pvMqOdCraAtiJBhRahrsnP2sNaXbCZNdAadzwiPLzRI7EvLTc7/NlkFDxm3I6YKVGxnJ5aO+YJ/XPC8yw==",
+      "type": "package",
+      "path": "System.Diagnostics.TraceSource/4.0.0-beta-23516",
+      "files": [
+        "System.Diagnostics.TraceSource.4.0.0-beta-23516.nupkg.sha512",
+        "System.Diagnostics.TraceSource.nuspec",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Diagnostics.TraceSource.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/dotnet5.1/System.Diagnostics.TraceSource.dll",
+        "ref/dotnet5.1/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/de/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/es/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/fr/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/it/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/ja/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/ko/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/ru/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/zh-hans/System.Diagnostics.TraceSource.xml",
+        "ref/dotnet5.1/zh-hant/System.Diagnostics.TraceSource.xml",
+        "ref/net46/System.Diagnostics.TraceSource.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "runtime.json"
       ]
     },
     "System.Diagnostics.Tracing/4.1.0": {
@@ -2915,6 +3204,37 @@
         "runtimes/win7/lib/net46/_._",
         "runtimes/win7/lib/netcore50/System.Net.Http.dll",
         "runtimes/win7/lib/netstandard1.3/System.Net.Http.dll"
+      ]
+    },
+    "System.Net.NameResolution/4.0.0-beta-23516": {
+      "sha512": "sJZX/WaQhyJ5zT/TgTE8aosIsqdenog6ew9m9py9RvEyBJ9nt9zVCumr9Xas64u+dL9hUDrQL59XaywWKtpHkQ==",
+      "type": "package",
+      "path": "System.Net.NameResolution/4.0.0-beta-23516",
+      "files": [
+        "System.Net.NameResolution.4.0.0-beta-23516.nupkg.sha512",
+        "System.Net.NameResolution.nuspec",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Net.NameResolution.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/dotnet5.4/System.Net.NameResolution.dll",
+        "ref/dotnet5.4/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/de/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/es/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/fr/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/it/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/ja/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/ko/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/ru/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/zh-hans/System.Net.NameResolution.xml",
+        "ref/dotnet5.4/zh-hant/System.Net.NameResolution.xml",
+        "ref/net46/System.Net.NameResolution.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "runtime.json"
       ]
     },
     "System.Net.Primitives/4.0.11-rc2-24027": {
@@ -4937,6 +5257,7 @@
   "projectFileDependencyGroups": {
     "": [
       "JetBrains.Annotations >= 10.1.4",
+      "Microphone.Core >= 0.5.8",
       "Microsoft.Extensions.Configuration >= 1.0.0-rc2-final",
       "Microsoft.Extensions.Configuration.Json >= 1.0.0-rc2-final",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 1.0.0-rc3-21125",
