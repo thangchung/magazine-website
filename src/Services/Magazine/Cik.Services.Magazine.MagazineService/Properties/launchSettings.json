@@ -19,7 +19,7 @@
     "Cik.Services.MagazineService": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/api/values",
+      "launchUrl": "http://localhost:5000/api/categories",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

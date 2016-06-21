@@ -2,16 +2,8 @@ FROM microsoft/dotnet
 
 MAINTAINER Thang Chung "thangchung@ymail.com"
 
-# Install libraries
-# RUN apt-get update \
-#    && apt-get install -y --no-install-recommends \
-#        ca-certificates \
-#        sqlite3 \
-#        libsqlite3-dev \
-#    && rm -rf /var/lib/apt/lists/*
-
 # Set environment variables
-ENV ASPNETCORE_URLS="http://*:5000"
+# ENV ASPNETCORE_URLS="http://*:5000"
 ENV ASPNETCORE_ENVIRONMENT="Development"
 
 # Copy files to app directory
@@ -24,7 +16,7 @@ WORKDIR /app/src/Services/Magazine/Cik.Services.Magazine.MagazineService
 RUN ["dotnet", "restore", "--source", "https://www.myget.org/F/rxnet/api/v3/index.json", "--fallbacksource", "https://api.nuget.org/v3/index.json"]
 
 # Open up port
-EXPOSE 5000
+# EXPOSE 5000
 
 # Run the app
 ENTRYPOINT ["dotnet", "run"]

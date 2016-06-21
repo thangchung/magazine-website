@@ -1,12 +1,18 @@
 version: "2"
 services:
-  magazine_service:
-    image: "thangchung/magazine_service"
-    build:
-      context: .
-      dockerfile: Dockerfile.MagazineService 
+  data:
+    image: "busybox"
+    volumes:
+      - ./src/Services/Magazine/Cik.Services.Magazine.MagazineService/db/dumps:/var/lib/postgresql/data
+  postgres_db:
+    image: "postgres:9.6"
+    hostname: "postgres_db"
     ports:
-      - "5000:5000"
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: magazine_db
+      POSTGRES_USER: magazine_dba
+      POSTGRES_PASSWORD: Passw0rd
   consul1:
     image: "progrium/consul:latest"
     container_name: "consul1"
@@ -38,3 +44,29 @@ services:
     command: "-server -join consul1"
     depends_on:
       - consul1
+  registrator:
+    image: "gliderlabs/registrator"
+    hostname: "registrator"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock"
+    depends_on:
+      - consul1
+    command: -internal consul://consul1:8500
+  magazine_service:
+    image: "thangchung/magazine_service"
+    build:
+      context: .
+      dockerfile: Dockerfile.MagazineService 
+    hostname: magazine_service
+    ports:
+      - "5000"
+    depends_on:
+      - consul1
+      - registrator
+      - postgres_db
+    environment:
+      POSTGRES_DB: magazine_db
+      POSTGRES_USER: magazine_dba
+      POSTGRES_PASSWORD: Passw0rd
+      SERVICE_NAME: magazine_service
+      SERVICE_TAGS: magazine
