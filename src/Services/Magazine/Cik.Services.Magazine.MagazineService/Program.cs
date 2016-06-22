@@ -8,6 +8,7 @@ namespace Cik.Services.Magazine.MagazineService
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
+                .UseUrls("http://*:5000")
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()

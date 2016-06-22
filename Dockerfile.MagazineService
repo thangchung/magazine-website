@@ -3,7 +3,7 @@ FROM microsoft/dotnet
 MAINTAINER Thang Chung "thangchung@ymail.com"
 
 # Set environment variables
-ENV ASPNETCORE_URLS="http://*:5000"
+ENV ASPNETCORE_SERVER.URLS="http://*:5000"
 ENV ASPNETCORE_ENVIRONMENT="Development"
 
 # Copy files to app directory
