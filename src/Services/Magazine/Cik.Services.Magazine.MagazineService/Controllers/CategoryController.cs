@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Cik.Domain;
 using Cik.Services.Magazine.MagazineService.Command;
@@ -32,7 +30,7 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
         [Route("")]
         public async Task<IList<CategoryDto>> Get()
         {
-            return await _categoryQuery.Query().ToList();
+            return await _categoryQuery.Query();
         }
 
         [HttpGet("{id}")]

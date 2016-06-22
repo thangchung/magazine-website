@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reactive.Linq;
 using Cik.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
 using Cik.Services.Magazine.MagazineService.Model.ViewModel;
@@ -15,7 +14,7 @@ namespace Cik.Services.Magazine.MagazineService.Service
             _categoryRepository = repo;
         }
 
-        public IObservable<CategoryViewModel> GetAll()
+        /*public IObservable<CategoryViewModel> GetAll()
         {
             var categories = _categoryRepository.GetAll();
             return categories.Select(x => new CategoryViewModel
@@ -31,6 +30,6 @@ namespace Cik.Services.Magazine.MagazineService.Service
             var idObservable = _categoryRepository.Create(cat);
             _categoryRepository.UnitOfWork.SaveChanges();
             return idObservable;
-        }
+        } */
     }
 }
