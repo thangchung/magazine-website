@@ -1,14 +1,5 @@
 version: "2"
 services:
-  postgres_db:
-    image: "postgres:9.6"
-    hostname: "postgres_db"
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: magazine_db
-      POSTGRES_USER: magazine_dba
-      POSTGRES_PASSWORD: Passw0rd
   consul1:
     image: "progrium/consul:latest"
     container_name: "consul1"
@@ -48,21 +39,27 @@ services:
     depends_on:
       - consul1
     command: -internal consul://consul1:8500
+  magazine_db:
+    image: "postgres:9.6"
+    hostname: "postgres_db"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: magazine_db
+      POSTGRES_USER: magazine_dba
+      POSTGRES_PASSWORD: Passw0rd
+      SERVICE_NAME: magazine_db
+      SERVICE_TAGS: magazine
   magazine_service:
     image: "thangchung/magazine_service"
-    container_name: "magazine_service"
     build:
       context: .
       dockerfile: Dockerfile.MagazineService 
     hostname: magazine_service
     ports:
       - "5000:5000"
-    expose:
-      - "5000"
     depends_on:
-      - consul1
-      - registrator
-      - postgres_db
+      - magazine_db
     environment:
       POSTGRES_DB: magazine_db
       POSTGRES_USER: magazine_dba
