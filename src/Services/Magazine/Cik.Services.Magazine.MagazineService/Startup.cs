@@ -1,13 +1,14 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Cik.Services.Magazine.MagazineService.Model;
 using Cik.Services.Magazine.MagazineService.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService
 {
@@ -30,13 +31,11 @@ namespace Cik.Services.Magazine.MagazineService
         {
             // Use a PostgreSQL database
             var sqlConnectionString = Configuration["DataAccessPostgreSqlProvider:ConnectionString"];
-
             services.AddDbContext<MagazineDbContext>(options =>
                 options.UseNpgsql(
                     sqlConnectionString,
                     b => b.MigrationsAssembly("Cik.Services.Magazine.MagazineService")
-                )
-            );
+                    ));
 
             // Add framework services.
             services.AddMvc();
@@ -54,6 +53,12 @@ namespace Cik.Services.Magazine.MagazineService
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            if (env.IsDevelopment())
+            {
+                app.UseBrowserLink();
+                SeedData.InitializeMusicStoreDatabaseAsync(app.ApplicationServices).Wait();
+            }
 
             app.UseMvc();
         }

@@ -34,7 +34,10 @@
       "version": "1.0.0-rc2-3002702"
     },
     "System.Reflection": "4.1.0-*",
-    "Npgsql": "3.1.4"
+    "Npgsql": "3.1.4",
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-rc1-final"
   },
   "description": "The Magazine Website.",
   "frameworks": {

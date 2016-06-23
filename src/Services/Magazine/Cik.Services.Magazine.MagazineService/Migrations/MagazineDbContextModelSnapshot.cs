@@ -1,12 +1,14 @@
 ﻿using System;
-using Cik.Services.Magazine.MagazineService.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Cik.Services.Magazine.MagazineService.Repository;
 
 namespace Cik.Services.Magazine.MagazineService.Migrations
 {
-    [DbContext(typeof (MagazineDbContext))]
-    internal class MagazineDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MagazineDbContext))]
+    partial class MagazineDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -14,16 +16,26 @@ namespace Cik.Services.Magazine.MagazineService.Migrations
                 .HasAnnotation("ProductVersion", "1.0.0-rc2-20901");
 
             modelBuilder.Entity("Cik.Services.Magazine.MagazineService.Model.Category", b =>
-            {
-                b.Property<Guid>("Id")
-                    .ValueGeneratedOnAdd();
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
-                b.Property<string>("Name");
+                    b.Property<int>("AggregateStatus");
 
-                b.HasKey("Id");
+                    b.Property<string>("CreatedBy");
 
-                b.ToTable("Categories");
-            });
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
         }
     }
 }

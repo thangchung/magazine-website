@@ -1,4 +1,6 @@
-﻿using Cik.Services.Magazine.MagazineService.Model;
+﻿using System;
+using System.Linq;
+using Cik.Services.Magazine.MagazineService.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.Repository
@@ -20,6 +22,30 @@ namespace Cik.Services.Magazine.MagazineService.Repository
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().ToTable("Categories");
+        }
+
+        public override int SaveChanges()
+        {
+            ChangeTracker.DetectChanges();
+
+            var entries = ChangeTracker.Entries<Category>()
+                .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+
+            foreach (var entry in entries)
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property("CreatedDate").CurrentValue = DateTime.UtcNow;
+                    entry.Property("CreatedBy").CurrentValue = "admin";
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entry.Property("ModifiedDate").CurrentValue = DateTime.UtcNow;
+                    entry.Property("ModifiedBy").CurrentValue = "admin";
+                }
+            }
+
+            return base.SaveChanges();
         }
     }
 }
