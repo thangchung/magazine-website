@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cik.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Services.Magazine.MagazineService.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.QueryModel
@@ -32,7 +31,8 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
                         Name = x.Name,
                         CreatedBy = x.CreatedBy,
                         CreatedDate = x.CreatedDate
-                    }).FirstAsync();
+                    })
+                .FirstAsync();
             return await dbItem;
         }
 
@@ -40,11 +40,12 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
         {
             var categories = _dbContext
                 .Categories
-                .Select(x => new CategoryDto
-                {
-                    Id = x.Id,
-                    Name = x.Name
-                })
+                .Select(x =>
+                    new CategoryDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name
+                    })
                 .ToListAsync();
             return await categories;
         }

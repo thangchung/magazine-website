@@ -2,9 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Cik.Domain;
-using Cik.Services.Magazine.MagazineService.Model;
 
-namespace Cik.Services.Magazine.MagazineService.Repository
+namespace Cik.Services.Magazine.MagazineService.Model
 {
     public static class MagazineDbContextExtensions
     {

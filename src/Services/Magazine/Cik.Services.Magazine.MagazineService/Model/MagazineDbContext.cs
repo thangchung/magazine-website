@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Cik.Services.Magazine.MagazineService.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cik.Services.Magazine.MagazineService.Repository
+namespace Cik.Services.Magazine.MagazineService.Model
 {
     public class MagazineDbContext : DbContext
     {

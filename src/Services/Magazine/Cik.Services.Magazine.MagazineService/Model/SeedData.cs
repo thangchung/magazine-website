@@ -10,7 +10,7 @@ namespace Cik.Services.Magazine.MagazineService.Model
 {
     public class SeedData
     {
-        public static async Task InitializeMusicStoreDatabaseAsync(IServiceProvider serviceProvider,
+        public static async Task InitializeMagazineDatabaseAsync(IServiceProvider serviceProvider,
             bool createUsers = true)
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())

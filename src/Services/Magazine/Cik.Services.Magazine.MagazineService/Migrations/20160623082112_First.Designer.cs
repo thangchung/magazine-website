@@ -1,4 +1,5 @@
 ﻿using System;
+using Cik.Services.Magazine.MagazineService.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;

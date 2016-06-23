@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System.Linq;
 
-namespace Cik.Services.Magazine.MagazineService.Repository
+namespace Cik.Services.Magazine.MagazineService.Model
 {
     public static class DbContextExtensions
     {

@@ -57,7 +57,7 @@ namespace Cik.Services.Magazine.MagazineService
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
-                SeedData.InitializeMusicStoreDatabaseAsync(app.ApplicationServices).Wait();
+                SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
             }
 
             app.UseMvc();

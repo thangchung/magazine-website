@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cik.Services.Magazine.MagazineService.Controllers
 {
-    [Route("api/ping")]
+    [Route("ping")]
     public class PingController : Controller
     {
         [HttpGet]
