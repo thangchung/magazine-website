@@ -3,9 +3,9 @@
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
-    "debugType": "portable" 
-  }, 
-  "copyright": "2016 by Thang Chung",
+    "debugType": "portable"
+  },
+  "copyright": "© ThangChung, 2016",
   "dependencies": {
     "Autofac": "4.0.0-rc2-240",
     "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",

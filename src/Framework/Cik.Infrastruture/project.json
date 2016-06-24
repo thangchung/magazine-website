@@ -14,7 +14,7 @@
   "description": "The Magazine Website.",
   "version": "1.0.0-*",
   "title": "The Magazine Website",
-  "copyright": "2016 by Thang Chung",
+  "copyright": "© ThangChung, 2016",
 
   "dependencies": {
     "Cik.Domain": "1.0.0-*",

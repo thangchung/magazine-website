@@ -10,7 +10,13 @@ Clone the repo using Git:
 
 `git clone https://github.com/thangchung/magazine-website.git`
 
-## Build
+## Database
+
+`docker pull postgres:9.6`
+
+`docker run --name magazine_db -p 5432:5432 -e POSTGRES_DB=magazine_db -e POSTGRES_USER=magazine_dba -e POSTGRES_PASSWORD=Passw0rd -d postgres:9.6`
+
+## Build on Development Environment
 
 `dotnet restore`
 
@@ -18,27 +24,15 @@ Clone the repo using Git:
 
 `dotnet run`
 
-## Docker
+## Build on Production Environment (docker)
 
-`docker build -f Dockerfile.CategoryService -t tc/category_service .`
+`docker build -f Dockerfile.MagazineService -t thangchung/magazine_service .`
 
-`docker run -d -p 5000:5000 -t tc/category_service`
+`docker run -d -p 5000:5000 -t thangchung/magazine_service`
 
-At the moment, we have to exec to the container to install sqlite version due to some bugs in microsoft/dotnet image
+ ## Build on Production Environment (docker-compose)
 
-`docker exec -it <container id> /bin/bash`
-
-`apt-get update`
-
-`apt-get install sqlite3 libsqlite3-dev`
-
- then re-start container again  
-
-## Database
-
-`docker pull postgres:9.6`
-
-`docker run --name magazine_db -p 5432:5432 -e POSTGRES_DB=magazine_db -e POSTGRES_USER=magazine_dba -e POSTGRES_PASSWORD=Passw0rd -d postgres:9.6`
+`docker-compose up -d` or `docker-compose up --build` for re-build a package. 
 
 # Versioning
 

@@ -14,7 +14,7 @@
   "description": "The library to work with Consul, will be used by Magazine microservices.",
   "version": "1.0.0-*",
   "title": "The library to work with Consul",
-  "copyright": "2016 by Thang Chung",
+  "copyright": "© ThangChung, 2016",
 
   "dependencies": {
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc3-21125",
