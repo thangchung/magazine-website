@@ -1,4 +1,4 @@
-# Magazine Website (stand for Magazine Website + Application)
+# Magazine Website
 
 Coming soon...
 
@@ -24,13 +24,13 @@ Clone the repo using Git:
 
 `dotnet run`
 
-## Build on Production Environment (docker)
+## Build each service on the Production Environment (docker)
 
 `docker build -f Dockerfile.MagazineService -t thangchung/magazine_service .`
 
 `docker run -d -p 5000:5000 -t thangchung/magazine_service`
 
- ## Build on Production Environment (docker-compose)
+## Build the whole solution on the Production Environment (docker-compose)
 
 `docker-compose up -d` or `docker-compose up --build` for re-build a package. 
 
