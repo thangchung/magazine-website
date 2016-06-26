@@ -12,50 +12,55 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
     [Route("api/categories")]
     public class CategoryController : Controller
     {
-        private readonly CategoryQueryModelFinder _categoryQuery;
-        private readonly ICommandHandler _commandHandler;
+        private readonly IQueryModelFinder<CategoryDto> _queryFinder;
+        private readonly ICommandHandler _commandBus;
 
         public CategoryController(
-            ICommandHandler commandHandler,
-            CategoryQueryModelFinder categoryQuery)
+            ICommandHandler commandBus,
+            IQueryModelFinder<CategoryDto> queryFinder)
         {
-            Guard.NotNull(commandHandler);
-            Guard.NotNull(categoryQuery);
+            Guard.NotNull(commandBus);
+            Guard.NotNull(queryFinder);
 
-            _commandHandler = commandHandler;
-            _categoryQuery = categoryQuery;
+            _commandBus = commandBus;
+            _queryFinder = queryFinder;
         }
 
         [HttpGet]
         [Route("")]
         public async Task<IList<CategoryDto>> Get()
         {
-            return await _categoryQuery.Query();
+            return await _queryFinder.Query();
         }
 
         [HttpGet("{id}")]
         public async Task<CategoryDto> Get(Guid id)
         {
-            return await _categoryQuery.Find(id);
+            return await _queryFinder.Find(id);
         }
 
         [HttpPost]
-        public Guid Post([FromBody] CreateCategoryCommand command)
+        public void Post([FromBody] CreateCategoryCommand command)
         {
             var newGuid = Guid.NewGuid();
             command.Id = newGuid;
-            _commandHandler.Send(command);
-            return newGuid;
+            _commandBus.Send(command);
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put([FromBody] EditCategoryCommand command)
         {
+            Guard.NotNullOrEmpty(command.Id.ToString());
+
+            _commandBus.Send(command);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            Guard.NotNullOrEmpty(id.ToString());
+            var command = new DeleteCategoryCommand {Id = id};
+            _commandBus.Send(command);
         }
     }
 }

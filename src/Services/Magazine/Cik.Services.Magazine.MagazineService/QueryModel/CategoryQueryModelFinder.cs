@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.QueryModel
 {
-    public class CategoryQueryModelFinder : IQueryModelFinder
+    public class CategoryQueryModelFinder : IQueryModelFinder<CategoryDto>
     {
         private readonly MagazineDbContext _dbContext;
 

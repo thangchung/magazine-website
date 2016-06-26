@@ -7,7 +7,6 @@ using Cik.Services.Magazine.MagazineService.Extensions;
 using Cik.Services.Magazine.MagazineService.Model;
 using Cik.Services.Magazine.MagazineService.QueryModel;
 using Cik.Services.Magazine.MagazineService.Repository;
-using Cik.Services.Magazine.MagazineService.Service;
 
 namespace Cik.Services.Magazine.MagazineService
 {
@@ -24,7 +23,6 @@ namespace Cik.Services.Magazine.MagazineService
             builder.RegisterType<CategoryRepository>()
                 .As<IRepository<Category, Guid>>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<CategoryService>().As<ICategoryService>();
             builder.RegisterCommandHandlerWith(typeof (CreateCategoryCommand));
             builder.Register(ctx =>
             {
@@ -35,7 +33,7 @@ namespace Cik.Services.Magazine.MagazineService
 
             // register query model
             builder.RegisterType<CategoryQueryModelFinder>()
-                .AsSelf()
+                .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
         }
     }
