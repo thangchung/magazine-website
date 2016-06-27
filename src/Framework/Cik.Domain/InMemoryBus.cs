@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Cik.Domain
 {
-    public class InMemoryBus : IDomainEventPublisher, ICommandHandler
+    public class InMemoryBus : IDomainEventPublisher, ICommandHandler, IHandlerRegistrar
     {
         private readonly Dictionary<Type, List<Action<IMessage>>> _routes =
             new Dictionary<Type, List<Action<IMessage>>>();
@@ -49,6 +49,19 @@ namespace Cik.Domain
             }
 
             handlers.Add(x => handler((T) x));
+        }
+
+        public void RegisterHandler(Type message, Action<Command> handler)
+        {
+            List<Action<IMessage>> handlers;
+
+            if (!_routes.TryGetValue(message, out handlers))
+            {
+                handlers = new List<Action<IMessage>>();
+                _routes.Add(message, handlers);
+            }
+
+            handlers.Add(x=> handler(x as Command));
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Cik.Domain;
+using Cik.Services.Magazine.MagazineService.Extensions;
 using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.QueryModel;
 using Cik.Services.Magazine.MagazineService.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,10 +44,22 @@ namespace Cik.Services.Magazine.MagazineService
             services.AddMvc();
 
             // Autofac container
-            var containerBuilder = new ContainerBuilder();
-            containerBuilder.RegisterModule<RegisteredModule>();
-            containerBuilder.Populate(services);
-            var container = containerBuilder.Build();
+            var builder = new ContainerBuilder();
+            builder.RegisterType<MagazineDbContext>().AsSelf().SingleInstance();
+            builder.RegisterType<CategoryRepository>()
+                .As<IRepository<Category, Guid>>()
+                .InstancePerLifetimeScope();
+            builder.RegisterInstance(new InMemoryBus()).SingleInstance();
+            builder.Register(x => x.Resolve<InMemoryBus>()).As<ICommandHandler>();
+            builder.Register(x => x.Resolve<InMemoryBus>()).As<IDomainEventPublisher>();
+            builder.Register(x => x.Resolve<InMemoryBus>()).As<IHandlerRegistrar>();
+            builder.RegisterType<CategoryQueryModelFinder>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterCommandHandlers();
+            builder.Populate(services);
+
+            // build up the container
+            var container = builder.Build();
+            container.RegisterHandlers(typeof (Startup));
             return container.Resolve<IServiceProvider>();
         }
 

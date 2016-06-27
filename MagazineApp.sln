@@ -33,6 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceDiscovery", "Service
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.ServiceDiscovery", "src\Services\ServiceDiscovery\Cik.ServiceDiscovery\Cik.ServiceDiscovery.xproj", "{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{FF596863-C582-4177-B39A-D65A6C76D8E5}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Services.Auth.AuthService", "src\Services\Auth\Cik.Services.Auth.AuthService\Cik.Services.Auth.AuthService.xproj", "{9944ED3D-BED9-41C2-A9CE-708AF7DA4F6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9944ED3D-BED9-41C2-A9CE-708AF7DA4F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9944ED3D-BED9-41C2-A9CE-708AF7DA4F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9944ED3D-BED9-41C2-A9CE-708AF7DA4F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9944ED3D-BED9-41C2-A9CE-708AF7DA4F6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +77,7 @@ Global
 		{8BCFDD8E-B9B5-42F3-9F22-8AE63330AE99} = {BEEB336E-56B1-4025-BC4E-104531299EC3}
 		{8D1F7580-2AFD-40B9-9C30-2DCFAA07FD2E} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
 		{7ABAA95B-EA19-4FF3-BED4-C5023A76C1D2} = {8D1F7580-2AFD-40B9-9C30-2DCFAA07FD2E}
+		{FF596863-C582-4177-B39A-D65A6C76D8E5} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
+		{9944ED3D-BED9-41C2-A9CE-708AF7DA4F6D} = {FF596863-C582-4177-B39A-D65A6C76D8E5}
 	EndGlobalSection
 EndGlobal

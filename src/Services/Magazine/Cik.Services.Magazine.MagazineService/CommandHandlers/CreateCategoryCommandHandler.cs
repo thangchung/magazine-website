@@ -5,11 +5,6 @@ using Cik.Services.Magazine.MagazineService.Model;
 
 namespace Cik.Services.Magazine.MagazineService.CommandHandlers
 {
-    public interface IHandleCommand<in T> where T : Domain.Command
-    {
-        void Handle(T args);
-    }
-
     public class CreateCategoryCommandHandler : IHandleCommand<CreateCategoryCommand>
     {
         private readonly IRepository<Category, Guid> _categoryRepository;
