@@ -7,7 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE85D63E-A93
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{019BF571-4D94-4DF3-810B-FE0AF6ACD01C}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		global.json = global.json
+		NuGet.config = NuGet.config
 		README.md = README.md
 	EndProjectSection
 EndProject
