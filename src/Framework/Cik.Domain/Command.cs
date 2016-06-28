@@ -1,6 +1,6 @@
 ﻿namespace Cik.Domain
 {
-    public class Command : IMessage
-    {
-    }
+  public class Command : IMessage
+  {
+  }
 }

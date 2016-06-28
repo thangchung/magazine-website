@@ -1,7 +1,7 @@
 {
   "packOptions": {
     "summary": "The Magazine Website.",
-    "tags": [ "magazine", "microservices", "reactive" ],
+    "tags": [ "magazine", "microservices" ],
     "owners": [ "thangchung" ],
     "projectUrl": "https://github.com/thangchung/magazine-website",
     "licenseUrl": "",
@@ -17,18 +17,14 @@
   "copyright": "© ThangChung, 2016",
 
   "dependencies": {
-    "Microsoft.EntityFrameworkCore": "1.0.0-rc2-final",
-    "System.Threading.ThreadPool": "4.0.10-rc2-24027"
+    "Microsoft.EntityFrameworkCore": "1.0.0",
+    "System.Threading.ThreadPool": "4.0.10"
   },
 
   "frameworks": {
     "netcoreapp1.0": {
-      "imports": [
-        "dnxcore50",
-        "portable-net451+win8"
-      ],
       "dependencies": {
-        "NETStandard.Library": "1.5.0-rc2-24027"
+        "NETStandard.Library": "1.6.0"
       }
     }
   }

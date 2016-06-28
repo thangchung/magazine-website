@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cik.Services.Magazine.MagazineService.Controllers
 {
-    [Route("ping")]
-    public class PingController : Controller
+  [Route("ping")]
+  public class PingController : Controller
+  {
+    [HttpGet]
+    [Route("")]
+    public IEnumerable<string> Get()
     {
-        [HttpGet]
-        [Route("")]
-        public IEnumerable<string> Get()
-        {
-            return new[] {"pong!!!"};
-        }
+      return new[] {"pong!!!"};
     }
+  }
 }

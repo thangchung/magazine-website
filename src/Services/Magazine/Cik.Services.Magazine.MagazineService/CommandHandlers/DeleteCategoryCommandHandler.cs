@@ -5,19 +5,19 @@ using Cik.Services.Magazine.MagazineService.Model;
 
 namespace Cik.Services.Magazine.MagazineService.CommandHandlers
 {
-    public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
+  public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
+  {
+    private readonly IRepository<Category, Guid> _categoryRepository;
+
+    public DeleteCategoryCommandHandler(IRepository<Category, Guid> repo)
     {
-        private readonly IRepository<Category, Guid> _categoryRepository;
+      Guard.NotNull(repo);
 
-        public DeleteCategoryCommandHandler(IRepository<Category, Guid> repo)
-        {
-            Guard.NotNull(repo);
-
-            _categoryRepository = repo;
-        }
-
-        public void Handle(DeleteCategoryCommand message)
-        {
-        }
+      _categoryRepository = repo;
     }
+
+    public void Handle(DeleteCategoryCommand message)
+    {
+    }
+  }
 }

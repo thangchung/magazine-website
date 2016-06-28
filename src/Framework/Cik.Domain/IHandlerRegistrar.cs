@@ -2,8 +2,8 @@
 
 namespace Cik.Domain
 {
-    public interface IHandlerRegistrar
-    {
-        void RegisterHandler<T>(Action<T> handler) where T : IMessage;
-    }
+  public interface IHandlerRegistrar
+  {
+    void RegisterHandler<T>(Action<T> handler) where T : IMessage;
+  }
 }

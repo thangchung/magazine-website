@@ -2,13 +2,13 @@
 
 namespace Cik.Domain
 {
-    public class DomainOperationException : Exception
+  public class DomainOperationException : Exception
+  {
+    public DomainOperationException(AggregateId aggregateId, string message)
     {
-        public DomainOperationException(AggregateId aggregateId, string message)
-        {
-            AggregateId = aggregateId;
-        }
-
-        private AggregateId AggregateId { get; }
+      AggregateId = aggregateId;
     }
+
+    private AggregateId AggregateId { get; }
+  }
 }

@@ -2,8 +2,8 @@
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {
-    public class Category : AggregateRootBase
-    {
-        public string Name { get; set; }
-    }
+  public class Category : AggregateRootBase
+  {
+    public string Name { get; set; }
+  }
 }

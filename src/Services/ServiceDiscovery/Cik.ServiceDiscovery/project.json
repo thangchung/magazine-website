@@ -17,22 +17,15 @@
   "copyright": "© ThangChung, 2016",
 
   "dependencies": {
-    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc3-21125",
-    "JetBrains.Annotations": "10.1.4",
-    "NETStandard.Library": "1.5.0-rc2-24027",
-    "Microsoft.Extensions.Configuration": "1.0.0-rc2-final",
-    "System.Runtime.Serialization.Json": "4.0.2",
-    "Newtonsoft.Json": "8.0.3",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
-    "Microphone.Core": "0.5.8"
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+    "Microsoft.Extensions.Configuration": "1.0.0",
+    "System.Runtime.Serialization.Json": "4.0.3-beta-24228-01",
+    "Newtonsoft.Json": "9.0.1",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0"
   },
 
   "frameworks": {
-    "netcoreapp1.0": {
-      "imports": [
-        "dnxcore50",
-        "portable-net451+win8"
-      ]
+    "netstandard1.6": {
     }
   }
 }

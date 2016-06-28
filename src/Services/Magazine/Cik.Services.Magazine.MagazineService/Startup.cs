@@ -15,67 +15,76 @@ using Microsoft.Extensions.Logging;
 
 namespace Cik.Services.Magazine.MagazineService
 {
-    public class Startup
+  public class Startup
+  {
+    public Startup(IHostingEnvironment env)
     {
-        public Startup(IHostingEnvironment env)
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
-
-        public IConfigurationRoot Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
-        {
-            // Use a PostgreSQL database
-            var sqlConnectionString = Configuration["DataAccessPostgreSqlProvider:ConnectionString"];
-            services.AddDbContext<MagazineDbContext>(options =>
-                options.UseNpgsql(
-                    sqlConnectionString,
-                    b => b.MigrationsAssembly("Cik.Services.Magazine.MagazineService")
-                    ));
-
-            // Add framework services.
-            services.AddMvc();
-
-            // Autofac container
-            var builder = new ContainerBuilder();
-            builder.RegisterType<MagazineDbContext>().AsSelf().SingleInstance();
-            builder.RegisterType<CategoryRepository>()
-                .As<IRepository<Category, Guid>>()
-                .InstancePerLifetimeScope();
-            builder.RegisterInstance(new InMemoryBus()).SingleInstance();
-            builder.Register(x => x.Resolve<InMemoryBus>()).As<ICommandHandler>();
-            builder.Register(x => x.Resolve<InMemoryBus>()).As<IDomainEventPublisher>();
-            builder.Register(x => x.Resolve<InMemoryBus>()).As<IHandlerRegistrar>();
-            builder.RegisterType<CategoryQueryModelFinder>().AsImplementedInterfaces().InstancePerLifetimeScope();
-            builder.RegisterCommandHandlers();
-            builder.Populate(services);
-
-            // build up the container
-            var container = builder.Build();
-            container.RegisterHandlers(typeof (Startup));
-            return container.Resolve<IServiceProvider>();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsDevelopment())
-            {
-                app.UseBrowserLink();
-                SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
-            }
-
-            app.UseMvc();
-        }
+      var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", true, true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
+        .AddEnvironmentVariables();
+      Configuration = builder.Build();
     }
+
+    public IConfigurationRoot Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public IServiceProvider ConfigureServices(IServiceCollection services)
+    {
+      // TODO: temporary use In-Memory for now due to the issue at https://github.com/npgsql/npgsql/issues/1171
+      // Use a PostgreSQL database
+      /*var sqlConnectionString = Configuration["DataAccessPostgreSqlProvider:ConnectionString"];
+      services.AddDbContext<MagazineDbContext>(options =>
+          options.UseNpgsql(
+              sqlConnectionString,
+              b => b.MigrationsAssembly("Cik.Services.Magazine.MagazineService")
+              )); */
+
+      // Create options telling the context to use an
+      // InMemory database and the service provider.
+      services.AddDbContext<MagazineDbContext>(options =>
+        options.UseInMemoryDatabase()
+        );
+
+      // Add framework services.
+      services.AddMvc();
+
+      // Autofac container
+      var builder = new ContainerBuilder();
+      builder.RegisterType<MagazineDbContext>().AsSelf().SingleInstance();
+      builder.RegisterType<CategoryRepository>()
+        .As<IRepository<Category, Guid>>()
+        .InstancePerLifetimeScope();
+      builder.RegisterInstance(new InMemoryBus()).SingleInstance();
+      builder.Register(x => x.Resolve<InMemoryBus>()).As<ICommandHandler>();
+      builder.Register(x => x.Resolve<InMemoryBus>()).As<IDomainEventPublisher>();
+      builder.Register(x => x.Resolve<InMemoryBus>()).As<IHandlerRegistrar>();
+      builder.RegisterType<CategoryQueryModelFinder>().AsImplementedInterfaces().InstancePerLifetimeScope();
+      builder.RegisterCommandHandlers();
+      builder.Populate(services);
+
+      // build up the container
+      var container = builder.Build();
+      container.RegisterHandlers(typeof (Startup));
+      return container.Resolve<IServiceProvider>();
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+    {
+      loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+      loggerFactory.AddDebug();
+
+      if (env.IsDevelopment())
+      {
+        app.UseBrowserLink();
+
+        // TODO: comment out this because the PostgreSQL issue 
+        // SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
+      }
+
+      app.UseMvc();
+    }
+  }
 }

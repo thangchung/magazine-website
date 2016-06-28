@@ -1,58 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Cik.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.QueryModel
 {
-    public class CategoryQueryModelFinder : IQueryModelFinder<CategoryDto>
+  public class CategoryQueryModelFinder : IQueryModelFinder<CategoryDto>
+  {
+    private readonly MagazineDbContext _dbContext;
+
+    public CategoryQueryModelFinder(MagazineDbContext dbContext)
     {
-        private readonly MagazineDbContext _dbContext;
+      Guard.NotNull(dbContext);
 
-        public CategoryQueryModelFinder(MagazineDbContext dbContext)
-        {
-            Guard.NotNull(dbContext);
+      _dbContext = dbContext;
+    }
 
-            _dbContext = dbContext;
-        }
+    public async Task<CategoryDto> Find(Guid categoryId)
+    {
+      var dbItem = _dbContext
+        .Categories
+        .Where(x => x.Id == categoryId)
+        .Select(x =>
+          new CategoryDto
+          {
+            Id = x.Id,
+            Name = x.Name,
+            CreatedBy = x.CreatedBy,
+            CreatedDate = x.CreatedDate
+          })
+        .FirstAsync();
+      return await dbItem;
+    }
 
-        public async Task<CategoryDto> Find(Guid categoryId)
-        {
-            var dbItem = _dbContext
-                .Categories
-                .Where(x => x.Id == categoryId)
-                .Select(x =>
-                    new CategoryDto
-                    {
-                        Id = x.Id,
-                        Name = x.Name,
-                        CreatedBy = x.CreatedBy,
-                        CreatedDate = x.CreatedDate
-                    })
-                .FirstAsync();
-            return await dbItem;
-        }
+    public async Task<List<CategoryDto>> Query()
+    {
+      var categories = _dbContext
+        .Categories
+        .Select(x =>
+          new CategoryDto
+          {
+            Id = x.Id,
+            Name = x.Name
+          })
+        .ToListAsync();
+      return await categories;
+    }
 
-        public async Task<List<CategoryDto>> Query()
-        {
-            var categories = _dbContext
-                .Categories
-                .Select(x =>
-                    new CategoryDto
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    })
-                .ToListAsync();
-            return await categories;
-        }
+    #region "reactive"
 
-        #region "reactive"
-
-        /*public IObservable<CategoryDto> Find(Guid categoryId)
+    /*public IObservable<CategoryDto> Find(Guid categoryId)
         {
             var dbItem = _dbContext
                 .Categories
@@ -81,6 +81,6 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
                 });
         } */
 
-        #endregion
-    }
+    #endregion
+  }
 }

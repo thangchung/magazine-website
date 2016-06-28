@@ -1,6 +1,6 @@
 ﻿namespace Cik.Domain
 {
-    public interface IMessage
-    {
-    }
+  public interface IMessage
+  {
+  }
 }

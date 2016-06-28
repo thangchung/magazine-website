@@ -1,58 +1,8 @@
 {
   "authors": [ "Thang Chung" ],
-  "buildOptions": {
-    "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-    "debugType": "portable"
-  },
-  "copyright": "© ThangChung, 2016",
-  "dependencies": {
-    "Autofac": "4.0.0-rc2-240",
-    "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
-    "Cik.Domain": "1.0.0-*",
-    "Cik.Infrastruture": "1.0.0-*",
-    "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc.ViewFeatures": "6.0.0-rc1-final",
-    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0-rc2-final",
-    "Microsoft.EntityFrameworkCore.Relational": "1.0.0-rc2-final",
-    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0-rc2-release1",
-    "Microsoft.EntityFrameworkCore.Tools": {
-      "version": "1.0.0-preview1-*",
-      "type": "build"
-    },
-    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.0-rc2-3002702"
-    },
-    "System.Reflection": "4.1.0-*",
-    "Npgsql": "3.1.4",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
-    "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-rc1-final"
-  },
-  "description": "The Magazine Website.",
-  "frameworks": {
-    "netcoreapp1.0": {
-      "dependencies": {
-      },
-      "imports": [
-        "dnxcore50",
-        "portable-net451+win8"
-      ]
-    }
-  },
   "packOptions": {
     "summary": "The Magazine Website.",
-    "tags": [ "magazine", "microservices", "reactive" ],
+    "tags": [ "magazine", "microservices" ],
     "owners": [ "thangchung" ],
     "projectUrl": "https://github.com/thangchung/magazine-website",
     "licenseUrl": "",
@@ -60,6 +10,48 @@
       "type": "git",
       "url": "https://github.com/thangchung/magazine-website"
     }
+  },
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true,
+    "debugType": "portable"
+  },
+  "copyright": "© ThangChung, 2016",
+  "version": "1.0.0-*",
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
+    },
+    "Autofac": "4.0.0-rc2-240",
+    "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
+    "Cik.Domain": "1.0.0-*",
+    "Cik.Infrastruture": "1.0.0-*",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
+    "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
+    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0-rc2-release1",
+    "Microsoft.EntityFrameworkCore.InMemory": "1.0.0",
+    "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.Logging": "1.0.0",
+    "Microsoft.Extensions.Logging.Console": "1.0.0",
+    "Microsoft.Extensions.Logging.Debug": "1.0.0",
+    "System.Reflection": "4.1.0",
+    "Npgsql": "3.1.4",
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
+  },
+  "description": "The Magazine Website.",
+  "frameworks": {
+    "netcoreapp1.0": { }
+  },
+  "commands": {
+    "web": "Microsoft.AspNet.Server.Kestrel --server.urls=http://0.0.0.0:5000"
   },
   "publishOptions": {
     "include": [
@@ -70,7 +62,7 @@
     ]
   },
   "runtimeOptions": {
-    "gcServer": true
+    "System.GC.Server": true
   },
   "scripts": {
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
@@ -78,16 +70,10 @@
   "title": "The Magazine Website",
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
-      "version": "1.0.0-preview1-final",
-      "imports": "portable-net45+win8+dnxcore50"
+      "version": "1.0.0-preview2-final"
     },
     "Microsoft.EntityFrameworkCore.Tools": {
-      "version": "1.0.0-preview1-*",
-      "imports": [
-        "dnxcore50",
-        "portable-net45+win8"
-      ]
+      "version": "1.0.0-preview2-final"
     }
-  },
-  "version": "1.0.0-*"
+  }
 }

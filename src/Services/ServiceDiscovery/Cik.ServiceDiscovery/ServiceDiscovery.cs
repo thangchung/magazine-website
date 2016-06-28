@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿/*using System.Threading.Tasks;
 using Microphone.Core;
 using Microphone.Core.ClusterProviders;
 using Microsoft.Extensions.Configuration;
@@ -47,4 +47,5 @@ namespace Cik.ServiceDiscovery
             return await Cluster.KeyValueGetAsync<T>(key);
         }
     }
-}
+} */
+
