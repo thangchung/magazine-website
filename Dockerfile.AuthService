@@ -1,0 +1,22 @@
+FROM microsoft/dotnet
+
+MAINTAINER Thang Chung "thangchung@ymail.com"
+
+# Set environment variables
+# ENV ASPNETCORE_SERVER.URLS="http://*:5000"
+ENV ASPNETCORE_ENVIRONMENT="Development"
+
+# Copy files to app directory
+COPY . /app
+
+# Set working directory
+WORKDIR /app/src/Services/Auth/Cik.Services.Auth.AuthService
+
+# Restore NuGet packages
+RUN ["dotnet", "restore", "--configfile", "/app/NuGet.config"]
+
+# Open up port
+EXPOSE 8888
+
+# Run the app
+ENTRYPOINT ["dotnet", "run"]

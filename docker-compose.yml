@@ -39,6 +39,19 @@ services:
     depends_on:
       - consul1
     command: -internal consul://consul1:8500
+  auth_service:
+    image: "thangchung/auth_service"
+    build:
+      context: .
+      dockerfile: Dockerfile.AuthService 
+    hostname: auth_service
+    ports:
+      - "8888:8888"
+    environment:
+      SERVICE_NAME: auth_service
+      SERVICE_TAGS: magazine
+    dns: 192.168.99.100
+    dns_search: service.consul
   magazine_db:
     image: "postgres:9.6"
     hostname: "postgres_db"

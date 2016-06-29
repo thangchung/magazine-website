@@ -13,7 +13,7 @@ COPY . /app
 WORKDIR /app/src/Services/Magazine/Cik.Services.Magazine.MagazineService
 
 # Restore NuGet packages
-RUN ["dotnet", "restore", "--configfile", "/app/src/Services/Magazine/Cik.Services.Magazine.MagazineService/NuGet.config"]
+RUN ["dotnet", "restore", "--configfile", "/app/NuGet.config"]
 
 # Open up port
 EXPOSE 5000
