@@ -11,21 +11,26 @@ namespace Cik.Services.Auth.AuthService.Configuration
       {
         new Client
         {
+          Enabled = true,
+          AccessTokenType = AccessTokenType.Jwt,
           ClientName = "api_gateway",
           ClientId = "api_gateway",
-          AllowedGrantTypes = GrantTypes.Implicit,
-          AllowAccessTokensViaBrowser = true,
+          ClientSecrets = new List<Secret>
+          {
+            new Secret("secret".Sha256())
+          },
+          AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
           RedirectUris = new List<string>
           {
-            "https://localhost:8888/authorized"
+            "http://localhost:5000/authorize"
           },
           PostLogoutRedirectUris = new List<string>
           {
-            "https://localhost:8888/unauthorized.html"
+            "http://localhost:5000/unauthorized.html"
           },
           AllowedCorsOrigins = new List<string>
           {
-            "https://localhost:8888"
+            "http://localhost:5000"
           },
           AllowedScopes = new List<string>
           {
@@ -33,7 +38,7 @@ namespace Cik.Services.Auth.AuthService.Configuration
             "email",
             "profile",
             "role",
-            "data.category.records"
+            "data_category_records"
           }
         }
       };

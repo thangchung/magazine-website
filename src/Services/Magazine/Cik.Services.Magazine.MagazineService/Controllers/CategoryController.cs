@@ -30,21 +30,21 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
 
     [HttpGet]
     [Route("")]
-    [Authorize("data.category.records")]
+    [Authorize("data_category_records_user")]
     public async Task<IList<CategoryDto>> Get()
     {
       return await _queryFinder.Query();
     }
 
     [HttpGet("{id}")]
-    [Authorize("data.category.records")]
+    [Authorize("data_category_records_user")]
     public async Task<CategoryDto> Get(Guid id)
     {
       return await _queryFinder.Find(id);
     }
 
     [HttpPost]
-    [Authorize("data.category.records.user")]
+    [Authorize("data_category_records_admin")]
     public void Post([FromBody] CreateCategoryCommand command)
     {
       var newGuid = Guid.NewGuid();
@@ -53,7 +53,7 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
     }
 
     [HttpPut]
-    [Authorize("data.category.records.user")]
+    [Authorize("data_category_records_admin")]
     public void Put([FromBody] EditCategoryCommand command)
     {
       Guard.NotNullOrEmpty(command.Id.ToString());
@@ -62,7 +62,7 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
     }
 
     [HttpDelete("{id}")]
-    [Authorize("data.category.records.user")]
+    [Authorize("data_category_records_admin")]
     public void Delete(Guid id)
     {
       Guard.NotNullOrEmpty(id.ToString());

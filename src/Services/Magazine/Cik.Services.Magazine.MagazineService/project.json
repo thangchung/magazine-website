@@ -16,7 +16,7 @@
     "preserveCompilationContext": true,
     "debugType": "portable"
   },
-  "copyright": "© ThangChung, 2016",
+  "copyright": "ï¿½ ThangChung, 2016",
   "version": "1.0.0-*",
   "dependencies": {
     "Microsoft.NETCore.App": {
@@ -46,14 +46,13 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "System.IdentityModel.Tokens.Jwt": "5.0.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
-    "Npgsql": "3.1.4"
+    "Npgsql": "3.1.5",
+    "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect": "1.0.0"
   },
   "description": "The Magazine Website.",
   "frameworks": {
     "netcoreapp1.0": { }
-  },
-  "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel --server.urls=http://0.0.0.0:5000"
   },
   "publishOptions": {
     "include": [

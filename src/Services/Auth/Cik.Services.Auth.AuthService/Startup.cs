@@ -12,8 +12,6 @@ namespace Cik.Services.Auth.AuthService
 {
   public class Startup
   {
-    private readonly IHostingEnvironment _environment;
-
     public Startup(IHostingEnvironment env)
     {
       var builder = new ConfigurationBuilder()
@@ -28,7 +26,6 @@ namespace Cik.Services.Auth.AuthService
         builder.AddApplicationInsightsSettings(true);
       }
       Configuration = builder.Build();
-      _environment = env;
     }
 
     public IConfigurationRoot Configuration { get; }

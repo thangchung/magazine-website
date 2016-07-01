@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.IO;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Cik.Domain;
@@ -17,7 +16,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace Cik.Services.Magazine.MagazineService
@@ -51,18 +49,18 @@ namespace Cik.Services.Magazine.MagazineService
 
       var guestPolicy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
-                .RequireClaim("scope", "data.category.records")
+                .RequireClaim("scope", "data_category_records")
                 .Build();
 
       services.AddAuthorization(options =>
       {
-        options.AddPolicy("data.category.records.admin", policyAdmin =>
+        options.AddPolicy("data_category_records_admin", policyAdmin =>
         {
-          policyAdmin.RequireClaim("role", "data.category.records.admin");
+          policyAdmin.RequireClaim("role", "data_category_records_admin");
         });
-        options.AddPolicy("data.category.records.user", policyUser =>
+        options.AddPolicy("data_category_records_user", policyUser =>
         {
-          policyUser.RequireClaim("role", "data.category.records.user");
+          policyUser.RequireClaim("role", "data_category_records_user");
         });
       });
 
@@ -116,6 +114,7 @@ namespace Cik.Services.Magazine.MagazineService
       loggerFactory.AddDebug();
 
       app.UseCors("corsGlobalPolicy");
+      app.UseCookieAuthentication();
 
       if (env.IsDevelopment())
       {

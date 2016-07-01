@@ -18,17 +18,17 @@ namespace Cik.Services.Auth.AuthService.Configuration
         // contain roles of user
         new Scope
         {
-          Name = "data.category.records",
+          Name = "data_category_records",
           DisplayName = "Scope for the data category records resource.",
           Type = ScopeType.Resource,
           ScopeSecrets = new List<Secret>
           {
-            new Secret("data.category.records.secret".Sha256())
+            new Secret("data_category_records_secret".Sha256())
           },
           Claims = new List<ScopeClaim>
           {
             new ScopeClaim("role"),
-            new ScopeClaim("data.category.records")
+            new ScopeClaim("data_category_records")
           }
         }
       };

@@ -13,7 +13,7 @@ namespace Cik.Services.Auth.AuthService.Configuration
       {
         new InMemoryUser
         {
-          Subject = "48421156",
+          Subject = "guest",
           Username = "guest",
           Password = "123456",
           Claims = new[]
@@ -23,12 +23,12 @@ namespace Cik.Services.Auth.AuthService.Configuration
             new Claim(JwtClaimTypes.Email, "thangchung@ymail.com"),
             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
             new Claim(JwtClaimTypes.Role, "guest"),
-            new Claim(JwtClaimTypes.Role, "data.category.records")
+            new Claim(JwtClaimTypes.Role, "data_category_records")
           }
         },
         new InMemoryUser
         {
-          Subject = "48421157",
+          Subject = "admin",
           Username = "admin",
           Password = "123456",
           Claims = new[]
@@ -38,14 +38,14 @@ namespace Cik.Services.Auth.AuthService.Configuration
             new Claim(JwtClaimTypes.Email, "thangchung@ymail.com"),
             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
             new Claim(JwtClaimTypes.Role, "admin"),
-            new Claim(JwtClaimTypes.Role, "data.category.records.admin"),
-            new Claim(JwtClaimTypes.Role, "data.category.records.user"),
-            new Claim(JwtClaimTypes.Role, "data.category.records")
+            new Claim(JwtClaimTypes.Role, "data_category_records_admin"),
+            new Claim(JwtClaimTypes.Role, "data_category_records_user"),
+            new Claim(JwtClaimTypes.Role, "data_category_records")
           }
         },
         new InMemoryUser
         {
-          Subject = "48421158",
+          Subject = "user",
           Username = "user",
           Password = "123456",
           Claims = new[]
@@ -55,8 +55,8 @@ namespace Cik.Services.Auth.AuthService.Configuration
             new Claim(JwtClaimTypes.Email, "thangchung@ymail.com"),
             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
             new Claim(JwtClaimTypes.Role, "user"),
-            new Claim(JwtClaimTypes.Role, "data.category.records.user"),
-            new Claim(JwtClaimTypes.Role, "data.category.records")
+            new Claim(JwtClaimTypes.Role, "data_category_records_user"),
+            new Claim(JwtClaimTypes.Role, "data_category_records")
           }
         }
       };
