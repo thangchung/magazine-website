@@ -13,7 +13,7 @@ namespace Cik.Services.Auth.AuthService
         {
           // reference at https://github.com/aspnet/KestrelHttpServer/blob/dev/samples/SampleApp/Startup.cs
           options.NoDelay = true;
-          options.UseHttps("magazine_server.cer", "");
+          options.UseHttps("magazine_server.pfx", "magazine");
           options.UseConnectionLogging();
         })
         .UseContentRoot(Directory.GetCurrentDirectory())
