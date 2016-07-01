@@ -1,7 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Cik.Services.Auth.AuthService.Configuration;
+using Cik.Services.Auth.AuthService.UI;
+using Cik.Services.Auth.AuthService.UI.Login;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,8 @@ namespace Cik.Services.Auth.AuthService
 {
   public class Startup
   {
+    private readonly IHostingEnvironment _environment;
+
     public Startup(IHostingEnvironment env)
     {
       var builder = new ConfigurationBuilder()
@@ -26,6 +29,7 @@ namespace Cik.Services.Auth.AuthService
         builder.AddApplicationInsightsSettings(true);
       }
       Configuration = builder.Build();
+      _environment = env;
     }
 
     public IConfigurationRoot Configuration { get; }
@@ -33,9 +37,9 @@ namespace Cik.Services.Auth.AuthService
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      var source = File.ReadAllText("magazine_server.b64cert");
-      var certBytes = Convert.FromBase64String(source);
-      var cert = new X509Certificate2(certBytes, "password");
+      var cert = new X509Certificate2(
+        Path.Combine(_environment.ContentRootPath, "magazine_server.pfx"),
+        "magazine");
 
       services.AddIdentityServer()
         .SetSigningCredential(cert)
@@ -48,12 +52,9 @@ namespace Cik.Services.Auth.AuthService
 
       // for the UI
       services
-          .AddMvc()
-          .AddRazorOptions(razor =>
-          {
-            razor.ViewLocationExpanders.Add(new UI.CustomViewLocationExpander());
-          });
-      services.AddTransient<UI.Login.LoginService>();
+        .AddMvc()
+        .AddRazorOptions(razor => { razor.ViewLocationExpanders.Add(new CustomViewLocationExpander()); });
+      services.AddTransient<LoginService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,20 +77,20 @@ namespace Cik.Services.Auth.AuthService
 
       app.UseCookieAuthentication(
         new CookieAuthenticationOptions
-      {
-        AuthenticationScheme = "Temp",
-        AutomaticAuthenticate = false,
-        AutomaticChallenge = false
-      });
+        {
+          AuthenticationScheme = "Temp",
+          AutomaticAuthenticate = false,
+          AutomaticChallenge = false
+        });
 
       app.UseGoogleAuthentication(
         new GoogleOptions
-      {
-        AuthenticationScheme = "Google",
-        SignInScheme = "Temp",
-        ClientId = "434483408261-55tc8n0cs4ff1fe21ea8df2o443v2iuc.apps.googleusercontent.com",
-        ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo"
-      });
+        {
+          AuthenticationScheme = "Google",
+          SignInScheme = "Temp",
+          ClientId = "434483408261-55tc8n0cs4ff1fe21ea8df2o443v2iuc.apps.googleusercontent.com",
+          ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo"
+        });
 
       app.UseIdentityServer();
       app.UseApplicationInsightsExceptionTelemetry();
