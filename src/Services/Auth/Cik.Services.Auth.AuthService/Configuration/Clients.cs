@@ -13,8 +13,40 @@ namespace Cik.Services.Auth.AuthService.Configuration
         {
           Enabled = true,
           AccessTokenType = AccessTokenType.Jwt,
-          ClientName = "api_gateway",
-          ClientId = "api_gateway",
+          ClientName = "magazine_web",
+          ClientId = "magazine_web",
+          ClientSecrets = new List<Secret>
+          {
+            new Secret("magazine_web_secret".Sha256())
+          },
+          AllowedGrantTypes = GrantTypes.Implicit,
+          RedirectUris = new List<string>
+          {
+            "http://localhost/authorize"
+          },
+          PostLogoutRedirectUris = new List<string>
+          {
+            "http://localhost/unauthorized.html"
+          },
+          AllowedCorsOrigins = new List<string>
+          {
+            "http://localhost"
+          },
+          AllowedScopes = new List<string>
+          {
+            "openid",
+            "email",
+            "profile",
+            "role",
+            "data_category_records"
+          }
+        },
+        new Client
+        {
+          Enabled = true,
+          AccessTokenType = AccessTokenType.Jwt,
+          ClientName = "magazine_web_test",
+          ClientId = "magazine_web_test",
           ClientSecrets = new List<Secret>
           {
             new Secret("secret".Sha256())

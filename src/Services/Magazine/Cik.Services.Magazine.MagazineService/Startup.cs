@@ -38,14 +38,14 @@ namespace Cik.Services.Magazine.MagazineService
     public IServiceProvider ConfigureServices(IServiceCollection services)
     {
       //Add Cors support to the service
-      services.AddCors();
+      // services.AddCors();
 
-      var policy = new CorsPolicy();
+      /*var policy = new CorsPolicy();
       policy.Headers.Add("*");
       policy.Methods.Add("*");
       policy.Origins.Add("*");
       policy.SupportsCredentials = true;
-      services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));
+      services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));*/
 
       var guestPolicy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
@@ -113,8 +113,8 @@ namespace Cik.Services.Magazine.MagazineService
       loggerFactory.AddConsole(Configuration.GetSection("Logging"));
       loggerFactory.AddDebug();
 
-      app.UseCors("corsGlobalPolicy");
-      app.UseCookieAuthentication();
+      // app.UseCors("corsGlobalPolicy");
+      // app.UseCookieAuthentication();
 
       if (env.IsDevelopment())
       {
@@ -124,7 +124,7 @@ namespace Cik.Services.Magazine.MagazineService
         // SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
       }
 
-      JwtSecurityTokenHandler.DefaultInboundClaimTypeMap = new Dictionary<string, string>();
+      /*JwtSecurityTokenHandler.DefaultInboundClaimTypeMap = new Dictionary<string, string>();
       var jwtBearerOptions = new JwtBearerOptions()
       {
         Authority = "https://localhost:44307",
@@ -135,7 +135,7 @@ namespace Cik.Services.Magazine.MagazineService
         AutomaticChallenge = true
       };
 
-      app.UseJwtBearerAuthentication(jwtBearerOptions);
+      app.UseJwtBearerAuthentication(jwtBearerOptions);*/
       app.UseMvc();
     }
   }
