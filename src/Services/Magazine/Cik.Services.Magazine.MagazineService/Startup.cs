@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Cik.Domain;
@@ -10,7 +8,6 @@ using Cik.Services.Magazine.MagazineService.QueryModel;
 using Cik.Services.Magazine.MagazineService.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,16 +34,6 @@ namespace Cik.Services.Magazine.MagazineService
     // This method gets called by the runtime. Use this method to add services to the container.
     public IServiceProvider ConfigureServices(IServiceCollection services)
     {
-      //Add Cors support to the service
-      // services.AddCors();
-
-      /*var policy = new CorsPolicy();
-      policy.Headers.Add("*");
-      policy.Methods.Add("*");
-      policy.Origins.Add("*");
-      policy.SupportsCredentials = true;
-      services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));*/
-
       var guestPolicy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
                 .RequireClaim("scope", "data_category_records")
@@ -113,9 +100,6 @@ namespace Cik.Services.Magazine.MagazineService
       loggerFactory.AddConsole(Configuration.GetSection("Logging"));
       loggerFactory.AddDebug();
 
-      // app.UseCors("corsGlobalPolicy");
-      // app.UseCookieAuthentication();
-
       if (env.IsDevelopment())
       {
         app.UseBrowserLink();
@@ -124,18 +108,6 @@ namespace Cik.Services.Magazine.MagazineService
         // SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
       }
 
-      /*JwtSecurityTokenHandler.DefaultInboundClaimTypeMap = new Dictionary<string, string>();
-      var jwtBearerOptions = new JwtBearerOptions()
-      {
-        Authority = "https://localhost:44307",
-        Audience = "https://localhost:44307/resources",
-        AutomaticAuthenticate = true,
-
-        // required if you want to return a 403 and not a 401 for forbidden responses
-        AutomaticChallenge = true
-      };
-
-      app.UseJwtBearerAuthentication(jwtBearerOptions);*/
       app.UseMvc();
     }
   }

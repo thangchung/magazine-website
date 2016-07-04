@@ -14,18 +14,29 @@
   "description": "The library to work with Consul, will be used by Magazine microservices.",
   "version": "1.0.0-*",
   "title": "The library to work with Consul",
-  "copyright": "© ThangChung, 2016",
+  "copyright": "Copyright © ThangChung, 2016",
 
   "dependencies": {
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
     "Microsoft.Extensions.Configuration": "1.0.0",
-    "System.Runtime.Serialization.Json": "4.0.3-beta-24228-01",
+    "System.Runtime.Serialization.Json": "4.0.1",
     "Newtonsoft.Json": "9.0.1",
     "Microsoft.Extensions.Configuration.Json": "1.0.0"
   },
 
   "frameworks": {
+    "net46": {},
     "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ],
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0",
+          "type": "platform"
+        }
+      }
     }
   }
 }

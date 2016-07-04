@@ -1,0 +1,17 @@
+﻿{
+  "hosts": {
+    "gateway": {
+      "urls": "https://*:8080"
+    },
+    "auth": {
+      "urls": "https://*:44307"
+    },
+    "magazineService": {
+      "urls": "http://*:5000"
+    }
+  },
+  "certification": {
+    "file": "magazine_server.pfx",
+    "password": "magazine"
+  }
+}

@@ -14,7 +14,7 @@
   "description": "The Magazine Website.",
   "version": "1.0.0-*",
   "title": "The Magazine Website",
-  "copyright": "© ThangChung, 2016",
+  "copyright": "Copyright © ThangChung, 2016",
 
   "dependencies": {
     "Cik.Domain": "1.0.0-*",
@@ -24,10 +24,19 @@
   },
 
   "frameworks": {
-    "netcoreapp1.0": {
+    "net46": {},
+    "netstandard1.6": {
       "dependencies": {
-        "NETStandard.Library": "1.6.0"
-      }
+        "Microsoft.CSharp": "4.0.1",
+        "System.Collections": "4.0.11",
+        "System.Linq": "4.1.0",
+        "System.Runtime": "4.1.0",
+        "System.Threading": "4.0.11"
+      },
+      "imports": [
+        "dotnet5.4",
+        "portable-net45+win8"
+      ]
     }
   }
 }

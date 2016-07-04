@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Cik.Api.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
@@ -8,25 +9,11 @@ namespace Cik.Services.Auth.AuthService
   {
     public static void Main(string[] args)
     {
-      var config = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("hosting.json", true)
-        .Build();
-
-      var hostConfig = config.GetSection("host");
-      var cerConfig = config.GetSection("certification");
-
+      var config = new ConfigurationBuilder().BuildHostConfiguration();
       var host = new WebHostBuilder()
-        .UseUrls(hostConfig.GetValue<string>("urls"))
-        .UseKestrel(options =>
-        {
-          options.NoDelay = true;
-          options.UseHttps(
-            cerConfig.GetValue<string>("file"),
-            cerConfig.GetValue<string>("password")
-            );
-          options.UseConnectionLogging();
-        })
+        .UseUrls(config.GetValue<string>("hosts:auth:urls")) // for docker
+        .BuildWebHostBuilder(config)
+        .UseConfiguration(config)
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseIISIntegration()
         .UseStartup<Startup>()

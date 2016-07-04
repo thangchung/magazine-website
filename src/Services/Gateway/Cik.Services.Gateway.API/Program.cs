@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Cik.Api.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
@@ -8,26 +9,10 @@ namespace Cik.Services.Gateway.API
   {
     public static void Main(string[] args)
     {
-      var config = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("hosting.json", true)
-        .Build();
-
-      var hostConfig = config.GetSection("host");
-      var cerConfig = config.GetSection("certification");
-
+      var config = new ConfigurationBuilder().BuildHostConfiguration();
       var host = new WebHostBuilder()
-        .UseUrls(hostConfig.GetValue<string>("urls")) // for docker
-        .UseKestrel(options =>
-        {
-          // reference at https://github.com/aspnet/KestrelHttpServer/blob/dev/samples/SampleApp/Startup.cs
-          options.NoDelay = true;
-          options.UseHttps(
-            cerConfig.GetValue<string>("file"),
-            cerConfig.GetValue<string>("password")
-            );
-          options.UseConnectionLogging();
-        })
+        .UseUrls(config.GetValue<string>("hosts:gateway:urls")) // for docker
+        .BuildWebHostBuilder(config)
         .UseConfiguration(config)
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseIISIntegration()

@@ -17,13 +17,18 @@
   "copyright": "Copyright © ThangChung, 2016",
 
   "dependencies": {
-    "Microsoft.EntityFrameworkCore": "1.0.0",
-    "System.Threading.ThreadPool": "4.0.10",
-    "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0"
+    "Microsoft.Extensions.Options": "1.0.0",
+    "Microsoft.Extensions.Configuration": "1.0.0",
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+    "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
+    "Microsoft.Extensions.Configuration.Binder": "1.0.0"
   },
 
   "frameworks": {
-    "net46": {},
+    "net46": { },
     "netstandard1.6": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1",

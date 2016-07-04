@@ -1,9 +1,0 @@
-﻿{
-  "host": {
-    "urls": "https://*:8080"
-  },
-  "certification": {
-    "file": "magazine_server.pfx",
-    "password": "magazine"
-  }
-}

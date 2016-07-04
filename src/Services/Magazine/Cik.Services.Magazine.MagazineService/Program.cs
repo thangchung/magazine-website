@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using Cik.Api.Extensions;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace Cik.Services.Magazine.MagazineService
 {
@@ -7,8 +9,9 @@ namespace Cik.Services.Magazine.MagazineService
   {
     public static void Main(string[] args)
     {
+      var config = new ConfigurationBuilder().BuildHostConfiguration();
       var host = new WebHostBuilder()
-        .UseUrls("http://*:5000") // for docker
+        .UseUrls(config.GetValue<string>("hosts:magazineService:urls")) // for docker
         .UseKestrel()
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseIISIntegration()

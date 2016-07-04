@@ -1,9 +1,26 @@
-ï»¿{
+{
+  "authors": [ "Thang Chung" ],
+  "title": "The Magazine Website",
+  "packOptions": {
+    "summary": "The Magazine Website.",
+    "tags": [ "magazine", "microservices" ],
+    "owners": [ "thangchung" ],
+    "projectUrl": "https://github.com/thangchung/magazine-website",
+    "licenseUrl": "",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/thangchung/magazine-website"
+    }
+  },
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true,
+    "debugType": "portable"
+  },
+  "copyright": "Copyright © ThangChung, 2016",
+  "version": "1.0.0-*",
+
   "dependencies": {
-    "Microsoft.NETCore.App": {
-      "version": "1.0.0",
-      "type": "platform"
-    },
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
@@ -18,7 +35,8 @@
     "Microsoft.AspNetCore.Proxy": "0.1.0",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
-    "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0"
+    "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
+    "Cik.Api": "1.0.0-*"
   },
 
   "tools": {
@@ -26,17 +44,19 @@
   },
 
   "frameworks": {
+    "net46": {},
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",
         "portable-net45+win8"
-      ]
+      ],
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0",
+          "type": "platform"
+        }
+      }
     }
-  },
-
-  "buildOptions": {
-    "emitEntryPoint": true,
-    "preserveCompilationContext": true
   },
 
   "runtimeOptions": {
