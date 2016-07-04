@@ -13,7 +13,7 @@ namespace Cik.Services.Auth.AuthService
 {
   public class Startup
   {
-    private readonly IHostingEnvironment _environment;
+    private readonly IHostingEnvironment _env;
 
     public Startup(IHostingEnvironment env)
     {
@@ -29,7 +29,7 @@ namespace Cik.Services.Auth.AuthService
         builder.AddApplicationInsightsSettings(true);
       }
       Configuration = builder.Build();
-      _environment = env;
+      _env = env;
     }
 
     public IConfigurationRoot Configuration { get; }
@@ -38,7 +38,7 @@ namespace Cik.Services.Auth.AuthService
     public void ConfigureServices(IServiceCollection services)
     {
       var cert = new X509Certificate2(
-        Path.Combine(_environment.ContentRootPath, "magazine_server.pfx"),
+        Path.Combine(_env.ContentRootPath, "magazine_server.pfx"),
         "magazine");
 
       services.AddIdentityServer()

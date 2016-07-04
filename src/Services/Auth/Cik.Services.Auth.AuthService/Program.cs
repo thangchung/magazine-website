@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace Cik.Services.Auth.AuthService
 {
@@ -7,13 +8,23 @@ namespace Cik.Services.Auth.AuthService
   {
     public static void Main(string[] args)
     {
+      var config = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("hosting.json", true)
+        .Build();
+
+      var hostConfig = config.GetSection("host");
+      var cerConfig = config.GetSection("certification");
+
       var host = new WebHostBuilder()
-        .UseUrls("https://*:44307")
+        .UseUrls(hostConfig.GetValue<string>("urls"))
         .UseKestrel(options =>
         {
-          // reference at https://github.com/aspnet/KestrelHttpServer/blob/dev/samples/SampleApp/Startup.cs
           options.NoDelay = true;
-          options.UseHttps("magazine_server.pfx", "magazine");
+          options.UseHttps(
+            cerConfig.GetValue<string>("file"),
+            cerConfig.GetValue<string>("password")
+            );
           options.UseConnectionLogging();
         })
         .UseContentRoot(Directory.GetCurrentDirectory())

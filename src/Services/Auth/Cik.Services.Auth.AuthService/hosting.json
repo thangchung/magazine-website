@@ -1,0 +1,9 @@
+﻿{
+  "host": {
+    "urls": "https://*:44307"
+  },
+  "certification": {
+    "file": "magazine_server.pfx",
+    "password": "magazine"
+  }
+}
