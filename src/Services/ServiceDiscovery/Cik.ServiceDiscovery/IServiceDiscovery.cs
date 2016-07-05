@@ -1,4 +1,6 @@
-﻿/*using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microphone.Core;
+using Microphone.Core.ClusterProviders;
 
 namespace Cik.ServiceDiscovery
 {
@@ -14,4 +16,4 @@ namespace Cik.ServiceDiscovery
     Task KeyValuePutAsync(string key, object value);
     Task<T> KeyValueGetAsync<T>(string key);
   }
-} */
+}

@@ -21,7 +21,8 @@
     "Microsoft.Extensions.Configuration": "1.0.0",
     "System.Runtime.Serialization.Json": "4.0.1",
     "Newtonsoft.Json": "9.0.1",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0"
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microphone.Core": "0.5.8"
   },
 
   "frameworks": {
