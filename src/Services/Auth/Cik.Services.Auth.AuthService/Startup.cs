@@ -39,7 +39,7 @@ namespace Cik.Services.Auth.AuthService
         config.GetCertificationFilePath(),
         config.GetCertificationPassword());
 
-      services.AddIdentityServer()
+      services.AddIdentityServer(options => { options.SiteName = Configuration["SiteName"]; })
         .SetSigningCredential(cert)
         .AddInMemoryClients(Clients.Get())
         .AddInMemoryScopes(Scopes.Get())
