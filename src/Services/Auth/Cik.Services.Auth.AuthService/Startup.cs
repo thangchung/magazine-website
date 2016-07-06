@@ -1,5 +1,5 @@
-﻿using System.IO;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Security.Cryptography.X509Certificates;
+using Cik.Api.Extensions;
 using Cik.Services.Auth.AuthService.Configuration;
 using Cik.Services.Auth.AuthService.UI;
 using Cik.Services.Auth.AuthService.UI.Login;
@@ -13,8 +13,6 @@ namespace Cik.Services.Auth.AuthService
 {
   public class Startup
   {
-    private readonly IHostingEnvironment _env;
-
     public Startup(IHostingEnvironment env)
     {
       var builder = new ConfigurationBuilder()
@@ -29,7 +27,6 @@ namespace Cik.Services.Auth.AuthService
         builder.AddApplicationInsightsSettings(true);
       }
       Configuration = builder.Build();
-      _env = env;
     }
 
     public IConfigurationRoot Configuration { get; }
@@ -37,9 +34,10 @@ namespace Cik.Services.Auth.AuthService
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      var config = new ConfigurationBuilder().BuildHostConfiguration();
       var cert = new X509Certificate2(
-        Path.Combine(_env.ContentRootPath, "magazine_server.pfx"),
-        "magazine");
+        config.GetCertificationFilePath(),
+        config.GetCertificationPassword());
 
       services.AddIdentityServer()
         .SetSigningCredential(cert)

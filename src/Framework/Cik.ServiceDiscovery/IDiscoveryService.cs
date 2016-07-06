@@ -4,7 +4,7 @@ using Microphone.Core.ClusterProviders;
 
 namespace Cik.ServiceDiscovery
 {
-  public interface IServiceDiscovery
+  public interface IDiscoveryService
   {
     Task<ServiceInformation[]> FindServiceInstancesAsync(string name);
     Task<ServiceInformation> FindServiceInstanceAsync(string name);

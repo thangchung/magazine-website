@@ -11,7 +11,7 @@ namespace Cik.Services.Magazine.MagazineService
     {
       var config = new ConfigurationBuilder().BuildHostConfiguration();
       var host = new WebHostBuilder()
-        .UseUrls(config.GetValue<string>("hosts:magazineService:urls")) // for docker
+        .UseUrls(config.GetUrlForDocker("magazine_service_url"))
         .UseKestrel()
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseIISIntegration()

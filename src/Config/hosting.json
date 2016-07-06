@@ -1,12 +1,12 @@
 ﻿{
   "hosts": {
-    "gateway": {
+    "gateway_service_url": {
       "urls": "https://*:8080"
     },
-    "auth": {
+    "auth_server_url": {
       "urls": "https://*:44307"
     },
-    "magazineService": {
+    "magazine_service_url": {
       "urls": "http://*:5000"
     }
   },

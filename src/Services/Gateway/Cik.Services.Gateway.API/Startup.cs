@@ -38,7 +38,7 @@ namespace Cik.Services.Gateway.API
     {
       // Add framework services.
       services.AddApplicationInsightsTelemetry(Configuration);
-      services.AddAuthentication();
+      // services.AddAuthentication();
 
       //Add Cors support to the service
       services.AddCors();
@@ -61,9 +61,9 @@ namespace Cik.Services.Gateway.API
       app.UseApplicationInsightsExceptionTelemetry();
 
       app.UseCors("corsGlobalPolicy");
-      app.UseCookieAuthentication();
+      // app.UseCookieAuthentication();
 
-      JwtSecurityTokenHandler.DefaultInboundClaimTypeMap = new Dictionary<string, string>();
+      /* JwtSecurityTokenHandler.DefaultInboundClaimTypeMap = new Dictionary<string, string>();
       var jwtBearerOptions = new JwtBearerOptions()
       {
         Authority = "https://localhost:44307",
@@ -72,9 +72,9 @@ namespace Cik.Services.Gateway.API
 
         // required if you want to return a 403 and not a 401 for forbidden responses
         AutomaticChallenge = true
-      };
+      }; 
 
-      app.UseJwtBearerAuthentication(jwtBearerOptions);
+      app.UseJwtBearerAuthentication(jwtBearerOptions); */
 
       // Reverse Proxy
       // Get the config and forward the request into the real host behind it.

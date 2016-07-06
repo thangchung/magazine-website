@@ -14,7 +14,7 @@
   "description": "The Magazine Website.",
   "version": "1.0.0-*",
   "title": "The Magazine Website",
-  "copyright": "Copyright © ThangChung, 2016",
+  "copyright": "Copyright ï¿½ ThangChung, 2016",
 
   "dependencies": {
     "Microsoft.Extensions.Options": "1.0.0",
@@ -24,11 +24,12 @@
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
-    "Microsoft.Extensions.Configuration.Binder": "1.0.0"
+    "Microsoft.Extensions.Configuration.Binder": "1.0.0",
+    "Cik.Core": "1.0.0-*"
   },
 
   "frameworks": {
-    "net46": { },
+    "net46": {},
     "netstandard1.6": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1",

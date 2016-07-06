@@ -11,7 +11,7 @@ namespace Cik.Services.Gateway.API
     {
       var config = new ConfigurationBuilder().BuildHostConfiguration();
       var host = new WebHostBuilder()
-        .UseUrls(config.GetValue<string>("hosts:gateway:urls")) // for docker
+        .UseUrls(config.GetUrlForDocker("gateway_service_url"))
         .BuildWebHostBuilder(config)
         .UseConfiguration(config)
         .UseContentRoot(Directory.GetCurrentDirectory())

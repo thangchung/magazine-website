@@ -11,6 +11,6 @@ namespace Cik.Api.Extensions
       return builder
         .AddJsonFile(fullPath + "\\Config\\hosting.json", true)
         .Build();
-    }  
+    }
   }
 }

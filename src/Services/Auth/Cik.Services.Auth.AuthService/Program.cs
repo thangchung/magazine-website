@@ -11,7 +11,7 @@ namespace Cik.Services.Auth.AuthService
     {
       var config = new ConfigurationBuilder().BuildHostConfiguration();
       var host = new WebHostBuilder()
-        .UseUrls(config.GetValue<string>("hosts:auth:urls")) // for docker
+        .UseUrls(config.GetUrlForDocker("auth_server_url")) 
         .BuildWebHostBuilder(config)
         .UseConfiguration(config)
         .UseContentRoot(Directory.GetCurrentDirectory())
