@@ -58,20 +58,19 @@ namespace Cik.Services.Magazine.MagazineService
         options.Filters.Add(new AuthorizeFilter(guestPolicy));
       });
 
-      // TODO: temporary use In-Memory for now due to the issue at https://github.com/npgsql/npgsql/issues/1171
       // Use a PostgreSQL database
-      /*var sqlConnectionString = Configuration["DataAccessPostgreSqlProvider:ConnectionString"];
+      var sqlConnectionString = Configuration["DataAccessPostgreSqlProvider:ConnectionString"];
       services.AddDbContext<MagazineDbContext>(options =>
           options.UseNpgsql(
               sqlConnectionString,
               b => b.MigrationsAssembly("Cik.Services.Magazine.MagazineService")
-              )); */
+              ));
 
       // Create options telling the context to use an
       // InMemory database and the service provider.
-      services.AddDbContext<MagazineDbContext>(options =>
+      /* services.AddDbContext<MagazineDbContext>(options =>
         options.UseInMemoryDatabase()
-        );
+        ); */
 
       // Add framework services.
       services.AddMvc();
@@ -120,7 +119,7 @@ namespace Cik.Services.Magazine.MagazineService
         app.UseBrowserLink();
 
         // TODO: comment out this because the PostgreSQL issue 
-        // SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
+        SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
       }
 
       app.UseMvc();

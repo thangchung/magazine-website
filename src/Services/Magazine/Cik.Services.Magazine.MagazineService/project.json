@@ -47,6 +47,8 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "Microsoft.Extensions.DependencyInjection": "1.0.0",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Microsoft.VisualStudio.Web.CodeGeneration.Tools": {
       "version": "1.0.0-preview2-final",
@@ -57,7 +59,7 @@
       "type": "build"
     },
     "Npgsql": "3.1.5",
-    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0-rc2-release1",
+    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0",
     "System.IdentityModel.Tokens.Jwt": "5.0.0",
     "System.Reflection": "4.1.0"
   },

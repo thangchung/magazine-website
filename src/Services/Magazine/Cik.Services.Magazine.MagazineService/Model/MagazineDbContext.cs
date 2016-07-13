@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {
@@ -20,6 +21,7 @@ namespace Cik.Services.Magazine.MagazineService.Model
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
+      modelBuilder.HasPostgresExtension("uuid-ossp");
       modelBuilder.Entity<Category>().ToTable("Categories");
     }
 

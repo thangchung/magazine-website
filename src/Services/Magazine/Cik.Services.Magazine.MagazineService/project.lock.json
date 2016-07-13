@@ -2143,14 +2143,14 @@
           "lib/netstandard1.3/npgsql.dll": {}
         }
       },
-      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0-rc2-release1": {
+      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "1.0.0-rc2-final",
-          "Microsoft.EntityFrameworkCore.Relational": "1.0.0-rc2-final",
-          "Microsoft.Extensions.DependencyInjection": "1.0.0-rc2-final",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc2-final",
-          "Npgsql": "3.1.0"
+          "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+          "Npgsql": "3.1.5"
         },
         "compile": {
           "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
@@ -6456,14 +6456,14 @@
           "lib/net451/npgsql.dll": {}
         }
       },
-      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0-rc2-release1": {
+      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "1.0.0-rc2-final",
-          "Microsoft.EntityFrameworkCore.Relational": "1.0.0-rc2-final",
-          "Microsoft.Extensions.DependencyInjection": "1.0.0-rc2-final",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc2-final",
-          "Npgsql": "3.1.0"
+          "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+          "Npgsql": "3.1.5"
         },
         "compile": {
           "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
@@ -9633,12 +9633,12 @@
         "lib/netstandard1.3/npgsql.xml"
       ]
     },
-    "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0-rc2-release1": {
-      "sha512": "ApWwnNAZdCdnkmNR97mvsejaPeIQY8YyPAR/utj9Y7So64IUsDYq8I8YczSVcmqQ/qk+yFTz2e6kw2E6d+UBSA==",
+    "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0": {
+      "sha512": "YtfaxJ2xnhbP3fPD7aXdOj6Zy0c5+ba0Jv+Yl/0cLvuYadVOh16UrTLS75RbV5OiTTXge0QCpB41iC8Cp4XHVw==",
       "type": "package",
-      "path": "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0-rc2-release1",
+      "path": "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0",
       "files": [
-        "Npgsql.EntityFrameworkCore.PostgreSQL.1.0.0-rc2-release1.nupkg.sha512",
+        "Npgsql.EntityFrameworkCore.PostgreSQL.1.0.0.nupkg.sha512",
         "Npgsql.EntityFrameworkCore.PostgreSQL.nuspec",
         "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
         "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.dll"
@@ -14844,6 +14844,8 @@
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 1.0.0",
       "Microsoft.Extensions.Configuration.FileExtensions >= 1.0.0",
       "Microsoft.Extensions.Configuration.Json >= 1.0.0",
+      "Microsoft.Extensions.DependencyInjection >= 1.0.0",
+      "Microsoft.Extensions.DependencyInjection.Abstractions >= 1.0.0",
       "Microsoft.Extensions.Logging >= 1.0.0",
       "Microsoft.Extensions.Logging.Console >= 1.0.0",
       "Microsoft.Extensions.Logging.Debug >= 1.0.0",
@@ -14852,7 +14854,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.0.0-preview2-final",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final",
       "Npgsql >= 3.1.5",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 1.0.0-rc2-release1",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 1.0.0",
       "System.IdentityModel.Tokens.Jwt >= 5.0.0",
       "System.Reflection >= 4.1.0"
     ],
