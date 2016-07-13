@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -32,13 +29,13 @@ namespace Cik.Services.Gateway.API
     }
 
     public IConfigurationRoot Configuration { get; }
+    public IConfiguration HostConfiguration { get; private set; }
 
     // This method gets called by the runtime. Use this method to add services to the container
     public void ConfigureServices(IServiceCollection services)
     {
       // Add framework services.
       services.AddApplicationInsightsTelemetry(Configuration);
-      // services.AddAuthentication();
 
       //Add Cors support to the service
       services.AddCors();
@@ -61,44 +58,38 @@ namespace Cik.Services.Gateway.API
       app.UseApplicationInsightsExceptionTelemetry();
 
       app.UseCors("corsGlobalPolicy");
-      // app.UseCookieAuthentication();
 
-      /* JwtSecurityTokenHandler.DefaultInboundClaimTypeMap = new Dictionary<string, string>();
-      var jwtBearerOptions = new JwtBearerOptions()
-      {
-        Authority = "https://localhost:44307",
-        Audience = "https://localhost:44307/resources",
-        AutomaticAuthenticate = true,
-
-        // required if you want to return a 403 and not a 401 for forbidden responses
-        AutomaticChallenge = true
-      }; 
-
-      app.UseJwtBearerAuthentication(jwtBearerOptions); */
-
+      // TODO: not too good, but now I only want to focus on the important things
       // Reverse Proxy
       // Get the config and forward the request into the real host behind it.
-      var uriConfig = Configuration.GetSection("HostUri");
-      app.RunProxy(new ProxyOptions
-      {
-        Scheme = uriConfig["Schema"],
-        Host = uriConfig["Host"],
-        Port = uriConfig["Port"],
-        // BackChannelMessageHandler = new SubDomainMessageHandler()
-      });
+      HostConfiguration = Configuration.GetSection("HostUris");
+      app.MapWhen(IsAuthPath,
+        appBuilder => { appBuilder.RunProxy(BuildProxyOptions(HostConfiguration.GetSection("auth"))); });
+      app.MapWhen(IsMagazinePath,
+        appBuilder => { appBuilder.RunProxy(BuildProxyOptions(HostConfiguration.GetSection("magazine"))); });
     }
-  }
 
-  // TODO: 
-  // parse the URI if contains the subdomain then forward it into the correct one service
-  // maybe we can use the regular expression for make it easier
-  // https://github.com/aspnet/Proxy/pull/12
-  // https://github.com/chsword/Proxy/tree/dev-multiproxy
-  internal class SubDomainMessageHandler : HttpMessageHandler
-  {
-    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    private static bool IsAuthPath(HttpContext httpContext)
     {
-      return Task.FromResult<HttpResponseMessage>(null);
+      return httpContext.Request.Path.Value.StartsWith(@"/auth/", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsMagazinePath(HttpContext httpContext)
+    {
+      return httpContext.Request.Path.Value.StartsWith(@"/magazine/", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static ProxyOptions BuildProxyOptions(IConfiguration config)
+    {
+      var proxyOptions = new ProxyOptions
+      {
+        Scheme = config.GetValue<string>("schema"),
+        Host = config.GetValue<string>("host"),
+        Port = config.GetValue<string>("port"),
+        RemovedPatterns = new[] {@"/auth/", @"/magazine/"}
+      };
+
+      return proxyOptions;
     }
   }
 }

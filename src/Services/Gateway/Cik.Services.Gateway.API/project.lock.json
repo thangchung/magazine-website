@@ -644,20 +644,6 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ViewFeatures.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Proxy/0.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "Microsoft.Extensions.Options": "1.0.0",
-          "System.Net.Http": "4.1.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Proxy.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Proxy.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Razor/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -4328,22 +4314,6 @@
           "lib/net451/Microsoft.AspNetCore.Mvc.ViewFeatures.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Proxy/0.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "Microsoft.Extensions.Options": "1.0.0"
-        },
-        "frameworkAssemblies": [
-          "System.Net.Http"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.AspNetCore.Proxy.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.AspNetCore.Proxy.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Razor/1.0.0": {
         "type": "package",
         "compile": {
@@ -6518,19 +6488,6 @@
         "lib/net451/Microsoft.AspNetCore.Mvc.ViewFeatures.xml",
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ViewFeatures.dll",
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ViewFeatures.xml"
-      ]
-    },
-    "Microsoft.AspNetCore.Proxy/0.1.0": {
-      "sha512": "QhGs5jQDEq6XlaY18Xjxk8ejNIemXyMR8yC8wftTTdcZgvGWV6R1YkZodyfiXM4fh2GBMckDPBgXkM0CN9JFDw==",
-      "type": "package",
-      "path": "Microsoft.AspNetCore.Proxy/0.1.0",
-      "files": [
-        "Microsoft.AspNetCore.Proxy.0.1.0.nupkg.sha512",
-        "Microsoft.AspNetCore.Proxy.nuspec",
-        "lib/net451/Microsoft.AspNetCore.Proxy.dll",
-        "lib/net451/Microsoft.AspNetCore.Proxy.xml",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Proxy.dll",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Proxy.xml"
       ]
     },
     "Microsoft.AspNetCore.Razor/1.0.0": {
@@ -12021,7 +11978,6 @@
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 1.0.0",
       "Microsoft.AspNetCore.Mvc >= 1.0.0",
-      "Microsoft.AspNetCore.Proxy >= 0.1.0",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel.Https >= 1.0.0",
