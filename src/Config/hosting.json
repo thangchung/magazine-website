@@ -8,6 +8,9 @@
     },
     "magazine_service_url": {
       "urls": "http://*:5000"
+    },
+    "sample_service_url": {
+      "urls": "http://*:6000"
     }
   },
   "certification": {

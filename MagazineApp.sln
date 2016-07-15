@@ -31,6 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dockerfiles", "Dockerfiles"
 		docker-compose.yml = docker-compose.yml
 		Dockerfile.AuthService = Dockerfile.AuthService
 		Dockerfile.MagazineService = Dockerfile.MagazineService
+		Dockerfile.SampleService = Dockerfile.SampleService
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Magazine", "Magazine", "{BEEB336E-56B1-4025-BC4E-104531299EC3}"
@@ -54,6 +55,10 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Rest", "src\Framework\Cik.Rest\Cik.Rest.xproj", "{109F69ED-30AD-47B9-B753-11B0ABF5778F}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Core", "src\Framework\Cik.Core\Cik.Core.xproj", "{B96BB967-190C-480E-B425-7DF5B0842030}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{442BC96B-6065-421C-B154-25667B4C39F5}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Services.Sample.SampleService", "src\Services\Sample\Cik.Services.Sample.SampleService\Cik.Services.Sample.SampleService.xproj", "{32E7170F-FD40-4CFB-A90D-321506688D97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +102,10 @@ Global
 		{B96BB967-190C-480E-B425-7DF5B0842030}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B96BB967-190C-480E-B425-7DF5B0842030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B96BB967-190C-480E-B425-7DF5B0842030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E7170F-FD40-4CFB-A90D-321506688D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E7170F-FD40-4CFB-A90D-321506688D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E7170F-FD40-4CFB-A90D-321506688D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E7170F-FD40-4CFB-A90D-321506688D97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +127,7 @@ Global
 		{570444B1-9941-44A6-8F5F-493B961EACCB} = {EE85D63E-A936-4C40-95F2-46D72E661D0E}
 		{109F69ED-30AD-47B9-B753-11B0ABF5778F} = {E6FF4547-5F60-49F6-8388-1FE413BBFCBF}
 		{B96BB967-190C-480E-B425-7DF5B0842030} = {E6FF4547-5F60-49F6-8388-1FE413BBFCBF}
+		{442BC96B-6065-421C-B154-25667B4C39F5} = {752D10B6-025A-486E-8F84-88CF700FCCFE}
+		{32E7170F-FD40-4CFB-A90D-321506688D97} = {442BC96B-6065-421C-B154-25667B4C39F5}
 	EndGlobalSection
 EndGlobal

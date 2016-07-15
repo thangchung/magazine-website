@@ -39,6 +39,19 @@ services:
     depends_on:
       - consul1
     command: -internal consul://consul1:8500
+  sample_service:
+    image: "thangchung/sample_service"
+    build:
+      context: .
+      dockerfile: Dockerfile.SampleService 
+    hostname: sample_service
+    ports:
+      - "6000:6000"
+    environment:
+      SERVICE_NAME: sample_service
+      SERVICE_TAGS: magazine
+    dns: 192.168.99.100
+    dns_search: service.consul
 networks:
   default:
     external:
