@@ -46,7 +46,7 @@ services:
       dockerfile: Dockerfile.SampleService 
     hostname: sample_service
     ports:
-      - "6000:6000"
+      - "5001:5001"
     environment:
       SERVICE_NAME: sample_service
       SERVICE_TAGS: magazine
