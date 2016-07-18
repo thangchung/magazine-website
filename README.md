@@ -34,6 +34,16 @@ Clone the repo using Git:
 
 `docker-compose up -d` or `docker-compose up --build` for re-build a package. 
 
+## Run the sample project (docker)
+
+`dotnet restore src/Services/Sample/Cik.Services.Sample.SampleService`
+
+`dotnet publish src/Services/Sample/Cik.Services.Sample.SampleService`
+
+`docker build -f Dockerfile.SampleService -t thangchung/sample_service .`
+
+`docker run -d -p 5001:5001 -t thangchung/sample_service`
+
 # Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, MazWebApp is maintained under the [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.

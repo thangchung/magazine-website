@@ -1436,7 +1436,7 @@
           "System.Text.Encoding": "4.0.0"
         },
         "compile": {
-          "ref/dotnet5.4/System.Diagnostics.Process.dll": {}
+          "ref/dotnet5.5/System.Diagnostics.Process.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.1": {
@@ -1758,11 +1758,13 @@
       "System.Net.Sockets/4.1.0-beta-23516": {
         "type": "package",
         "dependencies": {
+          "System.IO": "4.0.0",
           "System.Net.Primitives": "4.0.10",
-          "System.Runtime": "4.0.0"
+          "System.Runtime": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
         },
         "compile": {
-          "ref/dotnet5.4/System.Net.Sockets.dll": {}
+          "ref/dotnet5.5/System.Net.Sockets.dll": {}
         }
       },
       "System.Net.WebSockets/4.0.0": {
@@ -1794,6 +1796,12 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.ObjectModel.dll": {}
+        }
+      },
+      "System.Private.DataContractSerialization/4.1.0": {
+        "type": "package",
+        "compile": {
+          "ref/dnxcore50/_._": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -1988,11 +1996,13 @@
       "System.Runtime.Serialization.Json/4.0.1": {
         "type": "package",
         "dependencies": {
-          "System.IO": "4.0.0",
-          "System.Runtime": "4.0.0"
+          "System.Private.DataContractSerialization": "4.1.0"
         },
         "compile": {
           "ref/dotnet5.1/System.Runtime.Serialization.Json.dll": {}
+        },
+        "runtime": {
+          "lib/DNXCore50/System.Runtime.Serialization.Json.dll": {}
         }
       },
       "System.Runtime.Serialization.Primitives/4.1.1": {
@@ -4740,6 +4750,20 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "System.Private.DataContractSerialization/4.1.0": {
+      "sha512": "jihi0lC7TMGx8QtMuz3tRFoXdP0BHbceAdd3gvRbNnxM3W93jSRE/cocQyGf64wlC/1etjHKPwnwdu+PDJkjnA==",
+      "type": "package",
+      "path": "System.Private.DataContractSerialization/4.1.0",
+      "files": [
+        "System.Private.DataContractSerialization.4.1.0.nupkg.sha512",
+        "System.Private.DataContractSerialization.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "ref/dnxcore50/_._",
+        "ref/netcore50/_._",
+        "runtime.json"
       ]
     },
     "System.Reflection/4.1.0": {

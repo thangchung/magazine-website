@@ -3,20 +3,18 @@ FROM microsoft/dotnet
 MAINTAINER Thang Chung "thangchung@ymail.com"
 
 # Set environment variables
-# ENV ASPNETCORE_SERVER.URLS="http://*:5000"
+# ENV ASPNETCORE_URLS="http://*:8888"
 ENV ASPNETCORE_ENVIRONMENT="Development"
 
 # Copy files to app directory
-COPY . /app
+COPY /src/Services/Auth/Cik.Services.Auth.AuthService/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Auth/Cik.Services.Auth.AuthService
+COPY /src/Config/ /root/src/Config
 
 # Set working directory
-WORKDIR /app/src/Services/Auth/Cik.Services.Auth.AuthService
-
-# Restore NuGet packages
-RUN ["dotnet", "restore", "--configfile", "/app/NuGet.config"]
+WORKDIR /root/src/Services/Auth/Cik.Services.Auth.AuthService/
 
 # Open up port
 EXPOSE 8888
 
 # Run the app
-ENTRYPOINT ["dotnet", "run"]
+ENTRYPOINT ["dotnet", "/root/src/Services/Auth/Cik.Services.Auth.AuthService/Cik.Services.Auth.AuthService.dll"]

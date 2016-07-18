@@ -1,13 +1,14 @@
 ﻿using Cik.Core;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Cik.Api.Extensions
 {
   public static class ConfigurationExtensions
   {
-    public static string GetCertificationFilePath(this IConfigurationRoot config)
+    public static string GetCertificationFilePath(this IConfigurationRoot config, ILogger logger = null)
     {
-      return ConfigHelper.GetConfigRootPath() + "\\" + config.GetValue<string>("certification:file");
+      return ConfigHelper.GetConfigRootPath(config.GetValue<string>("certification:file"), logger);
     }
 
     public static string GetCertificationPassword(this IConfigurationRoot config)

@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>32e7170f-fd40-4cfb-a90d-321506688d97</ProjectGuid>
+    <ProjectGuid>d97bebab-7a57-4993-9db5-336eb354b92b</ProjectGuid>
     <RootNamespace>Cik.Services.Sample.SampleService</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>

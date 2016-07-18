@@ -3,20 +3,18 @@ FROM microsoft/dotnet
 MAINTAINER Thang Chung "thangchung@ymail.com"
 
 # Set environment variables
-# ENV ASPNETCORE_SERVER.URLS="http://*:5000"
+# ENV ASPNETCORE_URLS="http://*:5000"
 ENV ASPNETCORE_ENVIRONMENT="Development"
 
 # Copy files to app directory
-COPY . /app
+COPY /src/Services/Magazine/Cik.Services.Magazine.MagazineService/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Magazine/Cik.Services.Magazine.MagazineService
+COPY /src/Config/ /root/src/Config
 
 # Set working directory
-WORKDIR /app/src/Services/Magazine/Cik.Services.Magazine.MagazineService
-
-# Restore NuGet packages
-RUN ["dotnet", "restore", "--configfile", "/app/NuGet.config"]
+WORKDIR /root/src/Services/Magazine/Cik.Services.Magazine.MagazineService/
 
 # Open up port
 EXPOSE 5000
 
 # Run the app
-ENTRYPOINT ["dotnet", "run"]
+ENTRYPOINT ["dotnet", "/root/src/Services/Magazine/Cik.Services.Magazine.MagazineService/Cik.Services.Magazine.MagazineService.dll"]
