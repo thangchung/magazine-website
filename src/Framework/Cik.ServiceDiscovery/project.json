@@ -14,7 +14,7 @@
   "description": "The library to work with Consul, will be used by Magazine microservices.",
   "version": "1.0.0-*",
   "title": "The library to work with Consul",
-  "copyright": "Copyright © ThangChung, 2016",
+  "copyright": "Copyright ï¿½ ThangChung, 2016",
 
   "dependencies": {
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
@@ -22,7 +22,9 @@
     "System.Runtime.Serialization.Json": "4.0.1",
     "Newtonsoft.Json": "9.0.1",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "Microphone.Core": "0.5.8"
+    "Microphone.Core": "0.6.2",
+    "Microphone.AspNet": "0.6.2",
+    "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
   },
 
   "frameworks": {

@@ -1,18 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Microphone.Core;
-using Microphone.Core.ClusterProviders;
+using Microphone;
 
 namespace Cik.ServiceDiscovery
 {
   public interface IDiscoveryService
   {
-    Task<ServiceInformation[]> FindServiceInstancesAsync(string name);
-    Task<ServiceInformation> FindServiceInstanceAsync(string name);
-    void RegisterService(IClusterProvider clusterProvider);
-
-    void RegisterService(IFrameworkProvider frameworkProvider, IClusterProvider clusterProvider,
-      string serviceName, string version);
-
+    Task<ServiceInformation[]> GetServiceInstancesAsync(string name);
     Task KeyValuePutAsync(string key, object value);
     Task<T> KeyValueGetAsync<T>(string key);
   }

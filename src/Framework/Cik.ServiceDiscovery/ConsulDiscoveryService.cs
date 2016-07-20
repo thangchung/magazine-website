@@ -1,13 +1,16 @@
-﻿using Microphone.Core;
-using Microphone.Core.ClusterProviders;
+﻿using Microphone;
 
 namespace Cik.ServiceDiscovery
 {
   public class ConsulDiscoveryService : DiscoveryService
   {
+    public ConsulDiscoveryService(IClusterClient client) : base(client)
+    {
+    }
+
     public override void BootstrapClient()
     {
-      Cluster.BootstrapClient(new ConsulProvider());
+      // Cluster.Client(new ConsulProvider("192.168.99.100"));
     }
   }
 }

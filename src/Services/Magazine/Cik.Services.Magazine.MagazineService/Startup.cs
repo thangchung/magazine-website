@@ -4,6 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Cik.Domain;
+using Cik.Rest;
+using Cik.ServiceDiscovery;
 using Cik.Services.Magazine.MagazineService.Extensions;
 using Cik.Services.Magazine.MagazineService.Model;
 using Cik.Services.Magazine.MagazineService.QueryModel;
@@ -74,6 +76,7 @@ namespace Cik.Services.Magazine.MagazineService
 
       // Add framework services.
       services.AddMvc();
+      services.RegisterServiceDiscovery();
 
       // Autofac container
       var builder = new ContainerBuilder();
@@ -88,6 +91,10 @@ namespace Cik.Services.Magazine.MagazineService
       builder.RegisterType<CategoryQueryModelFinder>().AsImplementedInterfaces().InstancePerLifetimeScope();
       builder.RegisterCommandHandlers();
       builder.Populate(services);
+      builder.RegisterType<ConsulDiscoveryService>()
+        .As<IDiscoveryService>()
+        .InstancePerLifetimeScope();
+      builder.RegisterType<RestClient>().AsSelf();
 
       // build up the container
       var container = builder.Build();
@@ -119,7 +126,7 @@ namespace Cik.Services.Magazine.MagazineService
         app.UseBrowserLink();
 
         // TODO: comment out this because the PostgreSQL issue 
-        SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
+        // SeedData.InitializeMagazineDatabaseAsync(app.ApplicationServices).Wait();
       }
 
       app.UseMvc();
