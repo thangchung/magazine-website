@@ -3,9 +3,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Cik.Shared.Core;
 using Cik.Shared.Domain;
 using Cik.Shared.ServiceDiscovery;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Cik.Shared.Rest
 {
@@ -14,15 +17,17 @@ namespace Cik.Shared.Rest
         private readonly HttpClient _client;
         private readonly IDiscoveryService _discoveryService;
         private readonly IHostingEnvironment _env;
+        private readonly ILogger _logger;
 
         public RestClient(IHostingEnvironment env, IDiscoveryService discoveryService, HttpClient client = null)
         {
             _env = env;
             _client = client ?? new HttpClient();
             _discoveryService = discoveryService;
+            _logger = LoggerHelper.GetLogger<RestClient>();
         }
 
-        public async Task<TReturnMessage> Get<TReturnMessage>(string serviceName, string path)
+        public async Task<TReturnMessage> GetAsync<TReturnMessage>(string serviceName, string path)
             where TReturnMessage : class, new()
         {
             using (_client)
@@ -32,6 +37,8 @@ namespace Cik.Shared.Rest
                 Guard.NotNull(defaultInfo);
                 var host = _env.IsDevelopment() ? "192.168.99.100" : defaultInfo.Host;
                 var uri = new Uri($"http://{host}:{defaultInfo.Port}{path}");
+
+                _logger.LogInformation("[CIK INFO] Uri:" + uri);
 
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -46,21 +53,57 @@ namespace Cik.Shared.Rest
             return await Task.FromResult(new TReturnMessage());
         }
 
-        public async Task<HttpResponseMessage> Get(string serviceName, string path)
+        public async Task<HttpResponseMessage> GetAsync(string serviceName, string path)
         {
-            using (_client)
+            var infos = await _discoveryService.GetServiceInstancesAsync(serviceName);
+            var defaultInfo = infos.FirstOrDefault();
+            Guard.NotNull(defaultInfo);
+            var host = _env.IsDevelopment() ? "192.168.99.100" : defaultInfo.Host;
+            var uri = new Uri($"http://{host}:{defaultInfo.Port}{path}");
+
+            _logger.LogInformation("[CIK INFO] Uri:" + uri);
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            return await _client.GetAsync(uri);
+        }
+
+        public async Task<HttpResponseMessage> SendAsync(HttpContext proxyContext, string serviceName, string path)
+        {
+            var requestMessage = new HttpRequestMessage();
+            var infos = await _discoveryService.GetServiceInstancesAsync(serviceName);
+            var defaultInfo = infos.FirstOrDefault();
+            Guard.NotNull(defaultInfo);
+
+            // TODO: docker-machine host should get from the config
+            var host = _env.IsDevelopment() ? "192.168.99.100" : defaultInfo.Host;
+            var uri = new Uri($"http://{host}:{defaultInfo.Port}{path}");
+
+            _logger.LogInformation("[CIK INFO] Uri:" + uri);
+
+            if (!string.Equals(proxyContext.Request.Method, "GET", StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(proxyContext.Request.Method, "HEAD", StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(proxyContext.Request.Method, "DELETE", StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(proxyContext.Request.Method, "TRACE", StringComparison.OrdinalIgnoreCase))
             {
-                var infos = await _discoveryService.GetServiceInstancesAsync(serviceName);
-                var defaultInfo = infos.FirstOrDefault();
-                Guard.NotNull(defaultInfo);
-                var host = _env.IsDevelopment() ? "192.168.99.100" : defaultInfo.Host;
-                var uri = new Uri($"http://{host}:{defaultInfo.Port}{path}");
-
-                _client.DefaultRequestHeaders.Accept.Clear();
-                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                return await _client.GetAsync(uri);
+                var streamContent = new StreamContent(proxyContext.Request.Body);
+                requestMessage.Content = streamContent;
             }
+
+            // Copy the request headers
+            foreach (var header in proxyContext.Request.Headers)
+            {
+                if (!requestMessage.Headers.TryAddWithoutValidation(header.Key, header.Value.ToArray()))
+                {
+                    requestMessage.Content?.Headers.TryAddWithoutValidation(header.Key, header.Value.ToArray());
+                }
+            }
+
+            requestMessage.Headers.Host = host;
+            requestMessage.RequestUri = uri;
+            requestMessage.Method = new HttpMethod(proxyContext.Request.Method);
+
+            return await _client.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, proxyContext.RequestAborted);
         }
     }
 }

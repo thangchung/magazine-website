@@ -1,11 +1,8 @@
-﻿using System;
-using Cik.Shared.Core;
-using Cik.Shared.Rest;
+﻿using Cik.Shared.Rest;
 using Cik.Shared.ServiceDiscovery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,7 +21,7 @@ namespace Cik.Services.Gateway.API
             if (env.IsEnvironment("Development"))
             {
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                // builder.AddApplicationInsightsSettings(true);
+                builder.AddApplicationInsightsSettings(true);
             }
 
             builder.AddEnvironmentVariables();
@@ -38,15 +35,17 @@ namespace Cik.Services.Gateway.API
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            // services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddApplicationInsightsTelemetry(Configuration);
 
-            //Add Cors support to the service
+            // Add Cors support to the service
             services.AddCors();
 
+            // Register services
             services.RegisterServiceDiscovery();
             services.AddScoped<IDiscoveryService, ConsulDiscoveryService>();
             services.AddTransient<RestClient, RestClient>();
 
+            // Add policy for CORS
             var policy = new CorsPolicy();
             policy.Headers.Add("*");
             policy.Methods.Add("*");
@@ -61,63 +60,13 @@ namespace Cik.Services.Gateway.API
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            // app.UseApplicationInsightsRequestTelemetry();
-            // app.UseApplicationInsightsExceptionTelemetry();
+            app.UseApplicationInsightsRequestTelemetry();
+            app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseCors("corsGlobalPolicy");
 
-            // app.RunGatewayProxy();
-
-            /*app.Run(async context =>
-            {
-                await context.Response.WriteAsync("hello");
-            });*/
-
-            app.RunGatewayProxy(new ProxyOptions
-            {
-                RestClient = app.ApplicationServices.GetService<RestClient>(),
-                Logger = LoggerHelper.GetLogger<Startup>()
-            });
-
-            /*app.Map("/sample_service",
-                builder => builder.RunGatewayProxy(
-                    new ProxyOptions
-                    {
-                        RestClient = app.ApplicationServices.GetService<RestClient>(),
-                        Logger = LoggerHelper.GetLogger<Startup>()
-                    }));*/
-
-            // TODO: not too good, but now I only want to focus on the important things
-            // Reverse Proxy
-            // Get the config and forward the request into the real host behind it.
-            /*HostConfiguration = Configuration.GetSection("HostUris");
-            app.MapWhen(IsAuthPath,
-                appBuilder => { appBuilder.RunProxy(BuildProxyOptions(HostConfiguration.GetSection("auth"))); });
-            app.MapWhen(IsMagazinePath,
-                appBuilder => { appBuilder.RunProxy(BuildProxyOptions(HostConfiguration.GetSection("magazine"))); });*/
+            app.MapGatewayProxy("/sample", "sample_service");
+            app.MapGatewayProxy("/magazine", "magazine_service");
         }
-
-        /*private static bool IsAuthPath(HttpContext httpContext)
-        {
-            return httpContext.Request.Path.Value.StartsWith(@"/auth/", StringComparison.OrdinalIgnoreCase);
-        }
-
-        private static bool IsMagazinePath(HttpContext httpContext)
-        {
-            return httpContext.Request.Path.Value.StartsWith(@"/magazine/", StringComparison.OrdinalIgnoreCase);
-        }
-
-        private static ProxyOptions BuildProxyOptions(IConfiguration config)
-        {
-            var proxyOptions = new ProxyOptions
-            {
-                Scheme = config.GetValue<string>("schema"),
-                Host = config.GetValue<string>("host"),
-                Port = config.GetValue<string>("port"),
-                RemovedPatterns = new[] {@"/auth/", @"/magazine/"}
-            };
-
-            return proxyOptions;
-        } */
     }
 }

@@ -4,6 +4,7 @@
   "dependencies": {
     "Cik.Shared.Domain": "1.0.0-*",
     "Cik.Shared.ServiceDiscovery": "1.0.0-*",
+    "Cik.Shared.Core": "1.0.0-*",
     "Microsoft.AspNet.WebApi.Client": "5.2.3"
   },
 

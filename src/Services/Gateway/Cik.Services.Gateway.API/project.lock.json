@@ -3902,6 +3902,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
+          "Cik.Shared.Core": "1.0.0",
           "Cik.Shared.Domain": "1.0.0",
           "Cik.Shared.ServiceDiscovery": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
@@ -6236,6 +6237,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
+          "Cik.Shared.Core": "1.0.0",
           "Cik.Shared.Domain": "1.0.0",
           "Cik.Shared.ServiceDiscovery": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.3"

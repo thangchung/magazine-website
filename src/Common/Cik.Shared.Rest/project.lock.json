@@ -2077,6 +2077,23 @@
           "lib/net46/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "Cik.Shared.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "Microsoft.Extensions.Logging.Console": "1.0.0",
+          "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "System.Runtime": "4.1.0"
+        },
+        "compile": {
+          "net46/Cik.Shared.Core.dll": {}
+        },
+        "runtime": {
+          "net46/Cik.Shared.Core.dll": {}
+        }
+      },
       "Cik.Shared.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
@@ -5383,6 +5400,29 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
+        }
+      },
+      "Cik.Shared.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1",
+          "Microsoft.Extensions.Logging": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "Microsoft.Extensions.Logging.Console": "1.0.0",
+          "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "System.Collections": "4.0.11",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "netstandard1.6/Cik.Shared.Core.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Cik.Shared.Core.dll": {}
         }
       },
       "Cik.Shared.Domain/1.0.0": {
@@ -11072,6 +11112,11 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "Cik.Shared.Core/1.0.0": {
+      "type": "project",
+      "path": "../Cik.Shared.Core/project.json",
+      "msbuildProject": "../Cik.Shared.Core/Cik.Shared.Core.xproj"
+    },
     "Cik.Shared.Domain/1.0.0": {
       "type": "project",
       "path": "../Cik.Shared.Domain/project.json",
@@ -11085,6 +11130,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Cik.Shared.Core >= 1.0.0-*",
       "Cik.Shared.Domain >= 1.0.0-*",
       "Cik.Shared.ServiceDiscovery >= 1.0.0-*",
       "Microsoft.AspNet.WebApi.Client >= 5.2.3"

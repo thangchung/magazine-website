@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Cik.Shared.Rest;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,22 +9,22 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
     [AllowAnonymous]
     public class PingController : Controller
     {
-        private readonly RestClient _restClient;
+        /* private readonly RestClient _restClient;
 
         public PingController(RestClient restClient)
         {
             _restClient = restClient;
-        }
+        } */
 
         [HttpGet]
         [Route("")]
         public async Task<IEnumerable<string>> Get()
         {
             // TODO: just for test the call to another service
-            var result = await _restClient.Get<List<string>>("sample_service", "/api/values");
+            // var result = await _restClient.GetAsync<List<string>>("sample_service", "/api/values");
+            // return result;
 
-            // return new[] {"pong!!!"};
-            return result;
+            return await Task.FromResult(new[] {"pong!!!"});
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿{
   "hosts": {
     "gateway_service_url": {
-      "urls": "http://*:8080"
+      "urls": "https://*:8080"
     },
     "auth_server_url": {
       "urls": "https://*:44307"
