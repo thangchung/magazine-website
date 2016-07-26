@@ -1,0 +1,26 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Cik.Shared.Domain": "1.0.0-*",
+    "Cik.Shared.ServiceDiscovery": "1.0.0-*",
+    "Microsoft.AspNet.WebApi.Client": "5.2.3"
+  },
+
+  "frameworks": {
+    "net46": {},
+    "netstandard1.6": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1",
+        "System.Collections": "4.0.11",
+        "System.Linq": "4.1.0",
+        "System.Runtime": "4.1.0",
+        "System.Threading": "4.0.11"
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
+  }
+}

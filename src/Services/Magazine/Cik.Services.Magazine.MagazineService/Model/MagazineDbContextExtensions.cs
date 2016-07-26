@@ -1,30 +1,30 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cik.Domain;
+using Cik.Shared.Domain;
 using System.Linq;
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {
-  public static class MagazineDbContextExtensions
-  {
-    public static async Task EnsureSeedDataAsync(this MagazineDbContext dbContext)
+    public static class MagazineDbContextExtensions
     {
-      if (!dbContext.AllMigrationsApplied()) return;
-      if (!dbContext.Categories.Any())
-      {
-        for (var i = 1; i < 1000; i++)
+        public static async Task EnsureSeedDataAsync(this MagazineDbContext dbContext)
         {
-          dbContext.Categories.Add(
-            new Category
+            if (!dbContext.AllMigrationsApplied()) return;
+            if (!dbContext.Categories.Any())
             {
-              Name = $"category {i}",
-              Id = Guid.NewGuid(),
-              AggregateStatus = AggregateStatus.Active
+                for (var i = 1; i < 1000; i++)
+                {
+                    dbContext.Categories.Add(
+                        new Category
+                        {
+                            Name = $"category {i}",
+                            Id = Guid.NewGuid(),
+                            AggregateStatus = AggregateStatus.Active
+                        }
+                        );
+                }
+                await dbContext.SaveChangesAsync();
             }
-            );
         }
-        await dbContext.SaveChangesAsync();
-      }
     }
-  }
 }

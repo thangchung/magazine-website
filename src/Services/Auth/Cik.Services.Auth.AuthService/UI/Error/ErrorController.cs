@@ -5,30 +5,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cik.Services.Auth.AuthService.UI.Error
 {
-  public class ErrorController : Controller
-  {
-    private readonly ErrorInteraction _errorInteraction;
-
-    public ErrorController(ErrorInteraction errorInteraction)
+    public class ErrorController : Controller
     {
-      _errorInteraction = errorInteraction;
-    }
+        private readonly ErrorInteraction _errorInteraction;
 
-    [Route(Constants.RoutePaths.Error, Name = "Error")]
-    public async Task<IActionResult> Index(string id)
-    {
-      var vm = new ErrorViewModel();
-
-      if (id != null)
-      {
-        var message = await _errorInteraction.GetRequestAsync(id);
-        if (message != null)
+        public ErrorController(ErrorInteraction errorInteraction)
         {
-          vm.Error = message;
+            _errorInteraction = errorInteraction;
         }
-      }
 
-      return View("Error", vm);
+        [Route(Constants.RoutePaths.Error, Name = "Error")]
+        public async Task<IActionResult> Index(string id)
+        {
+            var vm = new ErrorViewModel();
+
+            if (id != null)
+            {
+                var message = await _errorInteraction.GetRequestAsync(id);
+                if (message != null)
+                {
+                    vm.Error = message;
+                }
+            }
+
+            return View("Error", vm);
+        }
     }
-  }
 }

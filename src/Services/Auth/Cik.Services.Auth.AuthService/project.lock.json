@@ -4063,11 +4063,11 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Cik.Api/1.0.0": {
+      "Cik.Shared.Api/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "Cik.Core": "1.0.0",
+          "Cik.Shared.Core": "1.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
@@ -4085,13 +4085,13 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "netstandard1.6/Cik.Api.dll": {}
+          "netstandard1.6/Cik.Shared.Api.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Api.dll": {}
+          "netstandard1.6/Cik.Shared.Api.dll": {}
         }
       },
-      "Cik.Core/1.0.0": {
+      "Cik.Shared.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
@@ -4108,10 +4108,10 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "netstandard1.6/Cik.Core.dll": {}
+          "netstandard1.6/Cik.Shared.Core.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Core.dll": {}
+          "netstandard1.6/Cik.Shared.Core.dll": {}
         }
       }
     },
@@ -6518,11 +6518,11 @@
           "lib/net46/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Cik.Api/1.0.0": {
+      "Cik.Shared.Api/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "Cik.Core": "1.0.0",
+          "Cik.Shared.Core": "1.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
@@ -6533,13 +6533,13 @@
           "Microsoft.Extensions.Options": "1.0.0"
         },
         "compile": {
-          "net46/Cik.Api.dll": {}
+          "net46/Cik.Shared.Api.dll": {}
         },
         "runtime": {
-          "net46/Cik.Api.dll": {}
+          "net46/Cik.Shared.Api.dll": {}
         }
       },
-      "Cik.Core/1.0.0": {
+      "Cik.Shared.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
@@ -6550,10 +6550,10 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "net46/Cik.Core.dll": {}
+          "net46/Cik.Shared.Core.dll": {}
         },
         "runtime": {
-          "net46/Cik.Core.dll": {}
+          "net46/Cik.Shared.Core.dll": {}
         }
       }
     }
@@ -12877,21 +12877,21 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Cik.Api/1.0.0": {
+    "Cik.Shared.Api/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.Api/project.json",
-      "msbuildProject": "../../../Framework/Cik.Api/Cik.Api.xproj"
+      "path": "../../../Common/Cik.Shared.Api/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.Api/Cik.Shared.Api.xproj"
     },
-    "Cik.Core/1.0.0": {
+    "Cik.Shared.Core/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.Core/project.json",
-      "msbuildProject": "../../../Framework/Cik.Core/Cik.Core.xproj"
+      "path": "../../../Common/Cik.Shared.Core/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.Core/Cik.Shared.Core.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "Cik.Api >= 1.0.0-*",
-      "Cik.Core >= 1.0.0-*",
+      "Cik.Shared.Api >= 1.0.0-*",
+      "Cik.Shared.Core >= 1.0.0-*",
       "IdentityServer4 >= 1.0.0-beta4-update1",
       "Microsoft.ApplicationInsights.AspNetCore >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.Google >= 1.0.0",

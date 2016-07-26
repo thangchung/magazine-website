@@ -1,23 +1,23 @@
 ﻿using System;
-using Cik.Domain;
 using Cik.Services.Magazine.MagazineService.Command;
 using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Shared.Domain;
 
 namespace Cik.Services.Magazine.MagazineService.CommandHandlers
 {
-  public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
-  {
-    private readonly IRepository<Category, Guid> _categoryRepository;
-
-    public DeleteCategoryCommandHandler(IRepository<Category, Guid> repo)
+    public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
     {
-      Guard.NotNull(repo);
+        private readonly IRepository<Category, Guid> _categoryRepository;
 
-      _categoryRepository = repo;
-    }
+        public DeleteCategoryCommandHandler(IRepository<Category, Guid> repo)
+        {
+            Guard.NotNull(repo);
 
-    public void Handle(DeleteCategoryCommand message)
-    {
+            _categoryRepository = repo;
+        }
+
+        public void Handle(DeleteCategoryCommand message)
+        {
+        }
     }
-  }
 }

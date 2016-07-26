@@ -6,19 +6,19 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Cik.Services.Auth.AuthService.UI.Login
 {
-  public class SignInResult : IActionResult
-  {
-    private readonly string _requestId;
-
-    public SignInResult(string requestId)
+    public class SignInResult : IActionResult
     {
-      _requestId = requestId;
-    }
+        private readonly string _requestId;
 
-    public async Task ExecuteResultAsync(ActionContext context)
-    {
-      var interaction = context.HttpContext.RequestServices.GetRequiredService<SignInInteraction>();
-      await interaction.ProcessResponseAsync(_requestId, new SignInResponse());
+        public SignInResult(string requestId)
+        {
+            _requestId = requestId;
+        }
+
+        public async Task ExecuteResultAsync(ActionContext context)
+        {
+            var interaction = context.HttpContext.RequestServices.GetRequiredService<SignInInteraction>();
+            await interaction.ProcessResponseAsync(_requestId, new SignInResponse());
+        }
     }
-  }
 }

@@ -1,0 +1,46 @@
+{
+  "packOptions": {
+    "summary": "The library to work with Consul, will be used by Magazine microservices.",
+    "tags": [ "magazine", "microservices", "reactive", "service-discovery", "consul" ],
+    "owners": [ "thangchung" ],
+    "projectUrl": "https://github.com/thangchung/magazine-website",
+    "licenseUrl": "",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/thangchung/magazine-website"
+    }
+  },
+  "authors": [ "Thang Chung" ],
+  "description": "The library to work with Consul, will be used by Magazine microservices.",
+  "version": "1.0.0-*",
+  "title": "The library to work with Consul",
+  "copyright": "Copyright by ThangChung, 2016",
+
+  "dependencies": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+    "Microsoft.Extensions.Configuration": "1.0.0",
+    "System.Runtime.Serialization.Json": "4.0.1",
+    "Newtonsoft.Json": "9.0.1",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microphone.Core": "0.6.2",
+    "Microphone.AspNet": "0.6.2",
+    "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
+  },
+
+  "frameworks": {
+    "net46": {},
+    "netstandard1.6": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1",
+        "System.Collections": "4.0.11",
+        "System.Linq": "4.1.0",
+        "System.Runtime": "4.1.0",
+        "System.Threading": "4.0.11"
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
+  }
+}

@@ -4,16 +4,16 @@ using IdentityServer4.Models;
 
 namespace Cik.Services.Auth.AuthService.UI.Logout
 {
-  public class LoggedOutViewModel
-  {
-    public LoggedOutViewModel()
+    public class LoggedOutViewModel
     {
-      SignOutIFrameUrls = Enumerable.Empty<string>();
+        public LoggedOutViewModel()
+        {
+            SignOutIFrameUrls = Enumerable.Empty<string>();
+        }
+
+        public ClientReturnInfo ReturnInfo { get; set; }
+        public string ClientName { get; set; }
+
+        public IEnumerable<string> SignOutIFrameUrls { get; set; }
     }
-
-    public ClientReturnInfo ReturnInfo { get; set; }
-    public string ClientName { get; set; }
-
-    public IEnumerable<string> SignOutIFrameUrls { get; set; }
-  }
 }

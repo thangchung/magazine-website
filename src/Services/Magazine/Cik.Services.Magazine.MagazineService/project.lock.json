@@ -4650,11 +4650,11 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Cik.Api/1.0.0": {
+      "Cik.Shared.Api/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "Cik.Core": "1.0.0",
+          "Cik.Shared.Core": "1.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
@@ -4672,13 +4672,13 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "netstandard1.6/Cik.Api.dll": {}
+          "netstandard1.6/Cik.Shared.Api.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Api.dll": {}
+          "netstandard1.6/Cik.Shared.Api.dll": {}
         }
       },
-      "Cik.Core/1.0.0": {
+      "Cik.Shared.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
@@ -4695,13 +4695,13 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "netstandard1.6/Cik.Core.dll": {}
+          "netstandard1.6/Cik.Shared.Core.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Core.dll": {}
+          "netstandard1.6/Cik.Shared.Core.dll": {}
         }
       },
-      "Cik.Domain/1.0.0": {
+      "Cik.Shared.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
@@ -4715,17 +4715,16 @@
           "System.Threading.ThreadPool": "4.0.10"
         },
         "compile": {
-          "netstandard1.6/Cik.Domain.dll": {}
+          "netstandard1.6/Cik.Shared.Domain.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Domain.dll": {}
+          "netstandard1.6/Cik.Shared.Domain.dll": {}
         }
       },
-      "Cik.Infrastruture/1.0.0": {
+      "Cik.Shared.Infrastruture/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "Cik.Domain": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Routing": "1.0.0",
           "Microsoft.CSharp": "4.0.1",
@@ -4736,18 +4735,18 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "netstandard1.6/Cik.Infrastruture.dll": {}
+          "netstandard1.6/Cik.Shared.Infrastruture.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Infrastruture.dll": {}
+          "netstandard1.6/Cik.Shared.Infrastruture.dll": {}
         }
       },
-      "Cik.Rest/1.0.0": {
+      "Cik.Shared.Rest/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "Cik.Domain": "1.0.0",
-          "Cik.ServiceDiscovery": "1.0.0",
+          "Cik.Shared.Domain": "1.0.0",
+          "Cik.Shared.ServiceDiscovery": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.CSharp": "4.0.1",
           "System.Collections": "4.0.11",
@@ -4756,13 +4755,13 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "netstandard1.6/Cik.Rest.dll": {}
+          "netstandard1.6/Cik.Shared.Rest.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Rest.dll": {}
+          "netstandard1.6/Cik.Shared.Rest.dll": {}
         }
       },
-      "Cik.ServiceDiscovery/1.0.0": {
+      "Cik.Shared.ServiceDiscovery/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
@@ -4781,10 +4780,10 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "netstandard1.6/Cik.ServiceDiscovery.dll": {}
+          "netstandard1.6/Cik.Shared.ServiceDiscovery.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.ServiceDiscovery.dll": {}
+          "netstandard1.6/Cik.Shared.ServiceDiscovery.dll": {}
         }
       }
     },
@@ -7608,11 +7607,11 @@
           "lib/net46/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Cik.Api/1.0.0": {
+      "Cik.Shared.Api/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "Cik.Core": "1.0.0",
+          "Cik.Shared.Core": "1.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
@@ -7623,13 +7622,13 @@
           "Microsoft.Extensions.Options": "1.0.0"
         },
         "compile": {
-          "net46/Cik.Api.dll": {}
+          "net46/Cik.Shared.Api.dll": {}
         },
         "runtime": {
-          "net46/Cik.Api.dll": {}
+          "net46/Cik.Shared.Api.dll": {}
         }
       },
-      "Cik.Core/1.0.0": {
+      "Cik.Shared.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
@@ -7640,13 +7639,13 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "net46/Cik.Core.dll": {}
+          "net46/Cik.Shared.Core.dll": {}
         },
         "runtime": {
-          "net46/Cik.Core.dll": {}
+          "net46/Cik.Shared.Core.dll": {}
         }
       },
-      "Cik.Domain/1.0.0": {
+      "Cik.Shared.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
@@ -7655,44 +7654,43 @@
           "System.Threading.ThreadPool": "4.0.10"
         },
         "compile": {
-          "net46/Cik.Domain.dll": {}
+          "net46/Cik.Shared.Domain.dll": {}
         },
         "runtime": {
-          "net46/Cik.Domain.dll": {}
+          "net46/Cik.Shared.Domain.dll": {}
         }
       },
-      "Cik.Infrastruture/1.0.0": {
+      "Cik.Shared.Infrastruture/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "Cik.Domain": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Routing": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "1.0.0"
         },
         "compile": {
-          "net46/Cik.Infrastruture.dll": {}
+          "net46/Cik.Shared.Infrastruture.dll": {}
         },
         "runtime": {
-          "net46/Cik.Infrastruture.dll": {}
+          "net46/Cik.Shared.Infrastruture.dll": {}
         }
       },
-      "Cik.Rest/1.0.0": {
+      "Cik.Shared.Rest/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "Cik.Domain": "1.0.0",
-          "Cik.ServiceDiscovery": "1.0.0",
+          "Cik.Shared.Domain": "1.0.0",
+          "Cik.Shared.ServiceDiscovery": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.3"
         },
         "compile": {
-          "net46/Cik.Rest.dll": {}
+          "net46/Cik.Shared.Rest.dll": {}
         },
         "runtime": {
-          "net46/Cik.Rest.dll": {}
+          "net46/Cik.Shared.Rest.dll": {}
         }
       },
-      "Cik.ServiceDiscovery/1.0.0": {
+      "Cik.Shared.ServiceDiscovery/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
@@ -7706,10 +7704,10 @@
           "System.Runtime.Serialization.Json": "4.0.1"
         },
         "compile": {
-          "net46/Cik.ServiceDiscovery.dll": {}
+          "net46/Cik.Shared.ServiceDiscovery.dll": {}
         },
         "runtime": {
-          "net46/Cik.ServiceDiscovery.dll": {}
+          "net46/Cik.Shared.ServiceDiscovery.dll": {}
         }
       }
     }
@@ -14862,46 +14860,46 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Cik.Api/1.0.0": {
+    "Cik.Shared.Api/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.Api/project.json",
-      "msbuildProject": "../../../Framework/Cik.Api/Cik.Api.xproj"
+      "path": "../../../Common/Cik.Shared.Api/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.Api/Cik.Shared.Api.xproj"
     },
-    "Cik.Core/1.0.0": {
+    "Cik.Shared.Core/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.Core/project.json",
-      "msbuildProject": "../../../Framework/Cik.Core/Cik.Core.xproj"
+      "path": "../../../Common/Cik.Shared.Core/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.Core/Cik.Shared.Core.xproj"
     },
-    "Cik.Domain/1.0.0": {
+    "Cik.Shared.Domain/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.Domain/project.json",
-      "msbuildProject": "../../../Framework/Cik.Domain/Cik.Domain.xproj"
+      "path": "../../../Common/Cik.Shared.Domain/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.Domain/Cik.Shared.Domain.xproj"
     },
-    "Cik.Infrastruture/1.0.0": {
+    "Cik.Shared.Infrastruture/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.Infrastruture/project.json",
-      "msbuildProject": "../../../Framework/Cik.Infrastruture/Cik.Infrastruture.xproj"
+      "path": "../../../Common/Cik.Shared.Infrastruture/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.Infrastruture/Cik.Shared.Infrastruture.xproj"
     },
-    "Cik.Rest/1.0.0": {
+    "Cik.Shared.Rest/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.Rest/project.json",
-      "msbuildProject": "../../../Framework/Cik.Rest/Cik.Rest.xproj"
+      "path": "../../../Common/Cik.Shared.Rest/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.Rest/Cik.Shared.Rest.xproj"
     },
-    "Cik.ServiceDiscovery/1.0.0": {
+    "Cik.Shared.ServiceDiscovery/1.0.0": {
       "type": "project",
-      "path": "../../../Framework/Cik.ServiceDiscovery/project.json",
-      "msbuildProject": "../../../Framework/Cik.ServiceDiscovery/Cik.ServiceDiscovery.xproj"
+      "path": "../../../Common/Cik.Shared.ServiceDiscovery/project.json",
+      "msbuildProject": "../../../Common/Cik.Shared.ServiceDiscovery/Cik.Shared.ServiceDiscovery.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "Autofac >= 4.0.0-rc2-240",
       "Autofac.Extensions.DependencyInjection >= 4.0.0-rc2-240",
-      "Cik.Api >= 1.0.0-*",
-      "Cik.Core >= 1.0.0-*",
-      "Cik.Domain >= 1.0.0-*",
-      "Cik.Infrastruture >= 1.0.0-*",
-      "Cik.Rest >= 1.0.0-*",
+      "Cik.Shared.Api >= 1.0.0-*",
+      "Cik.Shared.Core >= 1.0.0-*",
+      "Cik.Shared.Domain >= 1.0.0-*",
+      "Cik.Shared.Infrastruture >= 1.0.0-*",
+      "Cik.Shared.Rest >= 1.0.0-*",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 1.0.0",

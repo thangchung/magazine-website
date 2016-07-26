@@ -17,7 +17,7 @@
     "preserveCompilationContext": true,
     "debugType": "portable"
   },
-  "copyright": "Copyright © ThangChung, 2016",
+  "copyright": "Copyright by ThangChung, 2016",
   "version": "1.0.0-*",
 
   "dependencies": {
@@ -35,7 +35,7 @@
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
-    "Cik.Api": "1.0.0-*"
+    "Cik.Shared.Api": "1.0.0-*"
   },
 
   "tools": {

@@ -1,5 +1,5 @@
-﻿{
-  "projects": [ "src", "src/Framework", "src/Services" ],
+{
+  "projects": [ "src", "src/Framework", "src/Services", "src/Common" ],
   "sdk": {
     "version": "1.0.0-preview2-003121"
   }
