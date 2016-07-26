@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Cik.ServiceDiscovery;
 using Cik.Shared.Domain;
+using Cik.Shared.ServiceDiscovery;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Cik.Rest
+namespace Cik.Shared.Rest
 {
     public class RestClient
     {
@@ -44,6 +44,23 @@ namespace Cik.Rest
                 }
             }
             return await Task.FromResult(new TReturnMessage());
+        }
+
+        public async Task<HttpResponseMessage> Get(string serviceName, string path)
+        {
+            using (_client)
+            {
+                var infos = await _discoveryService.GetServiceInstancesAsync(serviceName);
+                var defaultInfo = infos.FirstOrDefault();
+                Guard.NotNull(defaultInfo);
+                var host = _env.IsDevelopment() ? "192.168.99.100" : defaultInfo.Host;
+                var uri = new Uri($"http://{host}:{defaultInfo.Port}{path}");
+
+                _client.DefaultRequestHeaders.Accept.Clear();
+                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                return await _client.GetAsync(uri);
+            }
         }
     }
 }

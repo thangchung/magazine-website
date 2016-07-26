@@ -1,6 +1,6 @@
 ﻿using Microphone;
 
-namespace Cik.ServiceDiscovery
+namespace Cik.Shared.ServiceDiscovery
 {
     public class ConsulDiscoveryService : DiscoveryService
     {

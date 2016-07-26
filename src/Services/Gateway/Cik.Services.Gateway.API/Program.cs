@@ -12,10 +12,10 @@ namespace Cik.Services.Gateway.API
             var config = new ConfigurationBuilder().BuildHostConfiguration();
             var host = new WebHostBuilder()
                 .UseUrls(config.GetUrlForDocker("gateway_service_url"))
-                .BuildWebHostBuilder(config)
-                .UseConfiguration(config)
+                // .BuildWebHostBuilder(config)
+                // .UseConfiguration(config)
+                .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
 

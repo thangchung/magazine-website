@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:8080/magazine/ping",
+      "launchUrl": "http://localhost:8080/sample_service/api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -19,7 +19,7 @@
     "api_gateway": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:8080/",
+      "launchUrl": "http://localhost:8080/sample_service/api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

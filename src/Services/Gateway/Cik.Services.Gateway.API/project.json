@@ -35,6 +35,8 @@
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
+    "Polly": "4.3.0",
+    "Cik.Shared.Rest": "1.0.0-*",
     "Cik.Shared.Api": "1.0.0-*"
   },
 

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microphone;
 
-namespace Cik.ServiceDiscovery
+namespace Cik.Shared.ServiceDiscovery
 {
     public interface IDiscoveryService
     {

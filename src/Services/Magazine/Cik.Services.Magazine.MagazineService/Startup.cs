@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using Autofac;
-using Cik.Rest;
 using Cik.Services.Magazine.MagazineService.Extensions;
 using Cik.Services.Magazine.MagazineService.Model;
 using Cik.Services.Magazine.MagazineService.QueryModel;
@@ -15,9 +14,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Cik.ServiceDiscovery;
-using Cik.Shared.Domain;
 using Autofac.Extensions.DependencyInjection;
+using Cik.Shared.Domain;
+using Cik.Shared.Rest;
+using Cik.Shared.ServiceDiscovery;
 
 namespace Cik.Services.Magazine.MagazineService
 {

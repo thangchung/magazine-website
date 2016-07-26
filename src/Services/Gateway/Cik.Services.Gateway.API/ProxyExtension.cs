@@ -29,5 +29,29 @@ namespace Cik.Services.Gateway.API
 
             return app.UseMiddleware<ProxyMiddleware>(Options.Create(options));
         }
+
+        public static IApplicationBuilder RunGatewayProxy(this IApplicationBuilder app)
+        {
+            if (app == null)
+            {
+                throw new ArgumentNullException(nameof(app));
+            }
+
+            return app.UseMiddleware<GatewayMiddleware>();
+        }
+
+        public static IApplicationBuilder RunGatewayProxy(this IApplicationBuilder app, ProxyOptions options)
+        {
+            if (app == null)
+            {
+                throw new ArgumentNullException(nameof(app));
+            }
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
+            return app.UseMiddleware<GatewayMiddleware>(Options.Create(options));
+        }
     }
 }
