@@ -29,7 +29,6 @@ namespace Cik.Services.Gateway.API
         }
 
         public IConfigurationRoot Configuration { get; }
-        public IConfiguration HostConfiguration { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
