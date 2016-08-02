@@ -1,7 +1,6 @@
 ﻿{
   "dependencies": {
-    "Cik.Shared.Api": "1.0.0-*",
-    "Cik.Shared.Core": "1.0.0-*",
+    "Cik.CoreLibs": "1.0.0-*",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",

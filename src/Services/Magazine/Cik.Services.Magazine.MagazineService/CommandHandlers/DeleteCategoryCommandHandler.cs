@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Command;
 using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Shared.Domain;
 
 namespace Cik.Services.Magazine.MagazineService.CommandHandlers
 {
@@ -16,8 +17,9 @@ namespace Cik.Services.Magazine.MagazineService.CommandHandlers
             _categoryRepository = repo;
         }
 
-        public void Handle(DeleteCategoryCommand message)
+        public Task Handle(DeleteCategoryCommand message)
         {
+            return Task.CompletedTask;
         }
     }
 }

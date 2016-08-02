@@ -21,8 +21,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Cik.Shared.Api": "1.0.0-*",
-    "Cik.Shared.Core": "1.0.0-*",
+    "Cik.CoreLibs": "1.0.0-*",
     "IdentityServer4": "1.0.0-beta4-update1",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Google": "1.0.0",

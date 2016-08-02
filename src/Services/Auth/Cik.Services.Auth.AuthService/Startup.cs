@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Cik.Shared.Api.Extensions;
+using Cik.CoreLibs.Extensions;
 
 namespace Cik.Services.Auth.AuthService
 {

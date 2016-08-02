@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cik.Shared.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
+using Cik.CoreLibs.Domain;
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {

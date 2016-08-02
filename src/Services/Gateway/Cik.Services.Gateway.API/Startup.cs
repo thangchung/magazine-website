@@ -1,5 +1,5 @@
-﻿using Cik.Shared.Rest;
-using Cik.Shared.ServiceDiscovery;
+﻿using Cik.CoreLibs.Api;
+using Cik.CoreLibs.ServiceDiscovery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;

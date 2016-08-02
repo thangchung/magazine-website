@@ -1,4 +1,4 @@
-﻿using Cik.Shared.Domain;
+﻿using Cik.CoreLibs.Domain;
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {

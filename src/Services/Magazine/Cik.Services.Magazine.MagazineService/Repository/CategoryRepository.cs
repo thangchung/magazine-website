@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Shared.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.Repository

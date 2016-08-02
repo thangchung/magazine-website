@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Shared.Domain;
 using System.Linq;
+using Cik.CoreLibs.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.QueryModel
@@ -19,11 +19,11 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
             _dbContext = dbContext;
         }
 
-        public async Task<CategoryDto> Find(Guid categoryId)
+        public async Task<CategoryDto> Find(Guid id)
         {
             var dbItem = _dbContext
                 .Categories
-                .Where(x => x.Id == categoryId)
+                .Where(x => x.Id == id)
                 .Select(x =>
                     new CategoryDto
                     {

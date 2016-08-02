@@ -1,6 +1,6 @@
 ﻿using System;
-using Cik.Shared.Core;
-using Cik.Shared.Rest;
+using Cik.CoreLibs.Api;
+using Cik.CoreLibs.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using Cik.Shared.Api.Extensions;
-using Cik.Shared.Core;
+using Cik.CoreLibs.Extensions;
+using Cik.CoreLibs.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 

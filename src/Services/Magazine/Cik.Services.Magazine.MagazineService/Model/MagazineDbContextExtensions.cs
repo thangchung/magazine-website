@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cik.Shared.Domain;
 using System.Linq;
+using Cik.CoreLibs.Domain;
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {

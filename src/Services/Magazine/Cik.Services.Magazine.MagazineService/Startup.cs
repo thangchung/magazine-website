@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
 using Autofac;
-using Cik.Services.Magazine.MagazineService.Extensions;
+using Autofac.Extensions.DependencyInjection;
+using Cik.CoreLibs.Api;
+using Cik.CoreLibs.Domain;
+using Cik.Services.Magazine.MagazineService.Command;
 using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Services.Magazine.MagazineService.QueryModel;
 using Cik.Services.Magazine.MagazineService.Repository;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Autofac.Extensions.DependencyInjection;
-using Cik.Shared.Domain;
-using Cik.Shared.Rest;
-using Cik.Shared.ServiceDiscovery;
+using Cik.CoreLibs.Extensions;
+using Cik.CoreLibs.ServiceDiscovery;
 
 namespace Cik.Services.Magazine.MagazineService
 {
@@ -51,21 +52,25 @@ namespace Cik.Services.Magazine.MagazineService
                     policyUser => { policyUser.RequireClaim("role", "data_category_records_user"); });
             });
 
-            services.AddMvc(options => { options.Filters.Add(new AuthorizeFilter(guestPolicy)); });
+            // services.AddMvc(options => { options.Filters.Add(new AuthorizeFilter(guestPolicy)); });
 
-            // Use a PostgreSQL database
-            var sqlConnectionString = Configuration["DataAccessPostgreSqlProvider:ConnectionString"];
-            services.AddDbContext<MagazineDbContext>(options =>
-                options.UseNpgsql(
-                    sqlConnectionString,
-                    b => b.MigrationsAssembly("Cik.Services.Magazine.MagazineService")
-                    ));
-
-            // Create options telling the context to use an
-            // InMemory database and the service provider.
-            /* services.AddDbContext<MagazineDbContext>(options =>
-        options.UseInMemoryDatabase()
-        ); */
+            if (!Configuration["RunInMemory"].ToBoolean())
+            {
+                // Use a PostgreSQL database
+                var sqlConnectionString = Configuration["DataAccessPostgreSqlProvider:ConnectionString"];
+                services.AddDbContext<MagazineDbContext>(options =>
+                    options.UseNpgsql(
+                        sqlConnectionString,
+                        b => b.MigrationsAssembly("Cik.Services.Magazine.MagazineService")
+                        ));
+            }
+            else
+            {
+                // Use a InMemory database
+                services.AddDbContext<MagazineDbContext>(options =>
+                    options.UseInMemoryDatabase()
+                    );
+            }
 
             // Add framework services.
             services.AddMvc();
@@ -77,12 +82,29 @@ namespace Cik.Services.Magazine.MagazineService
             builder.RegisterType<CategoryRepository>()
                 .As<IRepository<Category, Guid>>()
                 .InstancePerLifetimeScope();
-            builder.RegisterInstance(new InMemoryBus()).SingleInstance();
-            builder.Register(x => x.Resolve<InMemoryBus>()).As<ICommandHandler>();
-            builder.Register(x => x.Resolve<InMemoryBus>()).As<IDomainEventPublisher>();
-            builder.Register(x => x.Resolve<InMemoryBus>()).As<IHandlerRegistrar>();
-            builder.RegisterType<CategoryQueryModelFinder>().AsImplementedInterfaces().InstancePerLifetimeScope();
-            builder.RegisterCommandHandlers();
+
+            //builder.RegisterInstance(new InMemoryBus()).SingleInstance();
+            //builder.Register(x => x.Resolve<InMemoryBus>()).As<ICommandHandler>();
+            //builder.Register(x => x.Resolve<InMemoryBus>()).As<IDomainEventPublisher>();
+            //builder.Register(x => x.Resolve<InMemoryBus>()).As<IHandlerRegistrar>();
+
+            builder.RegisterAssemblyTypes(typeof (IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(CreateCategoryCommand).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.Register<SingleInstanceFactory>(ctx =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t => c.Resolve(t);
+            });
+            builder.Register<MultiInstanceFactory>(ctx =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t => (IEnumerable<object>) c.Resolve(typeof (IEnumerable<>).MakeGenericType(t));
+            });
+
+            // builder.RegisterType<CategoryQueryModelFinder>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<SimpleCommandBus>().As<ICommandBus>();
+
+            // builder.RegisterCommandHandlers();
             builder.Populate(services);
             builder.RegisterType<ConsulDiscoveryService>()
                 .As<IDiscoveryService>()
@@ -91,7 +113,7 @@ namespace Cik.Services.Magazine.MagazineService
 
             // build up the container
             var container = builder.Build();
-            container.RegisterHandlers(typeof (Startup));
+            // container.RegisterHandlers(typeof (Startup));
             return container.Resolve<IServiceProvider>();
         }
 
@@ -112,7 +134,7 @@ namespace Cik.Services.Magazine.MagazineService
                 AutomaticChallenge = true
             };
 
-            app.UseJwtBearerAuthentication(jwtBearerOptions);
+            // app.UseJwtBearerAuthentication(jwtBearerOptions);
 
             if (env.IsDevelopment())
             {

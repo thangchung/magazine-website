@@ -1,4 +1,4 @@
-﻿using Cik.Shared.Rest;
+﻿using Cik.CoreLibs.Api;
 using Microsoft.Extensions.Logging;
 
 namespace Cik.Services.Gateway.API

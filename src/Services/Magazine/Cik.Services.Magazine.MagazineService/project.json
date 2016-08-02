@@ -22,11 +22,7 @@
   "dependencies": {
     "Autofac": "4.0.0-rc2-240",
     "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
-    "Cik.Shared.Api": "1.0.0-*",
-    "Cik.Shared.Core": "1.0.0-*",
-    "Cik.Shared.Domain": "1.0.0-*",
-    "Cik.Shared.Infrastruture": "1.0.0-*",
-    "Cik.Shared.Rest": "1.0.0-*",
+    "Cik.CoreLibs": "1.0.0-*",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
     "Microsoft.AspNetCore.Authentication.OpenIdConnect": "1.0.0",
@@ -62,7 +58,7 @@
     "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0",
     "System.IdentityModel.Tokens.Jwt": "5.0.0",
     "System.Reflection": "4.1.0",
-    "MediatR":  "2.1.0"
+    "MediatR": "2.1.0"
   },
   "description": "The Magazine Website.",
   "frameworks": {

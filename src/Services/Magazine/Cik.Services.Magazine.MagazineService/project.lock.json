@@ -4662,141 +4662,42 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Cik.Shared.Api/1.0.0": {
+      "Cik.CoreLibs/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "Cik.Shared.Core": "1.0.0",
+          "MediatR": "2.1.0",
+          "Microphone.AspNet": "0.6.2",
+          "Microphone.Core": "0.6.2",
+          "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
           "Microsoft.CSharp": "4.0.1",
+          "Microsoft.EntityFrameworkCore": "1.0.0",
           "Microsoft.Extensions.Configuration": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
           "Microsoft.Extensions.Configuration.Binder": "1.0.0",
           "Microsoft.Extensions.Configuration.Json": "1.0.0",
-          "Microsoft.Extensions.Options": "1.0.0",
-          "NETStandard.Library": "1.6.0",
-          "System.Collections": "4.0.11",
-          "System.Dynamic.Runtime": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Runtime": "4.1.0",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "netstandard1.6/Cik.Shared.Api.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Cik.Shared.Api.dll": {}
-        }
-      },
-      "Cik.Shared.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v1.6",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1",
-          "Microsoft.Extensions.Logging": "1.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "Microsoft.Extensions.Options": "1.0.0",
           "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
           "System.Collections": "4.0.11",
           "System.Dynamic.Runtime": "4.0.11",
           "System.Linq": "4.1.0",
           "System.Runtime": "4.1.0",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "netstandard1.6/Cik.Shared.Core.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Cik.Shared.Core.dll": {}
-        }
-      },
-      "Cik.Shared.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v1.6",
-        "dependencies": {
-          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
-          "Microsoft.CSharp": "4.0.1",
-          "Microsoft.EntityFrameworkCore": "1.0.0",
-          "System.Collections": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Runtime": "4.1.0",
+          "System.Runtime.Serialization.Json": "4.0.1",
           "System.Threading": "4.0.11",
           "System.Threading.ThreadPool": "4.0.10"
         },
         "compile": {
-          "netstandard1.6/Cik.Shared.Domain.dll": {}
+          "netstandard1.6/Cik.CoreLibs.dll": {}
         },
         "runtime": {
-          "netstandard1.6/Cik.Shared.Domain.dll": {}
-        }
-      },
-      "Cik.Shared.Infrastruture/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v1.6",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "Microsoft.AspNetCore.Routing": "1.0.0",
-          "Microsoft.CSharp": "4.0.1",
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
-          "System.Collections": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Runtime": "4.1.0",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "netstandard1.6/Cik.Shared.Infrastruture.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Cik.Shared.Infrastruture.dll": {}
-        }
-      },
-      "Cik.Shared.Rest/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v1.6",
-        "dependencies": {
-          "Cik.Shared.Core": "1.0.0",
-          "Cik.Shared.Domain": "1.0.0",
-          "Cik.Shared.ServiceDiscovery": "1.0.0",
-          "Microsoft.AspNet.WebApi.Client": "5.2.3",
-          "Microsoft.CSharp": "4.0.1",
-          "System.Collections": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Runtime": "4.1.0",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "netstandard1.6/Cik.Shared.Rest.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Cik.Shared.Rest.dll": {}
-        }
-      },
-      "Cik.Shared.ServiceDiscovery/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v1.6",
-        "dependencies": {
-          "Microphone.AspNet": "0.6.2",
-          "Microphone.Core": "0.6.2",
-          "Microsoft.CSharp": "4.0.1",
-          "Microsoft.Extensions.Configuration": "1.0.0",
-          "Microsoft.Extensions.Configuration.Json": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Collections": "4.0.11",
-          "System.Linq": "4.1.0",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Serialization.Json": "4.0.1",
-          "System.Threading": "4.0.11"
-        },
-        "compile": {
-          "netstandard1.6/Cik.Shared.ServiceDiscovery.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Cik.Shared.ServiceDiscovery.dll": {}
+          "netstandard1.6/Cik.CoreLibs.dll": {}
         }
       }
     },
@@ -7629,108 +7530,35 @@
           "lib/net46/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Cik.Shared.Api/1.0.0": {
+      "Cik.CoreLibs/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
-          "Cik.Shared.Core": "1.0.0",
+          "MediatR": "2.1.0",
+          "Microphone.AspNet": "0.6.2",
+          "Microphone.Core": "0.6.2",
+          "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "1.0.0",
           "Microsoft.Extensions.Configuration": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
           "Microsoft.Extensions.Configuration.Binder": "1.0.0",
           "Microsoft.Extensions.Configuration.Json": "1.0.0",
-          "Microsoft.Extensions.Options": "1.0.0"
-        },
-        "compile": {
-          "net46/Cik.Shared.Api.dll": {}
-        },
-        "runtime": {
-          "net46/Cik.Shared.Api.dll": {}
-        }
-      },
-      "Cik.Shared.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.6",
-        "dependencies": {
-          "Microsoft.Extensions.Logging": "1.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "1.0.0",
-          "System.Runtime": "4.1.0"
-        },
-        "compile": {
-          "net46/Cik.Shared.Core.dll": {}
-        },
-        "runtime": {
-          "net46/Cik.Shared.Core.dll": {}
-        }
-      },
-      "Cik.Shared.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.6",
-        "dependencies": {
-          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.Extensions.Options": "1.0.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Runtime.Serialization.Json": "4.0.1",
           "System.Threading.ThreadPool": "4.0.10"
         },
         "compile": {
-          "net46/Cik.Shared.Domain.dll": {}
+          "net46/Cik.CoreLibs.dll": {}
         },
         "runtime": {
-          "net46/Cik.Shared.Domain.dll": {}
-        }
-      },
-      "Cik.Shared.Infrastruture/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.6",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "Microsoft.AspNetCore.Routing": "1.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0"
-        },
-        "compile": {
-          "net46/Cik.Shared.Infrastruture.dll": {}
-        },
-        "runtime": {
-          "net46/Cik.Shared.Infrastruture.dll": {}
-        }
-      },
-      "Cik.Shared.Rest/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.6",
-        "dependencies": {
-          "Cik.Shared.Core": "1.0.0",
-          "Cik.Shared.Domain": "1.0.0",
-          "Cik.Shared.ServiceDiscovery": "1.0.0",
-          "Microsoft.AspNet.WebApi.Client": "5.2.3"
-        },
-        "compile": {
-          "net46/Cik.Shared.Rest.dll": {}
-        },
-        "runtime": {
-          "net46/Cik.Shared.Rest.dll": {}
-        }
-      },
-      "Cik.Shared.ServiceDiscovery/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.6",
-        "dependencies": {
-          "Microphone.AspNet": "0.6.2",
-          "Microphone.Core": "0.6.2",
-          "Microsoft.Extensions.Configuration": "1.0.0",
-          "Microsoft.Extensions.Configuration.Json": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Runtime.Serialization.Json": "4.0.1"
-        },
-        "compile": {
-          "net46/Cik.Shared.ServiceDiscovery.dll": {}
-        },
-        "runtime": {
-          "net46/Cik.Shared.ServiceDiscovery.dll": {}
+          "net46/Cik.CoreLibs.dll": {}
         }
       }
     }
@@ -14894,46 +14722,17 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Cik.Shared.Api/1.0.0": {
+    "Cik.CoreLibs/1.0.0": {
       "type": "project",
-      "path": "../../../Common/Cik.Shared.Api/project.json",
-      "msbuildProject": "../../../Common/Cik.Shared.Api/Cik.Shared.Api.xproj"
-    },
-    "Cik.Shared.Core/1.0.0": {
-      "type": "project",
-      "path": "../../../Common/Cik.Shared.Core/project.json",
-      "msbuildProject": "../../../Common/Cik.Shared.Core/Cik.Shared.Core.xproj"
-    },
-    "Cik.Shared.Domain/1.0.0": {
-      "type": "project",
-      "path": "../../../Common/Cik.Shared.Domain/project.json",
-      "msbuildProject": "../../../Common/Cik.Shared.Domain/Cik.Shared.Domain.xproj"
-    },
-    "Cik.Shared.Infrastruture/1.0.0": {
-      "type": "project",
-      "path": "../../../Common/Cik.Shared.Infrastruture/project.json",
-      "msbuildProject": "../../../Common/Cik.Shared.Infrastruture/Cik.Shared.Infrastruture.xproj"
-    },
-    "Cik.Shared.Rest/1.0.0": {
-      "type": "project",
-      "path": "../../../Common/Cik.Shared.Rest/project.json",
-      "msbuildProject": "../../../Common/Cik.Shared.Rest/Cik.Shared.Rest.xproj"
-    },
-    "Cik.Shared.ServiceDiscovery/1.0.0": {
-      "type": "project",
-      "path": "../../../Common/Cik.Shared.ServiceDiscovery/project.json",
-      "msbuildProject": "../../../Common/Cik.Shared.ServiceDiscovery/Cik.Shared.ServiceDiscovery.xproj"
+      "path": "../../../Common/Cik.CoreLibs/project.json",
+      "msbuildProject": "../../../Common/Cik.CoreLibs/Cik.CoreLibs.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "Autofac >= 4.0.0-rc2-240",
       "Autofac.Extensions.DependencyInjection >= 4.0.0-rc2-240",
-      "Cik.Shared.Api >= 1.0.0-*",
-      "Cik.Shared.Core >= 1.0.0-*",
-      "Cik.Shared.Domain >= 1.0.0-*",
-      "Cik.Shared.Infrastruture >= 1.0.0-*",
-      "Cik.Shared.Rest >= 1.0.0-*",
+      "Cik.CoreLibs >= 1.0.0-*",
       "MediatR >= 2.1.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 1.0.0",
