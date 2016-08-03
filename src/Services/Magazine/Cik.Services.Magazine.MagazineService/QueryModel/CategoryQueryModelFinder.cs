@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Cik.Services.Magazine.MagazineService.Model;
-using System.Linq;
 using Cik.CoreLibs.Domain;
-using Microsoft.EntityFrameworkCore;
+using Cik.Services.Magazine.MagazineService.Model;
+using System.Reactive.Linq;
 
 namespace Cik.Services.Magazine.MagazineService.QueryModel
 {
@@ -15,11 +12,34 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
         public CategoryQueryModelFinder(MagazineDbContext dbContext)
         {
             Guard.NotNull(dbContext);
-
             _dbContext = dbContext;
         }
 
-        public async Task<CategoryDto> Find(Guid id)
+        public IObservable<CategoryDto> FindItemStream(Guid id)
+        {
+            return GetCategoryStream().Where(x=>x.Id == id);
+        }
+
+        public IObservable<CategoryDto> QueryItemStream()
+        {
+            return GetCategoryStream();
+        }
+
+        private IObservable<CategoryDto> GetCategoryStream()
+        {
+            return _dbContext
+                .Categories
+                .ToObservable()
+                .Select(x => new CategoryDto
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                });
+        }
+
+        #region "async version"
+
+        /*public async Task<CategoryDto> Find(Guid id)
         {
             var dbItem = _dbContext
                 .Categories
@@ -48,37 +68,6 @@ namespace Cik.Services.Magazine.MagazineService.QueryModel
                     })
                 .ToListAsync();
             return await categories;
-        }
-
-        #region "reactive"
-
-        /*public IObservable<CategoryDto> Find(Guid categoryId)
-        {
-            var dbItem = _dbContext
-                .Categories
-                .FromSql("SELECT Id, Name FROM Categories WHERE Id=(@p0)", categoryId);
-
-            return dbItem
-                .ToObservable()
-                .Select(x => new CategoryDto
-                {
-                    Id = x.Id,
-                    Name = x.Name
-                })
-                .FirstAsync();
-            // return Observable.Return(new CategoryDto());
-        }
-
-        public IObservable<CategoryDto> Query()
-        {
-            var categories = _dbContext.Categories;
-            return categories
-                .ToObservable()
-                .Select(x => new CategoryDto
-                {
-                    Id = x.Id,
-                    Name = x.Name
-                });
         } */
 
         #endregion

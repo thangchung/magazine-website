@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Command;
@@ -33,14 +34,14 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
         // [Authorize("data_category_records_user")]
         public async Task<IList<CategoryDto>> Get()
         {
-            return await _queryFinder.Query();
+            return await _queryFinder.QueryItemStream().ToList();
         }
 
         [HttpGet("{id}")]
         // [Authorize("data_category_records_user")]
         public async Task<CategoryDto> Get(Guid id)
         {
-            return await _queryFinder.Find(id);
+            return await _queryFinder.FindItemStream(id);
         }
 
         [HttpPost]

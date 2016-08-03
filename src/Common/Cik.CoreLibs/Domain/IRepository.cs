@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.CoreLibs.Domain
 {
-    public interface IRepository<TAggregateRootBase, TId>
+    public interface IRepository<in TAggregateRootBase, TId>
         where TAggregateRootBase : AggregateRootBase
     {
         DbContext UnitOfWork { get; }
-        Task<List<TAggregateRootBase>> GetAll();
         Task<TId> Create(TAggregateRootBase cat);
     }
 }

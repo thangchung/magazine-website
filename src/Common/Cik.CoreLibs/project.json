@@ -32,6 +32,7 @@
     "Microsoft.EntityFrameworkCore": "1.0.0",
     "System.Runtime.Serialization.Json": "4.0.1",
     "System.Threading.ThreadPool": "4.0.10",
+    "System.Reactive": "3.0.0",
     "Newtonsoft.Json": "9.0.1",
     "Microphone.Core": "0.6.2",
     "Microphone.AspNet": "0.6.2",

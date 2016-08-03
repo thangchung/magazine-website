@@ -58,6 +58,7 @@
     "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0",
     "System.IdentityModel.Tokens.Jwt": "5.0.0",
     "System.Reflection": "4.1.0",
+    "System.Reactive": "3.0.0",
     "MediatR": "2.1.0"
   },
   "description": "The Magazine Website.",
