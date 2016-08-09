@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Reactive.Linq;
+using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
 using Microsoft.EntityFrameworkCore;
@@ -19,12 +20,12 @@ namespace Cik.Services.Magazine.MagazineService.Repository
 
         public DbContext UnitOfWork => _dbContext;
 
-        public async Task<Guid> Create(Category cat)
+        public IObservable<Guid> Create(Category cat)
         {
             cat.CreatedDate = DateTime.UtcNow;
             cat.CreatedBy = "thangchung";
             _dbContext.Categories.Add(cat);
-            return await Task.FromResult(cat.Id);
+            return Observable.Return(cat.Id);
         }
     }
 }

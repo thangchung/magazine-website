@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.CoreLibs.Domain
@@ -7,6 +7,6 @@ namespace Cik.CoreLibs.Domain
         where TAggregateRootBase : AggregateRootBase
     {
         DbContext UnitOfWork { get; }
-        Task<TId> Create(TAggregateRootBase cat);
+        IObservable<TId> Create(TAggregateRootBase cat);
     }
 }

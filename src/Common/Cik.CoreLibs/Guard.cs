@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Cik.CoreLibs.Domain
+namespace Cik.CoreLibs
 {
     /// <summary>
     ///     Helper class that will throw exceptions when conditions are not satisfied.

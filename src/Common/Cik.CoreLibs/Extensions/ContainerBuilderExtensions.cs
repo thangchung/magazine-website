@@ -4,9 +4,8 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using Cik.CoreLibs.Domain;
-using Cik.Services.Magazine.MagazineService.CommandHandlers;
 
-namespace Cik.Services.Magazine.MagazineService.Extensions
+namespace Cik.CoreLibs.Extensions
 {
     public static class ContainerBuilderExtensions
     {
@@ -19,7 +18,7 @@ namespace Cik.Services.Magazine.MagazineService.Extensions
         {
             var asm =
                 Assembly.Load(new AssemblyName(typeof (ContainerBuilderExtensions).GetTypeInfo().Assembly.FullName));
-            var messageType = typeof (CoreLibs.Domain.Command);
+            var messageType = typeof (Command);
 
             var types = asm.GetExportedTypes().Where(p => messageType.IsAssignableFrom(p));
             foreach (var type in types)

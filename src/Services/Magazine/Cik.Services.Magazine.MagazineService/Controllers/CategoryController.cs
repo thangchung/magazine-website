@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Command;
 using Cik.Services.Magazine.MagazineService.Model;
@@ -13,7 +14,7 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
 {
     // [Authorize]
     [Route("api/categories")]
-    public class CategoryController : Cik.CoreLibs.Api.ControllerBase
+    public class CategoryController : CoreLibs.Api.ControllerBase
     {
         private readonly ICommandBus _commandBus;
         private readonly IQueryModelFinder<CategoryDto> _queryFinder;

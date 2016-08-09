@@ -1,4 +1,5 @@
 ﻿using System;
+using Cik.CoreLibs.Model;
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {

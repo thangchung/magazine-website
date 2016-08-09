@@ -4782,6 +4782,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
+          "Autofac": "4.0.0-rc2-240",
           "MediatR": "2.1.0",
           "Microphone.AspNet": "0.6.2",
           "Microphone.Core": "0.6.2",
@@ -4792,6 +4793,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
           "Microsoft.CSharp": "4.0.1",
           "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
           "Microsoft.Extensions.Configuration": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
           "Microsoft.Extensions.Configuration.Binder": "1.0.0",
@@ -7723,6 +7725,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
+          "Autofac": "4.0.0-rc2-240",
           "MediatR": "2.1.0",
           "Microphone.AspNet": "0.6.2",
           "Microphone.Core": "0.6.2",
@@ -7732,6 +7735,7 @@
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0",
           "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
           "Microsoft.Extensions.Configuration": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
           "Microsoft.Extensions.Configuration.Binder": "1.0.0",

@@ -2,6 +2,7 @@
 using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
 using System.Reactive.Linq;
+using Cik.CoreLibs;
 
 namespace Cik.Services.Magazine.MagazineService.QueryModel
 {

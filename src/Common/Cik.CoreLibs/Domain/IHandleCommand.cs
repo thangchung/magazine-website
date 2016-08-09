@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Cik.Services.Magazine.MagazineService.CommandHandlers
+namespace Cik.CoreLibs.Domain
 {
     public interface IHandleCommand<in T> : IAsyncNotificationHandler<T>
         where T : IAsyncNotification
