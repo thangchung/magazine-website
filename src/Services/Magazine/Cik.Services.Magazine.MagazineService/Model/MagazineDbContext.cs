@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Cik.Services.Magazine.MagazineService.Model.Entity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 

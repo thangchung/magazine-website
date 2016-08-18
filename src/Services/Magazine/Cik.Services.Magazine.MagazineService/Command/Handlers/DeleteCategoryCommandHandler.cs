@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
-using Cik.Services.Magazine.MagazineService.Command;
 using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.Model.Entity;
 
-namespace Cik.Services.Magazine.MagazineService.CommandHandlers
+namespace Cik.Services.Magazine.MagazineService.Command.Handlers
 {
     public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
     {

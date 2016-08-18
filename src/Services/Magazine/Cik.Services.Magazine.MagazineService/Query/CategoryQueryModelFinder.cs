@@ -1,10 +1,10 @@
 ﻿using System;
-using Cik.CoreLibs.Domain;
-using Cik.Services.Magazine.MagazineService.Model;
 using System.Reactive.Linq;
 using Cik.CoreLibs;
+using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.Model.Dto;
 
-namespace Cik.Services.Magazine.MagazineService.QueryModel
+namespace Cik.Services.Magazine.MagazineService.Query
 {
     public class CategoryQueryModelFinder : IQueryModelFinder<CategoryDto>
     {

@@ -28,6 +28,68 @@
           "lib/netstandard1.1/Autofac.dll": {}
         }
       },
+      "FluentValidation/6.4.0-beta3": {
+        "type": "package",
+        "compile": {
+          "lib/Net45/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/Net45/FluentValidation.dll": {}
+        },
+        "resource": {
+          "lib/Net45/cs/FluentValidation.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/Net45/da/FluentValidation.resources.dll": {
+            "locale": "da"
+          },
+          "lib/Net45/de/FluentValidation.resources.dll": {
+            "locale": "de"
+          },
+          "lib/Net45/es/FluentValidation.resources.dll": {
+            "locale": "es"
+          },
+          "lib/Net45/fa/FluentValidation.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/Net45/fi/FluentValidation.resources.dll": {
+            "locale": "fi"
+          },
+          "lib/Net45/fr/FluentValidation.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/Net45/it/FluentValidation.resources.dll": {
+            "locale": "it"
+          },
+          "lib/Net45/ko/FluentValidation.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/Net45/mk/FluentValidation.resources.dll": {
+            "locale": "mk"
+          },
+          "lib/Net45/nl/FluentValidation.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/Net45/pl/FluentValidation.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/Net45/pt/FluentValidation.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/Net45/ru/FluentValidation.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/Net45/sv/FluentValidation.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/Net45/tr/FluentValidation.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/Net45/zh-CN/FluentValidation.resources.dll": {
+            "locale": "zh-CN"
+          }
+        }
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -205,6 +267,18 @@
         },
         "runtime": {
           "lib/net45/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.3"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/1.0.0": {
@@ -2250,6 +2324,75 @@
         },
         "runtime": {
           "lib/netstandard1.1/Autofac.dll": {}
+        }
+      },
+      "FluentValidation/6.4.0-beta3": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.RegularExpressions": "4.0.12",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/FluentValidation.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.0/cs/FluentValidation.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.0/da/FluentValidation.resources.dll": {
+            "locale": "da"
+          },
+          "lib/netstandard1.0/de/FluentValidation.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.0/es/FluentValidation.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.0/fa/FluentValidation.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/netstandard1.0/fi/FluentValidation.resources.dll": {
+            "locale": "fi"
+          },
+          "lib/netstandard1.0/fr/FluentValidation.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.0/it/FluentValidation.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.0/nl/FluentValidation.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/netstandard1.0/pl/FluentValidation.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.0/pt/FluentValidation.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/netstandard1.0/ru/FluentValidation.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.0/sv/FluentValidation.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/netstandard1.0/zh-CN/FluentValidation.resources.dll": {
+            "locale": "zh-CN"
+          }
         }
       },
       "Libuv/1.9.0": {
@@ -5779,6 +5922,100 @@
         "lib/netstandard1.1/Autofac.xml"
       ]
     },
+    "FluentValidation/6.4.0-beta3": {
+      "sha512": "nOWhz7PKOasGkSxMb5rXM3TmkDQenpRoGnOHYD8Uck5Q3PbngdtYmvYgkV0CiPXnJvlRKMWzCze3GTdbQyIaoA==",
+      "type": "package",
+      "path": "FluentValidation/6.4.0-beta3",
+      "files": [
+        "FluentValidation.6.4.0-beta3.nupkg.sha512",
+        "FluentValidation.nuspec",
+        "lib/Net45/FluentValidation.XML",
+        "lib/Net45/FluentValidation.dll",
+        "lib/Net45/FluentValidation.pdb",
+        "lib/Net45/cs/FluentValidation.resources.dll",
+        "lib/Net45/da/FluentValidation.resources.dll",
+        "lib/Net45/de/FluentValidation.resources.dll",
+        "lib/Net45/es/FluentValidation.resources.dll",
+        "lib/Net45/fa/FluentValidation.resources.dll",
+        "lib/Net45/fi/FluentValidation.resources.dll",
+        "lib/Net45/fr/FluentValidation.resources.dll",
+        "lib/Net45/it/FluentValidation.resources.dll",
+        "lib/Net45/ko/FluentValidation.resources.dll",
+        "lib/Net45/mk/FluentValidation.resources.dll",
+        "lib/Net45/nl/FluentValidation.resources.dll",
+        "lib/Net45/pl/FluentValidation.resources.dll",
+        "lib/Net45/pt/FluentValidation.resources.dll",
+        "lib/Net45/ru/FluentValidation.resources.dll",
+        "lib/Net45/sv/FluentValidation.resources.dll",
+        "lib/Net45/tr/FluentValidation.resources.dll",
+        "lib/Net45/zh-CN/FluentValidation.resources.dll",
+        "lib/netstandard1.0/FluentValidation.dll",
+        "lib/netstandard1.0/FluentValidation.pdb",
+        "lib/netstandard1.0/cs/FluentValidation.resources.dll",
+        "lib/netstandard1.0/da/FluentValidation.resources.dll",
+        "lib/netstandard1.0/de/FluentValidation.resources.dll",
+        "lib/netstandard1.0/es/FluentValidation.resources.dll",
+        "lib/netstandard1.0/fa/FluentValidation.resources.dll",
+        "lib/netstandard1.0/fi/FluentValidation.resources.dll",
+        "lib/netstandard1.0/fr/FluentValidation.resources.dll",
+        "lib/netstandard1.0/it/FluentValidation.resources.dll",
+        "lib/netstandard1.0/nl/FluentValidation.resources.dll",
+        "lib/netstandard1.0/pl/FluentValidation.resources.dll",
+        "lib/netstandard1.0/pt/FluentValidation.resources.dll",
+        "lib/netstandard1.0/ru/FluentValidation.resources.dll",
+        "lib/netstandard1.0/sv/FluentValidation.resources.dll",
+        "lib/netstandard1.0/zh-CN/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/FluentValidation.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/FluentValidation.pdb",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/cs/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/da/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/de/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/es/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/fa/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/fi/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/fr/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/it/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/nl/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/pl/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/pt/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/ru/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/sv/FluentValidation.resources.dll",
+        "lib/portable-net40+sl50+wp80+win8+wpa81/zh-CN/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/FluentValidation.XML",
+        "lib/portable-net45+wp80+win8+wpa81/FluentValidation.dll",
+        "lib/portable-net45+wp80+win8+wpa81/FluentValidation.pdb",
+        "lib/portable-net45+wp80+win8+wpa81/cs/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/da/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/de/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/es/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/fa/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/fi/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/fr/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/it/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/nl/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/pl/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/pt/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/ru/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/sv/FluentValidation.resources.dll",
+        "lib/portable-net45+wp80+win8+wpa81/zh-CN/FluentValidation.resources.dll",
+        "lib/uap10.0/FluentValidation.dll",
+        "lib/uap10.0/FluentValidation.pdb",
+        "lib/uap10.0/cs/FluentValidation.resources.dll",
+        "lib/uap10.0/da/FluentValidation.resources.dll",
+        "lib/uap10.0/de/FluentValidation.resources.dll",
+        "lib/uap10.0/es/FluentValidation.resources.dll",
+        "lib/uap10.0/fa/FluentValidation.resources.dll",
+        "lib/uap10.0/fi/FluentValidation.resources.dll",
+        "lib/uap10.0/fr/FluentValidation.resources.dll",
+        "lib/uap10.0/it/FluentValidation.resources.dll",
+        "lib/uap10.0/nl/FluentValidation.resources.dll",
+        "lib/uap10.0/pl/FluentValidation.resources.dll",
+        "lib/uap10.0/pt/FluentValidation.resources.dll",
+        "lib/uap10.0/ru/FluentValidation.resources.dll",
+        "lib/uap10.0/sv/FluentValidation.resources.dll",
+        "lib/uap10.0/zh-CN/FluentValidation.resources.dll"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "9Q7AaqtQhS8JDSIvRBt6ODSLWDBI4c8YxNxyCQemWebBFUtBbc6M5Vi5Gz1ZyIUlTW3rZK9bIr5gnVyv0z7a2Q==",
       "type": "package",
@@ -5929,6 +6166,18 @@
         "lib/net45/System.Net.Http.Formatting.xml",
         "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
         "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.3": {
+      "sha512": "o90QYlRV8VKR1S7+EcJw9w8WSyVFLl+IIzN8ILZ+n2t6rsc/KS8kBxRzA7wCFPRUHhebCfLqilBk39phvanx3g==",
+      "type": "package",
+      "path": "Microsoft.AspNet.WebApi.Core/5.2.3",
+      "files": [
+        "Content/web.config.transform",
+        "Microsoft.AspNet.WebApi.Core.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.Core.nuspec",
+        "lib/net45/System.Web.Http.dll",
+        "lib/net45/System.Web.Http.xml"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.0": {
@@ -11728,12 +11977,12 @@
   "projectFileDependencyGroups": {
     "": [
       "Autofac >= 4.0.0-rc2-240",
+      "FluentValidation >= 6.4.0-beta3",
       "MediatR >= 2.1.0",
       "Microphone.AspNet >= 0.6.2",
       "Microphone.Core >= 0.6.2",
       "Microsoft.AspNet.WebApi.Client >= 5.2.3",
       "Microsoft.AspNetCore.Hosting.Abstractions >= 1.0.0",
-      "Microsoft.AspNetCore.Mvc >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel.Https >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 1.0.0",
@@ -11750,7 +11999,9 @@
       "System.Runtime.Serialization.Json >= 4.0.1",
       "System.Threading.ThreadPool >= 4.0.10"
     ],
-    ".NETFramework,Version=v4.6": [],
+    ".NETFramework,Version=v4.6": [
+      "Microsoft.AspNet.WebApi.Core >= 5.2.3"
+    ],
     ".NETStandard,Version=v1.6": [
       "Microsoft.CSharp >= 4.0.1",
       "NETStandard.Library >= 1.6.0-*",

@@ -1,8 +1,7 @@
 ﻿using System;
 using Cik.CoreLibs.Model;
-using Cik.Services.Magazine.MagazineService.Model;
 
-namespace Cik.Services.Magazine.MagazineService.QueryModel
+namespace Cik.Services.Magazine.MagazineService.Query
 {
     public interface IQueryModelFinder<out TDto> where TDto : DtoBase
     {

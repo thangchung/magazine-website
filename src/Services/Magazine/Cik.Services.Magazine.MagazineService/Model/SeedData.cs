@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using Cik.CoreLibs.Domain;
+using Cik.Services.Magazine.MagazineService.Model.Entity;
 
 namespace Cik.Services.Magazine.MagazineService.Model
 {

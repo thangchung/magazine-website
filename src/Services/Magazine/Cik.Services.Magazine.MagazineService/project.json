@@ -1,5 +1,5 @@
 {
-  "authors": [ "Thang Chung" ],
+  "authors": [ "thangchung" ],
   "title": "The Magazine Website",
   "packOptions": {
     "summary": "The Magazine Website.",
@@ -17,12 +17,14 @@
     "preserveCompilationContext": true,
     "debugType": "portable"
   },
-  "copyright": "Copyright by ThangChung, 2016",
+  "copyright": "Copyright by thangchung, 2016",
   "version": "1.0.0-*",
   "dependencies": {
     "Autofac": "4.0.0-rc2-240",
     "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
     "Cik.CoreLibs": "1.0.0-*",
+    "FluentValidation": "6.4.0-beta3",
+    "MediatR": "2.1.0",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
     "Microsoft.AspNetCore.Authentication.OpenIdConnect": "1.0.0",
@@ -39,12 +41,12 @@
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.DependencyInjection": "1.0.0",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
     "Microsoft.Extensions.Logging": "1.0.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-    "Microsoft.Extensions.DependencyInjection": "1.0.0",
-    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Microsoft.VisualStudio.Web.CodeGeneration.Tools": {
       "version": "1.0.0-preview2-final",
@@ -57,13 +59,12 @@
     "Npgsql": "3.1.5",
     "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0",
     "System.IdentityModel.Tokens.Jwt": "5.0.0",
-    "System.Reflection": "4.1.0",
     "System.Reactive": "3.0.0",
-    "MediatR": "2.1.0"
+    "System.Reflection": "4.1.0"
   },
   "description": "The Magazine Website.",
   "frameworks": {
-    "net46": {},
+    "net46": { },
     "netcoreapp1.0": {
       "imports": [
         "dnxcore50",

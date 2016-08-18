@@ -1,21 +1,35 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Cik.CoreLibs.Domain
 {
     public class SimpleCommandBus : ICommandBus
     {
         private readonly IMediator _mediator;
+        private readonly IServiceProvider _provider;
 
-        public SimpleCommandBus(IMediator mediator)
+        public SimpleCommandBus(IMediator mediator, IServiceProvider provider)
         {
             Guard.NotNull(mediator);
+            Guard.NotNull(provider);
             _mediator = mediator;
+            _provider = provider;
         }
 
-        public Task SendAsync<T>(T command) where T : Command
+        public async Task SendAsync<T>(T command) where T : Command
         {
-            return _mediator.PublishAsync(command);
+            // check command validation
+            var validators = _provider.GetServices(typeof (ICommandValidator<T>));
+            foreach (var validator in validators)
+            {
+                await ((IValidator<T>) validator).ValidateAndThrowAsync(command);
+            }
+
+            // dispatch it 
+            await _mediator.PublishAsync(command);
         }
     }
 }

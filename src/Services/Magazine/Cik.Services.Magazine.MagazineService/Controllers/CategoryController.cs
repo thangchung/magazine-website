@@ -6,7 +6,8 @@ using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Command;
 using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Services.Magazine.MagazineService.QueryModel;
+using Cik.Services.Magazine.MagazineService.Model.Dto;
+using Cik.Services.Magazine.MagazineService.Query;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,7 +48,7 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
 
         [HttpPost]
         // [Authorize("data_category_records_admin")]
-        public async Task<OkResult> Post([FromBody] CreateCategoryCommand command)
+        public async Task<IActionResult> Post([FromBody] CreateCategoryCommand command)
         {
             command.Id = Guid.NewGuid();
             await _commandBus.SendAsync(command);
@@ -56,7 +57,7 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
 
         [HttpPut]
         // [Authorize("data_category_records_admin")]
-        public async Task<OkResult> Put([FromBody] EditCategoryCommand command)
+        public async Task<IActionResult> Put([FromBody] EditCategoryCommand command)
         {
             Guard.NotNullOrEmpty(command.Id.ToString());
             await _commandBus.SendAsync(command);
@@ -65,7 +66,7 @@ namespace Cik.Services.Magazine.MagazineService.Controllers
 
         [HttpDelete("{id}")]
         // [Authorize("data_category_records_admin")]
-        public async Task<OkResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             Guard.NotNullOrEmpty(id.ToString());
             await _commandBus.SendAsync(new DeleteCategoryCommand { Id = id });

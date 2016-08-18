@@ -18,7 +18,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Cik.CoreLibs.Extensions;
+using Cik.CoreLibs.Filters;
 using Cik.CoreLibs.ServiceDiscovery;
+using Cik.Services.Magazine.MagazineService.Model.Entity;
 
 namespace Cik.Services.Magazine.MagazineService
 {
@@ -73,7 +75,10 @@ namespace Cik.Services.Magazine.MagazineService
             }
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc(config =>
+            {
+                config.Filters.Add(typeof (ValidationExceptionFilterAttribute));
+            });
             services.RegisterServiceDiscovery();
 
             // Autofac container
@@ -83,13 +88,9 @@ namespace Cik.Services.Magazine.MagazineService
                 .As<IRepository<Category, Guid>>()
                 .InstancePerLifetimeScope();
 
-            //builder.RegisterInstance(new InMemoryBus()).SingleInstance();
-            //builder.Register(x => x.Resolve<InMemoryBus>()).As<ICommandHandler>();
-            //builder.Register(x => x.Resolve<InMemoryBus>()).As<IDomainEventPublisher>();
-            //builder.Register(x => x.Resolve<InMemoryBus>()).As<IHandlerRegistrar>();
-
             builder.RegisterAssemblyTypes(typeof (IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(typeof(CreateCategoryCommand).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof (ICommandValidator<>).GetTypeInfo().Assembly).AsImplementedInterfaces();
             builder.Register<SingleInstanceFactory>(ctx =>
             {
                 var c = ctx.Resolve<IComponentContext>();
@@ -101,10 +102,8 @@ namespace Cik.Services.Magazine.MagazineService
                 return t => (IEnumerable<object>) c.Resolve(typeof (IEnumerable<>).MakeGenericType(t));
             });
 
-            // builder.RegisterType<CategoryQueryModelFinder>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<SimpleCommandBus>().As<ICommandBus>();
 
-            // builder.RegisterCommandHandlers();
             builder.Populate(services);
             builder.RegisterType<ConsulDiscoveryService>()
                 .As<IDiscoveryService>()
@@ -113,7 +112,6 @@ namespace Cik.Services.Magazine.MagazineService
 
             // build up the container
             var container = builder.Build();
-            // container.RegisterHandlers(typeof (Startup));
             return container.Resolve<IServiceProvider>();
         }
 

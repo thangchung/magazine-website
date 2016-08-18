@@ -3,6 +3,7 @@ using System.Reactive.Linq;
 using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Model;
+using Cik.Services.Magazine.MagazineService.Model.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.Repository
