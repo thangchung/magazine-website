@@ -8,9 +8,10 @@ using Cik.Services.Magazine.MagazineService.Model;
 namespace Cik.Services.Magazine.MagazineService.Migrations
 {
     [DbContext(typeof(MagazineDbContext))]
-    partial class MagazineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160819111502_InitData")]
+    partial class InitData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("Npgsql:PostgresExtension:.uuid-ossp", "'uuid-ossp', '', ''")

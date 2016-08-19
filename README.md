@@ -16,6 +16,10 @@ Clone the repo using Git:
 
 `docker run --name magazine_db -p 5432:5432 -e POSTGRES_DB=magazine_db -e POSTGRES_USER=magazine_dba -e POSTGRES_PASSWORD=Passw0rd -d postgres:9.6`
 
+`dotnet ef migrations add InitData`
+
+`dotnet ef database update`
+
 ## Build on Development Environment
 
 `dotnet restore`

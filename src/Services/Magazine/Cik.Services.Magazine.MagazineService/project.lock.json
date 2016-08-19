@@ -2275,7 +2275,7 @@
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Npgsql/3.1.5": {
+      "Npgsql/3.1.7": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -2305,13 +2305,13 @@
           "System.Threading.Timer": "4.0.1"
         },
         "compile": {
-          "lib/netstandard1.3/npgsql.dll": {}
+          "lib/netstandard1.3/Npgsql.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/npgsql.dll": {}
+          "lib/netstandard1.3/Npgsql.dll": {}
         }
       },
-      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0": {
+      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "1.0.0",
@@ -2325,6 +2325,25 @@
         },
         "runtime": {
           "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design.Core": "1.0.0-preview2-final",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+          "Npgsql": "3.1.5",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
         }
       },
       "NuGet.Common/3.5.0-beta2-1484": {
@@ -6755,16 +6774,16 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Npgsql/3.1.5": {
+      "Npgsql/3.1.7": {
         "type": "package",
         "compile": {
-          "lib/net451/npgsql.dll": {}
+          "lib/net451/Npgsql.dll": {}
         },
         "runtime": {
-          "lib/net451/npgsql.dll": {}
+          "lib/net451/Npgsql.dll": {}
         }
       },
-      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0": {
+      "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "1.0.0",
@@ -6778,6 +6797,25 @@
         },
         "runtime": {
           "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design.Core": "1.0.0-preview2-final",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+          "Npgsql": "3.1.5",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0"
+        },
+        "compile": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
         }
       },
       "NuGet.Common/3.5.0-beta2-1484": {
@@ -10042,30 +10080,41 @@
         "tools/install.ps1"
       ]
     },
-    "Npgsql/3.1.5": {
-      "sha512": "goxdRti9awLXumRiZh7Z2Lu6DQ0v6tEz+aPNfp2OjuxKCGIZYr/KmJ/Q9X+wRyGkzi0nzAacWZC5YAd5xSW6PA==",
+    "Npgsql/3.1.7": {
+      "sha512": "4fRHzkODDkIoCMFO6g9sC8Zf+wWuVfJVHH3Jv3KqYprP137lFsRoHt2agmUI9tAYu9tDCfBEnS0TiApUVu0NHg==",
       "type": "package",
-      "path": "Npgsql/3.1.5",
+      "path": "Npgsql/3.1.7",
       "files": [
-        "Npgsql.3.1.5.nupkg.sha512",
+        "Npgsql.3.1.7.nupkg.sha512",
         "Npgsql.nuspec",
-        "lib/net45/npgsql.dll",
-        "lib/net45/npgsql.xml",
-        "lib/net451/npgsql.dll",
-        "lib/net451/npgsql.xml",
-        "lib/netstandard1.3/npgsql.dll",
-        "lib/netstandard1.3/npgsql.xml"
+        "lib/net45/Npgsql.dll",
+        "lib/net45/Npgsql.xml",
+        "lib/net451/Npgsql.dll",
+        "lib/net451/Npgsql.xml",
+        "lib/netstandard1.3/Npgsql.dll",
+        "lib/netstandard1.3/Npgsql.xml"
       ]
     },
-    "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0": {
-      "sha512": "YtfaxJ2xnhbP3fPD7aXdOj6Zy0c5+ba0Jv+Yl/0cLvuYadVOh16UrTLS75RbV5OiTTXge0QCpB41iC8Cp4XHVw==",
+    "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.1": {
+      "sha512": "PTRpXCaxSY2/+Z6s8e56v0xPy770MHfNWCZSm2aaczNIu7sn2d6qTX5QhIMWMcQUKDzLw8cPGrQsDipJ34cjWw==",
       "type": "package",
-      "path": "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.0",
+      "path": "Npgsql.EntityFrameworkCore.PostgreSQL/1.0.1",
       "files": [
-        "Npgsql.EntityFrameworkCore.PostgreSQL.1.0.0.nupkg.sha512",
+        "Npgsql.EntityFrameworkCore.PostgreSQL.1.0.1.nupkg.sha512",
         "Npgsql.EntityFrameworkCore.PostgreSQL.nuspec",
         "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
         "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.dll"
+      ]
+    },
+    "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.0.1": {
+      "sha512": "xYIj3HiGtqtaDQtzPyUHlZIM12cnpRfKLwqLIksTRd/3cfI2Xa8ie23CdRNwwSI+cqWmur7oYT9NAeGJu/Z7hQ==",
+      "type": "package",
+      "path": "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.0.1",
+      "files": [
+        "Npgsql.EntityFrameworkCore.PostgreSQL.Design.1.0.1.nupkg.sha512",
+        "Npgsql.EntityFrameworkCore.PostgreSQL.Design.nuspec",
+        "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll",
+        "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll"
       ]
     },
     "NuGet.Common/3.5.0-beta2-1484": {
@@ -15358,8 +15407,9 @@
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.0.0-preview2-final",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final",
-      "Npgsql >= 3.1.5",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 1.0.0",
+      "Npgsql >= 3.1.7",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 1.0.1",
+      "Npgsql.EntityFrameworkCore.PostgreSQL.Design >= 1.0.1",
       "System.IdentityModel.Tokens.Jwt >= 5.0.0",
       "System.Reactive >= 3.0.0",
       "System.Reflection >= 4.1.0"

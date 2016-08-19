@@ -56,8 +56,9 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Npgsql": "3.1.5",
-    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0",
+    "Npgsql": "3.1.7",
+    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.1",
+    "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.0.1",
     "System.IdentityModel.Tokens.Jwt": "5.0.0",
     "System.Reactive": "3.0.0",
     "System.Reflection": "4.1.0"

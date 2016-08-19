@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
+using Cik.CoreLibs.Extensions;
 using Cik.Services.Magazine.MagazineService.Model.Entity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
@@ -23,7 +25,7 @@ namespace Cik.Services.Magazine.MagazineService.Model
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.HasPostgresExtension("uuid-ossp");
-            modelBuilder.Entity<Category>().ToTable("Categories");
+            modelBuilder.AddEntityConfigurationsFromAssembly(GetType().GetTypeInfo().Assembly);
         }
 
         public override int SaveChanges()
