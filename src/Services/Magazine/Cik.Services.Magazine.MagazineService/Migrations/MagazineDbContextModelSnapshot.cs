@@ -1,9 +1,9 @@
 ﻿using System;
+using Cik.Services.Magazine.MagazineService.Infrastruture;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Cik.Services.Magazine.MagazineService.Model;
 
 namespace Cik.Services.Magazine.MagazineService.Migrations
 {

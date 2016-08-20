@@ -1,13 +1,13 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using Cik.Services.Auth.AuthService.Configuration;
-using Cik.Services.Auth.AuthService.UI;
-using Cik.Services.Auth.AuthService.UI.Login;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Cik.CoreLibs.Extensions;
+using Cik.CoreLibs.Mvc;
+using Cik.Services.Auth.AuthService.Features.Login;
 
 namespace Cik.Services.Auth.AuthService
 {

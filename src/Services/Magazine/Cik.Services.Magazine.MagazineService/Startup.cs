@@ -6,9 +6,6 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Cik.CoreLibs.Api;
 using Cik.CoreLibs.Domain;
-using Cik.Services.Magazine.MagazineService.Command;
-using Cik.Services.Magazine.MagazineService.Model;
-using Cik.Services.Magazine.MagazineService.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -20,7 +17,10 @@ using Microsoft.Extensions.Logging;
 using Cik.CoreLibs.Extensions;
 using Cik.CoreLibs.Filters;
 using Cik.CoreLibs.ServiceDiscovery;
-using Cik.Services.Magazine.MagazineService.Model.Entity;
+using Cik.Services.Magazine.MagazineService.Features.Category;
+using Cik.Services.Magazine.MagazineService.Features.Category.Commands;
+using Cik.Services.Magazine.MagazineService.Features.Category.Entity;
+using Cik.Services.Magazine.MagazineService.Infrastruture;
 
 namespace Cik.Services.Magazine.MagazineService
 {
