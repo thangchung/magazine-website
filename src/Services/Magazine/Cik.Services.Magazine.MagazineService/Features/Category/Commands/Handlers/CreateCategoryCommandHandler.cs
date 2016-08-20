@@ -7,9 +7,9 @@ namespace Cik.Services.Magazine.MagazineService.Features.Category.Commands.Handl
 {
     public class CreateCategoryCommandHandler : IHandleCommand<CreateCategoryCommand>
     {
-        private readonly IRepository<Entity.Category, Guid> _categoryRepository;
+        private readonly IRepository<Entities.Category, Guid> _categoryRepository;
 
-        public CreateCategoryCommandHandler(IRepository<Entity.Category, Guid> repo)
+        public CreateCategoryCommandHandler(IRepository<Entities.Category, Guid> repo)
         {
             Guard.NotNull(repo);
             _categoryRepository = repo;
@@ -17,7 +17,7 @@ namespace Cik.Services.Magazine.MagazineService.Features.Category.Commands.Handl
 
         public Task Handle(CreateCategoryCommand message)
         {
-            var cat = new Entity.Category
+            var cat = new Entities.Category
             {
                 Id = Guid.NewGuid(),
                 Name = message.Name

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.Features.Category
 {
-    public class CategoryRepository : IRepository<Entity.Category, Guid>
+    public class CategoryRepository : IRepository<Entities.Category, Guid>
     {
         private readonly MagazineDbContext _dbContext;
 
@@ -20,7 +20,7 @@ namespace Cik.Services.Magazine.MagazineService.Features.Category
 
         public DbContext UnitOfWork => _dbContext;
 
-        public IObservable<Guid> Create(Entity.Category cat)
+        public IObservable<Guid> Create(Entities.Category cat)
         {
             cat.CreatedDate = DateTime.UtcNow;
             cat.CreatedBy = "thangchung";

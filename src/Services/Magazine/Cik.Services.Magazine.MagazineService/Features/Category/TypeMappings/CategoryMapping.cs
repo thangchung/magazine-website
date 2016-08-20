@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Cik.Services.Magazine.MagazineService.Features.Category.TypeMappings
 {
-    public class CategoryConfiguration : EntityMappingConfiguration<Entity.Category>
+    public class CategoryConfiguration : EntityMappingConfiguration<Entities.Category>
     {
-        public override void Map(EntityTypeBuilder<Entity.Category> b)
+        public override void Map(EntityTypeBuilder<Entities.Category> b)
         {
             b.ToTable("Categories", "magazine").HasKey(p => p.Id);
             b.Property(p => p.Name).HasMaxLength(20).IsRequired();

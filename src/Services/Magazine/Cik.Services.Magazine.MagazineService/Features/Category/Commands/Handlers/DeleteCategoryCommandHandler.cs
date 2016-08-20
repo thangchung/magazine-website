@@ -7,9 +7,9 @@ namespace Cik.Services.Magazine.MagazineService.Features.Category.Commands.Handl
 {
     public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
     {
-        private readonly IRepository<Entity.Category, Guid> _categoryRepository;
+        private readonly IRepository<Entities.Category, Guid> _categoryRepository;
 
-        public DeleteCategoryCommandHandler(IRepository<Entity.Category, Guid> repo)
+        public DeleteCategoryCommandHandler(IRepository<Entities.Category, Guid> repo)
         {
             Guard.NotNull(repo);
 

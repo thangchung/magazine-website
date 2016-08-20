@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Cik.CoreLibs.Domain;
-using Cik.Services.Magazine.MagazineService.Features.Category.Entity;
+using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

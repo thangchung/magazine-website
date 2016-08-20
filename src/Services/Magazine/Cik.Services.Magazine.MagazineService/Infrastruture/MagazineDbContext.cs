@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Cik.CoreLibs.Extensions;
-using Cik.Services.Magazine.MagazineService.Features.Category.Entity;
+using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 

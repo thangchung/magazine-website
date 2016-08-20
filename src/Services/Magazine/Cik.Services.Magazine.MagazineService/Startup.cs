@@ -19,7 +19,7 @@ using Cik.CoreLibs.Filters;
 using Cik.CoreLibs.ServiceDiscovery;
 using Cik.Services.Magazine.MagazineService.Features.Category;
 using Cik.Services.Magazine.MagazineService.Features.Category.Commands;
-using Cik.Services.Magazine.MagazineService.Features.Category.Entity;
+using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
 using Cik.Services.Magazine.MagazineService.Infrastruture;
 
 namespace Cik.Services.Magazine.MagazineService
