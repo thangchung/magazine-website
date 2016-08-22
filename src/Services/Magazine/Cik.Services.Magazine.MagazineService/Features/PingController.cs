@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cik.Services.Magazine.MagazineService.Features
 {
-    [Route("ping")]
-    [AllowAnonymous]
+    [AllowAnonymous, Route("ping")]
     public class PingController : Controller
     {
         /* private readonly RestClient _restClient;
@@ -16,8 +15,7 @@ namespace Cik.Services.Magazine.MagazineService.Features
             _restClient = restClient;
         } */
 
-        [HttpGet]
-        [Route("")]
+        [HttpGet, Route("")]
         public async Task<IEnumerable<string>> Get()
         {
             // TODO: just for test the call to another service
