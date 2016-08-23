@@ -28,6 +28,23 @@
           "lib/netstandard1.1/Autofac.dll": {}
         }
       },
+      "Autofac.Extensions.DependencyInjection/4.0.0-rc2-240": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "4.0.0-rc2-240",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc2-final",
+          "System.Collections": "4.0.11-rc2-24027",
+          "System.Diagnostics.Contracts": "4.0.1-rc2-24027",
+          "System.Runtime": "4.1.0-rc2-24027",
+          "System.Threading.Tasks": "4.0.11-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
+        }
+      },
       "FluentValidation/6.4.0-beta3": {
         "type": "package",
         "compile": {
@@ -2324,6 +2341,23 @@
         },
         "runtime": {
           "lib/netstandard1.1/Autofac.dll": {}
+        }
+      },
+      "Autofac.Extensions.DependencyInjection/4.0.0-rc2-240": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "4.0.0-rc2-240",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc2-final",
+          "System.Collections": "4.0.11-rc2-24027",
+          "System.Diagnostics.Contracts": "4.0.1-rc2-24027",
+          "System.Runtime": "4.1.0-rc2-24027",
+          "System.Threading.Tasks": "4.0.11-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
         }
       },
       "FluentValidation/6.4.0-beta3": {
@@ -5920,6 +5954,17 @@
         "Autofac.nuspec",
         "lib/netstandard1.1/Autofac.dll",
         "lib/netstandard1.1/Autofac.xml"
+      ]
+    },
+    "Autofac.Extensions.DependencyInjection/4.0.0-rc2-240": {
+      "sha512": "rZCoDl3RlRgUrI2cbKzp1c6R/0OA4HzJ0MbgWKbxgmTc6X0RcSCdUOJOWDx1ZuGbNFLtSLYsLdYzUueo11s5sw==",
+      "type": "package",
+      "path": "Autofac.Extensions.DependencyInjection/4.0.0-rc2-240",
+      "files": [
+        "Autofac.Extensions.DependencyInjection.4.0.0-rc2-240.nupkg.sha512",
+        "Autofac.Extensions.DependencyInjection.nuspec",
+        "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll",
+        "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.xml"
       ]
     },
     "FluentValidation/6.4.0-beta3": {
@@ -11977,6 +12022,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Autofac >= 4.0.0-rc2-240",
+      "Autofac.Extensions.DependencyInjection >= 4.0.0-rc2-240",
       "FluentValidation >= 6.4.0-beta3",
       "MediatR >= 2.1.0",
       "Microphone.AspNet >= 0.6.2",

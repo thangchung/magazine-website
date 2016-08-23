@@ -1,39 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using Cik.CoreLibs.Api;
+using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Extensions;
-using Cik.CoreLibs.Filters;
-using Cik.CoreLibs.ServiceDiscovery;
 using Cik.Services.Magazine.MagazineService.Features.Category;
 using Cik.Services.Magazine.MagazineService.Features.Category.Commands;
 using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Cik.Services.Magazine.MagazineService.Infrastruture
+namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
 {
     public static class ServiceCollectionExtensions
     {
         public static IContainer AddWebHost(this IServiceCollection services, IConfigurationRoot configuration)
         {
-            var registeredServices = services.AddHost(internalServices =>
-            {
-                internalServices.AddAuthorization();
-                internalServices.AddServiceCollection(configuration);
-            });
-            return registeredServices
-                .AddAutofacDependencies()
+            Guard.NotNull(services);
+            Guard.NotNull(configuration);
+
+            return services
+                .AddAuthorization()
+                .AddCoreServiceCollection(configuration, s => s.AddServiceCollection(configuration))
+                .AddCoreAutofacDependencies(s => s.AddAutofacDependencies())
                 .Build();
         }
 
-        public static void AddAuthorization(this IServiceCollection services)
+        private static IServiceCollection AddAuthorization(this IServiceCollection services)
         {
             var guestPolicy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
@@ -49,10 +44,10 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture
             });
 
             // services.AddMvc(options => { options.Filters.Add(new AuthorizeFilter(guestPolicy)); });
+            return services;
         }
 
-        public static IServiceCollection AddServiceCollection(this IServiceCollection services,
-            IConfigurationRoot configuration)
+        private static void AddServiceCollection(this IServiceCollection services, IConfiguration configuration)
         {
             if (!configuration["RunInMemory"].ToBoolean())
             {
@@ -71,46 +66,17 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture
                     options.UseInMemoryDatabase()
                     );
             }
-
-            // Add framework services.
-            services.AddMvc(config => { config.Filters.Add(typeof (ValidationExceptionFilterAttribute)); });
-
-            // Add service discovery and return 
-            return services.RegisterServiceDiscovery();
+            return;
         }
 
-        public static ContainerBuilder AddAutofacDependencies(this IServiceCollection services)
+        private static void AddAutofacDependencies(this ContainerBuilder builder)
         {
             // Autofac container
-            var builder = new ContainerBuilder();
             builder.RegisterType<MagazineDbContext>().AsSelf().SingleInstance();
-            builder.RegisterType<CategoryRepository>()
-                .As<IRepository<Category, Guid>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterAssemblyTypes(typeof (IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterType<CategoryRepository>().As<IRepository<Category, Guid>>().InstancePerLifetimeScope();
             builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly)
                 .AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(typeof (ICommandValidator<>).GetTypeInfo().Assembly).AsImplementedInterfaces();
-            builder.Register<SingleInstanceFactory>(ctx =>
-            {
-                var c = ctx.Resolve<IComponentContext>();
-                return t => c.Resolve(t);
-            });
-            builder.Register<MultiInstanceFactory>(ctx =>
-            {
-                var c = ctx.Resolve<IComponentContext>();
-                return t => (IEnumerable<object>) c.Resolve(typeof (IEnumerable<>).MakeGenericType(t));
-            });
-
-            builder.RegisterType<SimpleCommandBus>().As<ICommandBus>();
-
-            builder.Populate(services);
-            builder.RegisterType<ConsulDiscoveryService>()
-                .As<IDiscoveryService>()
-                .InstancePerLifetimeScope();
-            builder.RegisterType<RestClient>().AsSelf();
-            return builder;
+            return;
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using Cik.CoreLibs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Cik.Services.Magazine.MagazineService.Infrastruture
+namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
@@ -15,6 +17,11 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture
             ILoggerFactory loggerFactory,
             IConfigurationRoot configuration)
         {
+            Guard.NotNull(builder);
+            Guard.NotNull(env);
+            Guard.NotNull(loggerFactory);
+            Guard.NotNull(configuration);
+
             loggerFactory.AddConsole(configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -29,7 +36,9 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture
                 AutomaticChallenge = true
             };
 
-            // app.UseJwtBearerAuthentication(jwtBearerOptions);
+            // builder.UseJwtBearerAuthentication(jwtBearerOptions);
+            builder.UseApplicationInsightsRequestTelemetry();
+            builder.UseApplicationInsightsExceptionTelemetry();
 
             if (env.IsDevelopment())
             {

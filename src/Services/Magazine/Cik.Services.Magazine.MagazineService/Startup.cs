@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 using Cik.CoreLibs.Extensions;
-using Cik.Services.Magazine.MagazineService.Infrastruture;
+using Cik.Services.Magazine.MagazineService.Infrastruture.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

@@ -5,7 +5,7 @@ using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Extensions;
 using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
 
-namespace Cik.Services.Magazine.MagazineService.Infrastruture
+namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
 {
     public static class MagazineDbContextExtensions
     {

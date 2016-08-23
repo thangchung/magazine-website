@@ -4871,6 +4871,7 @@
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "Autofac": "4.0.0-rc2-240",
+          "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
           "FluentValidation": "6.4.0-beta3",
           "MediatR": "2.1.0",
           "Microphone.AspNet": "0.6.2",
@@ -7907,6 +7908,7 @@
         "framework": ".NETFramework,Version=v4.6",
         "dependencies": {
           "Autofac": "4.0.0-rc2-240",
+          "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
           "FluentValidation": "6.4.0-beta3",
           "MediatR": "2.1.0",
           "Microphone.AspNet": "0.6.2",
