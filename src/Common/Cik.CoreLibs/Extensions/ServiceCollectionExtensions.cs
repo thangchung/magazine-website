@@ -16,12 +16,13 @@ namespace Cik.CoreLibs.Extensions
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddCoreServiceCollection(this IServiceCollection services,
-            IConfigurationRoot configuration, Action<IServiceCollection> additionalDependencies)
+            IConfigurationRoot configuration, Action<IServiceCollection> additionalDependencies = null)
         {
             // allow caller registering
-            additionalDependencies(services);
+            additionalDependencies?.Invoke(services);
 
             // Add framework services.
+            services.AddApplicationInsightsTelemetry(configuration);
             services.AddMvc(config => { config.Filters.Add(typeof (ValidationExceptionFilterAttribute)); });
 
             // Add service discovery and return 
@@ -29,7 +30,7 @@ namespace Cik.CoreLibs.Extensions
         }
 
         public static ContainerBuilder AddCoreAutofacDependencies(this IServiceCollection services,
-            Action<ContainerBuilder> additionalDependencies)
+            Action<ContainerBuilder> additionalDependencies = null)
         {
             // Autofac container
             var builder = new ContainerBuilder();
@@ -51,7 +52,7 @@ namespace Cik.CoreLibs.Extensions
             builder.RegisterType<RestClient>().AsSelf();
 
             // allow caller registering
-            additionalDependencies(builder);
+            additionalDependencies?.Invoke(builder);
 
             // populate with the service collection
             builder.Populate(services);
