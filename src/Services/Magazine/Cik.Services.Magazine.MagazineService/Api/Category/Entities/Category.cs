@@ -1,6 +1,6 @@
 ﻿using Cik.CoreLibs.Domain;
 
-namespace Cik.Services.Magazine.MagazineService.Features.Category.Entities
+namespace Cik.Services.Magazine.MagazineService.Api.Category.Entities
 {
     public class Category : AggregateRootBase
     {

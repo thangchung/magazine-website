@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 
-namespace Cik.Services.Magazine.MagazineService.Features.Category.Commands.Handlers
+namespace Cik.Services.Magazine.MagazineService.Api.Category.Commands.Handlers
 {
     public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
     {

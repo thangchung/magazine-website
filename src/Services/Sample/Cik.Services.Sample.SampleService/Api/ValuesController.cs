@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cik.Services.Sample.SampleService.Features
+namespace Cik.Services.Sample.SampleService.Api
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller

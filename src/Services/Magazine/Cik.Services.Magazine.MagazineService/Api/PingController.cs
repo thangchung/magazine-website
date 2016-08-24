@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cik.Services.Magazine.MagazineService.Features
+namespace Cik.Services.Magazine.MagazineService.Api
 {
     [AllowAnonymous, Route("ping")]
     public class PingController : Controller

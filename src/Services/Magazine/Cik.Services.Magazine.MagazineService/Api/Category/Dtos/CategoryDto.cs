@@ -1,7 +1,7 @@
 ﻿using System;
 using Cik.CoreLibs.Model;
 
-namespace Cik.Services.Magazine.MagazineService.Features.Category.Dtos
+namespace Cik.Services.Magazine.MagazineService.Api.Category.Dtos
 {
     public class CategoryDto : DtoBase
     {

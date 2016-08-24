@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
+using Cik.CoreLibs;
 using Cik.CoreLibs.Extensions;
-using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
+using Cik.Services.Magazine.MagazineService.Api.Category.Entities;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 
@@ -39,13 +39,13 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture
             {
                 if (entry.State == EntityState.Added)
                 {
-                    entry.Property("CreatedDate").CurrentValue = DateTime.UtcNow;
-                    entry.Property("CreatedBy").CurrentValue = "admin";
+                    entry.Property("CreatedDate").CurrentValue = Constants.CreatedDate;
+                    entry.Property("CreatedBy").CurrentValue = Constants.CreatedUser;
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    entry.Property("ModifiedDate").CurrentValue = DateTime.UtcNow;
-                    entry.Property("ModifiedBy").CurrentValue = "admin";
+                    entry.Property("ModifiedDate").CurrentValue = Constants.CreatedDate;
+                    entry.Property("ModifiedBy").CurrentValue = Constants.CreatedUser;
                 }
             }
 

@@ -1,4 +1,7 @@
-﻿using Cik.CoreLibs.Extensions;
+﻿using System;
+using Autofac;
+using Cik.CoreLibs.Extensions;
+using Cik.Services.Sample.SampleService.Infrastruture.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,22 +19,14 @@ namespace Cik.Services.Sample.SampleService
 
         public IConfigurationRoot Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddApplicationInsightsTelemetry(Configuration);
-            services.AddMvc();
+            return services.AddWebHost(Configuration).Resolve<IServiceProvider>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-            app.UseApplicationInsightsRequestTelemetry();
-            app.UseApplicationInsightsExceptionTelemetry();
-            app.UseMvc();
+            app.ConfigureWebHost(env, loggerFactory, Configuration);
         }
     }
 }

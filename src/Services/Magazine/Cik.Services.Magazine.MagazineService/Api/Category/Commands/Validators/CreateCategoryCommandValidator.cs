@@ -1,7 +1,7 @@
 ﻿using Cik.CoreLibs.Domain;
 using FluentValidation;
 
-namespace Cik.Services.Magazine.MagazineService.Features.Category.Commands.Validators
+namespace Cik.Services.Magazine.MagazineService.Api.Category.Commands.Validators
 {
     public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>,
         ICommandValidator<CreateCategoryCommand>

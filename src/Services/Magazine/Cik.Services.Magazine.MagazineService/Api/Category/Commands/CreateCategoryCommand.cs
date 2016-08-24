@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cik.Services.Magazine.MagazineService.Features.Category.Commands
+namespace Cik.Services.Magazine.MagazineService.Api.Category.Commands
 {
     public class CreateCategoryCommand : CoreLibs.Domain.Command
     {

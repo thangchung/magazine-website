@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Model;
-using Cik.Services.Magazine.MagazineService.Features.Category.Commands;
-using Cik.Services.Magazine.MagazineService.Features.Category.Dtos;
+using Cik.Services.Magazine.MagazineService.Api.Category.Commands;
+using Cik.Services.Magazine.MagazineService.Api.Category.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using ControllerBase = Cik.CoreLibs.Api.ControllerBase;
 
-namespace Cik.Services.Magazine.MagazineService.Features.Category
+namespace Cik.Services.Magazine.MagazineService.Api.Category
 {
     [Route("api/categories") /* Authorize */]
     public class CategoryController : ControllerBase

@@ -4,9 +4,9 @@ using Autofac;
 using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Extensions;
-using Cik.Services.Magazine.MagazineService.Features.Category;
-using Cik.Services.Magazine.MagazineService.Features.Category.Commands;
-using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
+using Cik.Services.Magazine.MagazineService.Api.Category;
+using Cik.Services.Magazine.MagazineService.Api.Category.Commands;
+using Cik.Services.Magazine.MagazineService.Api.Category.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -66,7 +66,6 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
                     options.UseInMemoryDatabase()
                     );
             }
-            return;
         }
 
         private static void AddAutofacDependencies(this ContainerBuilder builder)
@@ -76,7 +75,6 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
             builder.RegisterType<CategoryRepository>().As<IRepository<Category, Guid>>().InstancePerLifetimeScope();
             builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly)
                 .AsImplementedInterfaces();
-            return;
         }
     }
 }

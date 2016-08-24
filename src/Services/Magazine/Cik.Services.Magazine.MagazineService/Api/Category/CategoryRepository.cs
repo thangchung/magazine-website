@@ -5,7 +5,7 @@ using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Infrastruture;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cik.Services.Magazine.MagazineService.Features.Category
+namespace Cik.Services.Magazine.MagazineService.Api.Category
 {
     public class CategoryRepository : IRepository<Entities.Category, Guid>
     {

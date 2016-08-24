@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Extensions;
-using Cik.Services.Magazine.MagazineService.Features.Category.Entities;
+using Cik.Services.Magazine.MagazineService.Api.Category.Entities;
 
 namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
 {
