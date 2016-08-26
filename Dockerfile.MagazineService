@@ -7,14 +7,14 @@ MAINTAINER Thang Chung "thangchung@ymail.com"
 ENV ASPNETCORE_ENVIRONMENT="Development"
 
 # Copy files to app directory
-COPY /src/Services/Magazine/Cik.Services.Magazine.MagazineService/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Magazine/Cik.Services.Magazine.MagazineService
+COPY /src/Services/Cik.Services.Magazine.MagazineService/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Cik.Services.Magazine.MagazineService
 COPY /src/Config/ /root/src/Config
 
 # Set working directory
-WORKDIR /root/src/Services/Magazine/Cik.Services.Magazine.MagazineService/
+WORKDIR /root/src/Services/Cik.Services.Magazine.MagazineService/
 
 # Open up port
 EXPOSE 5000
 
 # Run the app
-ENTRYPOINT ["dotnet", "/root/src/Services/Magazine/Cik.Services.Magazine.MagazineService/Cik.Services.Magazine.MagazineService.dll"]
+ENTRYPOINT ["dotnet", "/root/src/Services/Cik.Services.Magazine.MagazineService/Cik.Services.Magazine.MagazineService.dll"]

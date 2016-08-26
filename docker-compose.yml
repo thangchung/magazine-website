@@ -39,7 +39,23 @@ services:
     depends_on:
       - consul1
     command: -internal consul://consul1:8500
+  rabbitmq:
+    container_name: rabbitmq
+    image: "rabbitmq:3.6.5-management"
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: root
+      RABBITMQ_DEFAULT_VHOST: /magazine
+    ports:
+      - "4369:4369"
+      - "5672:5672"
+      - "15672:15672"
+      - "25672:25672"
+    volumes:
+      - /var/lib/rabbitmq
   auth_service:
+    container_name: auth_service
     image: "thangchung/auth_service"
     build:
       context: .
@@ -52,7 +68,22 @@ services:
       SERVICE_TAGS: magazine
     dns: 192.168.99.100
     dns_search: service.consul
+  gateway_service:
+    container_name: gateway_service
+    image: "thangchung/gateway_service"
+    build:
+      context: .
+      dockerfile: Dockerfile.GatewayService 
+    hostname: gateway_service
+    ports:
+      - "8080:8080"
+    environment:
+      SERVICE_NAME: gateway_service
+      SERVICE_TAGS: magazine
+    dns: 192.168.99.100
+    dns_search: service.consul
   magazine_db:
+    container_name: magazine_db
     image: "postgres:9.6"
     hostname: "postgres_db"
     ports:
@@ -64,6 +95,7 @@ services:
       SERVICE_NAME: magazine_db
       SERVICE_TAGS: magazine
   magazine_service:
+    container_name: magazine_service
     image: "thangchung/magazine_service"
     build:
       context: .
@@ -78,6 +110,20 @@ services:
       POSTGRES_USER: magazine_dba
       POSTGRES_PASSWORD: Passw0rd
       SERVICE_NAME: magazine_service
+      SERVICE_TAGS: magazine
+    dns: 192.168.99.100
+    dns_search: service.consul
+  sample_service:
+    container_name: sample_service
+    image: "thangchung/sample_service"
+    build:
+      context: .
+      dockerfile: Dockerfile.SampleService 
+    hostname: sample_service
+    ports:
+      - "5001:5001"
+    environment:
+      SERVICE_NAME: sample_service
       SERVICE_TAGS: magazine
     dns: 192.168.99.100
     dns_search: service.consul

@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using Cik.CoreLibs.Bus;
 using Cik.CoreLibs.Extensions;
 using Cik.Services.Magazine.MagazineService.Infrastruture.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -21,11 +22,14 @@ namespace Cik.Services.Magazine.MagazineService
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            return services.AddWebHost(Configuration).Resolve<IServiceProvider>();
+            var serviceProvider = services.AddWebHost(Configuration).Resolve<IServiceProvider>();
+            // call Subscribe() to listen the command handlers
+            serviceProvider.GetService<ICommandConsumer>().Subscriber.Subscribe();
+            return serviceProvider;
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
+        { 
             app.ConfigureWebHost(env, loggerFactory, Configuration);
         }
     }

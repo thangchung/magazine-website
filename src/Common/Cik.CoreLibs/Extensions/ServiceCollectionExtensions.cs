@@ -4,6 +4,8 @@ using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Cik.CoreLibs.Api;
+using Cik.CoreLibs.Bus;
+using Cik.CoreLibs.Bus.Amqp;
 using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Filters;
 using Cik.CoreLibs.ServiceDiscovery;
@@ -47,7 +49,9 @@ namespace Cik.CoreLibs.Extensions
                 return t => (IEnumerable<object>) c.Resolve(typeof (IEnumerable<>).MakeGenericType(t));
             });
 
-            builder.RegisterType<SimpleCommandBus>().As<ICommandBus>();
+            // builder.RegisterType<SimpleCommandBus>().As<ICommandBus>();
+            builder.RegisterAssemblyTypes(typeof(AmqpCommandHandlerBase<>).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterType<RabbitMqPublisher>().As<ICommandBus>();
             builder.RegisterType<ConsulDiscoveryService>().As<IDiscoveryService>().InstancePerLifetimeScope();
             builder.RegisterType<RestClient>().AsSelf();
 

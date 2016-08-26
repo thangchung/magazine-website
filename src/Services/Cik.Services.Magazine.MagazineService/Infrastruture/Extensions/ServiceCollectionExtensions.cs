@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
 using Cik.CoreLibs;
+using Cik.CoreLibs.Bus;
+using Cik.CoreLibs.Bus.Amqp;
 using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Extensions;
 using Cik.Services.Magazine.MagazineService.Api.Category;
@@ -73,8 +76,18 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
             // Autofac container
             builder.RegisterType<MagazineDbContext>().AsSelf().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<IRepository<Category, Guid>>().InstancePerLifetimeScope();
-            builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly)
-                .AsImplementedInterfaces();
+
+            // TODO: will refactor later
+            var uri = "amqp://root:root@192.168.99.100:5672/%2Fmagazine";
+            builder.RegisterInstance(new RabbitMqPublisher(uri, "magazine.command.exchange")).As<ICommandBus>().SingleInstance();
+            builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.command.exchange", "command.queue")).As<IMessageSubscriber>(); 
+            builder.Register(x =>
+                new CommandConsumer(
+                    x.Resolve<IMessageSubscriber>(),
+                    (IEnumerable<ICommandHandler>)x.Resolve(typeof(IEnumerable<ICommandHandler>))
+                )
+            ).As<ICommandConsumer>();
         }
     }
 }

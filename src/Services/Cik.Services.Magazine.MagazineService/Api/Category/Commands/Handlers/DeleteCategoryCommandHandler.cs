@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cik.CoreLibs;
+using Cik.CoreLibs.Bus.Amqp;
 using Cik.CoreLibs.Domain;
 
 namespace Cik.Services.Magazine.MagazineService.Api.Category.Commands.Handlers
 {
-    public class DeleteCategoryCommandHandler : IHandleCommand<DeleteCategoryCommand>
+    public class DeleteCategoryCommandHandler : RabbitMqCommandHandler<DeleteCategoryCommand>
     {
         private readonly IRepository<Entities.Category, Guid> _categoryRepository;
 
-        public DeleteCategoryCommandHandler(IRepository<Entities.Category, Guid> repo)
+        public DeleteCategoryCommandHandler(
+            IServiceProvider serviceProvider,
+            IRepository<Entities.Category, Guid> repo) : base(serviceProvider)
         {
-            Guard.NotNull(repo);
-
             _categoryRepository = repo;
         }
 
-        public Task Handle(DeleteCategoryCommand message)
+        public override Task HandleAsync(DeleteCategoryCommand message)
         {
-            return Task.CompletedTask;
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Cik.CoreLibs.Domain
+﻿namespace Cik.CoreLibs.Bus
 {
     public class Event : IMessage
     {

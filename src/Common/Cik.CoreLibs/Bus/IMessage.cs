@@ -1,4 +1,4 @@
-﻿namespace Cik.CoreLibs.Domain
+﻿namespace Cik.CoreLibs.Bus
 {
     public interface IMessage
     {

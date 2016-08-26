@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Cik.CoreLibs.Domain;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Cik.CoreLibs.Domain
+namespace Cik.CoreLibs.Bus.Simple
 {
     public class SimpleCommandBus : ICommandBus
     {

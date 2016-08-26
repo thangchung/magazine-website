@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Cik.CoreLibs.Bus;
+using Cik.CoreLibs.Bus.Simple;
 
 namespace Cik.CoreLibs.Domain
 {
@@ -13,11 +15,11 @@ namespace Cik.CoreLibs.Domain
     public abstract class AggregateRootBase
     {
         protected AggregateRootBase()
-            : this(new DomainEventPublisher())
+            : this(new SimpleEventBus())
         {
         }
 
-        protected AggregateRootBase(IDomainEventPublisher eventPublisher)
+        protected AggregateRootBase(IEventBus eventPublisher)
         {
             EventPublisher = eventPublisher;
         }
@@ -35,7 +37,7 @@ namespace Cik.CoreLibs.Domain
         // public byte[] Version { get; set; }
 
         [NotMapped]
-        protected IDomainEventPublisher EventPublisher { get; private set; }
+        protected IEventBus EventPublisher { get; private set; }
 
         public void MarkAsRemoved()
         {

@@ -7,14 +7,14 @@ MAINTAINER Thang Chung "thangchung@ymail.com"
 ENV ASPNETCORE_ENVIRONMENT="Development"
 
 # Copy files to app directory
-COPY /src/Services/Gateway/Cik.Services.Gateway.API/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Gateway/Cik.Services.Gateway.API
+COPY /src/Services/Cik.Services.Gateway.API/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Cik.Services.Gateway.API
 COPY /src/Config/ /root/src/Config
 
 # Set working directory
-WORKDIR /root/src/Services/Gateway/Cik.Services.Gateway.API/
+WORKDIR /root/src/Services/Cik.Services.Gateway.API/
 
 # Open up port
 EXPOSE 8080
 
 # Run the app
-ENTRYPOINT ["dotnet", "/root/src/Services/Gateway/Cik.Services.Gateway.API/Cik.Services.Gateway.API.dll"]
+ENTRYPOINT ["dotnet", "/root/src/Services/Cik.Services.Gateway.API/Cik.Services.Gateway.API.dll"]

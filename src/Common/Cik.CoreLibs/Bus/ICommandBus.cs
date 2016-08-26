@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Cik.CoreLibs.Domain;
 
-namespace Cik.CoreLibs.Domain
+namespace Cik.CoreLibs.Bus
 {
     public interface ICommandBus
     {

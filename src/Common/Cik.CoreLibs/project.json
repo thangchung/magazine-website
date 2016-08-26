@@ -10,11 +10,11 @@
       "url": "https://github.com/thangchung/magazine-website"
     }
   },
-  "authors": [ "Thang Chung" ],
+  "authors": [ "thangchung" ],
   "description": "The Magazine Website.",
   "version": "1.0.0-*",
   "title": "The Magazine Website",
-  "copyright": "Copyright by ThangChung, 2016",
+  "copyright": "Copyright by thangchung, 2016",
 
   "dependencies": {
     "Autofac": "4.0.0-rc2-240",
@@ -40,7 +40,8 @@
     "Newtonsoft.Json": "9.0.1",
     "System.Reactive": "3.0.0",
     "System.Runtime.Serialization.Json": "4.0.1",
-    "System.Threading.ThreadPool": "4.0.10"
+    "System.Threading.ThreadPool": "4.0.10",
+    "RabbitMQ.Client":  "4.0.1"
   },
 
   "frameworks": {

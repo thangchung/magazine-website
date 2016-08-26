@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Cik.CoreLibs;
-using Cik.CoreLibs.Domain;
+using Cik.CoreLibs.Bus;
 using Cik.CoreLibs.Model;
 using Cik.Services.Magazine.MagazineService.Api.Category.Commands;
 using Cik.Services.Magazine.MagazineService.Api.Category.Dtos;

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -23,7 +23,7 @@ namespace Cik.CoreLibs.Extensions
             var types = asm.GetExportedTypes().Where(p => messageType.IsAssignableFrom(p));
             foreach (var type in types)
             {
-                var commandHandlerType = MakeAGenericType(typeof (IHandleCommand<>), type);
+                var commandHandlerType = MakeAGenericType(typeof (ICommandHandler<>), type);
                 var implementedCommandHandlerType =
                     asm.GetExportedTypes().FirstOrDefault(
                         t => commandHandlerType.IsAssignableFrom(t));
@@ -86,9 +86,9 @@ namespace Cik.CoreLibs.Extensions
             foreach (var i in type.GetInterfaces())
             {
                 if (i.GetTypeInfo().IsGenericType
-                    && (i.GetGenericTypeDefinition() == typeof (IHandleCommand<>)))
+                    && (i.GetGenericTypeDefinition() == typeof (ICommandHandler<>)))
                     yield return i;
             }
         }
     }
-}
+} */

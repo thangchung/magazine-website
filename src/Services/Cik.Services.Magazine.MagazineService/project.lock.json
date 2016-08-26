@@ -2553,6 +2553,31 @@
           "lib/netstandard1.0/NuGet.Versioning.dll": {}
         }
       },
+      "RabbitMQ.Client/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.Linq": "4.1.0",
+          "System.Net.NameResolution": "4.0.0",
+          "System.Net.Security": "4.0.0",
+          "System.Net.Sockets": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Thread": "4.0.0",
+          "System.Threading.Timer": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.5/RabbitMQ.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/RabbitMQ.Client.dll": {}
+        }
+      },
       "Remotion.Linq/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -4893,6 +4918,7 @@
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1",
+          "RabbitMQ.Client": "4.0.1",
           "System.Collections": "4.0.11",
           "System.Dynamic.Runtime": "4.0.11",
           "System.Linq": "4.1.0",
@@ -7025,6 +7051,15 @@
           "lib/net45/NuGet.Versioning.dll": {}
         }
       },
+      "RabbitMQ.Client/4.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net451/RabbitMQ.Client.dll": {}
+        },
+        "runtime": {
+          "lib/net451/RabbitMQ.Client.dll": {}
+        }
+      },
       "Remotion.Linq/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -7930,6 +7965,7 @@
           "Microsoft.Extensions.Options": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "Newtonsoft.Json": "9.0.1",
+          "RabbitMQ.Client": "4.0.1",
           "System.Reactive": "3.0.0",
           "System.Runtime.Serialization.Json": "4.0.1",
           "System.Threading.ThreadPool": "4.0.10"
@@ -10303,6 +10339,17 @@
         "lib/net45/NuGet.Versioning.xml",
         "lib/netstandard1.0/NuGet.Versioning.dll",
         "lib/netstandard1.0/NuGet.Versioning.xml"
+      ]
+    },
+    "RabbitMQ.Client/4.0.1": {
+      "sha512": "pgxmOTHm0UhXjdxhuoGqcf0dSNkFFS7284219Me/J1DDHZnTvN+yP0LLAgi7NePmN2v/6a3C3JAqX+yfDroKQA==",
+      "type": "package",
+      "path": "RabbitMQ.Client/4.0.1",
+      "files": [
+        "RabbitMQ.Client.4.0.1.nupkg.sha512",
+        "RabbitMQ.Client.nuspec",
+        "lib/net451/RabbitMQ.Client.dll",
+        "lib/netstandard1.5/RabbitMQ.Client.dll"
       ]
     },
     "Remotion.Linq/2.1.1": {
@@ -15415,6 +15462,7 @@
       "Npgsql >= 3.1.7",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 1.0.1",
       "Npgsql.EntityFrameworkCore.PostgreSQL.Design >= 1.0.1",
+      "RabbitMQ.Client >= 4.0.1",
       "System.IdentityModel.Tokens.Jwt >= 5.0.0",
       "System.Reactive >= 3.0.0",
       "System.Reflection >= 4.1.0"

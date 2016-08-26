@@ -10,7 +10,14 @@ Clone the repo using Git:
 
 `git clone https://github.com/thangchung/magazine-website.git`
 
-## Database
+## Boot up the system
+
+`docker-compose up -d`
+`docker-compose logs`
+
+> Below will be removed in the future
+
+## Database 
 
 `docker pull postgres:9.6`
 
