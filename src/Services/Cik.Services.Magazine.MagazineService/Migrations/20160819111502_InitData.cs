@@ -22,9 +22,9 @@ namespace Cik.Services.Magazine.MagazineService.Migrations
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     AggregateStatus = table.Column<int>(nullable: false),
                     CreatedBy = table.Column<string>(maxLength: 10, nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    CreatedDate = table.Column<DateTimeOffset>(nullable: false),
                     ModifiedBy = table.Column<string>(maxLength: 10, nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(nullable: false),
                     Name = table.Column<string>(maxLength: 20, nullable: false)
                 },
                 constraints: table =>

@@ -14,7 +14,6 @@ namespace Cik.Services.Magazine.MagazineService.Api.Category
         public CategoryRepository(MagazineDbContext dbContext)
         {
             Guard.NotNull(dbContext);
-
             _dbContext = dbContext;
         }
 
@@ -22,8 +21,6 @@ namespace Cik.Services.Magazine.MagazineService.Api.Category
 
         public IObservable<Guid> Create(Entities.Category cat)
         {
-            cat.CreatedDate = DateTime.UtcNow;
-            cat.CreatedBy = "thangchung";
             _dbContext.Categories.Add(cat);
             return Observable.Return(cat.Id);
         }

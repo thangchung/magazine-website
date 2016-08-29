@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Linq;
-using Cik.CoreLibs.Domain;
 
 namespace Cik.CoreLibs.Api
 {

@@ -81,7 +81,7 @@ namespace Cik.Services.Auth.AuthService.Features.Login
                 new Claim(JwtClaimTypes.Subject, user.Subject),
                 new Claim(JwtClaimTypes.Name, name),
                 new Claim(JwtClaimTypes.IdentityProvider, idp),
-                new Claim(JwtClaimTypes.AuthenticationTime, DateTime.UtcNow.ToEpochTime().ToString())
+                new Claim(JwtClaimTypes.AuthenticationTime, DateTimeOffset.UtcNow.ToEpochTime().ToString())
             };
             var ci = new ClaimsIdentity(claims, amr, JwtClaimTypes.Name, JwtClaimTypes.Role);
             var cp = new ClaimsPrincipal(ci);

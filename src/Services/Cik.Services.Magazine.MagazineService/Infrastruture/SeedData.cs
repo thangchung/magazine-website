@@ -37,7 +37,7 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture
                             Name = $"category {i}",
                             AggregateStatus = AggregateStatus.Active,
                             CreatedBy = "admin",
-                            CreatedDate = DateTime.UtcNow
+                            CreatedDate = DateTimeOffset.UtcNow
                         });
                 }
                 await dbContext.SaveChangesAsync();

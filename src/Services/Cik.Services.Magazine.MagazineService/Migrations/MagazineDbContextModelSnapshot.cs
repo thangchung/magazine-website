@@ -27,12 +27,12 @@ namespace Cik.Services.Magazine.MagazineService.Migrations
                         .IsRequired()
                         .HasAnnotation("MaxLength", 10);
 
-                    b.Property<DateTime>("CreatedDate");
+                    b.Property<DateTimeOffset>("CreatedDate");
 
                     b.Property<string>("ModifiedBy")
                         .HasAnnotation("MaxLength", 10);
 
-                    b.Property<DateTime>("ModifiedDate");
+                    b.Property<DateTimeOffset>("ModifiedDate");
 
                     b.Property<string>("Name")
                         .IsRequired()
