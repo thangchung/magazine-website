@@ -1,0 +1,20 @@
+FROM microsoft/dotnet
+
+MAINTAINER Thang Chung "thangchung@ymail.com"
+
+# Set environment variables
+# ENV ASPNETCORE_URLS="http://*:5001"
+ENV ASPNETCORE_ENVIRONMENT="Development"
+
+# Copy files to app directory
+COPY /src/Services/Cik.Services.Sample.SampleService/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Cik.Services.Sample.SampleService
+COPY /src/Config/ /root/src/Config
+
+# Set working directory
+WORKDIR /root/src/Services/Cik.Services.Sample.SampleService/
+
+# Open up port
+EXPOSE 5001
+
+# Run the app
+ENTRYPOINT ["dotnet", "/root/src/Services/Cik.Services.Sample.SampleService/Cik.Services.Sample.SampleService.dll"]
