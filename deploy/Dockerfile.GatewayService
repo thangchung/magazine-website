@@ -7,8 +7,8 @@ MAINTAINER Thang Chung "thangchung@ymail.com"
 ENV ASPNETCORE_ENVIRONMENT="Development"
 
 # Copy files to app directory
-COPY /src/Services/Cik.Services.Gateway.API/bin/Debug/netcoreapp1.0/publish/ /root/src/Services/Cik.Services.Gateway.API
-COPY /src/Config/ /root/src/Config
+COPY /publish/gateway_service/ /root/src/Services/Cik.Services.Gateway.API
+COPY /publish/Config/ /root/src/Config
 
 # Set working directory
 WORKDIR /root/src/Services/Cik.Services.Gateway.API/

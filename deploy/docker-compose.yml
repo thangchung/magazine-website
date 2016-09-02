@@ -59,7 +59,7 @@ services:
     image: "thangchung/auth_service"
     build:
       context: .
-      dockerfile: build/Dockerfile.AuthService 
+      dockerfile: Dockerfile.AuthService 
     hostname: auth_service
     ports:
       - "8888:8888"
@@ -73,7 +73,7 @@ services:
     image: "thangchung/gateway_service"
     build:
       context: .
-      dockerfile: build/Dockerfile.GatewayService 
+      dockerfile: Dockerfile.GatewayService 
     hostname: gateway_service
     ports:
       - "8080:8080"
@@ -99,7 +99,7 @@ services:
     image: "thangchung/magazine_service"
     build:
       context: .
-      dockerfile: build/Dockerfile.MagazineService 
+      dockerfile: Dockerfile.MagazineService 
     hostname: magazine_service
     ports:
       - "5000:5000"
@@ -118,7 +118,7 @@ services:
     image: "thangchung/sample_service"
     build:
       context: .
-      dockerfile: build/Dockerfile.SampleService 
+      dockerfile: Dockerfile.SampleService 
     hostname: sample_service
     ports:
       - "5001:5001"

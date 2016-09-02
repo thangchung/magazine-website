@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{570444
 	ProjectSection(SolutionItems) = preProject
 		src\Config\hosting.json = src\Config\hosting.json
 		src\Config\magazine_server.pfx = src\Config\magazine_server.pfx
+		src\Config\magazine_service.json = src\Config\magazine_service.json
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.Services.Sample.SampleService", "src\Services\Cik.Services.Sample.SampleService\Cik.Services.Sample.SampleService.xproj", "{D97BEBAB-7A57-4993-9DB5-336EB354B92B}"
@@ -35,12 +36,13 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cik.CoreLibs", "src\Common\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{FE449785-6A2A-4CE3-AECE-A0C10B67CE38}"
 	ProjectSection(SolutionItems) = preProject
-		build\docker-compose-consul-only.yml = build\docker-compose-consul-only.yml
-		build\docker-compose.yml = build\docker-compose.yml
-		build\Dockerfile.AuthService = build\Dockerfile.AuthService
-		build\Dockerfile.GatewayService = build\Dockerfile.GatewayService
-		build\Dockerfile.MagazineService = build\Dockerfile.MagazineService
-		build\Dockerfile.SampleService = build\Dockerfile.SampleService
+		deploy\build-all.ps1 = deploy\build-all.ps1
+		deploy\docker-compose-consul-only.yml = deploy\docker-compose-consul-only.yml
+		deploy\docker-compose.yml = deploy\docker-compose.yml
+		deploy\Dockerfile.AuthService = deploy\Dockerfile.AuthService
+		deploy\Dockerfile.GatewayService = deploy\Dockerfile.GatewayService
+		deploy\Dockerfile.MagazineService = deploy\Dockerfile.MagazineService
+		deploy\Dockerfile.SampleService = deploy\Dockerfile.SampleService
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{74EE4AF6-A048-4FE0-8B2E-1467B9E476C1}"
