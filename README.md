@@ -12,7 +12,7 @@ Clone the repo using Git:
 
 ## Boot up the whole system
 
-> The development environment on Windows (not in Linux or MacOS)
+> The development environment on Windows (not on Linux or MacOS)
 
 > Make sure you installed .NET Core, Powershell and Docker Toolbox for Windows to make it work 
 
