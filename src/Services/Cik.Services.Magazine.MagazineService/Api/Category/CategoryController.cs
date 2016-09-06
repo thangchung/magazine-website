@@ -45,24 +45,27 @@ namespace Cik.Services.Magazine.MagazineService.Api.Category
         public async Task<IActionResult> Post([FromBody] CreateCategoryCommand command)
         {
             command.Id = Guid.NewGuid();
-            await _commandBus.SendAsync(command);
-            return await OkResult();
+            return await _commandBus
+                .Send(command)
+                .SelectMany(x => OkResult());
         }
 
         [HttpPut /* Authorize("data_category_records_admin") */]
         public async Task<IActionResult> Put([FromBody] EditCategoryCommand command)
         {
             Guard.NotNullOrEmpty(command.Id.ToString());
-            await _commandBus.SendAsync(command);
-            return await OkResult();
+            return await _commandBus
+                .Send(command)
+                .SelectMany(x => OkResult());
         }
 
         [HttpDelete("{id}") /* Authorize("data_category_records_admin") */]
         public async Task<IActionResult> Delete(Guid id)
         {
             Guard.NotNullOrEmpty(id.ToString());
-            await _commandBus.SendAsync(new DeleteCategoryCommand {Id = id});
-            return await OkResult();
+            return await _commandBus
+                .Send(new DeleteCategoryCommand {Id = id})
+                .SelectMany(x => OkResult());
         }
     }
 }

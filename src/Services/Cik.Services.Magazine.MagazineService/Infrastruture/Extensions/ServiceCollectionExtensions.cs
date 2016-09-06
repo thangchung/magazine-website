@@ -75,19 +75,28 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
         {
             // Autofac container
             builder.RegisterType<MagazineDbContext>().AsSelf().SingleInstance();
+            builder.Register(x => x.Resolve<MagazineDbContext>()).As<DbContext>().SingleInstance();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<IRepository<Category, Guid>>().InstancePerLifetimeScope();
 
-            // TODO: will refactor later
+            // TODO: will refactor later, move to config
             var uri = "amqp://root:root@192.168.99.100:5672/%2Fmagazine";
-            builder.RegisterInstance(new RabbitMqPublisher(uri, "magazine.command.exchange")).As<ICommandBus>().SingleInstance();
-            builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly).AsImplementedInterfaces();
-            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.command.exchange", "command.queue")).As<IMessageSubscriber>(); 
+            builder.Register(x => new RabbitMqPublisher(x.Resolve<IServiceProvider>(), uri, "magazine.command.exchange"))
+                .As<ICommandBus>()
+                .SingleInstance();
+
+            builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly)
+                .AsImplementedInterfaces();
+
+            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.command.exchange", "command.queue"))
+                .As<IMessageSubscriber>();
+
             builder.Register(x =>
                 new CommandConsumer(
                     x.Resolve<IMessageSubscriber>(),
-                    (IEnumerable<ICommandHandler>)x.Resolve(typeof(IEnumerable<ICommandHandler>))
-                )
-            ).As<ICommandConsumer>();
+                    (IEnumerable<ICommandHandler>) x.Resolve(typeof (IEnumerable<ICommandHandler>))
+                    )
+                ).As<ICommandConsumer>();
         }
     }
 }

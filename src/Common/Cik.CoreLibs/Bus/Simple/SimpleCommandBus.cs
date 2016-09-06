@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Cik.CoreLibs.Domain;
-using FluentValidation;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+using Unit = System.Reactive.Unit;
 
 namespace Cik.CoreLibs.Bus.Simple
 {
@@ -20,17 +17,19 @@ namespace Cik.CoreLibs.Bus.Simple
             _provider = provider;
         }
 
-        public async Task SendAsync<T>(T command) where T : Command
+        public IObservable<Unit> Send<TCommand>(TCommand command) where TCommand : Command
         {
             // check command validation
-            var validators = _provider.GetServices(typeof (ICommandValidator<T>));
-            foreach (var validator in validators)
+            // var validators = _provider.GetServices(typeof (ICommandValidator<T>));
+            /* foreach (var validator in validators)
             {
                 await ((IValidator<T>) validator).ValidateAndThrowAsync(command);
-            }
+            } */
 
             // dispatch it 
-            await _mediator.PublishAsync(command);
+            // await _mediator.PublishAsync(command);
+
+            throw new NotImplementedException();
         }
     }
 }

@@ -29,8 +29,8 @@ namespace Cik.CoreLibs.Domain
         [Key]
         public Guid Id { get; set; }
 
-        public string CreatedBy { get; set; } = "admin";
-        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
+        public string CreatedBy { get; set; } = Constants.CreatedUser;
+        public DateTimeOffset CreatedDate { get; set; } = Constants.CreatedDate;
         public string ModifiedBy { get; set; }
         public DateTimeOffset ModifiedDate { get; set; }
 
@@ -58,13 +58,9 @@ namespace Cik.CoreLibs.Domain
         {
             if (this == obj)
                 return true;
-            if (obj is AggregateRootBase)
-            {
-                var other = (AggregateRootBase) obj;
-                return other.Id != null && other.Id.Equals(Id);
-            }
-
-            return false;
+            if (!(obj is AggregateRootBase)) return false;
+            var other = (AggregateRootBase) obj;
+            return other.Id.Equals(Id);
         }
     }
 }

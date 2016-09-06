@@ -4,6 +4,7 @@ namespace Cik.CoreLibs.Domain
 {
     public class AggregateId
     {
+        // Not allow create an entity without id
         private AggregateId()
         {
         }

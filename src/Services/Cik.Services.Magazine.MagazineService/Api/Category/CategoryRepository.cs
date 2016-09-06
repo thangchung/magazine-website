@@ -3,7 +3,6 @@ using System.Reactive.Linq;
 using Cik.CoreLibs;
 using Cik.CoreLibs.Domain;
 using Cik.Services.Magazine.MagazineService.Infrastruture;
-using Microsoft.EntityFrameworkCore;
 
 namespace Cik.Services.Magazine.MagazineService.Api.Category
 {
@@ -17,12 +16,10 @@ namespace Cik.Services.Magazine.MagazineService.Api.Category
             _dbContext = dbContext;
         }
 
-        public DbContext UnitOfWork => _dbContext;
-
         public IObservable<Guid> Create(Entities.Category cat)
         {
-            _dbContext.Categories.Add(cat);
-            return Observable.Return(cat.Id);
+            var retCat = _dbContext.Categories.Add(cat);
+            return Observable.Return(retCat.Entity.Id);
         }
     }
 }

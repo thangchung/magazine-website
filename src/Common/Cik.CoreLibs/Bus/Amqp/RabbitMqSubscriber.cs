@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
@@ -25,27 +27,30 @@ namespace Cik.CoreLibs.Bus.Amqp
 
         public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
-        public void Subscribe()
+        public IObservable<Unit> Subscribe()
         {
-            _channel.ExchangeDeclare(_exchangeName, "fanout");
-            _channel.QueueDeclare(_queueName, true, false, false, null);
-            _channel.QueueBind(_queueName, _exchangeName, "");
-
-            var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += (sender, e) =>
+            return Observable.Start(() =>
             {
-                var body = e.Body;
-                var json = Encoding.UTF8.GetString(body);
-                var message = JsonConvert.DeserializeObject(
-                    json,
-                    new JsonSerializerSettings
-                    {
-                        TypeNameHandling = TypeNameHandling.All
-                    });
-                OnMessageReceived(new MessageReceivedEventArgs(message));
-                _channel.BasicAck(e.DeliveryTag, false);
-            };
-            _channel.BasicConsume(_queueName, false, consumer);
+                _channel.ExchangeDeclare(_exchangeName, "fanout");
+                _channel.QueueDeclare(_queueName, true, false, false, null);
+                _channel.QueueBind(_queueName, _exchangeName, "");
+
+                var consumer = new EventingBasicConsumer(_channel);
+                consumer.Received += (sender, e) =>
+                {
+                    var body = e.Body;
+                    var json = Encoding.UTF8.GetString(body);
+                    var message = JsonConvert.DeserializeObject(
+                        json,
+                        new JsonSerializerSettings
+                        {
+                            TypeNameHandling = TypeNameHandling.All
+                        });
+                    OnMessageReceived(new MessageReceivedEventArgs(message));
+                    _channel.BasicAck(e.DeliveryTag, false);
+                };
+                _channel.BasicConsume(_queueName, false, consumer);
+            });
         }
 
         private void OnMessageReceived(MessageReceivedEventArgs e)

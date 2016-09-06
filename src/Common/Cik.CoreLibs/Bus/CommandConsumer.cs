@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace Cik.CoreLibs.Bus
 {
@@ -9,32 +10,29 @@ namespace Cik.CoreLibs.Bus
     {
         private bool _disposed;
 
-        public CommandConsumer(IMessageSubscriber subscriber, IEnumerable<ICommandHandler> commandHandlers)
+        public CommandConsumer(
+            IMessageSubscriber subscriber, 
+            IEnumerable<ICommandHandler> commandHandlers)
         {
             Subscriber = subscriber;
             CommandHandlers = commandHandlers;
-            subscriber.MessageReceived += async (sender, e) =>
+            subscriber.MessageReceived += (sender, e) =>
             {
-                if (CommandHandlers != null)
+                if (CommandHandlers == null) return;
+                foreach (var handler in CommandHandlers)
                 {
-                    foreach (var handler in CommandHandlers)
-                    {
-                        var handlerType = handler.GetType();
-                        var messageType = e.Message.GetType();
-                        var methodInfoQuery =
-                            from method in handlerType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                            let parameters = method.GetParameters()
-                            where method.Name == "HandleAsync" &&
-                                  method.ReturnType == typeof (Task) &&
-                                  parameters.Length == 1 &&
-                                  parameters[0].ParameterType == messageType
-                            select method;
-                        var methodInfo = methodInfoQuery.FirstOrDefault();
-                        if (methodInfo != null)
-                        {
-                            await (Task) methodInfo.Invoke(handler, new[] {e.Message});
-                        }
-                    }
+                    var handlerType = handler.GetType();
+                    var messageType = e.Message.GetType();
+                    var methodInfoQuery =
+                        from method in handlerType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                        let parameters = method.GetParameters()
+                        where method.Name == "Handle" &&
+                              method.ReturnType == typeof (IObservable<Unit>) &&
+                              parameters.Length == 1 &&
+                              parameters[0].ParameterType == messageType
+                        select method;
+                    var methodInfo = methodInfoQuery.FirstOrDefault();
+                    methodInfo?.Invoke(handler, new[] {e.Message});
                 }
             };
         }

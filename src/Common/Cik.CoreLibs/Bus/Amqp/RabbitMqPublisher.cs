@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Cik.CoreLibs.Domain;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 
@@ -12,37 +14,47 @@ namespace Cik.CoreLibs.Bus.Amqp
         private readonly IModel _channel;
         private readonly IConnection _connection;
         private readonly string _exchangeName;
+        private readonly IServiceProvider _provider;
         private bool _disposed;
 
-        public RabbitMqPublisher(string uri, string exchangeName)
+        public RabbitMqPublisher(IServiceProvider provider, string uri, string exchangeName)
         {
+            Guard.NotNull(provider);
             Guard.NotNullOrEmpty(uri);
             Guard.NotNullOrEmpty(exchangeName);
 
+            _provider = provider;
             _exchangeName = exchangeName;
             var factory = new ConnectionFactory {Uri = uri};
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
         }
 
-        public Task SendAsync<TCommand>(TCommand command) where TCommand : Command
+        public IObservable<Unit> Send<TCommand>(TCommand command) where TCommand : Command
         {
-            _channel.ExchangeDeclare(_exchangeName, "fanout");
-
-            var json = JsonConvert.SerializeObject(
-                command,
-                Formatting.Indented,
-                new JsonSerializerSettings
+            return Observable.Start(() =>
+            {
+                // check command validation
+                foreach (var validator in _provider.GetServices(typeof (ICommandValidator<TCommand>)))
                 {
-                    TypeNameHandling = TypeNameHandling.All
-                });
+                    ((IValidator<TCommand>) validator).ValidateAndThrow(command);
+                }
 
-            var bytes = Encoding.UTF8.GetBytes(json);
-            _channel.BasicPublish(_exchangeName, "", null, bytes);
-            return Task.CompletedTask;
+                // send to queue
+                _channel.ExchangeDeclare(_exchangeName, "fanout");
+                var json = JsonConvert.SerializeObject(
+                    command,
+                    Formatting.Indented,
+                    new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All
+                    });
+                var bytes = Encoding.UTF8.GetBytes(json);
+                _channel.BasicPublish(_exchangeName, "", null, bytes);
+            });
         }
 
-        public Task PublishAsync<TEvent>(TEvent @event) where TEvent : Event
+        public IObservable<Unit> Publish<TEvent>(TEvent @event) where TEvent : Event
         {
             throw new NotImplementedException();
         }

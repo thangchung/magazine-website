@@ -1,12 +1,10 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore;
 
 namespace Cik.CoreLibs.Domain
 {
-    public interface IRepository<in TAggregateRootBase, TId>
+    public interface IRepository<in TAggregateRootBase, out TId>
         where TAggregateRootBase : AggregateRootBase
     {
-        DbContext UnitOfWork { get; }
-        IObservable<TId> Create(TAggregateRootBase cat);
+        IObservable<TId> Create(TAggregateRootBase entity);
     }
 }

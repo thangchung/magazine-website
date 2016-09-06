@@ -1,54 +1,37 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Reactive;
+using System.Reactive.Linq;
+using Cik.CoreLibs;
 using Cik.CoreLibs.Bus.Amqp;
 using Cik.CoreLibs.Domain;
 
 namespace Cik.Services.Magazine.MagazineService.Api.Category.Commands.Handlers
 {
-    public class CreateCategoryCommandHandler : RabbitMqCommandHandler<CreateCategoryCommand>
+    public class CreateCategoryCommandHandler : AmqpCommandHandlerBase<CreateCategoryCommand>
     {
         private readonly IRepository<Entities.Category, Guid> _categoryRepository;
 
         public CreateCategoryCommandHandler(
-            IServiceProvider serviceProvider,
-            IRepository<Entities.Category, Guid> repo) : base(serviceProvider)
-        {
-            _categoryRepository = repo;
-        }
-
-        public override Task HandleAsync(CreateCategoryCommand message)
-        {
-            var cat = new Entities.Category
-            {
-                Id = Guid.NewGuid(),
-                Name = message.Name
-            };
-            _categoryRepository.Create(cat).Subscribe(x => { });
-            _categoryRepository.UnitOfWork.SaveChanges();
-            return Task.CompletedTask;
-        }
-    }
-
-    /*public class CreateCategoryCommandHandler : ISimpleCommandHandler<CreateCategoryCommand>
-    {
-        private readonly IRepository<Entities.Category, Guid> _categoryRepository;
-
-        public CreateCategoryCommandHandler(IRepository<Entities.Category, Guid> repo)
+            IUnitOfWork uow,
+            IRepository<Entities.Category, Guid> repo
+            ) : base(uow)
         {
             Guard.NotNull(repo);
             _categoryRepository = repo;
         }
 
-        public Task Handle(CreateCategoryCommand message)
+        public override IObservable<Unit> Handle(CreateCategoryCommand message)
         {
-            var cat = new Entities.Category
-            {
-                Id = Guid.NewGuid(),
-                Name = message.Name
-            };
-            _categoryRepository.Create(cat).Subscribe(x => { });
-            _categoryRepository.UnitOfWork.SaveChanges();
-            return Task.CompletedTask;
+            var retStream = _categoryRepository
+                .Create(
+                    new Entities.Category
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = message.Name
+                    })
+                .Select(x => new Unit());
+            UnitOfWork.SaveChanges();
+            return retStream;
         }
-    } */
+    }
 }

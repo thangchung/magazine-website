@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace Cik.CoreLibs.Bus
+﻿namespace Cik.CoreLibs.Bus
 {
-    public class Command : IMessage, IAsyncNotification
+    public class Command : IMessage
     {
     }
 }

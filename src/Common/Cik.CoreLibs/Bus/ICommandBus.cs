@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using Cik.CoreLibs.Domain;
+﻿using System;
+using System.Reactive;
 
 namespace Cik.CoreLibs.Bus
 {
     public interface ICommandBus
     {
-        Task SendAsync<T>(T command) where T : Command;
+        IObservable<Unit> Send<T>(T command) where T : Command;
     }
 }
