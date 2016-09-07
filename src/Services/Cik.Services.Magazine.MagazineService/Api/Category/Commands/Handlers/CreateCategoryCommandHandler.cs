@@ -28,10 +28,9 @@ namespace Cik.Services.Magazine.MagazineService.Api.Category.Commands.Handlers
                     {
                         Id = Guid.NewGuid(),
                         Name = message.Name
-                    })
-                .Select(x => new Unit());
+                    });
             UnitOfWork.SaveChanges();
-            return retStream;
+            return retStream.Select(x => new Unit());
         }
     }
 }

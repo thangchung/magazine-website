@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Cik.Services.Magazine.MagazineService.Api.Category.TypeMappings
+namespace Cik.Services.Magazine.MagazineService.Api.Category.Entities.Mappings
 {
     public class CategoryConfiguration : EntityMappingConfiguration<Entities.Category>
     {

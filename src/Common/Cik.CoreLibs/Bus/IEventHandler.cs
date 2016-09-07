@@ -1,9 +1,7 @@
-using System.Threading.Tasks;
-
 namespace Cik.CoreLibs.Bus
 {
-    public interface IEventHandler<in T>
+    public interface IEventHandler
     {
-        Task HandleAsync(T message);
+        // Task HandleAsync(T message);
     }
 }

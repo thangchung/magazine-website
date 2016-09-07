@@ -6,20 +6,20 @@ using System.Reflection;
 
 namespace Cik.CoreLibs.Bus
 {
-    public sealed class CommandConsumer : DisposableObject, ICommandConsumer
+    public class EventConsumer : DisposableObject, IEventConsumer
     {
         private bool _disposed;
 
-        public CommandConsumer(
+        public EventConsumer(
             IMessageSubscriber subscriber,
-            IEnumerable<ICommandHandler> commandHandlers)
+            IEnumerable<IEventHandler> eventHandlers)
         {
             Subscriber = subscriber;
-            CommandHandlers = commandHandlers;
+            EventHandlers = eventHandlers;
             subscriber.MessageReceived += (sender, e) =>
             {
-                if (CommandHandlers == null) return;
-                foreach (var handler in CommandHandlers)
+                if (EventHandlers == null) return;
+                foreach (var handler in EventHandlers)
                 {
                     var handlerType = handler.GetType();
                     var messageType = e.Message.GetType();
@@ -37,7 +37,7 @@ namespace Cik.CoreLibs.Bus
             };
         }
 
-        public IEnumerable<ICommandHandler> CommandHandlers { get; }
+        public IEnumerable<IEventHandler> EventHandlers { get; }
 
         public IMessageSubscriber Subscriber { get; }
 

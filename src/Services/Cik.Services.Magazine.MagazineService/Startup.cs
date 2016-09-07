@@ -25,6 +25,7 @@ namespace Cik.Services.Magazine.MagazineService
             var serviceProvider = services.AddWebHost(Configuration).Resolve<IServiceProvider>();
             // call Subscribe() to listen the command handlers
             serviceProvider.GetService<ICommandConsumer>().Subscriber.Subscribe();
+            serviceProvider.GetService<IEventConsumer>().Subscriber.Subscribe();
             return serviceProvider;
         }
 

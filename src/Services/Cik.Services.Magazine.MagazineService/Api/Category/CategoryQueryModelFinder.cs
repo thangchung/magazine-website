@@ -38,39 +38,5 @@ namespace Cik.Services.Magazine.MagazineService.Api.Category
                     Name = x.Name
                 });
         }
-
-        #region "async version"
-
-        /*public async Task<CategoryDto> Find(Guid id)
-        {
-            var dbItem = _dbContext
-                .Categories
-                .Where(x => x.Id == id)
-                .Select(x =>
-                    new CategoryDto
-                    {
-                        Id = x.Id,
-                        Name = x.Name,
-                        CreatedBy = x.CreatedBy,
-                        CreatedDate = x.CreatedDate
-                    })
-                .FirstAsync();
-            return await dbItem;
-        }
-        public async Task<List<CategoryDto>> Query()
-        {
-            var categories = _dbContext
-                .Categories
-                .Select(x =>
-                    new CategoryDto
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    })
-                .ToListAsync();
-            return await categories;
-        } */
-
-        #endregion
     }
 }

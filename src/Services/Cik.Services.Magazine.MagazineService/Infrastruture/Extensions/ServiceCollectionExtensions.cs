@@ -85,18 +85,32 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
                 .As<ICommandBus>()
                 .SingleInstance();
 
+            builder.Register(x => new RabbitMqPublisher(x.Resolve<IServiceProvider>(), uri, "magazine.event.exchange"))
+                .As<IEventBus>()
+                .SingleInstance();
+
             builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly)
                 .AsImplementedInterfaces();
 
-            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.command.exchange", "command.queue"))
-                .As<IMessageSubscriber>();
+            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.command.exchange", "magazine.command.queue"))
+                .Named<IMessageSubscriber>("CommandSubscriber");
+
+            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.event.exchange", "magazine.event.queue"))
+                .Named<IMessageSubscriber>("EventSubscriber");
 
             builder.Register(x =>
                 new CommandConsumer(
-                    x.Resolve<IMessageSubscriber>(),
+                    x.ResolveNamed<IMessageSubscriber>("CommandSubscriber"),
                     (IEnumerable<ICommandHandler>) x.Resolve(typeof (IEnumerable<ICommandHandler>))
                     )
                 ).As<ICommandConsumer>();
+
+            builder.Register(x =>
+                new EventConsumer(
+                    x.ResolveNamed<IMessageSubscriber>("EventSubscriber"),
+                    (IEnumerable<IEventHandler>)x.Resolve(typeof(IEnumerable<IEventHandler>))
+                    )
+                ).As<IEventConsumer>();
         }
     }
 }

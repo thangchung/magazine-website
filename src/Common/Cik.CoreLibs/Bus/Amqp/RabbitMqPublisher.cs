@@ -56,7 +56,20 @@ namespace Cik.CoreLibs.Bus.Amqp
 
         public IObservable<Unit> Publish<TEvent>(TEvent @event) where TEvent : Event
         {
-            throw new NotImplementedException();
+            return Observable.Start(() =>
+            {
+                // send to queue
+                _channel.ExchangeDeclare(_exchangeName, "fanout");
+                var json = JsonConvert.SerializeObject(
+                    @event,
+                    Formatting.Indented,
+                    new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All
+                    });
+                var bytes = Encoding.UTF8.GetBytes(json);
+                _channel.BasicPublish(_exchangeName, "", null, bytes);
+            });
         }
 
         protected override void Dispose(bool disposing)
