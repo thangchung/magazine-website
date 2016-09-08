@@ -2,7 +2,7 @@
 using Microphone.Consul;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Cik.CoreLibs.ServiceDiscovery
+namespace Cik.CoreLibs.Extensions
 {
     public static class ServiceDiscoveryExtensions
     {

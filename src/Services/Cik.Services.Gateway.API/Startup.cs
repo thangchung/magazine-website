@@ -1,4 +1,5 @@
 ﻿using Cik.CoreLibs.Api;
+using Cik.CoreLibs.Extensions;
 using Cik.CoreLibs.ServiceDiscovery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;

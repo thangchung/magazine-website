@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
 using Cik.CoreLibs;
-using Cik.CoreLibs.Bus;
-using Cik.CoreLibs.Bus.Amqp;
 using Cik.CoreLibs.Domain;
 using Cik.CoreLibs.Extensions;
 using Cik.Services.Magazine.MagazineService.Api.Category;
@@ -27,7 +24,7 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
             return services
                 .AddAuthorization()
                 .AddCoreServiceCollection(configuration, s => s.AddServiceCollection(configuration))
-                .AddCoreAutofacDependencies(s => s.AddAutofacDependencies())
+                .AddCoreAutofacDependencies(s => s.AddAutofacDependencies(configuration))
                 .Build();
         }
 
@@ -71,46 +68,20 @@ namespace Cik.Services.Magazine.MagazineService.Infrastruture.Extensions
             }
         }
 
-        private static void AddAutofacDependencies(this ContainerBuilder builder)
+        private static void AddAutofacDependencies(this ContainerBuilder builder, IConfiguration configuration)
         {
             // Autofac container
             builder.RegisterType<MagazineDbContext>().AsSelf().SingleInstance();
             builder.Register(x => x.Resolve<MagazineDbContext>()).As<DbContext>().SingleInstance();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
             builder.RegisterType<CategoryRepository>().As<IRepository<Category, Guid>>().InstancePerLifetimeScope();
-
-            // TODO: will refactor later, move to config
-            var uri = "amqp://root:root@192.168.99.100:5672/%2Fmagazine";
-            builder.Register(x => new RabbitMqPublisher(x.Resolve<IServiceProvider>(), uri, "magazine.command.exchange"))
-                .As<ICommandBus>()
-                .SingleInstance();
-
-            builder.Register(x => new RabbitMqPublisher(x.Resolve<IServiceProvider>(), uri, "magazine.event.exchange"))
-                .As<IEventBus>()
-                .SingleInstance();
-
-            builder.RegisterAssemblyTypes(typeof (CreateCategoryCommand).GetTypeInfo().Assembly)
-                .AsImplementedInterfaces();
-
-            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.command.exchange", "magazine.command.queue"))
-                .Named<IMessageSubscriber>("CommandSubscriber");
-
-            builder.RegisterInstance(new RabbitMqSubscriber(uri, "magazine.event.exchange", "magazine.event.queue"))
-                .Named<IMessageSubscriber>("EventSubscriber");
-
-            builder.Register(x =>
-                new CommandConsumer(
-                    x.ResolveNamed<IMessageSubscriber>("CommandSubscriber"),
-                    (IEnumerable<ICommandHandler>) x.Resolve(typeof (IEnumerable<ICommandHandler>))
-                    )
-                ).As<ICommandConsumer>();
-
-            builder.Register(x =>
-                new EventConsumer(
-                    x.ResolveNamed<IMessageSubscriber>("EventSubscriber"),
-                    (IEnumerable<IEventHandler>)x.Resolve(typeof(IEnumerable<IEventHandler>))
-                    )
-                ).As<IEventConsumer>();
+            builder.AddCqrsBus(
+                typeof (CreateCategoryCommand).GetTypeInfo().Assembly, 
+                configuration, 
+                "magazine.command.exchange", 
+                "magazine.event.exchange", 
+                "magazine.command.queue", 
+                "magazine.event.queue");
         }
     }
 }
