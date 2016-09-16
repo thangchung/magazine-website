@@ -63,7 +63,7 @@
     "System.IdentityModel.Tokens.Jwt": "5.0.0",
     "System.Reactive": "3.0.0",
     "System.Reflection": "4.1.0",
-    "RabbitMQ.Client":  "4.0.1"
+    "RabbitMQ.Client": "4.0.1"
   },
   "description": "The Magazine Website.",
   "frameworks": {
