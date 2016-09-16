@@ -1,7 +1,7 @@
 {
   "packOptions": {
-    "summary": "The Magazine Website.",
-    "tags": [ "magazine", "microservices" ],
+    "summary": "The CoreLibs library.",
+    "tags": [ "CoreLibs", ".NET Core", "ASP.NET Core", "EF Core", "DDD", "CQRS", "MSA", "FRP" ],
     "owners": [ "thangchung" ],
     "projectUrl": "https://github.com/thangchung/magazine-website",
     "licenseUrl": "",
@@ -11,14 +11,15 @@
     }
   },
   "authors": [ "thangchung" ],
-  "description": "The Magazine Website.",
+  "description": "The CoreLibs library using .NET Core, ASP.NET Core, EF Core with DDD, CQRS, MSA, FRP approach",
   "version": "1.0.0-*",
-  "title": "The Magazine Website",
-  "copyright": "Copyright by thangchung, 2016",
+  "title": "The CoreLibs library.",
+  "copyright": "Copyright by @thangchung, 2016",
 
   "dependencies": {
     "Autofac": "4.0.0-rc2-240",
     "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
+    "EventStore.ClientAPI.DotNetCore": "1.0.0",
     "FluentValidation": "6.4.0-beta3",
     "MediatR": "2.1.0",
     "Microphone.AspNet": "0.6.2",
@@ -41,8 +42,7 @@
     "RabbitMQ.Client": "4.0.1",
     "System.Reactive": "3.0.0",
     "System.Runtime.Serialization.Json": "4.0.1",
-    "System.Threading.ThreadPool": "4.0.10",
-    "EventStore.ClientAPI.DotNetCore": "1.0.0"
+    "System.Threading.ThreadPool": "4.0.10"
   },
 
   "frameworks": {
