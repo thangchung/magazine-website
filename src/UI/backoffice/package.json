@@ -4,9 +4,9 @@
   "description": "The magazine website backoffice site",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch --hot",
-    "dev": "webpack-dev-server --port 8888 --hot"
+    "start": "webpack-dev-server --port 8888 --hot --inline --content-base src/",
+    "build": "rimraf dist && webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -22,17 +22,29 @@
   },
   "homepage": "https://github.com/thangchung/magazine-website#readme",
   "dependencies": {
-    "clean-webpack-plugin": "^0.1.10",
-    "elm-hot-loader": "^0.3.4",
-    "elm-webpack-loader": "^3.0.6",
+    "autoprefixer": "^6.3.6",
+    "bootstrap-sass": "^3.3.6",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "elm": "^0.17.0",
+    "elm-hot-loader": "^0.3.2",
+    "elm-webpack-loader": "^3.0.3",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "node-bourbon": "^4.2.8",
-    "node-neat": "^1.7.2",
-    "node-sass": "^3.10.0",
-    "sass-loader": "^4.0.2",
-    "webpack": "^1.13.2",
-    "webpack-dev-middleware": "^1.8.3",
-    "webpack-dev-server": "^1.16.1"
+    "html-webpack-plugin": "^2.17.0",
+    "jquery": "^3.1.0",
+    "node-sass": "^3.7.0",
+    "postcss-loader": "^0.10.1",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.14.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-react": "^6.3.0"
+  }
 }

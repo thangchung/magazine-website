@@ -1,12 +1,23 @@
-var _thangchung$magazine_website$Main$main = {
-	main: A2(
-		_elm_lang$html$Html$h1,
+var _thangchung$magazine_website$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$p,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html_Attributes$id('hello')
+				_elm_lang$html$Html_Attributes$id('container')
 			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
 				_elm_lang$html$Html$text('Hello Elm !!!')
-			]))
+			]));
 };
+var _thangchung$magazine_website$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return model;
+	});
+var _thangchung$magazine_website$Main$model = 0;
+var _thangchung$magazine_website$Main$main = {
+	main: _elm_lang$html$Html_App$beginnerProgram(
+		{model: _thangchung$magazine_website$Main$model, view: _thangchung$magazine_website$Main$view, update: _thangchung$magazine_website$Main$update})
+};
+var _thangchung$magazine_website$Main$NoOp = {ctor: 'NoOp'};
