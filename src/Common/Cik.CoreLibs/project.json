@@ -17,8 +17,8 @@
   "copyright": "Copyright by @thangchung, 2016",
 
   "dependencies": {
-    "Autofac": "4.0.0-rc2-240",
-    "Autofac.Extensions.DependencyInjection": "4.0.0-rc2-240",
+    "Autofac": "4.1.0",
+    "Autofac.Extensions.DependencyInjection": "4.0.0",
     "EventStore.ClientAPI.DotNetCore": "1.0.0",
     "FluentValidation": "6.4.0-beta3",
     "MediatR": "2.1.0",
@@ -42,7 +42,8 @@
     "RabbitMQ.Client": "4.0.1",
     "System.Reactive": "3.0.0",
     "System.Runtime.Serialization.Json": "4.0.1",
-    "System.Threading.ThreadPool": "4.0.10"
+    "System.Threading.ThreadPool": "4.0.10",
+    "StackExchange.Redis": "1.1.605"
   },
 
   "frameworks": {

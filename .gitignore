@@ -2,6 +2,7 @@ src/Framework/Cik.Domain/project.lock.json
 src/Framework/Cik.Infrastruture/project.lock.json
 src/Services/Magazine/Cik.Services.Magazine.MagazineService/project.lock.json
 src/Services/ServiceDiscovery/Cik.ServiceDiscovery/project.lock.json
+elm_stuff
 
 artifacts
 
