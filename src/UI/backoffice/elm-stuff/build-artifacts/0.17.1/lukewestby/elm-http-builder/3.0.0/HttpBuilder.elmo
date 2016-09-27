@@ -1,0 +1,316 @@
+var _lukewestby$elm_http_builder$HttpBuilder$appendQuery = F3(
+	function (url, key, value) {
+		return A2(_elm_lang$core$String$contains, '?', url) ? A2(
+			_elm_lang$core$Basics_ops['++'],
+			url,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'&',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					key,
+					A2(_elm_lang$core$Basics_ops['++'], '=', value)))) : A2(
+			_elm_lang$core$Basics_ops['++'],
+			url,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'?',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					key,
+					A2(_elm_lang$core$Basics_ops['++'], '=', value))));
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$replace = F2(
+	function (old, $new) {
+		return function (_p0) {
+			return A2(
+				_elm_lang$core$String$join,
+				$new,
+				A2(_elm_lang$core$String$split, old, _p0));
+		};
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$queryEscape = function (_p1) {
+	return A3(
+		_lukewestby$elm_http_builder$HttpBuilder$replace,
+		'%20',
+		'+',
+		_evancz$elm_http$Http$uriEncode(_p1));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$queryPair = function (_p2) {
+	var _p3 = _p2;
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		_lukewestby$elm_http_builder$HttpBuilder$queryEscape(_p3._0),
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			'=',
+			_lukewestby$elm_http_builder$HttpBuilder$queryEscape(_p3._1)));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$joinUrlEncoded = function (args) {
+	return A2(
+		_elm_lang$core$String$join,
+		'&',
+		A2(_elm_lang$core$List$map, _lukewestby$elm_http_builder$HttpBuilder$queryPair, args));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$toSettings = function (_p4) {
+	var _p5 = _p4;
+	return _p5._1;
+};
+var _lukewestby$elm_http_builder$HttpBuilder$toRequest = function (_p6) {
+	var _p7 = _p6;
+	return _p7._0;
+};
+var _lukewestby$elm_http_builder$HttpBuilder$appendCacheBusterToUrl = F2(
+	function (request, time) {
+		return _elm_lang$core$Native_Utils.update(
+			request,
+			{
+				url: A3(
+					_lukewestby$elm_http_builder$HttpBuilder$appendQuery,
+					request.url,
+					'_',
+					_elm_lang$core$Basics$toString(time))
+			});
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$unitReader = _elm_lang$core$Basics$always(
+	_elm_lang$core$Result$Ok(
+		{ctor: '_Tuple0'}));
+var _lukewestby$elm_http_builder$HttpBuilder$jsonReader = F2(
+	function (decoder, value) {
+		var _p8 = value;
+		if (_p8.ctor === 'Text') {
+			return A2(_elm_lang$core$Json_Decode$decodeString, decoder, _p8._0);
+		} else {
+			return _elm_lang$core$Result$Err('JSON reader does not support given body type.');
+		}
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$stringReader = function (value) {
+	var _p9 = value;
+	if (_p9.ctor === 'Text') {
+		return _elm_lang$core$Result$Ok(_p9._0);
+	} else {
+		return _elm_lang$core$Result$Err('String reader does not support given body type.');
+	}
+};
+var _lukewestby$elm_http_builder$HttpBuilder$url = _evancz$elm_http$Http$url;
+var _lukewestby$elm_http_builder$HttpBuilder$defaultInternals = {cacheBuster: false, zeroStatusAllowed: false};
+var _lukewestby$elm_http_builder$HttpBuilder$Internals = F2(
+	function (a, b) {
+		return {cacheBuster: a, zeroStatusAllowed: b};
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$Response = F5(
+	function (a, b, c, d, e) {
+		return {data: a, status: b, statusText: c, headers: d, url: e};
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$RequestBuilder = F3(
+	function (a, b, c) {
+		return {ctor: 'RequestBuilder', _0: a, _1: b, _2: c};
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl = F2(
+	function (verb, url) {
+		return A3(
+			_lukewestby$elm_http_builder$HttpBuilder$RequestBuilder,
+			{
+				verb: verb,
+				url: url,
+				headers: _elm_lang$core$Native_List.fromArray(
+					[]),
+				body: _evancz$elm_http$Http$empty
+			},
+			_evancz$elm_http$Http$defaultSettings,
+			_lukewestby$elm_http_builder$HttpBuilder$defaultInternals);
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$get = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('GET');
+var _lukewestby$elm_http_builder$HttpBuilder$post = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('POST');
+var _lukewestby$elm_http_builder$HttpBuilder$put = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('PUT');
+var _lukewestby$elm_http_builder$HttpBuilder$patch = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('PATCH');
+var _lukewestby$elm_http_builder$HttpBuilder$delete = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('DELETE');
+var _lukewestby$elm_http_builder$HttpBuilder$options = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('OPTIONS');
+var _lukewestby$elm_http_builder$HttpBuilder$trace = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('TRACE');
+var _lukewestby$elm_http_builder$HttpBuilder$head = _lukewestby$elm_http_builder$HttpBuilder$requestWithVerbAndUrl('HEAD');
+var _lukewestby$elm_http_builder$HttpBuilder$mapRequest = F2(
+	function (updater, _p10) {
+		var _p11 = _p10;
+		return A3(
+			_lukewestby$elm_http_builder$HttpBuilder$RequestBuilder,
+			updater(_p11._0),
+			_p11._1,
+			_p11._2);
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$withHeader = F2(
+	function (key, value) {
+		return _lukewestby$elm_http_builder$HttpBuilder$mapRequest(
+			function (request) {
+				return _elm_lang$core$Native_Utils.update(
+					request,
+					{
+						headers: A2(
+							_elm_lang$core$List_ops['::'],
+							{ctor: '_Tuple2', _0: key, _1: value},
+							request.headers)
+					});
+			});
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$withHeaders = function (headers) {
+	return _lukewestby$elm_http_builder$HttpBuilder$mapRequest(
+		function (request) {
+			return _elm_lang$core$Native_Utils.update(
+				request,
+				{
+					headers: A2(_elm_lang$core$Basics_ops['++'], headers, request.headers)
+				});
+		});
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withBody = function (body) {
+	return _lukewestby$elm_http_builder$HttpBuilder$mapRequest(
+		function (request) {
+			return _elm_lang$core$Native_Utils.update(
+				request,
+				{body: body});
+		});
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withStringBody = function (_p12) {
+	return _lukewestby$elm_http_builder$HttpBuilder$withBody(
+		_evancz$elm_http$Http$string(_p12));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withJsonBody = function (_p13) {
+	return _lukewestby$elm_http_builder$HttpBuilder$withStringBody(
+		A2(_elm_lang$core$Json_Encode$encode, 0, _p13));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withUrlEncodedBody = function (_p14) {
+	return _lukewestby$elm_http_builder$HttpBuilder$withStringBody(
+		_lukewestby$elm_http_builder$HttpBuilder$joinUrlEncoded(_p14));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withMultipartBody = function (_p15) {
+	return _lukewestby$elm_http_builder$HttpBuilder$withBody(
+		_evancz$elm_http$Http$multipart(_p15));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withMultipartStringBody = function (_p16) {
+	return _lukewestby$elm_http_builder$HttpBuilder$withMultipartBody(
+		A2(
+			_elm_lang$core$List$map,
+			function (_p17) {
+				var _p18 = _p17;
+				return A2(_evancz$elm_http$Http$stringData, _p18._0, _p18._1);
+			},
+			_p16));
+};
+var _lukewestby$elm_http_builder$HttpBuilder$mapSettings = F2(
+	function (updater, _p19) {
+		var _p20 = _p19;
+		return A3(
+			_lukewestby$elm_http_builder$HttpBuilder$RequestBuilder,
+			_p20._0,
+			updater(_p20._1),
+			_p20._2);
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$withTimeout = function (timeout) {
+	return _lukewestby$elm_http_builder$HttpBuilder$mapSettings(
+		function (settings) {
+			return _elm_lang$core$Native_Utils.update(
+				settings,
+				{timeout: timeout});
+		});
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withMimeType = function (mimeType) {
+	return _lukewestby$elm_http_builder$HttpBuilder$mapSettings(
+		function (settings) {
+			return _elm_lang$core$Native_Utils.update(
+				settings,
+				{
+					desiredResponseType: _elm_lang$core$Maybe$Just(mimeType)
+				});
+		});
+};
+var _lukewestby$elm_http_builder$HttpBuilder$withCredentials = _lukewestby$elm_http_builder$HttpBuilder$mapSettings(
+	function (settings) {
+		return _elm_lang$core$Native_Utils.update(
+			settings,
+			{withCredentials: true});
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$mapInternals = F2(
+	function (updater, _p21) {
+		var _p22 = _p21;
+		return A3(
+			_lukewestby$elm_http_builder$HttpBuilder$RequestBuilder,
+			_p22._0,
+			_p22._1,
+			updater(_p22._2));
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$withCacheBuster = _lukewestby$elm_http_builder$HttpBuilder$mapInternals(
+	function (internals) {
+		return _elm_lang$core$Native_Utils.update(
+			internals,
+			{cacheBuster: true});
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$withZeroStatusAllowed = _lukewestby$elm_http_builder$HttpBuilder$mapInternals(
+	function (internals) {
+		return _elm_lang$core$Native_Utils.update(
+			internals,
+			{zeroStatusAllowed: true});
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$BadResponse = function (a) {
+	return {ctor: 'BadResponse', _0: a};
+};
+var _lukewestby$elm_http_builder$HttpBuilder$Timeout = {ctor: 'Timeout'};
+var _lukewestby$elm_http_builder$HttpBuilder$NetworkError = {ctor: 'NetworkError'};
+var _lukewestby$elm_http_builder$HttpBuilder$promoteRawError = function (rawError) {
+	var _p23 = rawError;
+	if (_p23.ctor === 'RawTimeout') {
+		return _lukewestby$elm_http_builder$HttpBuilder$Timeout;
+	} else {
+		return _lukewestby$elm_http_builder$HttpBuilder$NetworkError;
+	}
+};
+var _lukewestby$elm_http_builder$HttpBuilder$UnexpectedPayload = function (a) {
+	return {ctor: 'UnexpectedPayload', _0: a};
+};
+var _lukewestby$elm_http_builder$HttpBuilder$responseFromRaw = F2(
+	function (reader, response) {
+		var _p24 = reader(response.value);
+		if (_p24.ctor === 'Ok') {
+			return _elm_lang$core$Task$succeed(
+				{data: _p24._0, status: response.status, statusText: response.statusText, headers: response.headers, url: response.url});
+		} else {
+			return _elm_lang$core$Task$fail(
+				_lukewestby$elm_http_builder$HttpBuilder$UnexpectedPayload(_p24._0));
+		}
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$handleResponse = F4(
+	function (successReader, errorReader, internals, response) {
+		var isSuccessful = ((_elm_lang$core$Native_Utils.cmp(response.status, 200) > -1) && (_elm_lang$core$Native_Utils.cmp(response.status, 300) < 0)) || (_elm_lang$core$Native_Utils.eq(response.status, 0) && internals.zeroStatusAllowed);
+		return isSuccessful ? A2(_lukewestby$elm_http_builder$HttpBuilder$responseFromRaw, successReader, response) : A3(
+			_elm_lang$core$Basics$flip,
+			_elm_lang$core$Task$andThen,
+			function (_p25) {
+				return _elm_lang$core$Task$fail(
+					_lukewestby$elm_http_builder$HttpBuilder$BadResponse(_p25));
+			},
+			A2(_lukewestby$elm_http_builder$HttpBuilder$responseFromRaw, errorReader, response));
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$sendHelp = F5(
+	function (successReader, errorReader, internals, settings, request) {
+		return A3(
+			_elm_lang$core$Basics$flip,
+			_elm_lang$core$Task$andThen,
+			A3(_lukewestby$elm_http_builder$HttpBuilder$handleResponse, successReader, errorReader, internals),
+			A2(
+				_elm_lang$core$Task$mapError,
+				_lukewestby$elm_http_builder$HttpBuilder$promoteRawError,
+				A2(_evancz$elm_http$Http$send, settings, request)));
+	});
+var _lukewestby$elm_http_builder$HttpBuilder$send = F3(
+	function (successReader, errorReader, _p26) {
+		var _p27 = _p26;
+		var _p30 = _p27._1;
+		var _p29 = _p27._0;
+		var _p28 = _p27._2;
+		return _p28.cacheBuster ? A3(
+			_elm_lang$core$Basics$flip,
+			_elm_lang$core$Task$andThen,
+			A4(_lukewestby$elm_http_builder$HttpBuilder$sendHelp, successReader, errorReader, _p28, _p30),
+			A2(
+				_elm_lang$core$Task$map,
+				_lukewestby$elm_http_builder$HttpBuilder$appendCacheBusterToUrl(_p29),
+				_elm_lang$core$Time$now)) : A5(_lukewestby$elm_http_builder$HttpBuilder$sendHelp, successReader, errorReader, _p28, _p30, _p29);
+	});

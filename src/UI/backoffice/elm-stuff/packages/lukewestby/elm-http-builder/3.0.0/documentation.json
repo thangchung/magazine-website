@@ -1,0 +1,216 @@
+[
+  {
+    "name": "HttpBuilder",
+    "comment": " Extra helpers for more easily building Http requests that require greater\nconfiguration than what is provided by `elm-http` out of the box.\n\n# Send a request\n@docs send\n\n# Start a request\n@docs RequestBuilder, url, get, post, put, patch, delete, options, trace, head\n\n# Configure request properties\n@docs withHeader, withHeaders, withBody, withStringBody, withJsonBody, withMultipartBody, withMultipartStringBody, withUrlEncodedBody\n\n# Configure settings\n@docs withTimeout, withMimeType, withCredentials\n\n# Custom configurations\n@docs withCacheBuster, withZeroStatusAllowed\n\n# Parse the response\n@docs BodyReader, stringReader, jsonReader, unitReader, Error, Response\n\n# Inspect the request\n@docs toRequest, toSettings, Request, Settings\n",
+    "aliases": [
+      {
+        "name": "BodyReader",
+        "comment": " A function for transforming raw response bodies into a useful value. Plain\nstring and JSON decoding readers are provided, and the string reader can be\nused as a basis for more custom readers. When future Http value types become\nsupported matching readers will be added to extract them.\n",
+        "args": [
+          "a"
+        ],
+        "type": "Http.Value -> Result.Result String a"
+      },
+      {
+        "name": "Request",
+        "comment": " Re-export `Http.Request`\n",
+        "args": [],
+        "type": "Http.Request"
+      },
+      {
+        "name": "Response",
+        "comment": " Represents a response from the server, including both a decoded JSON payload\nand basic network information.\n",
+        "args": [
+          "a"
+        ],
+        "type": "{ data : a , status : Int , statusText : String , headers : Dict.Dict String String , url : String }"
+      },
+      {
+        "name": "Settings",
+        "comment": " Re-export `Http.Settings`\n",
+        "args": [],
+        "type": "Http.Settings"
+      }
+    ],
+    "types": [
+      {
+        "name": "Error",
+        "comment": " Indicates that _some_ kind of failure occured along the path of making and\nreceiving the request. This includes a timeout or network issue, a failure to\nparse the response body, or a status code outside the 200 range. In the case\nthat the error is due to a non-2xx response code, the full response is provided\nand the data decoded as JSON using the decoder for errors passed to `send`.\n",
+        "args": [
+          "a"
+        ],
+        "cases": [
+          [
+            "UnexpectedPayload",
+            [
+              "String"
+            ]
+          ],
+          [
+            "NetworkError",
+            []
+          ],
+          [
+            "Timeout",
+            []
+          ],
+          [
+            "BadResponse",
+            [
+              "HttpBuilder.Response a"
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "RequestBuilder",
+        "comment": " A type for chaining request configuration\n",
+        "args": [],
+        "cases": []
+      }
+    ],
+    "values": [
+      {
+        "name": "delete",
+        "comment": " Start building a DELETE request with a given URL\n\n    delete \"https://example.com/api/items/1\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "get",
+        "comment": " Start building a GET request with a given URL\n\n    get \"https://example.com/api/items/1\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "head",
+        "comment": " Start building a HEAD request with a given URL\n\n    head \"https://example.com/api/items/1\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "jsonReader",
+        "comment": " Attempts to decode the raw response body with the given\n`Json.Decode.Decoder`, failing if the body is malformed or not readable as a\nstring.\n",
+        "type": "Json.Decode.Decoder a -> HttpBuilder.BodyReader a"
+      },
+      {
+        "name": "options",
+        "comment": " Start building a OPTIONS request with a given URL\n\n    options \"https://example.com/api/items/1\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "patch",
+        "comment": " Start building a PATCH request with a given URL\n\n    patch \"https://example.com/api/items/1\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "post",
+        "comment": " Start building a POST request with a given URL\n\n    post \"https://example.com/api/items\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "put",
+        "comment": " Start building a PUT request with a given URL\n\n    put \"https://example.com/api/items/1\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "send",
+        "comment": " Once you're finished building up a request, send it with readers for the\nsuccessful response value as well as the server error response value.\n\n    -- In this example a succesful response from the server looks like\n    -- [\"string\", \"string\", \"string\"], and an error body might look like\n    -- \"Bad Request\" or something similar, such that it is a string that is\n    -- not valid JSON (it would need to look like \"\\\"Bad Request\\\"\" to be\n    -- decodable as JSON).\n\n    successDecoder : Json.Decode.Decoder (List String)\n    successDecoder =\n        Json.Decode.list Json.Decode.string\n\n    get \"https://example.com/api/items\"\n        |> withHeader \"Content-Type\" \"application/json\"\n        |> withTimeout (10 * Time.second)\n        |> send (jsonReader successDecoder) stringReader\n",
+        "type": "HttpBuilder.BodyReader a -> HttpBuilder.BodyReader b -> HttpBuilder.RequestBuilder -> Task.Task (HttpBuilder.Error b) (HttpBuilder.Response a)"
+      },
+      {
+        "name": "stringReader",
+        "comment": " Attempts to read a raw response body as a plain text string, failing if the\nbody is not readable as a string.\n",
+        "type": "HttpBuilder.BodyReader String"
+      },
+      {
+        "name": "toRequest",
+        "comment": " Extract the Http.Request component of the builder, for introspection and\ntesting\n",
+        "type": "HttpBuilder.RequestBuilder -> HttpBuilder.Request"
+      },
+      {
+        "name": "toSettings",
+        "comment": " Extract the Http.Settings component of the builder, for introspection and\ntesting\n",
+        "type": "HttpBuilder.RequestBuilder -> HttpBuilder.Settings"
+      },
+      {
+        "name": "trace",
+        "comment": " Start building a TRACE request with a given URL\n\n    trace \"https://example.com/api/items/1\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "unitReader",
+        "comment": " Totally discards the content of a raw response body and reads nothing,\nreturning `()` as the data value. Great for discarding error response bodies if\nthey just look like `\"Not Found\"` or whatever and aren't really useful.\n",
+        "type": "HttpBuilder.BodyReader ()"
+      },
+      {
+        "name": "url",
+        "comment": " Construct a url using String, String key value pairs for the query string.\nSee `Http.url`.\n\n    googleUrl =\n        url \"https://google.com\" [(\"q\", \"elm\")]\n",
+        "type": "String -> List ( String, String ) -> String"
+      },
+      {
+        "name": "withBody",
+        "comment": " Add a body to a request for requests that allow bodies.\n\n    post \"https://example.com/api/items/1\"\n        |> withHeader \"Content-Type\" \"application/json\"\n        |> withBody (Http.string \"\"\"{ \"sortBy\": \"coolness\", \"take\": 10 }\"\"\")\n",
+        "type": "Http.Body -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withCacheBuster",
+        "comment": " Injects a cache busting url param into the url with the current timestamp as\nthe value to prevent the server from caching responses\n    get \"https://example.com/api/items/1\"\n        |> withCredentials\n",
+        "type": "HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withCredentials",
+        "comment": " Set the `withCredentials` flag on the request to True. Works via\n[`XMLHttpRequest#withCredentials`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials)\n\n    get \"https://example.com/api/items/1\"\n        |> withCredentials\n",
+        "type": "HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withHeader",
+        "comment": " Add a single header to a request\n\n    get \"https://example.com/api/items/1\"\n        |> withHeader \"Content-Type\" \"application/json\"\n",
+        "type": "String -> String -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withHeaders",
+        "comment": " Add many headers to a request\n\n    get \"https://example.com/api/items/1\"\n        |> withHeaders [(\"Content-Type\", \"application/json\"), (\"Accept\", \"application/json\")]\n",
+        "type": "List ( String, String ) -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withJsonBody",
+        "comment": " Convenience function for adding a JSON body to a request\n\n    params = Json.Encode.object\n        [ (\"sortBy\", Json.Encode.string \"coolness\")\n        , (\"take\", Json.Encode.int 10)\n        ]\n\n    post \"https://example.com/api/items/1\"\n        |> withHeader \"Content-Type\" \"application/json\"\n        |> withJsonBody params\n",
+        "type": "Json.Encode.Value -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withMimeType",
+        "comment": " Set the desired type of the response for the request, works via\n[`XMLHttpRequest#overrideMimeType()`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#overrideMimeType())\n\n    get \"https://example.com/api/items/1\"\n        |> withMimeType (onProgressHandler)\n",
+        "type": "String -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withMultipartBody",
+        "comment": " Convenience function for adding a multiplart body to a request\n\n    post \"https://example.com/api/items/1\"\n        |> withMultipartBody [Http.stringData \"user\" (JS.encode user)]\n",
+        "type": "List Http.Data -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withMultipartStringBody",
+        "comment": " Convience function for adding multipart bodies composed of String, String\nkey-value pairs. Since `Http.stringData` is currently the only `Http.Data`\ncreator having this function removes the need to use the `Http.Data` type in\nyour type signatures.\n\n    post \"https://example.com/api/items/1\"\n        |> withMultipartStringBody [(\"user\", JS.encode user)]\n",
+        "type": "List ( String, String ) -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withStringBody",
+        "comment": " Convenience function for adding a string body to a request\n\n    post \"https://example.com/api/items/1\"\n        |> withHeader \"Content-Type\" \"application/json\"\n        |> withStringBody \"\"\"{ \"sortBy\": \"coolness\", \"take\": 10 }\"\"\"\n",
+        "type": "String -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withTimeout",
+        "comment": " Set the `timeout` setting on the request\n\n    get \"https://example.com/api/items/1\"\n        |> withTimeout (10 * Time.second)\n",
+        "type": "Time.Time -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withUrlEncodedBody",
+        "comment": " Convenience function for adding url encoded bodies\n\n    post \"https://example.com/api/whatever\"\n        |> withUrlEncodedBody [(\"user\", \"Evan\"), (\"pwd\", \"secret\")]\n",
+        "type": "List ( String, String ) -> HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      },
+      {
+        "name": "withZeroStatusAllowed",
+        "comment": " Explicitly allows a require for a file:// url with a response status code\nof 0 to pass through successfully. This is a common issue when dealing with\nfile:// urls in environments like cordova, and using this function will allow\nyou to work around the problem on an opt-in basis.\n",
+        "type": "HttpBuilder.RequestBuilder -> HttpBuilder.RequestBuilder"
+      }
+    ],
+    "generated-with-elm-version": "0.17.1"
+  }
+]

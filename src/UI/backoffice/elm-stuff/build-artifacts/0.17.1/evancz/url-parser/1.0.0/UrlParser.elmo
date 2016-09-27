@@ -1,0 +1,177 @@
+var _evancz$url_parser$UrlParser$oneOfHelp = F3(
+	function (choices, chunks, formatter) {
+		oneOfHelp:
+		while (true) {
+			var _p0 = choices;
+			if (_p0.ctor === '[]') {
+				return _elm_lang$core$Result$Err('Tried many parsers, but none of them worked!');
+			} else {
+				var _p1 = A2(_p0._0._0, chunks, formatter);
+				if (_p1.ctor === 'Err') {
+					var _v2 = _p0._1,
+						_v3 = chunks,
+						_v4 = formatter;
+					choices = _v2;
+					chunks = _v3;
+					formatter = _v4;
+					continue oneOfHelp;
+				} else {
+					return _elm_lang$core$Result$Ok(_p1._0);
+				}
+			}
+		}
+	});
+var _evancz$url_parser$UrlParser$Chunks = F2(
+	function (a, b) {
+		return {seen: a, rest: b};
+	});
+var _evancz$url_parser$UrlParser$parse = F3(
+	function (input, _p2, url) {
+		var _p3 = _p2;
+		var _p4 = A2(
+			_p3._0,
+			A2(
+				_evancz$url_parser$UrlParser$Chunks,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				A2(_elm_lang$core$String$split, '/', url)),
+			input);
+		if (_p4.ctor === 'Err') {
+			return _elm_lang$core$Result$Err(_p4._0);
+		} else {
+			var _p7 = _p4._0._1;
+			var _p6 = _p4._0._0.rest;
+			var _p5 = _p6;
+			if (_p5.ctor === '[]') {
+				return _elm_lang$core$Result$Ok(_p7);
+			} else {
+				if ((_p5._0 === '') && (_p5._1.ctor === '[]')) {
+					return _elm_lang$core$Result$Ok(_p7);
+				} else {
+					return _elm_lang$core$Result$Err(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'The parser worked, but /',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								A2(_elm_lang$core$String$join, '/', _p6),
+								' was left over.')));
+				}
+			}
+		}
+	});
+var _evancz$url_parser$UrlParser$Parser = function (a) {
+	return {ctor: 'Parser', _0: a};
+};
+var _evancz$url_parser$UrlParser$s = function (str) {
+	return _evancz$url_parser$UrlParser$Parser(
+		F2(
+			function (_p8, result) {
+				var _p9 = _p8;
+				var _p12 = _p9.rest;
+				var _p10 = _p12;
+				if (_p10.ctor === '[]') {
+					return _elm_lang$core$Result$Err(
+						A2(_elm_lang$core$Basics_ops['++'], 'Got to the end of the URL but wanted /', str));
+				} else {
+					var _p11 = _p10._0;
+					return _elm_lang$core$Native_Utils.eq(_p11, str) ? _elm_lang$core$Result$Ok(
+						{
+							ctor: '_Tuple2',
+							_0: A2(
+								_evancz$url_parser$UrlParser$Chunks,
+								A2(_elm_lang$core$List_ops['::'], _p11, _p9.seen),
+								_p10._1),
+							_1: result
+						}) : _elm_lang$core$Result$Err(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'Wanted /',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								str,
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									' but got /',
+									A2(_elm_lang$core$String$join, '/', _p12)))));
+				}
+			}));
+};
+var _evancz$url_parser$UrlParser$custom = F2(
+	function (tipe, stringToSomething) {
+		return _evancz$url_parser$UrlParser$Parser(
+			F2(
+				function (_p13, func) {
+					var _p14 = _p13;
+					var _p15 = _p14.rest;
+					if (_p15.ctor === '[]') {
+						return _elm_lang$core$Result$Err(
+							A2(_elm_lang$core$Basics_ops['++'], 'Got to the end of the URL but wanted /', tipe));
+					} else {
+						var _p17 = _p15._0;
+						var _p16 = stringToSomething(_p17);
+						if (_p16.ctor === 'Ok') {
+							return _elm_lang$core$Result$Ok(
+								{
+									ctor: '_Tuple2',
+									_0: A2(
+										_evancz$url_parser$UrlParser$Chunks,
+										A2(_elm_lang$core$List_ops['::'], _p17, _p14.seen),
+										_p15._1),
+									_1: func(_p16._0)
+								});
+						} else {
+							return _elm_lang$core$Result$Err(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									'Parsing `',
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										_p17,
+										A2(_elm_lang$core$Basics_ops['++'], '` went wrong: ', _p16._0))));
+						}
+					}
+				}));
+	});
+var _evancz$url_parser$UrlParser$string = A2(_evancz$url_parser$UrlParser$custom, 'STRING', _elm_lang$core$Result$Ok);
+var _evancz$url_parser$UrlParser$int = A2(_evancz$url_parser$UrlParser$custom, 'NUMBER', _elm_lang$core$String$toInt);
+var _evancz$url_parser$UrlParser_ops = _evancz$url_parser$UrlParser_ops || {};
+_evancz$url_parser$UrlParser_ops['</>'] = F2(
+	function (_p19, _p18) {
+		var _p20 = _p19;
+		var _p21 = _p18;
+		return _evancz$url_parser$UrlParser$Parser(
+			F2(
+				function (chunks, func) {
+					return A2(
+						_elm_lang$core$Result$andThen,
+						A2(_p20._0, chunks, func),
+						function (_p22) {
+							var _p23 = _p22;
+							return A2(_p21._0, _p23._0, _p23._1);
+						});
+				}));
+	});
+var _evancz$url_parser$UrlParser$oneOf = function (choices) {
+	return _evancz$url_parser$UrlParser$Parser(
+		_evancz$url_parser$UrlParser$oneOfHelp(choices));
+};
+var _evancz$url_parser$UrlParser$format = F2(
+	function (input, _p24) {
+		var _p25 = _p24;
+		return _evancz$url_parser$UrlParser$Parser(
+			F2(
+				function (chunks, func) {
+					var _p26 = A2(_p25._0, chunks, input);
+					if (_p26.ctor === 'Err') {
+						return _elm_lang$core$Result$Err(_p26._0);
+					} else {
+						return _elm_lang$core$Result$Ok(
+							{
+								ctor: '_Tuple2',
+								_0: _p26._0._0,
+								_1: func(_p26._0._1)
+							});
+					}
+				}));
+	});

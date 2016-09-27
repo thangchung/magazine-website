@@ -1,0 +1,38 @@
+{
+  "name": "magazine-website-backoffice",
+  "version": "0.0.1",
+  "description": "The magazine website backoffice site",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch --hot",
+    "dev": "webpack-dev-server --port 8888 --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thangchung/magazine-website.git"
+  },
+  "keywords": [
+    "magazine-website"
+  ],
+  "author": "thangchung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thangchung/magazine-website/issues"
+  },
+  "homepage": "https://github.com/thangchung/magazine-website#readme",
+  "dependencies": {
+    "clean-webpack-plugin": "^0.1.10",
+    "elm-hot-loader": "^0.3.4",
+    "elm-webpack-loader": "^3.0.6",
+    "file-loader": "^0.9.0",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^1.7.2",
+    "node-sass": "^3.10.0",
+    "sass-loader": "^4.0.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.3",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "devDependencies": {}
+}

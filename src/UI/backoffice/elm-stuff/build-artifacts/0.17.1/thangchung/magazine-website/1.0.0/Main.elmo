@@ -1,0 +1,12 @@
+var _thangchung$magazine_website$Main$main = {
+	main: A2(
+		_elm_lang$html$Html$h1,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$id('hello')
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html$text('Hello Elm !!!')
+			]))
+};

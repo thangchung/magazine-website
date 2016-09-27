@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Dom.Scroll",
+    "comment": " When you set `overflow-y: scroll` on an element, a scroll bar will appear\nwhen the content overflows the available space. When that happens, you may want\nto modify the scroll position yourself. For example, maybe you have a chat room\nthat autoscrolls as new messages come in. This module provides functions like\n`Dom.Scroll.toBottom` that let you do that kind of thing.\n\n# Vertical\n@docs toTop, toBottom, y, toY\n\n# Horizontal\n@docs toLeft, toRight, x, toX\n\n",
+    "aliases": [],
+    "types": [],
+    "values": [
+      {
+        "name": "toBottom",
+        "comment": " Find the node with the given `Id` and scroll it to the bottom.\n",
+        "type": "Dom.Id -> Task.Task Dom.Error ()"
+      },
+      {
+        "name": "toLeft",
+        "comment": " Find the node with the given `Id` and scroll it to the far left.\n\nSo `toLeft id` is the same as `toX id 0`.\n",
+        "type": "Dom.Id -> Task.Task Dom.Error ()"
+      },
+      {
+        "name": "toRight",
+        "comment": " Find the node with the given `Id` and scroll it to the far right.\n",
+        "type": "Dom.Id -> Task.Task Dom.Error ()"
+      },
+      {
+        "name": "toTop",
+        "comment": " Find the node with the given `Id` and scroll it to the top.\n\nSo `toTop id` is the same as `toY id 0`.\n",
+        "type": "Dom.Id -> Task.Task Dom.Error ()"
+      },
+      {
+        "name": "toX",
+        "comment": " Set the horizontal scroll to whatever offset you want.\n\nIt works just like `toY`, so check out those docs for a more complete example.\n",
+        "type": "Dom.Id -> Float -> Task.Task Dom.Error ()"
+      },
+      {
+        "name": "toY",
+        "comment": " Set the vertical scroll to whatever offset you want.\n\nImagine you have a chat room and you want to control how it scrolls. Say the\nfull chat is 400 pixels long, but it is in a box that limits the visible height\nto 100 pixels.\n\n  - If we say `toY \"chat\" 0` it will scroll to the very top.\n  - If we say `toY \"chat\" 300` it will be at the bottom.\n\nIf we provide values outside that range, they just get clamped, so\n`toY \"chat\" 900` is also scrolled to the bottom.\n",
+        "type": "Dom.Id -> Float -> Task.Task Dom.Error ()"
+      },
+      {
+        "name": "x",
+        "comment": " How much this element is scrolled horizontally.\n\nSay you have a node that does not fit in its container. A scroll bar shows up.\nInitially you are at the far left, which means `x` is `0`. If you scroll right\n300 pixels, `x` will be `300`.\n\nThis is roughly the same as saying [`document.getElementById(id).scrollLeft`][docs].\n\n[docs]: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft\n",
+        "type": "Dom.Id -> Task.Task Dom.Error Float"
+      },
+      {
+        "name": "y",
+        "comment": " How much this element is scrolled vertically.\n\nSay you have a node that does not fit in its container. A scroll bar shows up.\nInitially you are at the top, which means `y` is `0`. If you scroll down 300\npixels, `y` will be `300`.\n\nThis is roughly the same as saying [`document.getElementById(id).scrollTop`][docs].\n\n[docs]: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop\n",
+        "type": "Dom.Id -> Task.Task Dom.Error Float"
+      }
+    ],
+    "generated-with-elm-version": "0.17.1"
+  },
+  {
+    "name": "Dom",
+    "comment": "\n\n# Focus\n@docs focus, blur, Id\n\n# Errors\n@docs Error\n\n",
+    "aliases": [
+      {
+        "name": "Id",
+        "comment": " A unique identifier for a particular DOM node. When you create\n`<div id=\"my-thing\"></div>` you would refer to it with the `Id` `\"my-thing\"`.\n",
+        "args": [],
+        "type": "String"
+      }
+    ],
+    "types": [
+      {
+        "name": "Error",
+        "comment": " All the functions here look up DOM nodes by ID. If you ask for an ID that\nis not currently attached to the DOM, you will get this error!\n",
+        "args": [],
+        "cases": [
+          [
+            "NotFound",
+            [
+              "String"
+            ]
+          ]
+        ]
+      }
+    ],
+    "values": [
+      {
+        "name": "blur",
+        "comment": " On a website, there can only be one thing in focus at a time. A text field,\na check box, etc. Sometimes you want that thing to no longer be in focus. This\nis called &ldquo;blur&rdquo; for reasons that are unclear to almost everybody.\nSo this function tells a particular DOM node to lose focus.\n\n    Dom.blur \"my-thing\"\n\nThis is roughly the same as saying `document.getElementById(id).blur()`.\n",
+        "type": "Dom.Id -> Task.Task Dom.Error ()"
+      },
+      {
+        "name": "focus",
+        "comment": " On a website, there can only be one thing in focus at a time. A text field,\na check box, etc. This function tells the Elm runtime to move the focus to a\nparticular DOM node.\n\n    Dom.focus \"my-thing\"\n\nThis is roughly the same as saying `document.getElementById(id).focus()`.\n\nNOTE: setting focus can silently fail if the element is invisible. This could be captured as an error by checking to see\nif document.activeElement actually got updated to the element we selected. https://jsbin.com/xeletez/edit?html,js,output\n",
+        "type": "Dom.Id -> Task.Task Dom.Error ()"
+      }
+    ],
+    "generated-with-elm-version": "0.17.1"
+  },
+  {
+    "name": "Dom.LowLevel",
+    "comment": " This is not for general use. It backs libraries like `elm-lang/mouse` and\n`elm-lang/window` which should cover your needs in most cases. In the rare\ncase that those packages do not seem to cover your scenario, first bring it up\nwith the community. Ask around and learn stuff first! Only get into these\nfunctions after that.\n\n# Global Event Listeners\n@docs onDocument, onWindow\n\n",
+    "aliases": [],
+    "types": [],
+    "values": [
+      {
+        "name": "onDocument",
+        "comment": " Add an event handler on the `document`. The resulting task will never end,\nand when you kill the process it is on, it will detach the relevant JavaScript\nevent listener.\n",
+        "type": "String -> Json.Decode.Decoder msg -> (msg -> Task.Task Basics.Never ()) -> Task.Task Basics.Never Basics.Never"
+      },
+      {
+        "name": "onWindow",
+        "comment": " Add an event handler on `window`. The resulting task will never end, and\nwhen you kill the process it is on, it will detach the relevant JavaScript\nevent listener.\n",
+        "type": "String -> Json.Decode.Decoder msg -> (msg -> Task.Task Basics.Never ()) -> Task.Task Basics.Never Basics.Never"
+      }
+    ],
+    "generated-with-elm-version": "0.17.1"
+  }
+]

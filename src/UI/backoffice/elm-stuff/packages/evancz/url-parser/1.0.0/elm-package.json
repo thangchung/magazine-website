@@ -1,0 +1,16 @@
+{
+    "version": "1.0.0",
+    "summary": "Parse URLs into nicely structured data, useful for navigation / \"SPA routing\"",
+    "repository": "https://github.com/evancz/url-parser.git",
+    "license": "BSD3",
+    "source-directories": [
+        "src"
+    ],
+    "exposed-modules": [
+        "UrlParser"
+    ],
+    "dependencies": {
+        "elm-lang/core": "4.0.0 <= v < 5.0.0"
+    },
+    "elm-version": "0.17.0 <= v < 0.18.0"
+}
