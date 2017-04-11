@@ -1,3 +1,5 @@
+> This project is not maintained anymore!!!
+
 # Magazine Website
 
 Coming soon...
