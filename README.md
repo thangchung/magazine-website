@@ -1,6 +1,6 @@
 > This project is not maintained anymore!!!
 
-# Magazine Website
+# Magazine an amazing Website
 
 Coming soon...
 
